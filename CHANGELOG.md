@@ -2,6 +2,11 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [0.6.1] - 2026-03-19
+
+### Fixed
+- Tab no longer intercepts Copilot inline suggestions — pressing Tab now accepts a Copilot suggestion as expected; only falls through to chevron indent behaviour when no suggestion is visible
+
 ## [0.6.0] - 2026-03-19
 
 ### Added

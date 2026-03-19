@@ -38,6 +38,7 @@
 ## v0.4.0 — Smarter List Commands ✅
 - ✅ `Chevron Lists: Select Section Items` command selects all items under the nearest `> Header`
 - ✅ Fold/collapse chevron sections via standard VS Code fold gutter (FoldingRangeProvider)
+- ⚠️ Known: VS Code's built-in markdown blockquote folding also shows a fold arrow on the first `>> -` line — this is VS Code's own behaviour and cannot be suppressed by an extension
 
 ---
 
