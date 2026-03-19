@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -17,12 +17,30 @@
             {
                 "command": "chevron-lists.onEnter",
                 "title": "Chevron Lists: Handle Enter"
+            },
+            {
+                "command": "chevron-lists.onTab",
+                "title": "Chevron Lists: Indent Item"
+            },
+            {
+                "command": "chevron-lists.onShiftTab",
+                "title": "Chevron Lists: Dedent Item"
             }
         ],
         "keybindings": [
             {
                 "key": "enter",
                 "command": "chevron-lists.onEnter",
+                "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
+            },
+            {
+                "key": "tab",
+                "command": "chevron-lists.onTab",
+                "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
+            },
+            {
+                "key": "shift+tab",
+                "command": "chevron-lists.onShiftTab",
                 "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
             }
         ]
