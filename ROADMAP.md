@@ -22,9 +22,10 @@
 
 ---
 
-## v0.2.0 — Auto-Numbering ⬜
-- ⬜ Support `>> 1.` style numbered chevron lists
-- ⬜ Auto-increment the number on each Enter
+## v0.2.0 — Auto-Numbering ✅
+- ✅ Support `>> 1.` style numbered chevron lists
+- ✅ Auto-increment the number on each Enter
+- ✅ Tab/Shift+Tab on numbered items picks up correct number at new depth
 
 ---
 

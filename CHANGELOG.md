@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [0.2.0] - 2026-03-19
+
+### Added
+- Auto-numbered chevron lists using `>> 1.` syntax
+- Enter after `>> 1. Item` continues with `>> 2.` (auto-incrementing)
+- Enter on an empty `>> 1.` line stops the list
+- Tab promotes a numbered item to deeper depth, resetting number correctly
+- Shift+Tab demotes a numbered item, picking up the correct next number at that depth
+
 ## [0.1.0] - 2026-03-19
 
 ### Added
