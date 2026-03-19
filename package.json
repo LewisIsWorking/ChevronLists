@@ -1,14 +1,40 @@
 {
-  "name": "ChevronLists",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "typescript": "^5.5.3"
-  },
-  "private": true
+    "name": "chevron-lists",
+    "displayName": "Chevron Lists",
+    "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
+    "version": "0.0.1",
+    "publisher": "lewisisworking",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/LewisIsWorking/ChevronLists"
+    },
+    "engines": { "vscode": "^1.85.0" },
+    "categories": ["Keymaps"],
+    "activationEvents": ["onLanguage:markdown"],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "chevron-lists.onEnter",
+                "title": "Chevron Lists: Handle Enter"
+            }
+        ],
+        "keybindings": [
+            {
+                "key": "enter",
+                "command": "chevron-lists.onEnter",
+                "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
+            }
+        ]
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "license": "CC-BY-NC-ND-4.0",
+    "devDependencies": {
+        "@types/vscode": "^1.85.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.0.0"
+    }
 }
