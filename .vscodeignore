@@ -1,0 +1,9 @@
+.idea/
+src/
+node_modules/
+.git/
+.gitignore
+bun.lock
+tsconfig.json
+.DS_Store
+*.vsix
