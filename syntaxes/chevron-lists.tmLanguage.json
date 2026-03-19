@@ -1,0 +1,35 @@
+{
+    "name": "Chevron Lists",
+    "scopeName": "text.html.markdown.chevron-lists",
+    "injectionSelector": "L:text.html.markdown",
+    "patterns": [
+        { "include": "#chevron-header" },
+        { "include": "#chevron-numbered-item" },
+        { "include": "#chevron-bullet-item" }
+    ],
+    "repository": {
+        "chevron-header": {
+            "match": "^(> )([^>].*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.quote.begin.chevron" },
+                "2": { "name": "entity.name.section.chevron markup.heading.chevron" }
+            }
+        },
+        "chevron-numbered-item": {
+            "match": "^(>{2,} )(\\d+)(\\.)( .*)?$",
+            "captures": {
+                "1": { "name": "punctuation.definition.list.chevron" },
+                "2": { "name": "constant.numeric.chevron" },
+                "3": { "name": "punctuation.separator.chevron" },
+                "4": { "name": "string.other.chevron" }
+            }
+        },
+        "chevron-bullet-item": {
+            "match": "^(>{2,} - )(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.list.chevron" },
+                "2": { "name": "string.other.chevron" }
+            }
+        }
+    }
+}

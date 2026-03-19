@@ -2,6 +2,31 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [0.6.0] - 2026-03-19
+
+### Added
+- Minimap / overview ruler indicators: `> Header` lines now appear as markers in the scrollbar gutter
+
+## [0.5.0] - 2026-03-19
+
+### Added
+- Syntax highlighting via TextMate grammar injected into markdown
+- `> Header` lines coloured as section headings
+- `>> -` bullet prefixes and `>> 1.` number prefixes styled distinctly
+- Item content styled as a string scope (picks up theme colours automatically)
+
+## [0.4.0] - 2026-03-19
+
+### Added
+- Fold / collapse chevron sections: each `> Header` block folds via the standard VS Code fold gutter
+- `Chevron Lists: Select Section Items` command selects all `>> -` and `>> 1.` lines under the nearest `> Header`
+
+## [0.3.0] - 2026-03-19
+
+### Added
+- `chevron-lists.listPrefix` setting: change the list prefix character (default `-`, e.g. set to `*` for `>> *`)
+- `chevron-lists.blankLineAfterHeader` setting: optionally insert a blank line between `> Header` and the first list item
+
 ## [0.2.0] - 2026-03-19
 
 ### Added

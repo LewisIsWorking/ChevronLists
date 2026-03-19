@@ -29,26 +29,26 @@
 
 ---
 
-## v0.3.0 — Configurable Prefix ⬜
-- ⬜ Let users define their own list prefix in VS Code settings
-- ⬜ e.g. swap `>> -` for `>> *` or `>>> -`
-- ⬜ Blank line behaviour toggle (insert blank line before `>> -` or not)
+## v0.3.0 — Configurable Prefix ✅
+- ✅ `chevron-lists.listPrefix` setting (default `-`, e.g. change to `*`)
+- ✅ `chevron-lists.blankLineAfterHeader` setting (blank line between header and first item)
 
 ---
 
-## v0.4.0 — Smarter List Commands ⬜
-- ⬜ Select all `>> -` items under the current `> Header`
-- ⬜ Fold/collapse everything between `> Header` and the next `>` header as a group
+## v0.4.0 — Smarter List Commands ✅
+- ✅ `Chevron Lists: Select Section Items` command selects all items under the nearest `> Header`
+- ✅ Fold/collapse chevron sections via standard VS Code fold gutter (FoldingRangeProvider)
 
 ---
 
-## v0.5.0 — Syntax Highlighting ⬜
-- ⬜ Grammar contribution to colour-code `>` headers differently from regular blockquotes
-- ⬜ Colour-code `>> -` items distinctly
+## v0.5.0 — Syntax Highlighting ✅
+- ✅ TextMate grammar injected into markdown
+- ✅ `> Header` lines coloured as section headings
+- ✅ `>> -` and `>> 1.` prefixes styled distinctly from content
 
 ---
 
-## v0.6.0 — Minimap Indicators ⬜
-- ⬜ Highlight `> Header` lines in the minimap for at-a-glance navigation
+## v0.6.0 — Minimap Indicators ✅
+- ✅ `> Header` lines appear as coloured markers in the overview ruler / scrollbar gutter
 
 ---

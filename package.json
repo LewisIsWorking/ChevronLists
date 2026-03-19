@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "0.2.0",
+    "version": "0.6.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -13,19 +13,26 @@
     "activationEvents": ["onLanguage:markdown"],
     "main": "./out/extension.js",
     "contributes": {
-        "commands": [
-            {
-                "command": "chevron-lists.onEnter",
-                "title": "Chevron Lists: Handle Enter"
-            },
-            {
-                "command": "chevron-lists.onTab",
-                "title": "Chevron Lists: Indent Item"
-            },
-            {
-                "command": "chevron-lists.onShiftTab",
-                "title": "Chevron Lists: Dedent Item"
+        "configuration": {
+            "title": "Chevron Lists",
+            "properties": {
+                "chevron-lists.listPrefix": {
+                    "type": "string",
+                    "default": "-",
+                    "description": "Prefix character for chevron list items. Default '-' gives '>> -'. Change to '*' for '>> *', etc."
+                },
+                "chevron-lists.blankLineAfterHeader": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Insert a blank line between a '> Header' and the first list item when pressing Enter."
+                }
             }
+        },
+        "commands": [
+            { "command": "chevron-lists.onEnter",           "title": "Chevron Lists: Handle Enter" },
+            { "command": "chevron-lists.onTab",             "title": "Chevron Lists: Indent Item" },
+            { "command": "chevron-lists.onShiftTab",        "title": "Chevron Lists: Dedent Item" },
+            { "command": "chevron-lists.selectSectionItems","title": "Chevron Lists: Select Section Items" }
         ],
         "keybindings": [
             {
@@ -42,6 +49,13 @@
                 "key": "shift+tab",
                 "command": "chevron-lists.onShiftTab",
                 "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
+            }
+        ],
+        "grammars": [
+            {
+                "path": "./syntaxes/chevron-lists.tmLanguage.json",
+                "scopeName": "text.html.markdown.chevron-lists",
+                "injectTo": ["text.html.markdown"]
             }
         ]
     },
