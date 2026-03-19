@@ -53,3 +53,52 @@
 - ✅ `> Header` lines appear as coloured markers in the overview ruler / scrollbar gutter
 
 ---
+
+## v0.6.1 — Copilot Fix ✅
+- ✅ Tab no longer intercepts Copilot inline suggestions
+
+---
+
+## v0.7.0 — Navigation ⬜
+- ⬜ `Chevron Lists: Jump to Next Header` — move cursor to the next `> Header` line
+- ⬜ `Chevron Lists: Jump to Previous Header` — move cursor to the previous `> Header` line
+- ⬜ Keyboard shortcuts for both (e.g. `Alt+Down` / `Alt+Up`)
+
+---
+
+## v0.8.0 — Section Actions ⬜
+- ⬜ `Chevron Lists: Delete Section` — delete a `> Header` and all its items in one command
+- ⬜ `Chevron Lists: Duplicate Section` — copy a `> Header` and all its items below
+- ⬜ `Chevron Lists: Move Section Up / Down` — swap a section with the one above or below
+
+---
+
+## v0.9.0 — Sorting ⬜
+- ⬜ `Chevron Lists: Sort Items A→Z` — sort all `>> -` items under the nearest header alphabetically
+- ⬜ `Chevron Lists: Sort Items Z→A` — reverse alphabetical sort
+- ⬜ `Chevron Lists: Renumber Items` — fix/reset numbering on a `>> 1.` list after manual edits
+
+---
+
+## v1.0.0 — Section Statistics ⬜
+- ⬜ Hover over a `> Header` line to see a tooltip showing item count and word count for that section
+- ⬜ Status bar item showing total section count and item count for the open file
+
+---
+
+## v1.1.0 — Export ⬜
+- ⬜ `Chevron Lists: Copy Section as Markdown` — convert the current section to standard markdown bullet list and copy to clipboard
+- ⬜ `Chevron Lists: Copy Section as Plain Text` — strip all prefixes and copy clean text to clipboard
+
+---
+
+## v1.2.0 — Multi-cursor Support ⬜
+- ⬜ Tab / Shift+Tab indent/dedent working correctly across multiple selected chevron list lines simultaneously
+
+---
+
+## v1.3.0 — Snippets ⬜
+- ⬜ Built-in VS Code snippet: type `chl` + Tab to insert a starter chevron list block
+- ⬜ Built-in VS Code snippet: type `chn` + Tab to insert a numbered chevron list block
+
+---

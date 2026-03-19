@@ -7,6 +7,9 @@ All notable changes to **Chevron Lists** will be documented here.
 ### Fixed
 - Tab no longer intercepts Copilot inline suggestions — pressing Tab now accepts a Copilot suggestion as expected; only falls through to chevron indent behaviour when no suggestion is visible
 
+### Tested
+- All features verified locally: Enter, Tab/Shift+Tab, numbered lists, syntax highlighting, folding, minimap indicators, Select Section Items, listPrefix setting, blankLineAfterHeader setting
+
 ## [0.6.0] - 2026-03-19
 
 ### Added
