@@ -19,6 +19,10 @@ A VS Code extension that adds smart Enter-key behaviour for nested blockquote li
 
 All other Enter presses in markdown files behave normally.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
+
 ## License
 
 CC BY-NC-ND 4.0 — © Lewis Creelman. No commercial use. No derivatives.
