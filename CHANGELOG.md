@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.9.0] - 2026-03-20
+### Added
+- `CL: Group Items by Tag` — clusters items in the section by primary `#tag`, inserting `// #tag` divider lines between groups
+- `CL: Show Progress Report` — opens a side panel with per-section summary: items, done/total %, words/goal, flagged, overdue
+- `CL: Merge Item with Next` — joins the item at the cursor with the item below it, separated by ` — `
+- `CL: Split Item at Cursor` — splits the item at the cursor position into two separate items
+
 ## [15.5.0] - 2026-03-20
 ### Added
 - **Smart Tab for autocomplete** — Tab now confirms the suggestion widget if open, falling through to indent only when it's not

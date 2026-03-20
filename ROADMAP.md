@@ -650,3 +650,17 @@
 
 ## v15.5.0 — Bulk Expiry Set ✅
 - ✅ `CL: Set Expiry on All Items` — sets `@expires:` on every item in the section
+
+---
+
+## v15.6.0 — Item Grouping by Tag ✅
+- ✅ `CL: Group Items by Tag` — clusters items by primary `#tag` with divider comments
+
+## v15.7.0 — Section Progress Report ✅
+- ✅ `CL: Show Progress Report` — per-section summary in a side panel
+
+## v15.8.0 — Item Merge ✅
+- ✅ `CL: Merge Item with Next` — joins item at cursor with the one below
+
+## v15.9.0 — Item Splitting ✅
+- ✅ `CL: Split Item at Cursor` — splits item at cursor into two items

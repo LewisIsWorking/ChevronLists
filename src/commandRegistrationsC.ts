@@ -45,6 +45,10 @@ import { onBrowseTemplates }                              from './templateGaller
 import { onCopyItemAsRichText }                           from './richTextCommands';
 import { onShowDependencyGraph }                          from './dependencyGraphCommands';
 import { onSetExpiryOnAllItems }                          from './bulkExpiryCommands';
+import { onGroupItemsByTag }                              from './groupByTagCommands';
+import { onShowProgressReport }                          from './progressReportCommands';
+import { onMergeItemWithNext }                           from './mergeItemCommands';
+import { onSplitItemAtCursor }                           from './splitItemCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -105,6 +109,10 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.copyItemAsRichText',               onCopyItemAsRichText),
         r('chevron-lists.showDependencyGraph',              onShowDependencyGraph),
         r('chevron-lists.setExpiryOnAllItems',              onSetExpiryOnAllItems),
+        r('chevron-lists.groupItemsByTag',                  onGroupItemsByTag),
+        r('chevron-lists.showProgressReport',               onShowProgressReport),
+        r('chevron-lists.mergeItemWithNext',                onMergeItemWithNext),
+        r('chevron-lists.splitItemAtCursor',                onSplitItemAtCursor),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

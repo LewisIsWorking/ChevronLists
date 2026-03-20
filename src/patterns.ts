@@ -185,3 +185,27 @@ export function computeSectionWeight(
 ): number {
     return (itemCount * 3) + prioritySum + voteSum + tagCount;
 }
+
+/** Groups item lines by their primary #tag. Untagged items placed last with tag=''. */
+export function groupLinesByTag(
+    lines: string[],
+    prefix: string,
+    extractTagsFn: (content: string) => string[]
+): Array<{ tag: string; lines: string[] }> {
+    const groups = new Map<string, string[]>();
+    const untagged: string[] = [];
+    for (const line of lines) {
+        const bullet   = parseBullet(line, prefix);
+        const numbered = parseNumbered(line);
+        const content  = bullet?.content ?? numbered?.content ?? null;
+        if (!content) { untagged.push(line); continue; }
+        const tags = extractTagsFn(content);
+        if (tags.length === 0) { untagged.push(line); continue; }
+        const key = tags[0];
+        if (!groups.has(key)) { groups.set(key, []); }
+        groups.get(key)!.push(line);
+    }
+    const result = [...groups.entries()].map(([tag, ls]) => ({ tag, lines: ls }));
+    if (untagged.length > 0) { result.push({ tag: '', lines: untagged }); }
+    return result;
+}
