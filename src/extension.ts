@@ -64,9 +64,11 @@ import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
          ChevronPriorityCompletionProvider,
-         ChevronDateCompletionProvider }                  from './completionProviders';
+         ChevronDateCompletionProvider,
+         ChevronEstimateCompletionProvider }              from './completionProviders';
 import { onInsertItemSnippet }                            from './itemSnippetCommands';
 import { onInsertFileSectionLink }                        from './fileSectionLinkCommands';
+import { onShowTagReportWorkspace }                       from './tagReportCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -336,12 +338,20 @@ export function activate(context: vscode.ExtensionContext): void {
             new ChevronDateCompletionProvider(),
             '@'
         ),
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronEstimateCompletionProvider(),
+            '~'
+        ),
 
         // ── Item Snippets ────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.insertItemSnippet', onInsertItemSnippet),
 
         // ── Cross-File Section Links ──────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.insertFileSectionLink', onInsertFileSectionLink),
+
+        // ── Workspace Tag Report ─────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showTagReportWorkspace', onShowTagReportWorkspace),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

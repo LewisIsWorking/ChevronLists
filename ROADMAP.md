@@ -538,3 +538,17 @@
 
 ## v12.3.0 — Cross-File Section Links ✅
 - ✅ `CL: Insert File Section Link` — inserts `[[file:name.md#SectionName]]`
+
+---
+
+## v12.4.0 — Estimate Autocomplete ✅
+- ✅ `~` triggers `~15m`, `~30m`, `~1h`, `~2h`, `~4h`, `~1d` suggestions
+
+## v12.5.0 — Statistics Webview Refresh ✅
+- ✅ Panel now shows done/total, tags, colour, flagged, commented, stamped, word goal bars
+
+## v12.6.0 — Export with Metadata ✅
+- ✅ `computeFileStats` extended with full marker breakdown
+
+## v12.7.0 — Workspace Tag Report ✅
+- ✅ `CL: Show Tag Report (Workspace)` — all tags, per-file counts
