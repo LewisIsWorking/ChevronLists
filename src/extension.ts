@@ -9,6 +9,7 @@ import { onCopySectionAsMarkdown,
          onCopySectionAsPlainText }                          from './exportCommands';
 import { onSortItemsAZ, onSortItemsZA,
          onRenumberItems }                                   from './sortCommands';
+import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -46,6 +47,10 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.sortItemsAZ',    onSortItemsAZ),
         vscode.commands.registerCommand('chevron-lists.sortItemsZA',    onSortItemsZA),
         vscode.commands.registerCommand('chevron-lists.renumberItems',  onRenumberItems),
+
+        // ── Search & Filter ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.searchItems',    onSearchItems),
+        vscode.commands.registerCommand('chevron-lists.filterSections', onFilterSections),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -105,6 +105,14 @@
             {
                 "command": "chevron-lists.renumberItems",
                 "title": "Chevron Lists: Renumber Items"
+            },
+            {
+                "command": "chevron-lists.searchItems",
+                "title": "Chevron Lists: Search Items"
+            },
+            {
+                "command": "chevron-lists.filterSections",
+                "title": "Chevron Lists: Filter Sections"
             }
         ],
         "keybindings": [

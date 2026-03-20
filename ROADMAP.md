@@ -94,9 +94,9 @@
 
 ---
 
-## v1.4.0 — Search & Filter ⬜
-- ⬜ `Chevron Lists: Search Items` — quick pick showing all items across all sections, jumping to selection
-- ⬜ `Chevron Lists: Filter Section` — temporarily hide sections that don't match a keyword
+## v1.4.0 — Search & Filter ✅
+- ✅ `Chevron Lists: Search Items` — live quick pick across all items in the file with preview
+- ✅ `Chevron Lists: Filter Sections` — live quick pick across all headers, jump to any section
 
 ---
 

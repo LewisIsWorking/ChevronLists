@@ -2,6 +2,13 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.4.0] - 2026-03-20
+
+### Added
+- `Chevron Lists: Search Items` — live-filtering quick pick showing every item across all sections in the file; moving through results previews the location; Escape restores original position
+- `Chevron Lists: Filter Sections` — live-filtering quick pick showing all section headers; jump instantly to any section by name
+- 11 new unit tests covering item and header collection logic
+
 ## [1.3.2] - 2026-03-20
 
 ### Added
