@@ -7,6 +7,7 @@ import {
     isHeader,
     extractLabels,
     toTitleCase,
+    toggleStrikethrough,
 } from '../patterns';
 
 describe('escapeRegex', () => {
@@ -124,4 +125,9 @@ describe('toTitleCase', () => {
     it('handles single word', () => {
         expect(toTitleCase('item')).toBe('Item');
     });
+});
+
+describe('toggleStrikethrough', () => {
+    it('wraps content in ~~', () => expect(toggleStrikethrough('text')).toBe('~~text~~'));
+    it('removes ~~ from struck-through content', () => expect(toggleStrikethrough('~~text~~')).toBe('text'));
 });

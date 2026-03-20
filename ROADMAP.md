@@ -382,3 +382,18 @@
 
 ## v7.5.0 — Item Text Transforms ✅
 - ✅ `CL: Uppercase Item`, `CL: Lowercase Item`, `CL: Title Case Item`
+
+---
+
+## v7.6.0 — Item Strikethrough ✅
+- ✅ `CL: Strikethrough Item` + `CL: Remove Strikethrough`
+
+## v7.7.0 — Section Statistics Comparison ✅
+- ✅ `CL: Compare Section Statistics` — side-by-side stats in a markdown doc
+
+## v7.8.0 — Item Colour Labels ✅
+- ✅ `{red}`, `{green}`, `{blue}`, `{yellow}`, `{orange}`, `{purple}` syntax
+- ✅ `CL: Set Item Colour` — colour picker quick pick
+
+## v7.9.0 — Multi-file Statistics ✅
+- ✅ `CL: Show Workspace Statistics` — aggregated stats across all files

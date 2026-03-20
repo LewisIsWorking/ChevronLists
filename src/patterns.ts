@@ -51,3 +51,11 @@ export function extractLabels(content: string): Array<{ text: string; start: num
 export function toTitleCase(s: string): string {
     return s.replace(/\b\w/g, c => c.toUpperCase());
 }
+
+/** Toggles ~~strikethrough~~ on a content string */
+export function toggleStrikethrough(content: string): string {
+    if (content.startsWith('~~') && content.endsWith('~~') && content.length > 4) {
+        return content.slice(2, -2);
+    }
+    return `~~${content}~~`;
+}

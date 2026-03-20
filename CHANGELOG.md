@@ -2,6 +2,16 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [7.9.0] - 2026-03-20
+
+### Added
+- `CL: Strikethrough Item` — toggles `~~strikethrough~~` on item content
+- `CL: Remove Strikethrough` — removes `~~` markers from item content
+- `CL: Compare Section Statistics` — side-by-side comparison of any two sections' stats in a markdown document
+- `CL: Show Workspace Statistics` — aggregated stats across all markdown files (sections, items, words, tags, completion rate)
+- `{red}`, `{green}`, `{blue}`, `{yellow}`, `{orange}`, `{purple}` colour label syntax in items
+- `CL: Set Item Colour` — sets a colour label on the item at the cursor via quick pick
+
 ## [7.5.0] - 2026-03-20
 
 ### Added
@@ -42,6 +52,16 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [7.9.0] - 2026-03-20
+
+### Added
+- `CL: Strikethrough Item` — toggles `~~strikethrough~~` on item content
+- `CL: Remove Strikethrough` — removes `~~` markers from item content
+- `CL: Compare Section Statistics` — side-by-side comparison of any two sections' stats in a markdown document
+- `CL: Show Workspace Statistics` — aggregated stats across all markdown files (sections, items, words, tags, completion rate)
+- `{red}`, `{green}`, `{blue}`, `{yellow}`, `{orange}`, `{purple}` colour label syntax in items
+- `CL: Set Item Colour` — sets a colour label on the item at the cursor via quick pick
 
 ## [7.5.0] - 2026-03-20
 
@@ -230,6 +250,16 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [7.9.0] - 2026-03-20
+
+### Added
+- `CL: Strikethrough Item` — toggles `~~strikethrough~~` on item content
+- `CL: Remove Strikethrough` — removes `~~` markers from item content
+- `CL: Compare Section Statistics` — side-by-side comparison of any two sections' stats in a markdown document
+- `CL: Show Workspace Statistics` — aggregated stats across all markdown files (sections, items, words, tags, completion rate)
+- `{red}`, `{green}`, `{blue}`, `{yellow}`, `{orange}`, `{purple}` colour label syntax in items
+- `CL: Set Item Colour` — sets a colour label on the item at the cursor via quick pick
+
 ## [7.5.0] - 2026-03-20
 
 ### Added
@@ -270,6 +300,16 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [7.9.0] - 2026-03-20
+
+### Added
+- `CL: Strikethrough Item` — toggles `~~strikethrough~~` on item content
+- `CL: Remove Strikethrough` — removes `~~` markers from item content
+- `CL: Compare Section Statistics` — side-by-side comparison of any two sections' stats in a markdown document
+- `CL: Show Workspace Statistics` — aggregated stats across all markdown files (sections, items, words, tags, completion rate)
+- `{red}`, `{green}`, `{blue}`, `{yellow}`, `{orange}`, `{purple}` colour label syntax in items
+- `CL: Set Item Colour` — sets a colour label on the item at the cursor via quick pick
 
 ## [7.5.0] - 2026-03-20
 

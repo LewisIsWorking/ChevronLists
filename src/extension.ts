@@ -23,6 +23,10 @@ import { onMarkAllDone, onMarkAllUndone,
          onRemoveAllCheckboxes }                            from './completionCommands';
 import { onUppercaseItem, onLowercaseItem,
          onTitleCaseItem }                                  from './textTransformCommands';
+import { onStrikethroughItem, onRemoveStrikethrough }       from './strikethroughCommands';
+import { onCompareStatistics }                              from './compareStatsCommands';
+import { onSetItemColour }                                  from './colourLabelCommands';
+import { onShowWorkspaceStatistics }                        from './workspaceStatsCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -156,6 +160,17 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.uppercaseItem', onUppercaseItem),
         vscode.commands.registerCommand('chevron-lists.lowercaseItem', onLowercaseItem),
         vscode.commands.registerCommand('chevron-lists.titleCaseItem', onTitleCaseItem),
+
+        // ── Strikethrough ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.strikethroughItem',   onStrikethroughItem),
+        vscode.commands.registerCommand('chevron-lists.removeStrikethrough', onRemoveStrikethrough),
+
+        // ── Statistics Comparison ────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.compareStatistics',       onCompareStatistics),
+        vscode.commands.registerCommand('chevron-lists.showWorkspaceStatistics', onShowWorkspaceStatistics),
+
+        // ── Colour Labels ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.setItemColour', onSetItemColour),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
