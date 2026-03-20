@@ -1,6 +1,6 @@
 # Chevron Lists
 
-A VS Code extension that adds smart keyboard behaviour, rich organisation tools, and AI assistance for nested blockquote list syntax in markdown.
+A VS Code extension with smart keyboard behaviour, rich organisation tools, and AI assistance for nested blockquote list syntax in markdown.
 
 ## Syntax
 
@@ -26,170 +26,212 @@ Items support inline markers that integrate with commands throughout the extensi
 
 | Marker | Example | Feature |
 |--------|---------|---------|
-| `[x]` / `[ ]` | `>> - [x] Done task` | Checkboxes — toggle with `CL: Toggle Item Done` |
-| `#tag` | `>> - Deploy server #urgent` | Tags — filter with `CL: Filter by Tag` |
-| `!` / `!!` / `!!!` | `>> - !!! Critical bug` | Priority — filter with `CL: Filter by Priority` |
-| `@YYYY-MM-DD` | `>> - Ship feature @2026-04-01` | Due dates — view with `CL: Show Upcoming` |
-| `@daily/weekly/monthly` | `>> - Standup @daily` | Recurrence — view with `CL: Show Recurring` |
-| `~2h` / `~30m` / `~1h30m` | `>> - Deploy ~2h` | Time estimates — view with `CL: Show Time Estimates` |
-| `* ` | `>> - * Key task` | Star marker — filter with `CL: Filter Starred Items` |
-| `+N` | `>> - Great idea +5` | Vote count — sort with `CL: Sort by Votes` |
-| `[[SectionName]]` | `>> - See [[Act Two]]` | Section links — navigate with F12 or hover |
-| `[[file:name.md]]` | `>> - See [[file:notes.md]]` | File links — open with `CL: Go to Linked File` |
-| `[LABEL TEXT]` | `>> - [ACTION] do thing` | Square bracket labels — highlighted in gold |
+| `[x]` / `[ ]` | `>> - [x] Done task` | Checkboxes |
+| `#tag` | `>> - Deploy #urgent` | Tags |
+| `!` / `!!` / `!!!` | `>> - !!! Critical` | Priority |
+| `@YYYY-MM-DD` | `>> - Ship @2026-04-01` | Due date |
+| `@daily/weekly/monthly` | `>> - Standup @daily` | Recurrence |
+| `~2h` / `~30m` / `~1h30m` | `>> - Deploy ~2h` | Time estimate |
+| `* ` | `>> - * Key task` | Star marker |
+| `+N` | `>> - Great idea +5` | Vote count |
+| `[[SectionName]]` | `>> - See [[Act Two]]` | Section link |
+| `[[file:name.md]]` | `>> - See [[file:notes.md]]` | File link |
+| `[LABEL TEXT]` | `>> - [ACTION] do thing` | Square bracket label (gold) |
+| `{red}` / `{green}` / `{blue}` etc. | `>> - {red} blocked` | Colour label |
+| `~~text~~` | `>> - ~~cancelled task~~` | Strikethrough |
 
 ### Section Syntax
 
 | Syntax | Example | Feature |
 |--------|---------|---------|
 | `>> -- Group Name` | `>> -- Act One` | Section group divider |
-| `>> > Note text` | `>> > This is a note` | Inline note on the preceding item |
+| `>> > Note text` | `>> > This is a note` | Inline note |
 | `>> [bookmark:Name]` | `>> [bookmark:Key Scene]` | Named bookmark |
-| `>> [hidden]` | `>> [hidden]` | Marks section as hidden |
-| `>>depends:Name` | `>>depends:Phase One` | Section dependency marker |
+| `>> [hidden]` | `>> [hidden]` | Hidden section marker |
+| `>>depends:Name` | `>>depends:Phase One` | Dependency marker |
 | `==N` | `> My Section ==500` | Word count goal |
 
 ---
 
-## Smart Enter
+## Smart Enter & Tab
 
 - **Enter** after `> Header` → starts a `>> -` item
 - **Enter** after `>> - Item` → continues the list
 - **Enter** on an empty `>> -` → stops the list
 - **Enter** after `>> 1. Item` → auto-increments to `>> 2.`
-- **Enter mid-line** on a `>> N.` or `>> -` line → splits the line at the cursor and starts the next item with the remaining text
-
-## Tab / Shift+Tab — Nesting
-
-- **Tab** on a `>> -` line → promotes to `>>> -`
-- **Shift+Tab** → demotes back one level
-- Works at arbitrary depth, on both bullet and numbered items
-- Multi-cursor aware (Shift+click to select a range)
-- Tab is suppressed when a Copilot suggestion is visible
+- **Enter mid-line** on a numbered/bullet line → splits at cursor, remaining text goes to the new item
+- **Tab** on a `>> -` line → promotes to `>>> -` (also shifts child items)
+- **Shift+Tab** → demotes back one level (also shifts child items)
+- Multi-cursor aware; Tab suppressed when Copilot suggestion is visible
 
 ---
 
 ## All Commands
 
-Type `CL:` in the command palette (`Ctrl+Shift+P`) to see all commands.
+Type `CL:` in the command palette (`Ctrl+Shift+P`).
 
 ### Navigation
 | Command / Key | Description |
-|---------------|-------------|
-| `Ctrl+Alt+Down` | Jump to next `> Header` (pushes jump history) |
-| `Ctrl+Alt+Up` | Jump to previous `> Header` (pushes jump history) |
+|---|---|
+| `Ctrl+Alt+Down` | Jump to next header (pushes jump history) |
+| `Ctrl+Alt+Up` | Jump to previous header (pushes jump history) |
 | `CL: Jump Back` | Returns to the previous cursor position |
-| `CL: Filter Sections` | Live quick pick of all headers in the file |
-| `CL: Filter Sections (Workspace)` | Jump to any section across the whole workspace |
+| `CL: Filter Sections` | Live quick pick of all headers |
+| `CL: Filter Sections (Workspace)` | Jump to any section across all files |
 | `CL: Filter Pinned Sections` | Jump to a pinned section |
 | `CL: Filter Groups` | Jump to a named section group |
 | `CL: Jump to Bookmark` | Quick pick of all `[bookmark:Name]` markers |
-| `CL: Focus on Section` | Folds all other sections, reveals only the current one |
+| `CL: Focus on Section` | Folds all other sections |
 | `CL: Unfocus` | Restores all folded sections |
 
 ### Search
 | Command | Description |
-|---------|-------------|
-| `CL: Search Items` | Live search of all items in the file with preview |
+|---|---|
+| `CL: Search Items` | Live search of all items in the file |
 | `CL: Search Items (Workspace)` | Search items across every markdown file |
-| `CL: Find in Sections` | Find items matching a term (content-only, no syntax) |
+| `CL: Find in Sections` | Find items by content (no syntax) |
 | `CL: Filter by Tag` | Filter items by `#tag` |
 | `CL: Filter by Tag (Workspace)` | Same across all workspace files |
-| `CL: Filter by Priority` | Filter items by `!` / `!!` / `!!!` level |
-| `CL: Filter by Mention` | Filter items by `@PersonName` mention |
+| `CL: Filter by Priority` | Filter by `!` / `!!` / `!!!` |
+| `CL: Filter by Mention` | Filter by `@PersonName` |
 | `CL: Filter Starred Items` | Quick pick of all `* ` starred items |
-| `CL: Show Upcoming` | All `@date` items sorted chronologically; overdue flagged |
-| `CL: Show Recurring` | All `@daily/@weekly/@monthly` recurring items |
-| `CL: Show Time Estimates` | All `~time` estimated items sorted by duration, with total |
-| `CL: Show Dependencies` | All `>>depends:` relationships in the file |
-| `CL: Count Items by Tag` | Breakdown of item counts per `#tag` |
-| `CL: Show Section Summary` | Item/done/word/tag counts for the current section |
+| `CL: Show Upcoming` | `@date` items sorted chronologically; overdue flagged |
+| `CL: Show Recurring` | All `@daily/@weekly/@monthly` items |
+| `CL: Show Time Estimates` | All `~time` items sorted by duration with total |
+| `CL: Show Dependencies` | All `>>depends:` relationships |
+| `CL: Count Items by Tag` | Item counts per `#tag` |
+| `CL: Show Section Summary` | Item/done/word/tag counts for the cursor section |
+| `CL: Show Word Count` | Word counts per section; `==N` goals show progress |
+| `CL: Show Nesting Summary` | Depth breakdown for the cursor section |
 
 ### Section Actions
 | Command | Description |
-|---------|-------------|
+|---|---|
 | `CL: Select Section Items` | Selects all items under the nearest header |
 | `CL: Delete Section` | Deletes header + all items |
 | `CL: Duplicate Section` | Copies the section below itself |
 | `CL: Move Section Up / Down` | Swaps the section with its neighbour |
 | `CL: Toggle Pin` | Pins/unpins the section at the cursor |
-| `CL: Group Sections` | Inserts a `>> -- Name` group divider above the cursor section |
+| `CL: Group Sections` | Inserts a `>> -- Name` group divider |
+| `CL: Rename Section` | Renames header and updates all `[[links]]` in the file |
 | `CL: Merge Section Below` | Combines current section with the one below |
 | `CL: Split Section Here` | Splits section at cursor into two named sections |
 | `CL: Archive Done Items` | Moves all `[x]` items to an `> Archive` section |
 | `CL: Archive Section` | Moves the entire section to Archive |
-| `CL: Hide Section` | Marks a section with `>> [hidden]` and folds it |
-| `CL: Show Hidden Sections` | Reveals and unfolds all hidden sections |
+| `CL: Hide Section` | Marks with `>> [hidden]` and folds |
+| `CL: Show Hidden Sections` | Reveals all hidden sections |
+| `CL: Compare Section Statistics` | Side-by-side stats of any two sections |
 
 ### Item Actions
 | Command | Description |
-|---------|-------------|
-| `CL: Toggle Item Done` | Toggles `[ ]` → `[x]` → `[ ]` on the item at the cursor |
-| `CL: Toggle Star` | Toggles the `* ` star marker on the item at the cursor |
-| `CL: Toggle Note` | Adds/removes a `>> > Note text` line on the item at the cursor |
-| `CL: Add Vote` / `CL: Remove Vote` | Increments/decrements the `+N` vote count |
-| `CL: Clone Item` | Duplicates the item to the end of the same section |
-| `CL: Clone Item to Section` | Duplicates the item to a chosen section |
-| `CL: Promote Item to Header` | Converts the item at the cursor into a new section header |
-| `CL: Demote Header to Item` | Converts the section header into a bullet in the section above |
-| `CL: Go to Linked Section` | Jumps to the `[[linked section]]` under the cursor |
-| `CL: Go to Linked File` | Opens the `[[file:name.md]]` linked file |
-| `CL: Quick Capture` | Pick a section, type an item — pinned sections appear first |
-| `CL: Add Bookmark` / `CL: Remove Bookmark` | Adds/removes a `[bookmark:Name]` at the cursor |
+|---|---|
+| `CL: Toggle Item Done` | Toggles `[ ]` → `[x]` → `[ ]` |
+| `CL: Toggle Star` | Toggles `* ` star marker |
+| `CL: Toggle Note` | Adds/removes a `>> > Note` line |
+| `CL: Add Vote` / `CL: Remove Vote` | Increments/decrements `+N` vote count |
+| `CL: Duplicate Item` | Duplicates item directly below itself |
+| `CL: Clone Item` | Copies item to end of same section |
+| `CL: Clone Item to Section` | Copies item to a chosen section |
+| `CL: Move Item Up` / `CL: Move Item Down` | Moves item one position up or down |
+| `CL: Promote Item to Header` | Converts item to a new section header |
+| `CL: Demote Header to Item` | Converts section header to a bullet item |
+| `CL: Go to Linked Section` | Jumps to `[[linked section]]` under cursor |
+| `CL: Go to Linked File` | Opens `[[file:name.md]]` linked file |
+| `CL: Quick Capture` | Pick a section, type an item (pinned sections first) |
+| `CL: Add Bookmark` / `CL: Remove Bookmark` | Adds/removes `[bookmark:Name]` |
+| `CL: Set Item Colour` | Sets `{colour}` label via quick pick |
+| `CL: Strikethrough Item` | Toggles `~~strikethrough~~` on content |
+| `CL: Remove Strikethrough` | Removes `~~` markers |
 
 ### Bulk Actions
 | Command | Description |
-|---------|-------------|
-| `CL: Bulk Tag Items` | Adds a `#tag` to every item in the current section |
-| `CL: Bulk Set Priority` | Sets priority level on every item in the current section |
-| `CL: Bulk Set Due Date` | Sets a due date on every item in the current section |
-| `CL: Replace in Section` | Find and replace within current section item content |
+|---|---|
+| `CL: Bulk Tag Items` | Adds a `#tag` to every item in the section |
+| `CL: Bulk Set Priority` | Sets priority on every item in the section |
+| `CL: Bulk Set Due Date` | Sets a due date on every item in the section |
+| `CL: Replace in Section` | Find and replace within section item content |
+| `CL: Mark All Done` | Marks all `[ ]` items as `[x]` |
+| `CL: Mark All Undone` | Resets all `[x]` items to `[ ]` |
+| `CL: Remove All Checkboxes` | Strips all `[x]`/`[ ]` markers |
 
 ### Sorting & Numbering
 | Command | Description |
-|---------|-------------|
-| `CL: Sort Items A → Z / Z → A` | Alphabetical sort of items in the section |
-| `CL: Sort by Votes` | Sorts items by `+N` vote count descending |
-| `CL: Renumber Items` | Resets numbered item sequence per depth |
-| `CL: Fix Numbering` | Auto-corrects all out-of-sequence numbered items in the file |
-| `CL: Convert Bullets to Numbered` | Converts all `>> -` bullets in the section to numbered items, continuing from the last existing number |
+|---|---|
+| `CL: Sort Items A → Z / Z → A` | Alphabetical sort |
+| `CL: Sort by Votes` | Sorts by `+N` vote count descending |
+| `CL: Renumber Items` | Resets numbered sequence per depth |
+| `CL: Fix Numbering` | Auto-corrects all out-of-sequence numbers |
+| `CL: Convert Bullets to Numbered` | Converts `>> -` to `>> N.`, continuing from last number |
+| `CL: Convert Numbered to Bullets` | Converts `>> N.` back to `>> -` |
+
+### Text Transforms
+| Command | Description |
+|---|---|
+| `CL: Uppercase Item` | Converts item content to UPPERCASE |
+| `CL: Lowercase Item` | Converts to lowercase |
+| `CL: Title Case Item` | Converts to Title Case |
+
+### Paste
+| Command | Description |
+|---|---|
+| `CL: Paste as Bullet Items` | Clipboard text (one line per item) → `>> -` items |
+| `CL: Paste as Numbered Items` | Clipboard text → `>> N.` items continuing from existing |
+
+### Rename
+| Command | Description |
+|---|---|
+| `CL: Rename Section` | Renames header + updates all `[[links]]` in the file |
+| `CL: Rename Tag` | Renames a `#tag` across the current file |
+| `CL: Rename Tag (Workspace)` | Renames a `#tag` across all workspace files |
 
 ### Export
 | Command | Description |
-|---------|-------------|
-| `CL: Copy Section as Markdown` | Converts section to standard `##` + list and copies to clipboard |
-| `CL: Copy Section as Plain Text` | Strips all syntax, copies clean text |
-| `CL: Export File as HTML` | Exports as a styled standalone HTML page with collapsible sections |
-| `CL: Export File as JSON` | Full structured export with all metadata per item |
-| `CL: Export File as CSV` | Flat CSV with one row per item and all metadata columns |
-| `CL: Export File as Markdown Document` | Clean standard markdown with `##` headings and `-` bullets |
-| `CL: Export Statistics as CSV / JSON` | Section stats (items, words) as CSV or JSON |
-| `CL: Compare Section to Clipboard` | Shows a line diff of the current section vs clipboard content |
+|---|---|
+| `CL: Copy Section as Markdown` | `##` heading + list → clipboard |
+| `CL: Copy Section as Plain Text` | Strips all syntax → clipboard |
+| `CL: Export File as HTML` | Styled standalone HTML with collapsible sections |
+| `CL: Export File as JSON` | Full structured export with all metadata |
+| `CL: Export File as CSV` | Flat CSV with one row per item |
+| `CL: Export File as Markdown Document` | Clean `##` / `-` standard markdown |
+| `CL: Export Statistics as CSV / JSON` | Section stats as CSV or JSON |
+| `CL: Compare Section to Clipboard` | Line diff of current section vs clipboard |
 
 ### Snippets & Templates
 | Command / Prefix | Description |
-|------------------|-------------|
+|---|---|
 | `chl` + trigger | Inserts a bullet list block with Tab stops |
 | `chn` + trigger | Inserts a numbered list block with Tab stops |
-| `CL: Insert Template` | Quick pick of 5 built-in templates + your own custom ones |
-| `CL: Save Section as Template` | Saves the section at the cursor as a reusable template with Tab stops |
-| `CL: Word Count Goal` | Sets or updates the `==N` word count goal on the current header |
+| `CL: Insert Template` | 5 built-in templates + your own |
+| `CL: Save Section as Template` | Saves the cursor section as a reusable template |
+| `CL: Import Templates from File` | Imports all sections from a `.md` file as templates |
+| `CL: Export Templates to File` | Exports user templates to a `.md` file |
+| `CL: Set Word Count Goal` | Sets/updates the `==N` goal on the current header |
 
-### Appearance & Analytics
+### Statistics & Analytics
 | Command | Description |
-|---------|-------------|
-| `CL: Switch Colour Preset` | Choose from `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom` |
-| `CL: Show File Statistics` | Webview panel: section/item/word counts, avg items, most/least populated |
-| `CL: Enter Reading Mode` | Opens the file as a live-updating HTML webview beside the editor |
+|---|---|
+| `CL: Show File Statistics` | Webview: section/item/word counts, avg, most/least populated |
+| `CL: Show Workspace Statistics` | Aggregated stats across all workspace markdown files |
+| `CL: Show Word Count` | Word counts per section with `==N` goal progress |
+| `CL: Show Section Summary` | Item/done/word/tag counts for the cursor section |
+| `CL: Show Nesting Summary` | Depth breakdown for items in the cursor section |
+| `CL: Compare Section Statistics` | Side-by-side comparison of any two sections |
+| `CL: Count Items by Tag` | Item counts per `#tag` |
+
+### Appearance
+| Command | Description |
+|---|---|
+| `CL: Switch Colour Preset` | Choose `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom` |
+| `CL: Enter Reading Mode` | Live-updating HTML webview beside the editor |
 
 ### AI Assist
-Requires an Anthropic API key — set `chevron-lists.anthropicApiKey` in settings.
+Requires `chevron-lists.anthropicApiKey` set in settings.
 
 | Command | Description |
-|---------|-------------|
-| `CL: Suggest Items (AI)` | Claude suggests 3–5 new items for the current section; pick which to insert |
-| `CL: Summarise Section (AI)` | Generates a one-line summary and inserts it as the first item |
-| `CL: Expand Item (AI)` | Expands the item at the cursor into nested sub-items |
+|---|---|
+| `CL: Suggest Items (AI)` | Claude suggests 3–5 new items for the section |
+| `CL: Summarise Section (AI)` | Generates a one-line summary as the first item |
+| `CL: Expand Item (AI)` | Expands the item at the cursor into sub-items |
 
 ---
 
@@ -197,33 +239,33 @@ Requires an Anthropic API key — set `chevron-lists.anthropicApiKey` in setting
 
 ### Syntax Highlighting
 - `> Header` lines coloured as section headings
-- `>> -` and `>> N.` prefixes styled distinctly from content
-- `[LABEL TEXT]` inside items highlighted in gold/amber
+- `>> -` / `>> N.` prefixes styled distinctly from content
+- `[LABEL TEXT]` brackets highlighted in gold/amber
+- `{colour}` labels rendered as distinct tokens
 - All colours driven by your active theme or colour preset
 
 ### Outline View
-Chevron sections appear in VS Code's **Outline panel** and **breadcrumb navigation**. Each section shows its name and item count. Clicking any entry jumps to that line.
+Sections appear in the **Outline panel** and **breadcrumb navigation** with item counts.
 
 ### Folding
 Each `> Header` block folds via the standard VS Code fold gutter arrow.
 
 ### Hover Tooltips
-- Hover over `> Header` → item count, word count, and completion progress (`done/total`)
-- Hover over `[[section]]` links → preview of the target section's items
-- Hover over `[[file:name.md]]` links → preview of the linked file's first lines
+- Hover `> Header` → item count, word count, completion progress
+- Hover `[[section]]` → preview of target section's items
+- Hover `[[file:name.md]]` → preview of linked file's first lines
 
 ### Diagnostics (Problems Panel)
-Live warnings for:
 - Duplicate section names
 - Empty sections
 - Out-of-sequence numbered items
 - Overdue `@date` items
-- Sections below their `==N` word count goal
+- Sections below `==N` word count goal
 
 ### Status Bar
-Bottom-right shows: section count · item count · `✓ done/total` (when checkboxes exist) · `words/goal` (when cursor is in a section with a word goal).
+Sections · Items · `✓ done/total` · `words/goal` (updates as you type)
 
-### Minimap Indicators
+### Minimap
 `> Header` lines appear as coloured markers in the overview ruler.
 
 ---
@@ -231,13 +273,13 @@ Bottom-right shows: section count · item count · `✓ done/total` (when checkb
 ## Settings
 
 | Setting | Default | Description |
-|---------|---------|-------------|
+|---|---|---|
 | `chevron-lists.listPrefix` | `-` | Prefix for list items |
-| `chevron-lists.blankLineAfterHeader` | `false` | Insert a blank line after `> Header` on Enter |
+| `chevron-lists.blankLineAfterHeader` | `false` | Blank line after `> Header` on Enter |
 | `chevron-lists.snippetTrigger` | `tab` | Snippet trigger: `tab`, `ctrl+enter`, or `none` |
 | `chevron-lists.colourPreset` | `default` | Built-in colour preset |
 | `chevron-lists.templates` | `[]` | Custom templates for `CL: Insert Template` |
-| `chevron-lists.anthropicApiKey` | `""` | API key for AI Assist — get one at [console.anthropic.com](https://console.anthropic.com) |
+| `chevron-lists.anthropicApiKey` | `""` | API key for AI Assist — [console.anthropic.com](https://console.anthropic.com) |
 
 ---
 
@@ -249,13 +291,7 @@ bun run compile    # compile TypeScript
 bun test           # run unit tests with coverage
 ```
 
-395 unit tests, 100% coverage of all pure logic, 29 test files.
-
-### Releasing a new version
-
-```powershell
-.\release.ps1 -Version 6.3.0
-```
+443 unit tests, 100% coverage, 33 test files.
 
 ---
 

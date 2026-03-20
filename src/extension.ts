@@ -27,6 +27,11 @@ import { onStrikethroughItem, onRemoveStrikethrough }       from './strikethroug
 import { onCompareStatistics }                              from './compareStatsCommands';
 import { onSetItemColour }                                  from './colourLabelCommands';
 import { onShowWorkspaceStatistics }                        from './workspaceStatsCommands';
+import { onStripComments }                                   from './commentCommands';
+import { onLockSection, onUnlockSection }                    from './lockCommands';
+import { onToggleFlag, onFilterFlaggedItems }                from './flagCommands';
+import { onSnapshotSection, onRestoreSnapshot,
+         onListSnapshots }                                   from './snapshotCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -171,6 +176,22 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Colour Labels ────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.setItemColour', onSetItemColour),
+
+        // ── Comments ─────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.stripComments', onStripComments),
+
+        // ── Section Lock ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.lockSection',   onLockSection),
+        vscode.commands.registerCommand('chevron-lists.unlockSection', onUnlockSection),
+
+        // ── Item Flags ───────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleFlag',         onToggleFlag),
+        vscode.commands.registerCommand('chevron-lists.filterFlaggedItems', onFilterFlaggedItems),
+
+        // ── Snapshots ────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.snapshotSection',  () => onSnapshotSection(context)),
+        vscode.commands.registerCommand('chevron-lists.restoreSnapshot',  () => onRestoreSnapshot(context)),
+        vscode.commands.registerCommand('chevron-lists.listSnapshots',    () => onListSnapshots(context)),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

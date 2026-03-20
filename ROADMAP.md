@@ -397,3 +397,17 @@
 
 ## v7.9.0 — Multi-file Statistics ✅
 - ✅ `CL: Show Workspace Statistics` — aggregated stats across all files
+
+---
+
+## v8.0.0 — Item Comments ✅
+- ✅ `// comment text` syntax; `CL: Strip Comments`
+
+## v8.1.0 — Section Locking ✅
+- ✅ `CL: Lock Section` / `CL: Unlock Section` — `>> [locked]` marker
+
+## v8.2.0 — Item Flagging ✅
+- ✅ `? ` question flag; `CL: Toggle Flag` + `CL: Filter Flagged Items`
+
+## v8.3.0 — Section Snapshots ✅
+- ✅ `CL: Snapshot Section`, `CL: Restore Snapshot`, `CL: List Snapshots`

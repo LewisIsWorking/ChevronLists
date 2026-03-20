@@ -2,6 +2,21 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [8.3.0] - 2026-03-20
+
+### Added
+- `// comment text` inline comment syntax in items — rendered in muted colour
+- `CL: Strip Comments` — removes all `// ...` tails from items in the section
+- `CL: Lock Section` — marks section with `>> [locked]`; bulk ops skip locked sections
+- `CL: Unlock Section` — removes the lock marker
+- `? ` question flag syntax — `>> - ? unclear requirement`
+- `CL: Toggle Flag` — toggles `? ` on the item at the cursor
+- `CL: Filter Flagged Items` — quick pick of all `? ` flagged items
+- `CL: Snapshot Section` — saves current section to workspace state
+- `CL: Restore Snapshot` — replaces current section with a saved snapshot
+- `CL: List Snapshots` — shows all saved snapshots for the current file
+- README completely updated to cover all features through v7.9.0
+
 ## [7.9.0] - 2026-03-20
 
 ### Added
@@ -52,6 +67,21 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [8.3.0] - 2026-03-20
+
+### Added
+- `// comment text` inline comment syntax in items — rendered in muted colour
+- `CL: Strip Comments` — removes all `// ...` tails from items in the section
+- `CL: Lock Section` — marks section with `>> [locked]`; bulk ops skip locked sections
+- `CL: Unlock Section` — removes the lock marker
+- `? ` question flag syntax — `>> - ? unclear requirement`
+- `CL: Toggle Flag` — toggles `? ` on the item at the cursor
+- `CL: Filter Flagged Items` — quick pick of all `? ` flagged items
+- `CL: Snapshot Section` — saves current section to workspace state
+- `CL: Restore Snapshot` — replaces current section with a saved snapshot
+- `CL: List Snapshots` — shows all saved snapshots for the current file
+- README completely updated to cover all features through v7.9.0
 
 ## [7.9.0] - 2026-03-20
 
@@ -250,6 +280,21 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [8.3.0] - 2026-03-20
+
+### Added
+- `// comment text` inline comment syntax in items — rendered in muted colour
+- `CL: Strip Comments` — removes all `// ...` tails from items in the section
+- `CL: Lock Section` — marks section with `>> [locked]`; bulk ops skip locked sections
+- `CL: Unlock Section` — removes the lock marker
+- `? ` question flag syntax — `>> - ? unclear requirement`
+- `CL: Toggle Flag` — toggles `? ` on the item at the cursor
+- `CL: Filter Flagged Items` — quick pick of all `? ` flagged items
+- `CL: Snapshot Section` — saves current section to workspace state
+- `CL: Restore Snapshot` — replaces current section with a saved snapshot
+- `CL: List Snapshots` — shows all saved snapshots for the current file
+- README completely updated to cover all features through v7.9.0
+
 ## [7.9.0] - 2026-03-20
 
 ### Added
@@ -300,6 +345,21 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [8.3.0] - 2026-03-20
+
+### Added
+- `// comment text` inline comment syntax in items — rendered in muted colour
+- `CL: Strip Comments` — removes all `// ...` tails from items in the section
+- `CL: Lock Section` — marks section with `>> [locked]`; bulk ops skip locked sections
+- `CL: Unlock Section` — removes the lock marker
+- `? ` question flag syntax — `>> - ? unclear requirement`
+- `CL: Toggle Flag` — toggles `? ` on the item at the cursor
+- `CL: Filter Flagged Items` — quick pick of all `? ` flagged items
+- `CL: Snapshot Section` — saves current section to workspace state
+- `CL: Restore Snapshot` — replaces current section with a saved snapshot
+- `CL: List Snapshots` — shows all saved snapshots for the current file
+- README completely updated to cover all features through v7.9.0
 
 ## [7.9.0] - 2026-03-20
 
