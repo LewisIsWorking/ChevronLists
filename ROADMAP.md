@@ -597,18 +597,17 @@
 
 ---
 
-## v14.0.0 — Daily Note Templates ⬜
-- ⬜ `chevron-lists.dailyNoteTemplate` setting — a multi-line string used as the template for new daily notes instead of the default single section
-- ⬜ Supports `{{date}}`, `{{day}}`, `{{weekday}}` placeholders
+## v14.0.0 — Daily Note Templates ✅
+- ✅ `chevron-lists.dailyNoteTemplate` setting with `{{date}}`, `{{day}}`, `{{weekday}}` placeholders
 
-## v14.1.0 — Section Export to Clipboard (Multiple Formats) ⬜
-- ⬜ `CL: Copy Section As…` — a unified export command offering Markdown, Plain Text, JSON, CSV, and HTML in a single quick pick
+## v14.1.0 — Section Export to Clipboard (Multiple Formats) ✅
+- ✅ `CL: Copy Section As…` — Markdown, Plain Text, JSON, CSV, HTML in one quick pick
 
-## v14.2.0 — Item Age Highlight ⬜
-- ⬜ Items with `@created:` dates older than 30 days get a subtle decoration (muted colour) to visually distinguish old items from new ones without a command
+## v14.2.0 — Item Age Highlight ✅
+- ✅ Items with `@created:` dates 30+ days old rendered muted/italic automatically
 
-## v14.3.0 — Bulk Rating ⬜
-- ⬜ `CL: Bulk Set Rating` — sets a `★N` rating on every item in the current section at once via quick pick
+## v14.3.0 — Bulk Rating ✅
+- ✅ `CL: Bulk Set Rating` — sets `★N` on every item in the section at once
 
 ---
 
@@ -623,3 +622,17 @@
 
 ## v14.7.0 — AI Rewrite Item ✅
 - ✅ `CL: Rewrite Item (AI)` — Claude rewrites item content, all markers preserved
+
+---
+
+## v14.8.0 — Decoration Toggle Commands ✅
+- ✅ Individual toggles for Summary, Checklist Bar, Word Goal Bar, Age Highlight + master toggle
+
+## v14.9.0 — Colour Label Workspace Filter ✅
+- ✅ `CL: Filter by Colour Label (Workspace)` — across all workspace files
+
+## v15.0.0 — Item Expiry ✅
+- ✅ `@expires:YYYY-MM-DD` syntax + `CL: Show Expired Items`
+
+## v15.1.0 — Section Templates Gallery ✅
+- ✅ `CL: Browse Templates` — webview gallery with preview and one-click insert

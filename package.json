@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "14.7.0",
+    "version": "15.1.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -279,7 +279,15 @@
             { "command": "chevron-lists.copySectionAs",                                 "title": "CL: Copy Section As..." },
             { "command": "chevron-lists.bulkSetRating",                                 "title": "CL: Bulk Set Rating" },
             { "command": "chevron-lists.exportAllSectionsAsJson",                       "title": "CL: Export All Sections as JSON" },
-            { "command": "chevron-lists.rewriteItem",                                   "title": "CL: Rewrite Item (AI)" }
+            { "command": "chevron-lists.rewriteItem",                                   "title": "CL: Rewrite Item (AI)" },
+            { "command": "chevron-lists.toggleSummaryDecoration",                       "title": "CL: Toggle Section Summary" },
+            { "command": "chevron-lists.toggleChecklistBar",                            "title": "CL: Toggle Checklist Progress Bar" },
+            { "command": "chevron-lists.toggleWordGoalBar",                             "title": "CL: Toggle Word Goal Bar" },
+            { "command": "chevron-lists.toggleAgeHighlight",                            "title": "CL: Toggle Age Highlight" },
+            { "command": "chevron-lists.toggleAllDecorations",                          "title": "CL: Toggle All Decorations" },
+            { "command": "chevron-lists.filterByColourLabelWorkspace",                  "title": "CL: Filter by Colour Label (Workspace)" },
+            { "command": "chevron-lists.showExpiredItems",                              "title": "CL: Show Expired Items" },
+            { "command": "chevron-lists.browseTemplates",                               "title": "CL: Browse Templates" }
         ],
         "keybindings": [
             {

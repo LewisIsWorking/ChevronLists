@@ -89,6 +89,14 @@ import { updateSummaryDecorations }                       from './sectionSummary
 import { updateChecklistProgressDecorations }             from './checklistProgressDecoration';
 import { onExportAllSectionsAsJson }                      from './exportAllJsonCommands';
 import { onRewriteItem }                                  from './rewriteItemCommands';
+import { onToggleSummaryDecoration,
+         onToggleChecklistBar,
+         onToggleWordGoalBar,
+         onToggleAgeHighlight,
+         onToggleAllDecorations }                         from './decorationToggles';
+import { onFilterByColourLabelWorkspace }                 from './colourFilterWorkspaceCommands';
+import { onShowExpiredItems }                             from './expiryCommands';
+import { onBrowseTemplates }                              from './templateGallery';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -422,6 +430,22 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── AI Rewrite Item ───────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.rewriteItem', onRewriteItem),
+
+        // ── Decoration Toggles ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleSummaryDecoration',   onToggleSummaryDecoration),
+        vscode.commands.registerCommand('chevron-lists.toggleChecklistBar',        onToggleChecklistBar),
+        vscode.commands.registerCommand('chevron-lists.toggleWordGoalBar',         onToggleWordGoalBar),
+        vscode.commands.registerCommand('chevron-lists.toggleAgeHighlight',        onToggleAgeHighlight),
+        vscode.commands.registerCommand('chevron-lists.toggleAllDecorations',      onToggleAllDecorations),
+
+        // ── Colour Label Workspace Filter ─────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.filterByColourLabelWorkspace', onFilterByColourLabelWorkspace),
+
+        // ── Expired Items ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showExpiredItems', onShowExpiredItems),
+
+        // ── Template Gallery ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.browseTemplates', onBrowseTemplates),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
