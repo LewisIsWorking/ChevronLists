@@ -2,6 +2,11 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.0.2] - 2026-03-20
+
+### Fixed
+- Multi-cursor Tab/Shift+Tab now correctly handles range selections (Shift+click) as well as multi-cursor selections (Alt+click) — previously only the active cursor line was affected
+
 ## [1.0.1] - 2026-03-20
 
 ### Fixed
