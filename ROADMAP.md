@@ -61,7 +61,7 @@
 
 ## v1.0.0 — SOLID Refactor + Full Feature Set ✅
 - ✅ Full SOLID refactor — 12 focused modules, all under 200 lines
-- ✅ 43 unit tests, 100% coverage of all pure logic (Bun test runner)
+- ✅ 115 unit tests, 100% coverage of all pure logic (Bun test runner)
 - ✅ `Ctrl+Alt+Down` / `Ctrl+Alt+Up` — jump to next/previous `> Header`
 - ✅ `Chevron Lists: Delete Section` command
 - ✅ `Chevron Lists: Duplicate Section` command
@@ -74,35 +74,74 @@
 ---
 
 ## v1.1.0 — Export ✅
-- ✅ `Chevron Lists: Copy Section as Markdown` — converts to standard markdown heading + list, copies to clipboard
-- ✅ `Chevron Lists: Copy Section as Plain Text` — strips all prefixes, copies clean text to clipboard
+- ✅ `Chevron Lists: Copy Section as Markdown`
+- ✅ `Chevron Lists: Copy Section as Plain Text`
 - ✅ Nested items indented correctly in both formats
 
 ---
 
 ## v1.2.0 — Sorting ✅
-- ✅ `Chevron Lists: Sort Items A → Z` — sorts bullet items alphabetically (case-insensitive)
-- ✅ `Chevron Lists: Sort Items Z → A` — reverse alphabetical sort
-- ✅ `Chevron Lists: Renumber Items` — resets numbered item sequence per chevron depth
+- ✅ `Chevron Lists: Sort Items A → Z`
+- ✅ `Chevron Lists: Sort Items Z → A`
+- ✅ `Chevron Lists: Renumber Items`
 
 ---
 
 ## v1.3.0 — Snippets ✅
-- ✅ `chl` + trigger → inserts a starter bullet chevron list block with Tab stops
-- ✅ `chn` + trigger → inserts a starter numbered chevron list block with Tab stops
-- ✅ `chevron-lists.snippetTrigger` setting: `tab` (default), `ctrl+enter`, or `none`
+- ✅ `chl` + trigger → bullet list block with Tab stops
+- ✅ `chn` + trigger → numbered list block with Tab stops
+- ✅ `chevron-lists.snippetTrigger` setting: `tab`, `ctrl+enter`, or `none`
 
 ---
 
 ## v1.4.0 — Search & Filter ✅
-- ✅ `Chevron Lists: Search Items` — live quick pick across all items in the file with preview
-- ✅ `Chevron Lists: Filter Sections` — live quick pick across all headers, jump to any section
+- ✅ `Chevron Lists: Search Items` — live quick pick with preview
+- ✅ `Chevron Lists: Filter Sections` — live quick pick across all headers
 
 ---
 
 ## v1.5.0 — Themes ✅
 - ✅ Semantic token types: `chevronHeader`, `chevronPrefix`, `chevronNumber`, `chevronContent`
-- ✅ Built-in colour recommendations via `configurationDefaults` (amber header, muted prefix, blue numbers)
+- ✅ Built-in colour recommendations via `configurationDefaults`
 - ✅ `semanticTokenScopes` ensures compatibility with non-semantic themes
+
+---
+
+## v1.6.0 — Colour Presets ⬜
+- ⬜ `chevron-lists.colourPreset` setting with named presets:
+  - `default` — amber header, muted grey prefix, blue numbers (current)
+  - `ocean` — teal header, slate prefix, cyan numbers
+  - `forest` — green header, dark green prefix, lime numbers
+  - `sunset` — coral header, muted orange prefix, gold numbers
+  - `monochrome` — bold white header, grey prefix, silver numbers
+  - `custom` — fully user-defined (uses `semanticTokenColorCustomizations`)
+- ⬜ `Chevron Lists: Switch Colour Preset` command — quick pick to toggle between presets live
+
+---
+
+## v1.7.0 — Outline View ⬜
+- ⬜ Register a custom document symbol provider so chevron sections appear in VS Code's Outline panel
+- ⬜ Click a section in the Outline to jump to it
+- ⬜ Outline shows section names with item counts
+
+---
+
+## v1.8.0 — Statistics Panel ⬜
+- ⬜ `Chevron Lists: Show File Statistics` command
+- ⬜ Webview panel showing: total sections, total items, avg items per section, most/least populated section, word count breakdown
+
+---
+
+## v1.9.0 — Templates ⬜
+- ⬜ `chevron-lists.templates` setting — user-defined named templates beyond `chl`/`chn`
+- ⬜ `Chevron Lists: Insert Template` command — quick pick showing all defined templates
+- ⬜ Templates support Tab stops and placeholders
+
+---
+
+## v2.0.0 — Workspace Mode ⬜
+- ⬜ `Chevron Lists: Search Items (Workspace)` — search across ALL markdown files in the workspace, not just the open file
+- ⬜ `Chevron Lists: Filter Sections (Workspace)` — jump to any section in any file
+- ⬜ Results show filename + section context
 
 ---
