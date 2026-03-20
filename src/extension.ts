@@ -69,6 +69,10 @@ import { ChevronTagCompletionProvider,
 import { onInsertItemSnippet }                            from './itemSnippetCommands';
 import { onInsertFileSectionLink }                        from './fileSectionLinkCommands';
 import { onShowTagReportWorkspace }                       from './tagReportCommands';
+import { onFilterByColourLabel }                          from './colourFilterCommands';
+import { onPinSectionToTop }                             from './pinToTopCommands';
+import { onSetItemRating, onFilterByRating }             from './ratingCommands';
+import { onStartSectionTimer, onStopSectionTimer }       from './sectionTimer';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -352,6 +356,20 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Workspace Tag Report ─────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showTagReportWorkspace', onShowTagReportWorkspace),
+
+        // ── Colour Label Filter ──────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.filterByColourLabel', onFilterByColourLabel),
+
+        // ── Pin Section to Top ───────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.pinSectionToTop', onPinSectionToTop),
+
+        // ── Item Rating ──────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.setItemRating',    onSetItemRating),
+        vscode.commands.registerCommand('chevron-lists.filterByRating',   onFilterByRating),
+
+        // ── Section Timer ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.startSectionTimer', onStartSectionTimer),
+        vscode.commands.registerCommand('chevron-lists.stopSectionTimer',  onStopSectionTimer),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

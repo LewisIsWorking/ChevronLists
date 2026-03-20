@@ -552,3 +552,17 @@
 
 ## v12.7.0 — Workspace Tag Report ✅
 - ✅ `CL: Show Tag Report (Workspace)` — all tags, per-file counts
+
+---
+
+## v12.8.0 — Colour Label Filter ✅
+- ✅ `CL: Filter by Colour Label` — grouped by colour with counts
+
+## v12.9.0 — Section Pin to Top ✅
+- ✅ `CL: Pin Section to Top` — moves section to first position
+
+## v13.0.0 — Item Rating ✅
+- ✅ `★N` syntax + `CL: Set Item Rating` + `CL: Filter by Rating`
+
+## v13.1.0 — Section Timer ✅
+- ✅ `CL: Start Section Timer` + `CL: Stop Section Timer` — live elapsed time
