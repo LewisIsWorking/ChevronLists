@@ -2,6 +2,18 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [3.0.0] - 2026-03-20
+
+### Added
+- `>> -- Group Name` divider syntax — groups related sections together
+- `CL: Group Sections` — inserts a group divider above the section at the cursor
+- `CL: Filter Groups` — quick pick navigation across all named groups
+- `CL: Suggest Items (AI)` — calls Claude to suggest 3-5 new items for the current section
+- `CL: Summarise Section (AI)` — generates a one-line summary and inserts it as an item
+- `CL: Expand Item (AI)` — expands the item at the cursor into nested sub-items
+- `chevron-lists.anthropicApiKey` setting — provide your API key to enable AI commands
+- 14 new unit tests covering group parsing, divider detection and collection
+
 ## [2.8.0] - 2026-03-20
 
 ### Added
@@ -40,6 +52,18 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [3.0.0] - 2026-03-20
+
+### Added
+- `>> -- Group Name` divider syntax — groups related sections together
+- `CL: Group Sections` — inserts a group divider above the section at the cursor
+- `CL: Filter Groups` — quick pick navigation across all named groups
+- `CL: Suggest Items (AI)` — calls Claude to suggest 3-5 new items for the current section
+- `CL: Summarise Section (AI)` — generates a one-line summary and inserts it as an item
+- `CL: Expand Item (AI)` — expands the item at the cursor into nested sub-items
+- `chevron-lists.anthropicApiKey` setting — provide your API key to enable AI commands
+- 14 new unit tests covering group parsing, divider detection and collection
 
 ## [2.8.0] - 2026-03-20
 

@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "2.8.0",
+    "version": "3.0.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -62,6 +62,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Insert a blank line between a '> Header' and the first list item when pressing Enter."
+                },
+                "chevron-lists.anthropicApiKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Anthropic API key for AI Assist commands (CL: Suggest Items, Summarise Section, Expand Item). Get one at https://console.anthropic.com"
                 },
                 "chevron-lists.templates": {
                     "type": "array",

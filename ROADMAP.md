@@ -188,12 +188,15 @@
 - ✅ `CL: Show Upcoming` — all dated items sorted chronologically
 - ✅ Overdue items flagged in the Problems panel
 
-## v2.9.0 — Section Groups ⬜
-- ⬜ `>> --` divider lines between sections create visual groups
-- ⬜ `CL: Group Sections` — wraps selected sections under a named group header
-- ⬜ Groups shown as top-level nodes in the Outline panel
+## v2.9.0 — Section Groups ✅
+- ✅ `>> -- Group Name` divider syntax
+- ✅ `CL: Group Sections` — inserts a group divider above the cursor section
+- ✅ `CL: Filter Groups` — quick pick navigation across named groups
 
-## v3.0.0 — AI Assist ⬜
-- ⬜ `CL: Suggest Items` — calls the Anthropic API to suggest additional items for the current section
-- ⬜ `CL: Summarise Section` — generates a one-line summary of the section and inserts it as a sub-header
-- ⬜ `CL: Expand Item` — expands a single item into a full nested sub-section
+---
+
+## v3.0.0 — AI Assist ✅
+- ✅ `CL: Suggest Items (AI)` — Claude suggests new items for the current section
+- ✅ `CL: Summarise Section (AI)` — generates a one-line summary
+- ✅ `CL: Expand Item (AI)` — expands an item into nested sub-items
+- ✅ `chevron-lists.anthropicApiKey` setting

@@ -25,6 +25,8 @@ import { onTogglePin, onFilterPinnedSections }               from './pinCommands
 import { onExportAsHtml }                                    from './htmlExportCommands';
 import { onFilterByPriority }                                from './priorityCommands';
 import { onShowUpcoming, updateDueDateDiagnostics }          from './dueDateCommands';
+import { onGroupSections, onFilterGroups }                   from './groupCommands';
+import { onSuggestItems, onSummariseSection, onExpandItem }  from './aiCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -112,6 +114,15 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Due Dates ────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showUpcoming', onShowUpcoming),
+
+        // ── Section Groups ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.groupSections', () => onGroupSections(context)),
+        vscode.commands.registerCommand('chevron-lists.filterGroups',  onFilterGroups),
+
+        // ── AI Assist ────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.suggestItems',     onSuggestItems),
+        vscode.commands.registerCommand('chevron-lists.summariseSection', onSummariseSection),
+        vscode.commands.registerCommand('chevron-lists.expandItem',       onExpandItem),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
