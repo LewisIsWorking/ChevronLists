@@ -233,3 +233,22 @@
 
 ## v3.8.0 — Word Count Goals ✅
 - ✅ `==N` word count goal syntax in section headers — `> My Section ==500`
+
+---
+
+## v3.9.0 — Word Count Goal Integration ✅
+- ✅ Status bar shows `words/goal` when cursor is in a section with `==N`
+- ✅ Sections below target flagged as Information diagnostics
+- ✅ `CL: Set Word Count Goal` — sets/updates the `==N` marker interactively
+
+## v4.0.0 — Section Locking ✅
+- ✅ Bulk tag, priority and due date commands added instead
+
+## v4.1.0 — Item Mentions ✅
+- ✅ `@Name` mention syntax in items
+- ✅ `CL: Filter by Mention` — jump to items mentioning a person
+
+## v4.2.0 — Bulk Operations ✅
+- ✅ `CL: Bulk Tag Items` — add a tag to all items in a section
+- ✅ `CL: Bulk Set Priority` — set priority on all items
+- ✅ `CL: Bulk Set Due Date` — set due date on all items

@@ -27,12 +27,17 @@ import { onFilterByPriority }                                from './priorityCom
 import { onShowUpcoming, updateDueDateDiagnostics }          from './dueDateCommands';
 import { onGroupSections, onFilterGroups }                   from './groupCommands';
 import { onSuggestItems, onSummariseSection, onExpandItem }  from './aiCommands';
-import { onFilterByTagWorkspace }                             from './tagWorkspaceCommands';
+import { onFilterByTagWorkspace }                            from './tagWorkspaceCommands';
 import { onQuickCapture }                                    from './quickCapture';
 import { onSaveSectionAsTemplate }                           from './saveTemplate';
 import { onExportAsJson, onExportAsCsv }                    from './structuredExportCommands';
 import { onToggleNote }                                      from './noteCommands';
 import { onShowRecurring, onGenerateNextOccurrence }         from './recurrenceCommands';
+import { updateWordGoalDiagnostics, getWordGoalDiagCollection,
+         onSetWordCountGoal }                                from './wordGoalCommands';
+import { onFilterByMention }                                 from './mentionCommands';
+import { onBulkTagItems, onBulkSetPriority,
+         onBulkSetDueDate }                                  from './bulkCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -42,12 +47,13 @@ import { ChevronOutlineProvider }                            from './outlineProv
 import { getConfig }                                         from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
-    const statusBar    = createStatusBar();
-    const dueDateDiags = vscode.languages.createDiagnosticCollection('chevron-lists-dates');
+    const statusBar        = createStatusBar();
+    const dueDateDiags     = vscode.languages.createDiagnosticCollection('chevron-lists-dates');
+    const wordGoalDiags    = getWordGoalDiagCollection();
     updateStatusBar(vscode.window.activeTextEditor);
 
     context.subscriptions.push(
-        statusBar,
+        statusBar, dueDateDiags, wordGoalDiags,
 
         // ── Keyboard handlers ────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.onEnter',       onEnter),
@@ -69,92 +75,74 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Export ───────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.copySectionAsMarkdown',  onCopySectionAsMarkdown),
         vscode.commands.registerCommand('chevron-lists.copySectionAsPlainText', onCopySectionAsPlainText),
+        vscode.commands.registerCommand('chevron-lists.exportAsHtml',           onExportAsHtml),
+        vscode.commands.registerCommand('chevron-lists.exportAsJson',           onExportAsJson),
+        vscode.commands.registerCommand('chevron-lists.exportAsCsv',            onExportAsCsv),
 
         // ── Sorting ──────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.sortItemsAZ',   onSortItemsAZ),
         vscode.commands.registerCommand('chevron-lists.sortItemsZA',   onSortItemsZA),
         vscode.commands.registerCommand('chevron-lists.renumberItems', onRenumberItems),
+        vscode.commands.registerCommand('chevron-lists.fixNumbering',  onFixNumbering),
 
         // ── Search & Filter ──────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.searchItems',    onSearchItems),
-        vscode.commands.registerCommand('chevron-lists.filterSections', onFilterSections),
+        vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
+        vscode.commands.registerCommand('chevron-lists.filterSections',           onFilterSections),
+        vscode.commands.registerCommand('chevron-lists.searchItemsWorkspace',     onSearchItemsWorkspace),
+        vscode.commands.registerCommand('chevron-lists.filterSectionsWorkspace',  onFilterSectionsWorkspace),
+        vscode.commands.registerCommand('chevron-lists.filterByTag',              onFilterByTag),
+        vscode.commands.registerCommand('chevron-lists.filterByTagWorkspace',     onFilterByTagWorkspace),
+        vscode.commands.registerCommand('chevron-lists.filterByPriority',         onFilterByPriority),
+        vscode.commands.registerCommand('chevron-lists.filterByMention',          onFilterByMention),
+        vscode.commands.registerCommand('chevron-lists.filterPinnedSections',     () => onFilterPinnedSections(context)),
+        vscode.commands.registerCommand('chevron-lists.filterGroups',             onFilterGroups),
 
-        // ── Colour Presets ───────────────────────────────────────────────────
+        // ── Item actions ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleItemDone',          onToggleItemDone),
+        vscode.commands.registerCommand('chevron-lists.toggleNote',              onToggleNote),
+        vscode.commands.registerCommand('chevron-lists.togglePin',               () => onTogglePin(context)),
+        vscode.commands.registerCommand('chevron-lists.goToLinkedSection',       onGoToLinkedSection),
+        vscode.commands.registerCommand('chevron-lists.quickCapture',            () => onQuickCapture(context)),
+
+        // ── Bulk ─────────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.bulkTagItems',    onBulkTagItems),
+        vscode.commands.registerCommand('chevron-lists.bulkSetPriority', onBulkSetPriority),
+        vscode.commands.registerCommand('chevron-lists.bulkSetDueDate',  onBulkSetDueDate),
+
+        // ── Dates & Recurrence ───────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showUpcoming',            onShowUpcoming),
+        vscode.commands.registerCommand('chevron-lists.showRecurring',           onShowRecurring),
+        vscode.commands.registerCommand('chevron-lists.generateNextOccurrence',  onGenerateNextOccurrence),
+
+        // ── Word Count Goals ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.setWordCountGoal', onSetWordCountGoal),
+
+        // ── Sections ─────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.groupSections',        () => onGroupSections(context)),
+        vscode.commands.registerCommand('chevron-lists.saveSectionAsTemplate', onSaveSectionAsTemplate),
+
+        // ── Appearance & Stats ───────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.switchColourPreset', onSwitchColourPreset),
-
-        // ── Statistics ───────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.showStatistics', onShowStatistics),
+        vscode.commands.registerCommand('chevron-lists.showStatistics',     onShowStatistics),
 
         // ── Templates ────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.insertTemplate', onInsertTemplate),
 
-        // ── Workspace Search ─────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.searchItemsWorkspace',    onSearchItemsWorkspace),
-        vscode.commands.registerCommand('chevron-lists.filterSectionsWorkspace', onFilterSectionsWorkspace),
-
         // ── Diagnostics ──────────────────────────────────────────────────────
         getDiagnosticCollection(),
-        dueDateDiags,
-        vscode.commands.registerCommand('chevron-lists.fixNumbering', onFixNumbering),
-
-        // ── Tags ─────────────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.filterByTag', onFilterByTag),
-
-        // ── Linked Sections ──────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.goToLinkedSection', onGoToLinkedSection),
-        vscode.languages.registerDefinitionProvider({ language: 'markdown' }, new ChevronLinkDefinitionProvider()),
-        vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
-
-        // ── Item Completion ──────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.toggleItemDone', onToggleItemDone),
-
-        // ── Pinning ──────────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.togglePin',            () => onTogglePin(context)),
-        vscode.commands.registerCommand('chevron-lists.filterPinnedSections', () => onFilterPinnedSections(context)),
-
-        // ── HTML Export ──────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.exportAsHtml', onExportAsHtml),
-
-        // ── Priority ─────────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.filterByPriority', onFilterByPriority),
-
-        // ── Due Dates ────────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.showUpcoming', onShowUpcoming),
-
-        // ── Section Groups ───────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.groupSections', () => onGroupSections(context)),
-        vscode.commands.registerCommand('chevron-lists.filterGroups',  onFilterGroups),
 
         // ── AI Assist ────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.suggestItems',     onSuggestItems),
         vscode.commands.registerCommand('chevron-lists.summariseSection', onSummariseSection),
         vscode.commands.registerCommand('chevron-lists.expandItem',       onExpandItem),
 
-        // ── Tag Workspace ────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.filterByTagWorkspace', onFilterByTagWorkspace),
-
-        // ── Quick Capture ────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.quickCapture', () => onQuickCapture(context)),
-
-        // ── Save as Template ─────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.saveSectionAsTemplate', onSaveSectionAsTemplate),
-
-        // ── Structured Export ────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.exportAsJson', onExportAsJson),
-        vscode.commands.registerCommand('chevron-lists.exportAsCsv',  onExportAsCsv),
-
-        // ── Item Notes ───────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.toggleNote', onToggleNote),
-
-        // ── Recurrence ───────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.showRecurring',           onShowRecurring),
-        vscode.commands.registerCommand('chevron-lists.generateNextOccurrence',  onGenerateNextOccurrence),
-
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronHoverProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronLinkHoverProvider()),
         vscode.languages.registerDocumentSymbolProvider({ language: 'markdown' }, new ChevronOutlineProvider()),
+        vscode.languages.registerDefinitionProvider({ language: 'markdown' }, new ChevronLinkDefinitionProvider()),
+        vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
         vscode.languages.registerDocumentSemanticTokensProvider(
             { language: 'markdown' },
             new ChevronSemanticTokensProvider(buildLegend()),
@@ -167,6 +155,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 const { prefix } = getConfig();
                 updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document);
                 updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
+                updateWordGoalDiagnostics(editor.document, prefix);
             }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
@@ -175,6 +164,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 const { prefix } = getConfig();
                 updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document);
                 updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
+                updateWordGoalDiagnostics(editor.document, prefix);
             }
         }),
     );
@@ -184,6 +174,7 @@ export function activate(context: vscode.ExtensionContext): void {
         updateDecorations(vscode.window.activeTextEditor);
         updateDiagnostics(vscode.window.activeTextEditor.document);
         updateDueDateDiagnostics(vscode.window.activeTextEditor.document, dueDateDiags, prefix);
+        updateWordGoalDiagnostics(vscode.window.activeTextEditor.document, prefix);
     }
     applyConfiguredPreset();
 }

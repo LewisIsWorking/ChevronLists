@@ -2,6 +2,19 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [4.2.0] - 2026-03-20
+
+### Added
+- Word count goal status bar integration — shows `words/goal` when cursor is in a section with `==N`
+- Word count goal diagnostics — sections below target flagged as Information in the Problems panel
+- `CL: Set Word Count Goal` — sets or updates the `==N` marker on the current section header
+- `@Name` mention syntax in items — `>> - Discuss with @Lewis`
+- `CL: Filter by Mention` — two-step picker: choose a person, jump to their items
+- `CL: Bulk Tag Items` — add a `#tag` to all items in the current section
+- `CL: Bulk Set Priority` — set priority level on all items in the current section
+- `CL: Bulk Set Due Date` — set a due date on all items in the current section
+- Cleaned up `extension.ts` — all 60+ commands organised into logical groups
+
 ## [3.8.0] - 2026-03-20
 
 ### Added
@@ -73,6 +86,19 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [4.2.0] - 2026-03-20
+
+### Added
+- Word count goal status bar integration — shows `words/goal` when cursor is in a section with `==N`
+- Word count goal diagnostics — sections below target flagged as Information in the Problems panel
+- `CL: Set Word Count Goal` — sets or updates the `==N` marker on the current section header
+- `@Name` mention syntax in items — `>> - Discuss with @Lewis`
+- `CL: Filter by Mention` — two-step picker: choose a person, jump to their items
+- `CL: Bulk Tag Items` — add a `#tag` to all items in the current section
+- `CL: Bulk Set Priority` — set priority level on all items in the current section
+- `CL: Bulk Set Due Date` — set a due date on all items in the current section
+- Cleaned up `extension.ts` — all 60+ commands organised into logical groups
 
 ## [3.8.0] - 2026-03-20
 

@@ -1,0 +1,49 @@
+import type { LineReader } from './types';
+import { parseBullet, parseNumbered } from './patterns';
+
+/** A @mention occurrence in item content */
+export interface MentionOccurrence {
+    name:      string;  // without the @ prefix
+    itemText:  string;
+    section:   string;
+    line:      number;
+}
+
+/** Regex matching @Name tokens (starts with capital letter or word char after @) */
+export const MENTION_RE = /@([A-Za-z][\w-]*)/g;
+
+/** Extracts all @mentions from item content */
+export function extractMentions(content: string): string[] {
+    const names: string[] = [];
+    for (const match of content.matchAll(MENTION_RE)) {
+        names.push(match[1]);
+    }
+    return [...new Set(names)];
+}
+
+/** Collects all @mention occurrences in a document */
+export function collectMentions(doc: LineReader, prefix: string): MentionOccurrence[] {
+    const results: MentionOccurrence[] = [];
+    let section = '';
+
+    for (let i = 0; i < doc.lineCount; i++) {
+        const text = doc.lineAt(i).text;
+        if (text.startsWith('> ') && !text.startsWith('>> ')) {
+            section = text.replace(/^> /, '');
+            continue;
+        }
+        const bullet  = parseBullet(text, prefix);
+        const numbered = parseNumbered(text);
+        const content  = bullet?.content ?? numbered?.content ?? null;
+        if (!content) { continue; }
+        for (const name of extractMentions(content)) {
+            results.push({ name, itemText: content, section, line: i });
+        }
+    }
+    return results;
+}
+
+/** Returns all unique mention names in a document, sorted alphabetically */
+export function uniqueMentions(doc: LineReader, prefix: string): string[] {
+    return [...new Set(collectMentions(doc, prefix).map(m => m.name))].sort();
+}
