@@ -2,6 +2,13 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [2.4.0] - 2026-03-20
+
+### Added
+- `[x]`/`[ ]` checkbox syntax in items — `>> - [x] Done` / `>> - [ ] Todo`
+- `CL: Toggle Item Done` — toggles checkbox state on the item at the cursor
+- 16 new unit tests covering checkbox parsing, toggling, and counting
+
 ## [2.3.0] - 2026-03-20
 
 ### Added
@@ -10,6 +17,13 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [2.4.0] - 2026-03-20
+
+### Added
+- `[x]`/`[ ]` checkbox syntax in items — `>> - [x] Done` / `>> - [ ] Todo`
+- `CL: Toggle Item Done` — toggles checkbox state on the item at the cursor
+- 16 new unit tests covering checkbox parsing, toggling, and counting
 
 ## [2.3.0] - 2026-03-20
 

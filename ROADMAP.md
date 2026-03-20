@@ -151,9 +151,27 @@
 - ✅ `CL: Filter by Tag` — quick pick of all tags in the file, jump to matching items
 
 ## v2.3.0 — Linked Sections ✅
-- ✅ `[[SectionName]]` link syntax in item content
-- ✅ `CL: Go to Linked Section` — jumps to the referenced section
-- ✅ Hover over `[[...]]` previews the linked section's items
-- ✅ Unresolved links show a warning tooltip
+- ✅ `[[SectionName]]` link syntax — links to another section in the same file
+- ✅ Hover preview shows target section's items
+- ✅ F12 / Go to Definition + Ctrl+click navigate to the linked section
+- ✅ `CL: Go to Linked Section` command
+- ✅ Broken links show a warning in the hover tooltip
+
+---
+
+## v2.4.0 — Item Completion ✅
+- ✅ `[x]` / `[ ]` checkbox syntax in items
+- ✅ `CL: Toggle Item Done` — toggles checkbox state at the cursor
+
+## v2.5.0 — Section Pinning ⬜
+- ⬜ `CL: Pin Section` — marks a section as pinned, shown at top of Outline and Filter Sections
+- ⬜ `CL: Unpin Section` — removes pin
+- ⬜ Pinned sections persist across sessions via workspace state
+
+## v2.6.0 — Export to HTML ⬜
+- ⬜ `CL: Export File as HTML` — converts entire file to a styled standalone HTML document
+- ⬜ Sections become collapsible `<details>` elements
+- ⬜ Tags rendered as coloured badges
+- ⬜ [[Links]] become anchor links within the pageltip
 
 ---

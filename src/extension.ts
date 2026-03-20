@@ -10,22 +10,23 @@ import { onCopySectionAsMarkdown,
 import { onSortItemsAZ, onSortItemsZA,
          onRenumberItems }                                   from './sortCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
-import { onSwitchColourPreset, applyConfiguredPreset }        from './presetCommands';
-import { onShowStatistics }                                    from './statisticsPanel';
-import { onInsertTemplate }                                    from './templateCommands';
+import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
+import { onShowStatistics }                                  from './statisticsPanel';
+import { onInsertTemplate }                                  from './templateCommands';
 import { onSearchItemsWorkspace,
-         onFilterSectionsWorkspace }                           from './workspaceSearch';
+         onFilterSectionsWorkspace }                         from './workspaceSearch';
 import { updateDiagnostics, onFixNumbering,
-         getDiagnosticCollection }                             from './diagnosticProvider';
-import { onFilterByTag }                                       from './tagCommands';
+         getDiagnosticCollection }                           from './diagnosticProvider';
+import { onFilterByTag }                                     from './tagCommands';
 import { ChevronLinkHoverProvider, ChevronLinkDefinitionProvider,
-         ChevronDocumentLinkProvider, onGoToLinkedSection }    from './linkProvider';
+         ChevronDocumentLinkProvider, onGoToLinkedSection }  from './linkProvider';
+import { onToggleItemDone }                                  from './checkCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
 import { createStatusBar, updateStatusBar }                  from './statusBar';
 import { ChevronSemanticTokensProvider, buildLegend }        from './semanticProvider';
-import { ChevronOutlineProvider }                             from './outlineProvider';
+import { ChevronOutlineProvider }                            from './outlineProvider';
 
 export function activate(context: vscode.ExtensionContext): void {
     const statusBar = createStatusBar();
@@ -35,10 +36,10 @@ export function activate(context: vscode.ExtensionContext): void {
         statusBar,
 
         // ── Keyboard handlers ────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.onEnter',    onEnter),
-        vscode.commands.registerCommand('chevron-lists.onTab',          onTab),
-        vscode.commands.registerCommand('chevron-lists.onShiftTab',     onShiftTab),
-        vscode.commands.registerCommand('chevron-lists.expandSnippet',  onExpandSnippet),
+        vscode.commands.registerCommand('chevron-lists.onEnter',       onEnter),
+        vscode.commands.registerCommand('chevron-lists.onTab',         onTab),
+        vscode.commands.registerCommand('chevron-lists.onShiftTab',    onShiftTab),
+        vscode.commands.registerCommand('chevron-lists.expandSnippet', onExpandSnippet),
 
         // ── Navigation ───────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.nextHeader', onNextHeader),
@@ -56,18 +57,15 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.copySectionAsPlainText', onCopySectionAsPlainText),
 
         // ── Sorting ──────────────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.sortItemsAZ',    onSortItemsAZ),
-        vscode.commands.registerCommand('chevron-lists.sortItemsZA',    onSortItemsZA),
-        vscode.commands.registerCommand('chevron-lists.renumberItems',  onRenumberItems),
+        vscode.commands.registerCommand('chevron-lists.sortItemsAZ',   onSortItemsAZ),
+        vscode.commands.registerCommand('chevron-lists.sortItemsZA',   onSortItemsZA),
+        vscode.commands.registerCommand('chevron-lists.renumberItems', onRenumberItems),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',    onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections', onFilterSections),
 
         // ── Colour Presets ───────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.switchColourPreset', onSwitchColourPreset),
-
-        // ── Colour presets ───────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.switchColourPreset', onSwitchColourPreset),
 
         // ── Statistics ───────────────────────────────────────────────────────
@@ -89,18 +87,16 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Linked Sections ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.goToLinkedSection', onGoToLinkedSection),
-        vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronLinkHoverProvider()),
         vscode.languages.registerDefinitionProvider({ language: 'markdown' }, new ChevronLinkDefinitionProvider()),
         vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
 
-        // ── Linked Sections ──────────────────────────────────────────────────
-        vscode.commands.registerCommand('chevron-lists.goToLinkedSection', onGoToLinkedSection),
-        vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronLinkHoverProvider()),
-        vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
+        // ── Item Completion ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleItemDone', onToggleItemDone),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronHoverProvider()),
+        vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronLinkHoverProvider()),
         vscode.languages.registerDocumentSymbolProvider({ language: 'markdown' }, new ChevronOutlineProvider()),
         vscode.languages.registerDocumentSemanticTokensProvider(
             { language: 'markdown' },
@@ -108,7 +104,7 @@ export function activate(context: vscode.ExtensionContext): void {
             buildLegend()
         ),
 
-        // ── Decoration events ────────────────────────────────────────────────
+        // ── Decoration & diagnostic events ───────────────────────────────────
         vscode.window.onDidChangeActiveTextEditor(editor => {
             if (editor) { updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document); }
         }),
@@ -126,8 +122,6 @@ export function activate(context: vscode.ExtensionContext): void {
         updateDecorations(vscode.window.activeTextEditor);
         updateDiagnostics(vscode.window.activeTextEditor.document);
     }
-
-    // Apply the configured colour preset on activation
     applyConfiguredPreset();
 }
 
