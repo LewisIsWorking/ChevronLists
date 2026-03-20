@@ -4,38 +4,21 @@
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
     "version": "1.6.1",
     "publisher": "lewisisworking",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/LewisIsWorking/ChevronLists"
-    },
-    "engines": {
-        "vscode": "^1.85.0"
-    },
+    "repository": { "type": "git", "url": "https://github.com/LewisIsWorking/ChevronLists" },
+    "engines": { "vscode": "^1.85.0" },
     "categories": ["Keymaps"],
     "activationEvents": ["onLanguage:markdown"],
     "main": "./out/extension.js",
     "contributes": {
-        "configurationDefaults": {
-            "editor.semanticTokenColorCustomizations": {
-                "rules": {
-                    "chevronHeader":  { "foreground": "#E5C07B", "bold": true },
-                    "chevronPrefix":  { "foreground": "#5C6370", "italic": false },
-                    "chevronNumber":  { "foreground": "#61AFEF" },
-                    "chevronContent": {}
-                }
-            }
-        },
         "configuration": {
             "title": "Chevron Lists",
             "properties": {
                 "chevron-lists.listPrefix": {
-                    "type": "string",
-                    "default": "-",
-                    "description": "Prefix character for chevron list items. Default '-' gives '>> -'. Change to '*' for '>> *', etc."
+                    "type": "string", "default": "-",
+                    "description": "Prefix character for list items. Default '-' gives '>> -'. Change to '*' for '>> *', etc."
                 },
                 "chevron-lists.colourPreset": {
-                    "type": "string",
-                    "default": "default",
+                    "type": "string", "default": "default",
                     "enum": ["default", "ocean", "forest", "sunset", "monochrome", "custom"],
                     "enumDescriptions": [
                         "Amber headers, muted grey prefixes, blue numbers",
@@ -43,150 +26,63 @@
                         "Green headers, dark green prefixes, lime numbers",
                         "Coral headers, muted orange prefixes, gold numbers",
                         "Bold white headers, grey prefixes, silver numbers",
-                        "No preset â€” manage colours manually via semanticTokenColorCustomizations"
+                        "No preset — manage colours manually via semanticTokenColorCustomizations"
                     ],
                     "description": "Built-in colour preset for chevron syntax highlighting."
                 },
                 "chevron-lists.snippetTrigger": {
-                    "type": "string",
-                    "default": "tab",
+                    "type": "string", "default": "tab",
                     "enum": ["tab", "ctrl+enter", "none"],
                     "enumDescriptions": [
-                        "Press Tab after typing chl or chn to expand (may conflict with Copilot suggestions)",
-                        "Press Ctrl+Enter after typing chl or chn to expand (no Copilot conflict)",
-                        "Disable keyboard expansion â€” use Insert Snippet from the command palette"
+                        "Tab after chl/chn to expand (may conflict with Copilot)",
+                        "Ctrl+Enter after chl/chn to expand (no Copilot conflict)",
+                        "Disable keyboard expansion — use Insert Snippet from the palette"
                     ],
                     "description": "Which key triggers chevron snippet expansion (chl / chn)."
                 },
                 "chevron-lists.blankLineAfterHeader": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Insert a blank line between a '> Header' and the first list item when pressing Enter."
+                    "type": "boolean", "default": false,
+                    "description": "Insert a blank line between a '> Header' and the first list item on Enter."
                 }
             }
         },
         "commands": [
-            {
-                "command": "chevron-lists.onEnter",
-                "title": "CL: Handle Enter"
-            },
-            {
-                "command": "chevron-lists.onTab",
-                "title": "CL: Indent Item"
-            },
-            {
-                "command": "chevron-lists.onShiftTab",
-                "title": "CL: Dedent Item"
-            },
-            {
-                "command": "chevron-lists.expandSnippet",
-                "title": "CL: Expand Snippet"
-            },
-            {
-                "command": "chevron-lists.nextHeader",
-                "title": "CL: Jump to Next Header"
-            },
-            {
-                "command": "chevron-lists.prevHeader",
-                "title": "CL: Jump to Previous Header"
-            },
-            {
-                "command": "chevron-lists.selectSectionItems",
-                "title": "CL: Select Section Items"
-            },
-            {
-                "command": "chevron-lists.deleteSection",
-                "title": "CL: Delete Section"
-            },
-            {
-                "command": "chevron-lists.duplicateSection",
-                "title": "CL: Duplicate Section"
-            },
-            {
-                "command": "chevron-lists.moveSectionUp",
-                "title": "CL: Move Section Up"
-            },
-            {
-                "command": "chevron-lists.moveSectionDown",
-                "title": "CL: Move Section Down"
-            },
-            {
-                "command": "chevron-lists.copySectionAsMarkdown",
-                "title": "CL: Copy Section as Markdown"
-            },
-            {
-                "command": "chevron-lists.copySectionAsPlainText",
-                "title": "CL: Copy Section as Plain Text"
-            },
-            {
-                "command": "chevron-lists.sortItemsAZ",
-                "title": "CL: Sort Items A â†’ Z"
-            },
-            {
-                "command": "chevron-lists.sortItemsZA",
-                "title": "CL: Sort Items Z â†’ A"
-            },
-            {
-                "command": "chevron-lists.renumberItems",
-                "title": "CL: Renumber Items"
-            },
-            {
-                "command": "chevron-lists.searchItems",
-                "title": "CL: Search Items"
-            },
-            {
-                "command": "chevron-lists.filterSections",
-                "title": "CL: Filter Sections"
-            },
-            {
-                "command": "chevron-lists.switchColourPreset",
-                "title": "CL: Switch Colour Preset"
-            }
+            { "command": "chevron-lists.onEnter",            "title": "CL: Handle Enter" },
+            { "command": "chevron-lists.onTab",              "title": "CL: Indent Item" },
+            { "command": "chevron-lists.onShiftTab",         "title": "CL: Dedent Item" },
+            { "command": "chevron-lists.expandSnippet",      "title": "CL: Expand Snippet" },
+            { "command": "chevron-lists.nextHeader",         "title": "CL: Jump to Next Header" },
+            { "command": "chevron-lists.prevHeader",         "title": "CL: Jump to Previous Header" },
+            { "command": "chevron-lists.selectSectionItems", "title": "CL: Select Section Items" },
+            { "command": "chevron-lists.deleteSection",      "title": "CL: Delete Section" },
+            { "command": "chevron-lists.duplicateSection",   "title": "CL: Duplicate Section" },
+            { "command": "chevron-lists.moveSectionUp",      "title": "CL: Move Section Up" },
+            { "command": "chevron-lists.moveSectionDown",    "title": "CL: Move Section Down" },
+            { "command": "chevron-lists.copySectionAsMarkdown",  "title": "CL: Copy Section as Markdown" },
+            { "command": "chevron-lists.copySectionAsPlainText", "title": "CL: Copy Section as Plain Text" },
+            { "command": "chevron-lists.sortItemsAZ",        "title": "CL: Sort Items A → Z" },
+            { "command": "chevron-lists.sortItemsZA",        "title": "CL: Sort Items Z → A" },
+            { "command": "chevron-lists.renumberItems",      "title": "CL: Renumber Items" },
+            { "command": "chevron-lists.searchItems",        "title": "CL: Search Items" },
+            { "command": "chevron-lists.filterSections",     "title": "CL: Filter Sections" },
+            { "command": "chevron-lists.switchColourPreset", "title": "CL: Switch Colour Preset" }
         ],
         "keybindings": [
-            {
-                "key": "enter",
-                "command": "chevron-lists.onEnter",
-                "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
-            },
-            {
-                "key": "ctrl+enter",
-                "command": "chevron-lists.expandSnippet",
-                "when": "editorTextFocus && editorLangId == 'markdown'"
-            },
-            {
-                "key": "tab",
-                "command": "chevron-lists.onTab",
-                "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && !inlineSuggestionVisible && editorLangId == 'markdown'"
-            },
-            {
-                "key": "shift+tab",
-                "command": "chevron-lists.onShiftTab",
-                "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
-            },
-            {
-                "key": "ctrl+alt+down",
-                "command": "chevron-lists.nextHeader",
-                "when": "editorTextFocus && editorLangId == 'markdown'"
-            },
-            {
-                "key": "ctrl+alt+up",
-                "command": "chevron-lists.prevHeader",
-                "when": "editorTextFocus && editorLangId == 'markdown'"
-            }
+            { "key": "enter",     "command": "chevron-lists.onEnter",     "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'" },
+            { "key": "ctrl+enter","command": "chevron-lists.expandSnippet","when": "editorTextFocus && editorLangId == 'markdown'" },
+            { "key": "tab",       "command": "chevron-lists.onTab",       "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && !inlineSuggestionVisible && editorLangId == 'markdown'" },
+            { "key": "shift+tab", "command": "chevron-lists.onShiftTab",  "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'" },
+            { "key": "ctrl+alt+down", "command": "chevron-lists.nextHeader", "when": "editorTextFocus && editorLangId == 'markdown'" },
+            { "key": "ctrl+alt+up",   "command": "chevron-lists.prevHeader", "when": "editorTextFocus && editorLangId == 'markdown'" }
         ],
         "grammars": [
-            {
-                "path": "./syntaxes/chevron-lists.tmLanguage.json",
-                "scopeName": "text.html.markdown.chevron-lists",
-                "injectTo": ["text.html.markdown"]
-            }
+            { "path": "./syntaxes/chevron-lists.tmLanguage.json", "scopeName": "text.html.markdown.chevron-lists", "injectTo": ["text.html.markdown"] }
         ],
         "semanticTokenTypes": [
-            { "id": "chevronHeader",  "description": "Chevron section header text (after the > prefix)" },
+            { "id": "chevronHeader",  "description": "Chevron section header text" },
             { "id": "chevronPrefix",  "description": "Chevron punctuation: >, >>, >> -, >> N." },
             { "id": "chevronNumber",  "description": "Number in a >> N. numbered item" },
-            { "id": "chevronContent", "description": "Item content text in >> - or >> N. lines" }
+            { "id": "chevronContent", "description": "Item content text" }
         ],
         "semanticTokenScopes": [
             {
@@ -200,24 +96,19 @@
             }
         ],
         "snippets": [
-            {
-                "language": "markdown",
-                "path": "./snippets/chevron-lists.code-snippets"
-            }
+            { "language": "markdown", "path": "./snippets/chevron-lists.code-snippets" }
         ]
     },
     "scripts": {
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "test": "bun test src/__tests__ --coverage"
+        "watch":   "tsc -watch -p ./",
+        "test":    "bun test src/__tests__ --coverage"
     },
     "license": "CC-BY-NC-ND-4.0",
     "devDependencies": {
-        "@types/bun": "^1.3.11",
-        "@types/node": "^20.0.0",
+        "@types/bun":    "^1.3.11",
+        "@types/node":   "^20.0.0",
         "@types/vscode": "^1.85.0",
-        "typescript": "^5.0.0"
+        "typescript":    "^5.0.0"
     }
 }
-
-
