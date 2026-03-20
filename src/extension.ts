@@ -42,6 +42,11 @@ import { onCloneItem, onCloneItemToSection }                 from './cloneComman
 import { onMergeSectionBelow, onSplitSectionHere }           from './mergeSplitCommands';
 import { onEnterReadingMode }                                from './readingMode';
 import { onCompareSectionToClipboard }                       from './compareCommands';
+import { onArchiveDoneItems, onArchiveSection }              from './archiveCommands';
+import { onFindInSections, onReplaceInSection }              from './findReplaceCommands';
+import { onFocusSection, onUnfocusSection }                  from './focusMode';
+import { onAddBookmark, onJumpToBookmark,
+         onRemoveBookmark }                                  from './bookmarkCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -126,6 +131,23 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Compare ──────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.compareSectionToClipboard', onCompareSectionToClipboard),
+
+        // ── Archive ──────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.archiveDoneItems', onArchiveDoneItems),
+        vscode.commands.registerCommand('chevron-lists.archiveSection',   onArchiveSection),
+
+        // ── Find & Replace ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.findInSections',   onFindInSections),
+        vscode.commands.registerCommand('chevron-lists.replaceInSection', onReplaceInSection),
+
+        // ── Focus Mode ───────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.focusSection',   onFocusSection),
+        vscode.commands.registerCommand('chevron-lists.unfocusSection', onUnfocusSection),
+
+        // ── Bookmarks ────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.addBookmark',    onAddBookmark),
+        vscode.commands.registerCommand('chevron-lists.jumpToBookmark', onJumpToBookmark),
+        vscode.commands.registerCommand('chevron-lists.removeBookmark', onRemoveBookmark),
 
         // ── Dates & Recurrence ───────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showUpcoming',            onShowUpcoming),

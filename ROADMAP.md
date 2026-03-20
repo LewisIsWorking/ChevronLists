@@ -268,3 +268,21 @@
 
 ## v4.6.0 — Section Compare ✅
 - ✅ `CL: Compare Section to Clipboard` — diff of current section vs clipboard
+
+---
+
+## v4.7.0 — Item Archiving ✅
+- ✅ `CL: Archive Done Items` — moves all `[x]` items to an Archive section
+- ✅ `CL: Archive Section` — moves the entire section to Archive
+
+## v4.8.0 — Search & Replace ✅
+- ✅ `CL: Find in Sections` — live search across all item content
+- ✅ `CL: Replace in Section` — find/replace within current section items
+
+## v4.9.0 — Focus Mode ✅
+- ✅ `CL: Focus on Section` — folds all other sections
+- ✅ `CL: Unfocus` — restores all sections
+
+## v5.0.0 — Section Bookmarks ✅
+- ✅ `>> [bookmark:Name]` syntax
+- ✅ `CL: Add Bookmark`, `CL: Jump to Bookmark`, `CL: Remove Bookmark`

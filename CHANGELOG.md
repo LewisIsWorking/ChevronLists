@@ -2,6 +2,20 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [5.0.0] - 2026-03-20
+
+### Added
+- `CL: Archive Done Items` — moves all `[x]` items from the current section to an Archive section
+- `CL: Archive Section` — moves the entire current section to the Archive area
+- `CL: Find in Sections` — live quick pick search across all item content in the file
+- `CL: Replace in Section` — find and replace within the current section's items only
+- `CL: Focus on Section` — folds all other sections, reveals only the current one
+- `CL: Unfocus` — restores all folded sections
+- `>> [bookmark:Name]` bookmark syntax
+- `CL: Add Bookmark` — inserts a named bookmark at the cursor
+- `CL: Jump to Bookmark` — quick pick of all bookmarks in the file
+- `CL: Remove Bookmark` — removes the bookmark on the current line
+
 ## [4.6.0] - 2026-03-20
 
 ### Added
@@ -96,6 +110,20 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [5.0.0] - 2026-03-20
+
+### Added
+- `CL: Archive Done Items` — moves all `[x]` items from the current section to an Archive section
+- `CL: Archive Section` — moves the entire current section to the Archive area
+- `CL: Find in Sections` — live quick pick search across all item content in the file
+- `CL: Replace in Section` — find and replace within the current section's items only
+- `CL: Focus on Section` — folds all other sections, reveals only the current one
+- `CL: Unfocus` — restores all folded sections
+- `>> [bookmark:Name]` bookmark syntax
+- `CL: Add Bookmark` — inserts a named bookmark at the cursor
+- `CL: Jump to Bookmark` — quick pick of all bookmarks in the file
+- `CL: Remove Bookmark` — removes the bookmark on the current line
 
 ## [4.6.0] - 2026-03-20
 
