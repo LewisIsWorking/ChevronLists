@@ -510,3 +510,17 @@
 
 ## v11.5.0 — Quick Section Create ✅
 - ✅ `CL: New Section` — prompts for name, inserts header + blank item
+
+---
+
+## v11.6.0 — Section Health Check ✅
+- ✅ `CL: Section Health Check` — empty-content, duplicate, and too-long item detection
+
+## v11.7.0 — Tag Autocomplete ✅
+- ✅ `#` triggers tag suggestions from existing tags, sorted by frequency
+
+## v11.8.0 — Mention Autocomplete ✅
+- ✅ `@` triggers @mention suggestions from names already in the file
+
+## v11.9.0 — Section Link Autocomplete ✅
+- ✅ `[[` triggers section header suggestions

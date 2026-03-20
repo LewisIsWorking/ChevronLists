@@ -59,6 +59,10 @@ import { onShowJumpHistory }                              from './jumpHistory';
 import { onDuplicateItemAndIncrement }                    from './duplicateIncrementCommands';
 import { updateGoalDecorations }                          from './goalProgressDecoration';
 import { onNewSection }                                   from './newSectionCommands';
+import { onSectionHealthCheck }                           from './healthCheckCommands';
+import { ChevronTagCompletionProvider,
+         ChevronMentionCompletionProvider,
+         ChevronLinkCompletionProvider }                  from './completionProviders';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -298,6 +302,26 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── New Section ──────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.newSection', onNewSection),
+
+        // ── Health Check ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.sectionHealthCheck', onSectionHealthCheck),
+
+        // ── Completion Providers ─────────────────────────────────────────────
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronTagCompletionProvider(),
+            '#'
+        ),
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronMentionCompletionProvider(),
+            '@'
+        ),
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronLinkCompletionProvider(),
+            '['
+        ),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

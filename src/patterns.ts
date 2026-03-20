@@ -117,3 +117,37 @@ export function diffLines(a: string[], b: string[]): string[] {
     }
     return out;
 }
+
+/** Checks an array of {text, index} item lines for health issues */
+export interface HealthIssue { line: number; message: string; kind: string; }
+
+export function checkLinesHealth(
+    lines: Array<{ text: string; index: number }>,
+    prefix: string,
+    stripFn: (content: string) => string,
+    extractTagsFn: (content: string) => string[]
+): HealthIssue[] {
+    const issues: HealthIssue[] = [];
+    const seen = new Map<string, number>();
+    for (const { text, index } of lines) {
+        const bullet   = parseBullet(text, prefix);
+        const numbered = parseNumbered(text);
+        if (!bullet && !numbered) { continue; }
+        const content = bullet?.content ?? numbered!.content;
+        const plain   = stripFn(content).trim();
+        if (plain.length === 0) {
+            issues.push({ line: index, message: 'Item has no content after stripping metadata', kind: 'empty-content' });
+        } else if (plain.length > 200) {
+            issues.push({ line: index, message: `Item is very long (${plain.length} chars) — consider splitting`, kind: 'too-long' });
+        }
+        if (plain.length > 0) {
+            const firstSeen = seen.get(plain.toLowerCase());
+            if (firstSeen !== undefined) {
+                issues.push({ line: index, message: `Duplicate item content (same as line ${firstSeen + 1})`, kind: 'duplicate' });
+            } else {
+                seen.set(plain.toLowerCase(), index);
+            }
+        }
+    }
+    return issues;
+}
