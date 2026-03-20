@@ -636,3 +636,17 @@
 
 ## v15.1.0 — Section Templates Gallery ✅
 - ✅ `CL: Browse Templates` — webview gallery with preview and one-click insert
+
+---
+
+## v15.2.0 — Smart Tab Completion ✅
+- ✅ Tab confirms autocomplete suggestion if widget is open; falls through to indent if not
+
+## v15.3.0 — Item Copy as Formatted Text ✅
+- ✅ `CL: Copy Item as Rich Text` — ✓/☐, 🔴/🟠/🟡, ⭐, ❓ symbols
+
+## v15.4.0 — Section Dependency Graph ✅
+- ✅ `CL: Show Dependency Graph` — SVG node graph of `>>depends:` relationships
+
+## v15.5.0 — Bulk Expiry Set ✅
+- ✅ `CL: Set Expiry on All Items` — sets `@expires:` on every item in the section

@@ -42,6 +42,9 @@ import { onToggleSummaryDecoration,
 import { onFilterByColourLabelWorkspace }                 from './colourFilterWorkspaceCommands';
 import { onShowExpiredItems }                             from './expiryCommands';
 import { onBrowseTemplates }                              from './templateGallery';
+import { onCopyItemAsRichText }                           from './richTextCommands';
+import { onShowDependencyGraph }                          from './dependencyGraphCommands';
+import { onSetExpiryOnAllItems }                          from './bulkExpiryCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -99,6 +102,9 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.filterByColourLabelWorkspace',     onFilterByColourLabelWorkspace),
         r('chevron-lists.showExpiredItems',                 onShowExpiredItems),
         r('chevron-lists.browseTemplates',                  onBrowseTemplates),
+        r('chevron-lists.copyItemAsRichText',               onCopyItemAsRichText),
+        r('chevron-lists.showDependencyGraph',              onShowDependencyGraph),
+        r('chevron-lists.setExpiryOnAllItems',              onSetExpiryOnAllItems),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

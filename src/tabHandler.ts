@@ -127,10 +127,17 @@ function collectChildLines(doc: vscode.TextDocument, lineIndex: number, itemChev
     return children;
 }
 
-/** Handles Tab — expands snippet if trigger=tab, promotes chevron items, or falls through */
+/** Handles Tab — accepts autocomplete suggestion if open, expands snippet if trigger=tab, promotes chevron items, or falls through */
 export async function onTab(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
+
+    // If the suggest widget is open, let it accept the suggestion first
+    const suggestVisible = await vscode.commands.executeCommand<boolean>('editor.action.inlineSuggest.isVisible');
+    if (suggestVisible) {
+        await vscode.commands.executeCommand('acceptSelectedSuggestion');
+        return;
+    }
 
     const { prefix, snippetTrigger } = getConfig();
 

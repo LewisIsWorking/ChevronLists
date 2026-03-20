@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "15.1.0",
+    "version": "15.5.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -287,7 +287,10 @@
             { "command": "chevron-lists.toggleAllDecorations",                          "title": "CL: Toggle All Decorations" },
             { "command": "chevron-lists.filterByColourLabelWorkspace",                  "title": "CL: Filter by Colour Label (Workspace)" },
             { "command": "chevron-lists.showExpiredItems",                              "title": "CL: Show Expired Items" },
-            { "command": "chevron-lists.browseTemplates",                               "title": "CL: Browse Templates" }
+            { "command": "chevron-lists.browseTemplates",                               "title": "CL: Browse Templates" },
+            { "command": "chevron-lists.copyItemAsRichText",                            "title": "CL: Copy Item as Rich Text" },
+            { "command": "chevron-lists.showDependencyGraph",                           "title": "CL: Show Dependency Graph" },
+            { "command": "chevron-lists.setExpiryOnAllItems",                           "title": "CL: Set Expiry on All Items" }
         ],
         "keybindings": [
             {

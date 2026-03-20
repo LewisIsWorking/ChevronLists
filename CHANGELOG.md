@@ -1,5 +1,12 @@
 # Changelog
 
+## [15.5.0] - 2026-03-20
+### Added
+- **Smart Tab for autocomplete** — Tab now confirms the suggestion widget if open, falling through to indent only when it's not
+- `CL: Copy Item as Rich Text` — converts marker syntax to readable symbols (✓/☐, 🔴/🟠/🟡, ⭐, ❓) before copying
+- `CL: Show Dependency Graph` — webview SVG graph of all `>>depends:` relationships in the file
+- `CL: Set Expiry on All Items` — sets `@expires:YYYY-MM-DD` on every item in the current section at once
+
 ## [15.1.0] - 2026-03-20
 ### Added
 - `CL: Toggle Section Summary` / `CL: Toggle Checklist Progress Bar` / `CL: Toggle Word Goal Bar` / `CL: Toggle Age Highlight` / `CL: Toggle All Decorations`
