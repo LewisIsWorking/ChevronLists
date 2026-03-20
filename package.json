@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.6.1",
+    "version": "1.7.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -43,7 +43,7 @@
                         "Green headers, dark green prefixes, lime numbers",
                         "Coral headers, muted orange prefixes, gold numbers",
                         "Bold white headers, grey prefixes, silver numbers",
-                        "No preset â€” manage colours manually via semanticTokenColorCustomizations"
+                        "No preset Ã¢â‚¬â€ manage colours manually via semanticTokenColorCustomizations"
                     ],
                     "description": "Built-in colour preset for chevron syntax highlighting."
                 },
@@ -54,7 +54,7 @@
                     "enumDescriptions": [
                         "Press Tab after typing chl or chn to expand (may conflict with Copilot suggestions)",
                         "Press Ctrl+Enter after typing chl or chn to expand (no Copilot conflict)",
-                        "Disable keyboard expansion â€” use Insert Snippet from the command palette"
+                        "Disable keyboard expansion Ã¢â‚¬â€ use Insert Snippet from the command palette"
                     ],
                     "description": "Which key triggers chevron snippet expansion (chl / chn)."
                 },
@@ -120,11 +120,11 @@
             },
             {
                 "command": "chevron-lists.sortItemsAZ",
-                "title": "CL: Sort Items A â†’ Z"
+                "title": "CL: Sort Items A Ã¢â€ â€™ Z"
             },
             {
                 "command": "chevron-lists.sortItemsZA",
-                "title": "CL: Sort Items Z â†’ A"
+                "title": "CL: Sort Items Z Ã¢â€ â€™ A"
             },
             {
                 "command": "chevron-lists.renumberItems",

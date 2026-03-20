@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.7.0] - 2026-03-20
+
+### Added
+- Chevron sections now appear in VS Code's **Outline panel** and **breadcrumb navigation**
+- Each section shows its name and item count in the Outline
+- Expanding a section in the Outline reveals all its items as children
+- Clicking any item in the Outline jumps directly to that line
+- 11 new unit tests covering all outline symbol building logic
+
 ## [1.6.1] - 2026-03-20
 
 ### Changed

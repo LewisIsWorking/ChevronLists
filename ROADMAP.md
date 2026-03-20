@@ -115,10 +115,11 @@
 
 ---
 
-## v1.7.0 — Outline View ⬜
-- ⬜ Register a custom document symbol provider so chevron sections appear in VS Code's Outline panel
-- ⬜ Click a section in the Outline to jump to it
-- ⬜ Outline shows section names with item counts
+## v1.7.0 — Outline View ✅
+- ✅ Chevron sections appear in VS Code's Outline panel and breadcrumb navigation
+- ✅ Section names shown with item counts
+- ✅ Items visible as children in the Outline tree
+- ✅ Clicking any entry jumps to that line
 
 ---
 
