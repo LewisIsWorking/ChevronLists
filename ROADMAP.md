@@ -524,3 +524,17 @@
 
 ## v11.9.0 — Section Link Autocomplete ✅
 - ✅ `[[` triggers section header suggestions
+
+---
+
+## v12.0.0 — Priority Autocomplete ✅
+- ✅ `!` triggers `!`, `!!`, `!!!` suggestions with descriptions
+
+## v12.1.0 — Date Autocomplete ✅
+- ✅ `@` triggers today/tomorrow/next Friday/next week/next month date suggestions
+
+## v12.2.0 — Item Templates (Snippets) ✅
+- ✅ `CL: Insert Item Snippet` — 10 pre-configured item templates
+
+## v12.3.0 — Cross-File Section Links ✅
+- ✅ `CL: Insert File Section Link` — inserts `[[file:name.md#SectionName]]`

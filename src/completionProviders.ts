@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { getConfig } from './config';
-import { parseBullet, parseNumbered, isHeader } from './patterns';
+import { parseBullet, parseNumbered, isHeader, formatDate, nextWeekday } from './patterns';
 import { extractTags, uniqueTags } from './tagParser';
 import { collectMentions, uniqueMentions } from './mentionParser';
 
@@ -85,6 +85,69 @@ export class ChevronLinkCompletionProvider implements vscode.CompletionItemProvi
             const item = new vscode.CompletionItem(name, vscode.CompletionItemKind.Reference);
             item.detail     = `[[${name}]]`;
             item.insertText = new vscode.SnippetString(`${name}]]`);
+            return item;
+        });
+    }
+}
+
+// ── Priority completion (!) ───────────────────────────────────────────────────
+
+/** Provides !,!!,!!! priority completions */
+export class ChevronPriorityCompletionProvider implements vscode.CompletionItemProvider {
+    provideCompletionItems(
+        document: vscode.TextDocument,
+        position: vscode.Position
+    ): vscode.CompletionItem[] {
+        const lineText = document.lineAt(position).text;
+        const prefix   = lineText.slice(0, position.character);
+        if (!prefix.endsWith('!')) { return []; }
+
+        const priorities = [
+            { label: '!',   detail: 'Low priority',    sort: '1' },
+            { label: '!!',  detail: 'Medium priority',  sort: '2' },
+            { label: '!!!', detail: 'High priority',    sort: '3' },
+        ];
+        return priorities.map(p => {
+            const item = new vscode.CompletionItem(p.label, vscode.CompletionItemKind.Enum);
+            item.detail    = p.detail;
+            item.sortText  = p.sort;
+            item.insertText = p.label.slice(1); // already typed first !
+            return item;
+        });
+    }
+}
+
+// ── Date completion (@YYYY) ───────────────────────────────────────────────────
+
+/** Provides smart date completions after @ */
+export class ChevronDateCompletionProvider implements vscode.CompletionItemProvider {
+    provideCompletionItems(
+        document: vscode.TextDocument,
+        position: vscode.Position
+    ): vscode.CompletionItem[] {
+        const lineText = document.lineAt(position).text;
+        const prefix   = lineText.slice(0, position.character);
+        if (!prefix.endsWith('@')) { return []; }
+
+        const today     = new Date();
+        const tomorrow  = new Date(today); tomorrow.setDate(today.getDate() + 1);
+        const nextWeek  = new Date(today); nextWeek.setDate(today.getDate() + 7);
+        const nextMonth = new Date(today); nextMonth.setMonth(today.getMonth() + 1);
+
+        const suggestions = [
+            { label: 'today',      date: today,              sort: '1' },
+            { label: 'tomorrow',   date: tomorrow,           sort: '2' },
+            { label: 'next Friday',date: nextWeekday(5),     sort: '3' },
+            { label: 'next week',  date: nextWeek,           sort: '4' },
+            { label: 'next month', date: nextMonth,          sort: '5' },
+        ];
+
+        return suggestions.map(s => {
+            const dateStr = formatDate(s.date);
+            const item    = new vscode.CompletionItem(`${s.label} (${dateStr})`, vscode.CompletionItemKind.Value);
+            item.detail     = dateStr;
+            item.sortText   = s.sort;
+            item.insertText = dateStr;
             return item;
         });
     }

@@ -118,6 +118,19 @@ export function diffLines(a: string[], b: string[]): string[] {
     return out;
 }
 
+/** Formats a Date as YYYY-MM-DD */
+export function formatDate(d: Date): string {
+    return d.toISOString().slice(0, 10);
+}
+
+/** Returns the next occurrence of a given day of week (0=Sun, 5=Fri etc.) */
+export function nextWeekday(dayOfWeek: number, from: Date = new Date()): Date {
+    const d    = new Date(from);
+    const diff = (dayOfWeek - d.getDay() + 7) % 7 || 7;
+    d.setDate(d.getDate() + diff);
+    return d;
+}
+
 /** Checks an array of {text, index} item lines for health issues */
 export interface HealthIssue { line: number; message: string; kind: string; }
 

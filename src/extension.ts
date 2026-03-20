@@ -62,7 +62,11 @@ import { onNewSection }                                   from './newSectionComm
 import { onSectionHealthCheck }                           from './healthCheckCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
-         ChevronLinkCompletionProvider }                  from './completionProviders';
+         ChevronLinkCompletionProvider,
+         ChevronPriorityCompletionProvider,
+         ChevronDateCompletionProvider }                  from './completionProviders';
+import { onInsertItemSnippet }                            from './itemSnippetCommands';
+import { onInsertFileSectionLink }                        from './fileSectionLinkCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -322,6 +326,22 @@ export function activate(context: vscode.ExtensionContext): void {
             new ChevronLinkCompletionProvider(),
             '['
         ),
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronPriorityCompletionProvider(),
+            '!'
+        ),
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronDateCompletionProvider(),
+            '@'
+        ),
+
+        // ── Item Snippets ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.insertItemSnippet', onInsertItemSnippet),
+
+        // ── Cross-File Section Links ──────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.insertFileSectionLink', onInsertFileSectionLink),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
