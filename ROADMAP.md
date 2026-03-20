@@ -174,3 +174,26 @@
 - ✅ Dark-mode VS Code-inspired stylingltip
 
 ---
+
+---
+
+## v2.7.0 — Item Priority ✅
+- ✅ `!`, `!!`, `!!!` priority markers in items
+- ✅ `CL: Filter by Priority` — two-step quick pick by level with live preview
+
+---
+
+## v2.8.0 — Item Due Dates ✅
+- ✅ `@YYYY-MM-DD` date syntax in items
+- ✅ `CL: Show Upcoming` — all dated items sorted chronologically
+- ✅ Overdue items flagged in the Problems panel
+
+## v2.9.0 — Section Groups ⬜
+- ⬜ `>> --` divider lines between sections create visual groups
+- ⬜ `CL: Group Sections` — wraps selected sections under a named group header
+- ⬜ Groups shown as top-level nodes in the Outline panel
+
+## v3.0.0 — AI Assist ⬜
+- ⬜ `CL: Suggest Items` — calls the Anthropic API to suggest additional items for the current section
+- ⬜ `CL: Summarise Section` — generates a one-line summary of the section and inserts it as a sub-header
+- ⬜ `CL: Expand Item` — expands a single item into a full nested sub-section

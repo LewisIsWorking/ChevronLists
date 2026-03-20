@@ -2,6 +2,16 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [2.8.0] - 2026-03-20
+
+### Added
+- `!`, `!!`, `!!!` priority markers in items — `>> - !!! Critical task`
+- `CL: Filter by Priority` — two-step quick pick: choose level then jump to matching items with live preview
+- `@YYYY-MM-DD` due date syntax in items — `>> - Deploy server @2026-04-01`
+- `CL: Show Upcoming` — all dated items sorted chronologically with overdue indicators
+- Overdue items flagged in the Problems panel (Warning severity)
+- 22 new unit tests covering priority parsing, date extraction, overdue detection and collection
+
 ## [2.6.0] - 2026-03-20
 
 ### Added
@@ -30,6 +40,16 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [2.8.0] - 2026-03-20
+
+### Added
+- `!`, `!!`, `!!!` priority markers in items — `>> - !!! Critical task`
+- `CL: Filter by Priority` — two-step quick pick: choose level then jump to matching items with live preview
+- `@YYYY-MM-DD` due date syntax in items — `>> - Deploy server @2026-04-01`
+- `CL: Show Upcoming` — all dated items sorted chronologically with overdue indicators
+- Overdue items flagged in the Problems panel (Warning severity)
+- 22 new unit tests covering priority parsing, date extraction, overdue detection and collection
 
 ## [2.6.0] - 2026-03-20
 

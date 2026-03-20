@@ -23,15 +23,19 @@ import { ChevronLinkHoverProvider, ChevronLinkDefinitionProvider,
 import { onToggleItemDone }                                  from './checkCommands';
 import { onTogglePin, onFilterPinnedSections }               from './pinCommands';
 import { onExportAsHtml }                                    from './htmlExportCommands';
+import { onFilterByPriority }                                from './priorityCommands';
+import { onShowUpcoming, updateDueDateDiagnostics }          from './dueDateCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
 import { createStatusBar, updateStatusBar }                  from './statusBar';
 import { ChevronSemanticTokensProvider, buildLegend }        from './semanticProvider';
 import { ChevronOutlineProvider }                            from './outlineProvider';
+import { getConfig }                                         from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
-    const statusBar = createStatusBar();
+    const statusBar    = createStatusBar();
+    const dueDateDiags = vscode.languages.createDiagnosticCollection('chevron-lists-dates');
     updateStatusBar(vscode.window.activeTextEditor);
 
     context.subscriptions.push(
@@ -82,6 +86,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Diagnostics ──────────────────────────────────────────────────────
         getDiagnosticCollection(),
+        dueDateDiags,
         vscode.commands.registerCommand('chevron-lists.fixNumbering', onFixNumbering),
 
         // ── Tags ─────────────────────────────────────────────────────────────
@@ -102,6 +107,12 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── HTML Export ──────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.exportAsHtml', onExportAsHtml),
 
+        // ── Priority ─────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.filterByPriority', onFilterByPriority),
+
+        // ── Due Dates ────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showUpcoming', onShowUpcoming),
+
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronHoverProvider()),
@@ -115,21 +126,27 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Decoration & diagnostic events ───────────────────────────────────
         vscode.window.onDidChangeActiveTextEditor(editor => {
-            if (editor) { updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document); }
+            if (editor) {
+                const { prefix } = getConfig();
+                updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document);
+                updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
+            }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
             const editor = vscode.window.activeTextEditor;
             if (editor && event.document === editor.document) {
-                updateDecorations(editor);
-                updateStatusBar(editor);
-                updateDiagnostics(editor.document);
+                const { prefix } = getConfig();
+                updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document);
+                updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
             }
         }),
     );
 
     if (vscode.window.activeTextEditor) {
+        const { prefix } = getConfig();
         updateDecorations(vscode.window.activeTextEditor);
         updateDiagnostics(vscode.window.activeTextEditor.document);
+        updateDueDateDiagnostics(vscode.window.activeTextEditor.document, dueDateDiags, prefix);
     }
     applyConfiguredPreset();
 }
