@@ -35,6 +35,10 @@ import { onSnapshotSection, onRestoreSnapshot,
 import { onSortSectionsAZ, onSortSectionsZA }               from './sectionSortCommands';
 import { onFilterByMentionWorkspace }                       from './mentionWorkspaceCommands';
 import { onPreviewItem }                                    from './previewItemCommands';
+import { onMoveItemToTop, onMoveItemToBottom }              from './moveItemEdgeCommands';
+import { onShowTagHeatmap, onShowCompletionHeatmap }        from './heatmapCommands';
+import { onStampItem, onShowOldItems }                      from './itemAgeCommands';
+import { onInsertTableOfContents }                          from './tocCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -205,6 +209,21 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Item Preview ─────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.previewItem', onPreviewItem),
+
+        // ── Move to Edge ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.moveItemToTop',    onMoveItemToTop),
+        vscode.commands.registerCommand('chevron-lists.moveItemToBottom', onMoveItemToBottom),
+
+        // ── Heatmaps ─────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showTagHeatmap',        onShowTagHeatmap),
+        vscode.commands.registerCommand('chevron-lists.showCompletionHeatmap', onShowCompletionHeatmap),
+
+        // ── Item Age ─────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.stampItem',    onStampItem),
+        vscode.commands.registerCommand('chevron-lists.showOldItems', onShowOldItems),
+
+        // ── Table of Contents ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.insertTableOfContents', onInsertTableOfContents),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

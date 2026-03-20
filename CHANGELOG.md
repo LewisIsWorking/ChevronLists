@@ -2,6 +2,18 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [9.2.0] - 2026-03-20
+
+### Added
+- `CL: Move Item to Top` — moves the item at the cursor to the first position in the section
+- `CL: Move Item to Bottom` — moves the item to the last position in the section
+- `CL: Show Tag Heatmap` — sections ranked by tag count
+- `CL: Show Completion Heatmap` — sections ranked by completion percentage
+- `@created:YYYY-MM-DD` item age syntax
+- `CL: Stamp Item` — inserts `@created:today` on the item at the cursor
+- `CL: Show Old Items` — lists items with `@created` dates older than 30 days, sorted by age
+- `CL: Insert Table of Contents` — inserts a `>> - [[SectionName]]` list of all sections at the cursor
+
 ## [8.8.0] - 2026-03-20
 
 ### Fixed
@@ -86,6 +98,18 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [9.2.0] - 2026-03-20
+
+### Added
+- `CL: Move Item to Top` — moves the item at the cursor to the first position in the section
+- `CL: Move Item to Bottom` — moves the item to the last position in the section
+- `CL: Show Tag Heatmap` — sections ranked by tag count
+- `CL: Show Completion Heatmap` — sections ranked by completion percentage
+- `@created:YYYY-MM-DD` item age syntax
+- `CL: Stamp Item` — inserts `@created:today` on the item at the cursor
+- `CL: Show Old Items` — lists items with `@created` dates older than 30 days, sorted by age
+- `CL: Insert Table of Contents` — inserts a `>> - [[SectionName]]` list of all sections at the cursor
 
 ## [8.8.0] - 2026-03-20
 
@@ -318,6 +342,18 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [9.2.0] - 2026-03-20
+
+### Added
+- `CL: Move Item to Top` — moves the item at the cursor to the first position in the section
+- `CL: Move Item to Bottom` — moves the item to the last position in the section
+- `CL: Show Tag Heatmap` — sections ranked by tag count
+- `CL: Show Completion Heatmap` — sections ranked by completion percentage
+- `@created:YYYY-MM-DD` item age syntax
+- `CL: Stamp Item` — inserts `@created:today` on the item at the cursor
+- `CL: Show Old Items` — lists items with `@created` dates older than 30 days, sorted by age
+- `CL: Insert Table of Contents` — inserts a `>> - [[SectionName]]` list of all sections at the cursor
+
 ## [8.8.0] - 2026-03-20
 
 ### Fixed
@@ -402,6 +438,18 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [9.2.0] - 2026-03-20
+
+### Added
+- `CL: Move Item to Top` — moves the item at the cursor to the first position in the section
+- `CL: Move Item to Bottom` — moves the item to the last position in the section
+- `CL: Show Tag Heatmap` — sections ranked by tag count
+- `CL: Show Completion Heatmap` — sections ranked by completion percentage
+- `@created:YYYY-MM-DD` item age syntax
+- `CL: Stamp Item` — inserts `@created:today` on the item at the cursor
+- `CL: Show Old Items` — lists items with `@created` dates older than 30 days, sorted by age
+- `CL: Insert Table of Contents` — inserts a `>> - [[SectionName]]` list of all sections at the cursor
 
 ## [8.8.0] - 2026-03-20
 

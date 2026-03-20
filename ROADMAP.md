@@ -425,3 +425,18 @@
 
 ## v8.7.0 — Item Preview ✅
 - ✅ `CL: Preview Item` — rich notification with all markers interpreted
+
+---
+
+## v8.9.0 — Move Item to Top/Bottom ✅
+- ✅ `CL: Move Item to Top` + `CL: Move Item to Bottom`
+
+## v9.0.0 — Cross-Section Statistics ✅
+- ✅ `CL: Show Tag Heatmap` — sections ranked by tag count
+- ✅ `CL: Show Completion Heatmap` — sections ranked by completion %
+
+## v9.1.0 — Item Age ✅
+- ✅ `@created:YYYY-MM-DD` syntax + `CL: Stamp Item` + `CL: Show Old Items`
+
+## v9.2.0 — Section Table of Contents ✅
+- ✅ `CL: Insert Table of Contents` — linked `[[SectionName]]` list
