@@ -2,13 +2,19 @@ import { describe, it, expect } from 'bun:test';
 import { COLOUR_PRESETS, findPreset } from '../colourPresets';
 
 describe('COLOUR_PRESETS', () => {
-    it('contains all six presets', () => {
+    it('contains all twelve presets', () => {
         const ids = COLOUR_PRESETS.map(p => p.id);
         expect(ids).toContain('default');
         expect(ids).toContain('ocean');
         expect(ids).toContain('forest');
         expect(ids).toContain('sunset');
         expect(ids).toContain('monochrome');
+        expect(ids).toContain('midnight');
+        expect(ids).toContain('rose');
+        expect(ids).toContain('autumn');
+        expect(ids).toContain('arctic');
+        expect(ids).toContain('neon');
+        expect(ids).toContain('sepia');
         expect(ids).toContain('custom');
     });
 

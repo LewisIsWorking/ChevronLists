@@ -22,9 +22,16 @@ async function applyPreset(preset: ColourPreset): Promise<void> {
         }
     }
 
+    // Always enable semantic tokens for markdown — many themes disable them by default
+    const markdownScope = (current['[markdown]'] as Record<string, unknown>) ?? {};
+
     await cfg.update(
         'semanticTokenColorCustomizations',
-        { ...current, rules: newRules },
+        {
+            ...current,
+            '[markdown]': { ...markdownScope, enabled: true },
+            rules: newRules,
+        },
         vscode.ConfigurationTarget.Global
     );
 }
