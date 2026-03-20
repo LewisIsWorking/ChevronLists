@@ -41,6 +41,7 @@ import { onStampItem, onShowOldItems }                      from './itemAgeComma
 import { onInsertTableOfContents }                          from './tocCommands';
 import { onSetListStartNumber }                             from './listStartCommands';
 import { ChevronNumberingCodeActionProvider }               from './numberingCodeActions';
+import { ChevronCodeActionProvider }                        from './codeActionProvider';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -365,8 +366,8 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
         vscode.languages.registerCodeActionsProvider(
             { language: 'markdown' },
-            new ChevronNumberingCodeActionProvider(),
-            { providedCodeActionKinds: ChevronNumberingCodeActionProvider.providedCodeActionKinds }
+            new ChevronCodeActionProvider(),
+            { providedCodeActionKinds: ChevronCodeActionProvider.providedCodeActionKinds }
         ),
         vscode.languages.registerDocumentSemanticTokensProvider(
             { language: 'markdown' },

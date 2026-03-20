@@ -59,3 +59,20 @@ export function toggleStrikethrough(content: string): string {
     }
     return `~~${content}~~`;
 }
+
+/** Replaces @YYYY-MM-DD in item content with a new date string */
+export function replaceDate(content: string, newDate: string): string {
+    return content.replace(/@\d{4}-\d{2}-\d{2}/, `@${newDate}`);
+}
+
+/** Strips @YYYY-MM-DD from item content */
+export function stripDate(content: string): string {
+    return content.replace(/\s*@\d{4}-\d{2}-\d{2}/, '').trim();
+}
+
+/** Adds [x] done marker to item content if not already present */
+export function markDone(content: string): string {
+    if (content.startsWith('[ ]')) { return content.replace('[ ]', '[x]'); }
+    if (content.startsWith('[x]')) { return content; }
+    return `[x] ${content}`;
+}
