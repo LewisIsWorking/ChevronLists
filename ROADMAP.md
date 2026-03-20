@@ -609,3 +609,17 @@
 
 ## v14.3.0 — Bulk Rating ⬜
 - ⬜ `CL: Bulk Set Rating` — sets a `★N` rating on every item in the current section at once via quick pick
+
+---
+
+## v14.4.0 — Section Summary Decoration ✅
+- ✅ Live `(N items · N done · N tags)` ghost text after every header
+
+## v14.5.0 — Checklist Progress Bar ✅
+- ✅ Live `▓▓▓░░ N/N` bar on headers with checkbox items (red/amber/green)
+
+## v14.6.0 — Section Export Batch ✅
+- ✅ `CL: Export All Sections as JSON` — full file export to JSON on disk
+
+## v14.7.0 — AI Rewrite Item ✅
+- ✅ `CL: Rewrite Item (AI)` — Claude rewrites item content, all markers preserved

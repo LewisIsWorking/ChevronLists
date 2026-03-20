@@ -85,6 +85,10 @@ import { onOpenDailyNote }                                from './dailyNoteComma
 import { onCopySectionAs }                                from './copySectionAsCommands';
 import { updateAgeDecorations }                           from './ageHighlightDecoration';
 import { onBulkSetRating }                                from './bulkRatingCommands';
+import { updateSummaryDecorations }                       from './sectionSummaryDecoration';
+import { updateChecklistProgressDecorations }             from './checklistProgressDecoration';
+import { onExportAllSectionsAsJson }                      from './exportAllJsonCommands';
+import { onRewriteItem }                                  from './rewriteItemCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -413,6 +417,12 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Bulk Rating ──────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.bulkSetRating', onBulkSetRating),
 
+        // ── Export All Sections as JSON ───────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.exportAllSectionsAsJson', onExportAllSectionsAsJson),
+
+        // ── AI Rewrite Item ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.rewriteItem', onRewriteItem),
+
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections',           onFilterSections),
@@ -568,6 +578,8 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateGoalDecorations(editor);
                 updateOverdueStatusBar(editor);
                 updateAgeDecorations(editor);
+                updateSummaryDecorations(editor);
+                updateChecklistProgressDecorations(editor);
             }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
@@ -581,6 +593,8 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateGoalDecorations(editor);
                 updateOverdueStatusBar(editor);
                 updateAgeDecorations(editor);
+                updateSummaryDecorations(editor);
+                updateChecklistProgressDecorations(editor);
             }
         }),
     );
@@ -595,6 +609,8 @@ export function activate(context: vscode.ExtensionContext): void {
         updateGoalDecorations(vscode.window.activeTextEditor);
         updateOverdueStatusBar(vscode.window.activeTextEditor);
         updateAgeDecorations(vscode.window.activeTextEditor);
+        updateSummaryDecorations(vscode.window.activeTextEditor);
+        updateChecklistProgressDecorations(vscode.window.activeTextEditor);
     }
     applyConfiguredPreset();
 }
