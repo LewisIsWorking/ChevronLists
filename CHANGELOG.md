@@ -2,6 +2,19 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [2.6.0] - 2026-03-20
+
+### Added
+- `CL: Toggle Pin` — pins/unpins the section header at the cursor; persists across sessions via workspace state
+- `CL: Filter Pinned Sections` — quick pick showing only pinned sections, with live preview navigation
+- `CL: Export File as HTML` — exports the entire file as a styled standalone HTML document
+  - Sections as collapsible `<details>` elements
+  - `#tags` rendered as coloured badges
+  - `[[links]]` become anchor links within the page
+  - `[x]`/`[ ]` checkboxes rendered with strikethrough styling
+  - Dark-mode design using VS Code-inspired colours
+- 18 new unit tests covering HTML escaping, slugification, content rendering and document building
+
 ## [2.4.0] - 2026-03-20
 
 ### Added
@@ -17,6 +30,19 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [2.6.0] - 2026-03-20
+
+### Added
+- `CL: Toggle Pin` — pins/unpins the section header at the cursor; persists across sessions via workspace state
+- `CL: Filter Pinned Sections` — quick pick showing only pinned sections, with live preview navigation
+- `CL: Export File as HTML` — exports the entire file as a styled standalone HTML document
+  - Sections as collapsible `<details>` elements
+  - `#tags` rendered as coloured badges
+  - `[[links]]` become anchor links within the page
+  - `[x]`/`[ ]` checkboxes rendered with strikethrough styling
+  - Dark-mode design using VS Code-inspired colours
+- 18 new unit tests covering HTML escaping, slugification, content rendering and document building
 
 ## [2.4.0] - 2026-03-20
 

@@ -21,6 +21,8 @@ import { onFilterByTag }                                     from './tagCommands
 import { ChevronLinkHoverProvider, ChevronLinkDefinitionProvider,
          ChevronDocumentLinkProvider, onGoToLinkedSection }  from './linkProvider';
 import { onToggleItemDone }                                  from './checkCommands';
+import { onTogglePin, onFilterPinnedSections }               from './pinCommands';
+import { onExportAsHtml }                                    from './htmlExportCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -92,6 +94,13 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Item Completion ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.toggleItemDone', onToggleItemDone),
+
+        // ── Pinning ──────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.togglePin',            () => onTogglePin(context)),
+        vscode.commands.registerCommand('chevron-lists.filterPinnedSections', () => onFilterPinnedSections(context)),
+
+        // ── HTML Export ──────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.exportAsHtml', onExportAsHtml),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

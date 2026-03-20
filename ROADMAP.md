@@ -163,15 +163,14 @@
 - ✅ `[x]` / `[ ]` checkbox syntax in items
 - ✅ `CL: Toggle Item Done` — toggles checkbox state at the cursor
 
-## v2.5.0 — Section Pinning ⬜
-- ⬜ `CL: Pin Section` — marks a section as pinned, shown at top of Outline and Filter Sections
-- ⬜ `CL: Unpin Section` — removes pin
-- ⬜ Pinned sections persist across sessions via workspace state
+## v2.5.0 — Section Pinning ✅
+- ✅ `CL: Toggle Pin` — pins/unpins the section at cursor, persists in workspace state
+- ✅ `CL: Filter Pinned Sections` — quick pick of pinned sections with live preview
 
-## v2.6.0 — Export to HTML ⬜
-- ⬜ `CL: Export File as HTML` — converts entire file to a styled standalone HTML document
-- ⬜ Sections become collapsible `<details>` elements
-- ⬜ Tags rendered as coloured badges
-- ⬜ [[Links]] become anchor links within the pageltip
+---
+
+## v2.6.0 — Export to HTML ✅
+- ✅ `CL: Export File as HTML` — standalone HTML with collapsible sections, tag badges, [[link]] anchors, checkbox styling
+- ✅ Dark-mode VS Code-inspired stylingltip
 
 ---
