@@ -1,0 +1,24 @@
+{
+    "Chevron Bullet List": {
+        "prefix": "chl",
+        "scope": "markdown",
+        "description": "Insert a chevron bullet list block",
+        "body": [
+            "> ${1:Section Header}",
+            ">> - ${2:First item}",
+            ">> - ${3:Second item}",
+            ">> - $0"
+        ]
+    },
+    "Chevron Numbered List": {
+        "prefix": "chn",
+        "scope": "markdown",
+        "description": "Insert a chevron numbered list block",
+        "body": [
+            "> ${1:Section Header}",
+            ">> 1. ${2:First item}",
+            ">> 2. ${3:Second item}",
+            ">> 3. $0"
+        ]
+    }
+}

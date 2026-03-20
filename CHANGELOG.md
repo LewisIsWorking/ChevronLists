@@ -2,6 +2,13 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.3.0] - 2026-03-20
+
+### Added
+- `chl` snippet — type `chl` + Tab in a markdown file to insert a chevron bullet list block with Tab stops for the header and each item
+- `chn` snippet — type `chn` + Tab to insert a chevron numbered list block with Tab stops
+- 10 unit tests validating snippet structure and content
+
 ## [1.2.0] - 2026-03-20
 
 ### Added

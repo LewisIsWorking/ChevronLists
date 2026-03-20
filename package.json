@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -124,6 +124,12 @@
                 "path": "./syntaxes/chevron-lists.tmLanguage.json",
                 "scopeName": "text.html.markdown.chevron-lists",
                 "injectTo": ["text.html.markdown"]
+            }
+        ],
+        "snippets": [
+            {
+                "language": "markdown",
+                "path": "./snippets/chevron-lists.code-snippets"
             }
         ]
     },

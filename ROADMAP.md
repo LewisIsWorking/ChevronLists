@@ -87,9 +87,9 @@
 
 ---
 
-## v1.3.0 — Snippets ⬜
-- ⬜ `chl` + Tab → inserts a starter bullet chevron list block with Tab stops
-- ⬜ `chn` + Tab → inserts a starter numbered chevron list block with Tab stops
+## v1.3.0 — Snippets ✅
+- ✅ `chl` + Tab → inserts a starter bullet chevron list block with Tab stops
+- ✅ `chn` + Tab → inserts a starter numbered chevron list block with Tab stops
 
 ---
 
