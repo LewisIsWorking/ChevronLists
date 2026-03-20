@@ -44,15 +44,21 @@
                 "chevron-lists.colourPreset": {
                     "type": "string",
                     "default": "default",
-                    "enum": ["default", "ocean", "forest", "sunset", "monochrome", "custom"],
-                    "enumDescriptions": [
-                        "Amber headers, muted grey prefixes, blue numbers",
-                        "Teal headers, slate prefixes, cyan numbers",
-                        "Green headers, dark green prefixes, lime numbers",
-                        "Coral headers, muted orange prefixes, gold numbers",
-                        "Bold white headers, grey prefixes, silver numbers",
-                        "No preset Ã¢â‚¬â€ manage colours manually via semanticTokenColorCustomizations"
-                    ],
+                    "enum": ["default","ocean","forest","sunset","monochrome","midnight","rose","autumn","arctic","neon","sepia","custom"],
+                      "enumDescriptions": [
+                          "Amber headers, grey prefixes, blue numbers",
+                          "Teal headers, slate prefixes, cyan numbers",
+                          "Green headers, dark prefixes, lime numbers",
+                          "Coral headers, orange prefixes, gold numbers",
+                          "Bold white headers, grey prefixes, silver numbers",
+                          "Purple headers, indigo prefixes, lavender numbers",
+                          "Pink headers, mauve prefixes, peach numbers",
+                          "Orange headers, brown prefixes, red numbers",
+                          "Ice blue headers, cool grey prefixes, white numbers",
+                          "Bright green headers, dark prefixes, cyan numbers",
+                          "Warm tan headers, brown prefixes, gold numbers",
+                          "Clear all preset colours — manage manually via settings"
+                      ],
                     "description": "Built-in colour preset for chevron syntax highlighting."
                 },
                 "chevron-lists.snippetTrigger": {
@@ -263,6 +269,10 @@
             {
                 "id": "chevronContent",
                 "description": "Item content text in >> - or >> N. lines"
+            },
+            {
+                "id": "chevronLabel",
+                "description": "Square bracket labels [LIKE THIS] inside item content"
             }
         ],
         "semanticTokenScopes": [
@@ -272,7 +282,8 @@
                     "chevronHeader": ["entity.name.section.chevron", "markup.heading"],
                     "chevronPrefix": ["punctuation.definition.list.chevron"],
                     "chevronNumber": ["constant.numeric.chevron"],
-                    "chevronContent": ["string.other.chevron"]
+                    "chevronContent": ["string.other.chevron"],
+                    "chevronLabel":   ["markup.bold.chevron"]
                 }
             }
         ],
