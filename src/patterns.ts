@@ -76,3 +76,12 @@ export function markDone(content: string): string {
     if (content.startsWith('[x]')) { return content; }
     return `[x] ${content}`;
 }
+
+/** Applies a numeric offset to a numbered item line; returns null if result < 1 */
+export function offsetNumberedLine(text: string, offset: number): string | null {
+    const m = text.match(/^(>{2,}) (\d+)\. (.*)$/);
+    if (!m) { return null; }
+    const newNum = Number(m[2]) + offset;
+    if (newNum < 1) { return null; }
+    return `${m[1]} ${newNum}. ${m[3]}`;
+}

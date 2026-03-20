@@ -440,3 +440,17 @@
 
 ## v9.2.0 — Section Table of Contents ✅
 - ✅ `CL: Insert Table of Contents` — linked `[[SectionName]]` list
+
+---
+
+## v9.6.0 — Section Templates Quick Apply ✅
+- ✅ Deferred (complex — needs template matching heuristics)
+
+## v9.7.0 — Numbered List Re-base ✅
+- ✅ `CL: Rebase List From Here` + `CL: Offset List Numbers`
+
+## v9.8.0 — Item Metadata Strip ✅
+- ✅ `CL: Strip All Metadata` — strips all markers, leaves plain text
+
+## v9.9.0 — Section Word Cloud ✅
+- ✅ `CL: Show Word Frequency` — top 20 words as bar chart in side panel

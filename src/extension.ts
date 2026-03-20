@@ -42,6 +42,9 @@ import { onInsertTableOfContents }                          from './tocCommands'
 import { onSetListStartNumber }                             from './listStartCommands';
 import { ChevronNumberingCodeActionProvider }               from './numberingCodeActions';
 import { ChevronCodeActionProvider }                        from './codeActionProvider';
+import { onRebaseListFromHere, onOffsetListNumbers }        from './listRebaseCommands';
+import { onStripAllMetadata }                               from './metadataStripCommands';
+import { onShowWordFrequency }                              from './wordFrequencyCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -230,6 +233,16 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── List Start Number ────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.setListStartNumber', onSetListStartNumber),
+
+        // ── List Rebase ──────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.rebaseListFromHere', onRebaseListFromHere),
+        vscode.commands.registerCommand('chevron-lists.offsetListNumbers',  onOffsetListNumbers),
+
+        // ── Metadata Strip ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.stripAllMetadata', onStripAllMetadata),
+
+        // ── Word Frequency ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showWordFrequency', onShowWordFrequency),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
