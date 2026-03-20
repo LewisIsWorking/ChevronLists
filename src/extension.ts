@@ -15,6 +15,8 @@ import { onShowStatistics }                                    from './statistic
 import { onInsertTemplate }                                    from './templateCommands';
 import { onSearchItemsWorkspace,
          onFilterSectionsWorkspace }                           from './workspaceSearch';
+import { updateDiagnostics, onFixNumbering,
+         getDiagnosticCollection }                             from './diagnosticProvider';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -75,6 +77,10 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.searchItemsWorkspace',    onSearchItemsWorkspace),
         vscode.commands.registerCommand('chevron-lists.filterSectionsWorkspace', onFilterSectionsWorkspace),
 
+        // ── Diagnostics ──────────────────────────────────────────────────────
+        getDiagnosticCollection(),
+        vscode.commands.registerCommand('chevron-lists.fixNumbering', onFixNumbering),
+
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronHoverProvider()),
@@ -87,19 +93,21 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Decoration events ────────────────────────────────────────────────
         vscode.window.onDidChangeActiveTextEditor(editor => {
-            if (editor) { updateDecorations(editor); updateStatusBar(editor); }
+            if (editor) { updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document); }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
             const editor = vscode.window.activeTextEditor;
             if (editor && event.document === editor.document) {
                 updateDecorations(editor);
                 updateStatusBar(editor);
+                updateDiagnostics(editor.document);
             }
         }),
     );
 
     if (vscode.window.activeTextEditor) {
         updateDecorations(vscode.window.activeTextEditor);
+        updateDiagnostics(vscode.window.activeTextEditor.document);
     }
 
     // Apply the configured colour preset on activation

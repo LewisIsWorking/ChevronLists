@@ -40,14 +40,26 @@ if ($changelogContent -notmatch [regex]::Escape("## [$Version]")) {
     if ($confirm -ne 'y') { exit 1 }
 }
 
-# ── 4. Bump version in package.json ──────────────────────────────────────────
-Write-Host "  [1/4] Bumping package.json to $Version..." -ForegroundColor Gray
+# ── 4. Run tests ─────────────────────────────────────────────────────────────
+Write-Host "  [1/5] Running tests..." -ForegroundColor Gray
+Push-Location $ProjectRoot
+$testResult = & bun test src/__tests__ 2>&1
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Tests failed — release aborted:`n$testResult"
+    Pop-Location
+    exit 1
+}
+Write-Host "        All tests passed." -ForegroundColor Green
+Pop-Location
+
+# ── 5. Bump version in package.json ──────────────────────────────────────────
+Write-Host "  [2/5] Bumping package.json to $Version..." -ForegroundColor Gray
 $pkg.version = $Version
 $pkg | ConvertTo-Json -Depth 10 | Set-Content $PackageJson -Encoding UTF8
 Write-Host "        Done." -ForegroundColor Green
 
-# ── 5. Compile ────────────────────────────────────────────────────────────────
-Write-Host "  [2/4] Compiling TypeScript..." -ForegroundColor Gray
+# ── 6. Compile ────────────────────────────────────────────────────────────────
+Write-Host "  [3/5] Compiling TypeScript..." -ForegroundColor Gray
 Push-Location $ProjectRoot
 $compileResult = & bun run compile 2>&1
 if ($LASTEXITCODE -ne 0) {
@@ -57,8 +69,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Host "        Done." -ForegroundColor Green
 
-# ── 6. Package ────────────────────────────────────────────────────────────────
-Write-Host "  [3/4] Packaging .vsix..." -ForegroundColor Gray
+# ── 7. Package ────────────────────────────────────────────────────────────────
+Write-Host "  [4/5] Packaging .vsix..." -ForegroundColor Gray
 $packageResult = & bunx @vscode/vsce package 2>&1
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Packaging failed:`n$packageResult"
@@ -68,8 +80,8 @@ if ($LASTEXITCODE -ne 0) {
 $vsixFile = "chevron-lists-$Version.vsix"
 Write-Host "        Created: $vsixFile" -ForegroundColor Green
 
-# ── 7. Commit and push ────────────────────────────────────────────────────────
-Write-Host "  [4/4] Committing and pushing to GitHub..." -ForegroundColor Gray
+# ── 8. Commit and push ────────────────────────────────────────────────────────
+Write-Host "  [5/5] Committing and pushing to GitHub..." -ForegroundColor Gray
 & git add .
 & git commit -m "Release v$Version"
 & git push origin master

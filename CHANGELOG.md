@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [2.1.0] - 2026-03-20
+
+### Added
+- Diagnostics in the Problems panel: duplicate section names, empty sections, out-of-sequence numbered items
+- `CL: Fix Numbering` — auto-corrects all out-of-sequence numbered items in the file
+- Diagnostics update live as you type
+- README updated to cover all features through v2.0.0
+- `release.ps1` now runs tests before packaging
+
 ## [2.0.0] - 2026-03-20
 
 ### Added
