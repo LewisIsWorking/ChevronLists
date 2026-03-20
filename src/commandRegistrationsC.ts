@@ -52,6 +52,10 @@ import { onSplitItemAtCursor }                           from './splitItemComman
 import { onCloneItemAsDone, onCloneItemStripped }         from './cloneTransformCommands';
 import { onShowRecentSections }                           from './recentSectionsCommands';
 import { onShowDuplicateItems }                           from './duplicateItemsCommands';
+import { onShowWordCloud }                                from './wordCloudCommands';
+import { onSetDueDate }                                   from './setDueDateCommands';
+import { onFindSimilarSections }                          from './similarSectionsCommands';
+import { onShowVoteLeaderboard }                          from './voteLeaderboardCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -121,6 +125,10 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.cloneItemStripped',                onCloneItemStripped),
         r('chevron-lists.showRecentSections',               onShowRecentSections),
         r('chevron-lists.showDuplicateItems',               onShowDuplicateItems),
+        r('chevron-lists.showWordCloud',                    onShowWordCloud),
+        r('chevron-lists.setDueDate',                       onSetDueDate),
+        r('chevron-lists.findSimilarSections',              onFindSimilarSections),
+        r('chevron-lists.showVoteLeaderboard',              onShowVoteLeaderboard),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

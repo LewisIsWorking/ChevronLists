@@ -1,5 +1,12 @@
 # Changelog
 
+## [16.7.0] - 2026-03-20
+### Added
+- `CL: Show Word Cloud` — proportionally-sized SVG word cloud for the most frequent words in the current section
+- `CL: Set Due Date` — natural-language date input on the item at cursor: ISO, weekday names, `+7`, `today`, `next week`, `next month`
+- `CL: Find Similar Sections` — Levenshtein similarity flags section name pairs that may be duplicates
+- `CL: Show Vote Leaderboard` — all `+N` voted items across the file sorted by vote count descending
+
 ## [15.9.0] - 2026-03-20
 ### Added
 - `CL: Group Items by Tag` — clusters items in the section by primary `#tag`, inserting `// #tag` divider lines between groups

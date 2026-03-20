@@ -209,3 +209,62 @@ export function groupLinesByTag(
     if (untagged.length > 0) { result.push({ tag: '', lines: untagged }); }
     return result;
 }
+
+const STOP_WORDS = new Set([
+    'a','an','the','and','or','but','in','on','at','to','for','of','with',
+    'is','it','its','this','that','be','as','by','from','was','are','have',
+    'has','had','not','i','my','we','our','you','your','they','their',
+]);
+
+/** Counts word frequency in an array of strings, excluding common stop words */
+export function countWordFrequency(lines: string[]): Map<string, number> {
+    const freq = new Map<string, number>();
+    for (const line of lines) {
+        for (const word of line.toLowerCase().match(/[a-z]{3,}/g) ?? []) {
+            if (STOP_WORDS.has(word)) { continue; }
+            freq.set(word, (freq.get(word) ?? 0) + 1);
+        }
+    }
+    return freq;
+}
+
+/** Levenshtein edit distance between two strings */
+export function levenshtein(a: string, b: string): number {
+    const m = a.length, n = b.length;
+    const dp = Array.from({ length: m + 1 }, (_, i) =>
+        Array.from({ length: n + 1 }, (_, j) => i === 0 ? j : j === 0 ? i : 0)
+    );
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            dp[i][j] = a[i-1] === b[j-1]
+                ? dp[i-1][j-1]
+                : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+        }
+    }
+    return dp[m][n];
+}
+
+/** String similarity ratio 0–1 (1 = identical) */
+export function similarity(a: string, b: string): number {
+    const dist = levenshtein(a.toLowerCase(), b.toLowerCase());
+    return 1 - dist / Math.max(a.length, b.length, 1);
+}
+
+/** Parses natural-language date input to YYYY-MM-DD. Returns null if unrecognised. */
+export function parseNaturalDate(input: string, from: Date = new Date()): string | null {
+    const s     = input.trim().toLowerCase();
+    const today = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+    const relMatch = s.match(/^\+(\d+)$/);
+    if (relMatch) { const d = new Date(today); d.setDate(d.getDate() + Number(relMatch[1])); return formatDate(d); }
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) { return s; }
+    const days: Record<string, number> = {
+        sun: 0, sunday: 0, mon: 1, monday: 1, tue: 2, tuesday: 2,
+        wed: 3, wednesday: 3, thu: 4, thursday: 4, fri: 5, friday: 5, sat: 6, saturday: 6,
+    };
+    if (days[s] !== undefined) { return formatDate(nextWeekday(days[s], today)); }
+    if (s === 'today')      { return formatDate(today); }
+    if (s === 'tomorrow')   { const d = new Date(today); d.setDate(d.getDate() + 1); return formatDate(d); }
+    if (s === 'next week')  { const d = new Date(today); d.setDate(d.getDate() + 7); return formatDate(d); }
+    if (s === 'next month') { const d = new Date(today); d.setMonth(d.getMonth() + 1); return formatDate(d); }
+    return null;
+}

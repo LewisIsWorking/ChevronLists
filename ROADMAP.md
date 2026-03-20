@@ -679,3 +679,17 @@
 
 ## v16.3.0 — Item Frequency Report ⬜
 - ⬜ `CL: Show Duplicate Items (File)` — finds items with identical plain-text content (after stripping markers) across the entire file, not just within sections
+
+---
+
+## v16.4.0 — Section Word Cloud ✅
+- ✅ `CL: Show Word Cloud` — proportional SVG word cloud for current section
+
+## v16.5.0 — Inline Due Date Picker ✅
+- ✅ `CL: Set Due Date` — ISO, weekday names, `+7`, `today`, `next week`
+
+## v16.6.0 — Section Merge by Similarity ✅
+- ✅ `CL: Find Similar Sections` — Levenshtein similarity ≥70% flagged
+
+## v16.7.0 — Item Vote Leaderboard ✅
+- ✅ `CL: Show Vote Leaderboard` — all `+N` items sorted by vote count
