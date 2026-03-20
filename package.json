@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -15,6 +15,16 @@
     "activationEvents": ["onLanguage:markdown"],
     "main": "./out/extension.js",
     "contributes": {
+        "configurationDefaults": {
+            "editor.semanticTokenColorCustomizations": {
+                "rules": {
+                    "chevronHeader":  { "foreground": "#E5C07B", "bold": true },
+                    "chevronPrefix":  { "foreground": "#5C6370", "italic": false },
+                    "chevronNumber":  { "foreground": "#61AFEF" },
+                    "chevronContent": {}
+                }
+            }
+        },
         "configuration": {
             "title": "Chevron Lists",
             "properties": {
@@ -152,6 +162,23 @@
                 "path": "./syntaxes/chevron-lists.tmLanguage.json",
                 "scopeName": "text.html.markdown.chevron-lists",
                 "injectTo": ["text.html.markdown"]
+            }
+        ],
+        "semanticTokenTypes": [
+            { "id": "chevronHeader",  "description": "Chevron section header text (after the > prefix)" },
+            { "id": "chevronPrefix",  "description": "Chevron punctuation: >, >>, >> -, >> N." },
+            { "id": "chevronNumber",  "description": "Number in a >> N. numbered item" },
+            { "id": "chevronContent", "description": "Item content text in >> - or >> N. lines" }
+        ],
+        "semanticTokenScopes": [
+            {
+                "language": "markdown",
+                "scopes": {
+                    "chevronHeader":  ["entity.name.section.chevron", "markup.heading"],
+                    "chevronPrefix":  ["punctuation.definition.list.chevron"],
+                    "chevronNumber":  ["constant.numeric.chevron"],
+                    "chevronContent": ["string.other.chevron"]
+                }
             }
         ],
         "snippets": [

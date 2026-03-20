@@ -100,8 +100,9 @@
 
 ---
 
-## v1.5.0 — Themes ⬜
-- ⬜ Semantic token colours so themes can style chevron headers and items independently
-- ⬜ Built-in colour theme contribution with recommended chevron colour assignments
+## v1.5.0 — Themes ✅
+- ✅ Semantic token types: `chevronHeader`, `chevronPrefix`, `chevronNumber`, `chevronContent`
+- ✅ Built-in colour recommendations via `configurationDefaults` (amber header, muted prefix, blue numbers)
+- ✅ `semanticTokenScopes` ensures compatibility with non-semantic themes
 
 ---

@@ -2,6 +2,18 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.5.0] - 2026-03-20
+
+### Added
+- Semantic token provider — chevron elements now have dedicated token types that any theme can target independently:
+  - `chevronHeader` — section header text
+  - `chevronPrefix` — `>`, `>> -`, `>> N.` punctuation
+  - `chevronNumber` — the number in `>> N.` items
+  - `chevronContent` — item text content
+- Built-in colour recommendations via `configurationDefaults` — headers appear bold/amber, prefixes muted grey, numbers blue, out of the box with any theme
+- `semanticTokenScopes` mapping ensures the tokens also work in themes that don't use semantic highlighting
+- 16 new unit tests covering all semantic token range logic
+
 ## [1.4.0] - 2026-03-20
 
 ### Added

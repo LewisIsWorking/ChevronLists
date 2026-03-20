@@ -14,6 +14,7 @@ import { ChevronFoldingProvider }                            from './foldingProv
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
 import { createStatusBar, updateStatusBar }                  from './statusBar';
+import { ChevronSemanticTokensProvider, buildLegend }        from './semanticProvider';
 
 export function activate(context: vscode.ExtensionContext): void {
     const statusBar = createStatusBar();
@@ -55,6 +56,11 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronHoverProvider()),
+        vscode.languages.registerDocumentSemanticTokensProvider(
+            { language: 'markdown' },
+            new ChevronSemanticTokensProvider(buildLegend()),
+            buildLegend()
+        ),
 
         // ── Decoration events ────────────────────────────────────────────────
         vscode.window.onDidChangeActiveTextEditor(editor => {
