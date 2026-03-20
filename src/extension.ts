@@ -7,6 +7,8 @@ import { onSelectSectionItems, onDeleteSection,
          onMoveSectionDown }                                 from './sectionCommands';
 import { onCopySectionAsMarkdown,
          onCopySectionAsPlainText }                          from './exportCommands';
+import { onSortItemsAZ, onSortItemsZA,
+         onRenumberItems }                                   from './sortCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -38,6 +40,11 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Export ───────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.copySectionAsMarkdown',  onCopySectionAsMarkdown),
         vscode.commands.registerCommand('chevron-lists.copySectionAsPlainText', onCopySectionAsPlainText),
+
+        // ── Sorting ──────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.sortItemsAZ',    onSortItemsAZ),
+        vscode.commands.registerCommand('chevron-lists.sortItemsZA',    onSortItemsZA),
+        vscode.commands.registerCommand('chevron-lists.renumberItems',  onRenumberItems),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

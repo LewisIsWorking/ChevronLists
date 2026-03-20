@@ -2,6 +2,14 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.2.0] - 2026-03-20
+
+### Added
+- `Chevron Lists: Sort Items A → Z` — sorts all bullet items in the current section alphabetically (case-insensitive)
+- `Chevron Lists: Sort Items Z → A` — reverse alphabetical sort
+- `Chevron Lists: Renumber Items` — resets all numbered items in the section back to 1, 2, 3... per chevron depth
+- 14 new unit tests covering all sorting and renumber logic
+
 ## [1.1.0] - 2026-03-20
 
 ### Added

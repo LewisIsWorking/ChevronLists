@@ -80,10 +80,10 @@
 
 ---
 
-## v1.2.0 — Sorting ⬜
-- ⬜ `Chevron Lists: Sort Items A→Z` — sort all items under the nearest header alphabetically
-- ⬜ `Chevron Lists: Sort Items Z→A` — reverse alphabetical sort
-- ⬜ `Chevron Lists: Renumber Items` — fix/reset numbering on a `>> 1.` list after manual edits
+## v1.2.0 — Sorting ✅
+- ✅ `Chevron Lists: Sort Items A → Z` — sorts bullet items alphabetically (case-insensitive)
+- ✅ `Chevron Lists: Sort Items Z → A` — reverse alphabetical sort
+- ✅ `Chevron Lists: Renumber Items` — resets numbered item sequence per chevron depth
 
 ---
 
