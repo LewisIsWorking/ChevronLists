@@ -110,7 +110,7 @@
     "scripts": {
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "test": "bun test src/__tests__"
+        "test": "bun test src/__tests__ --coverage"
     },
     "license": "CC-BY-NC-ND-4.0",
     "devDependencies": {
