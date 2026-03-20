@@ -1,11 +1,16 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to **Chevron Lists** will be documented here.
+
+## [1.6.1] - 2026-03-20
+
+### Changed
+- All command palette titles shortened from `Chevron Lists: ...` to `CL: ...` for faster searching
 
 ## [1.6.0] - 2026-03-20
 
 ### Added
-- `Chevron Lists: Switch Colour Preset` command — quick pick to switch between 5 built-in colour presets live
+- `Chevron Lists: Switch Colour Preset` command â€” quick pick to switch between 5 built-in colour presets live
 - `chevron-lists.colourPreset` setting: `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom`
 - Preset colours applied automatically on activation so they survive window restarts
 - `custom` option removes built-in preset rules, leaving full control to the user via `semanticTokenColorCustomizations`
@@ -14,7 +19,7 @@ All notable changes to **Chevron Lists** will be documented here.
 ## [1.6.0] - 2026-03-20
 
 ### Added
-- `Chevron Lists: Switch Colour Preset` command — live quick pick to switch between 6 built-in colour themes instantly
+- `Chevron Lists: Switch Colour Preset` command â€” live quick pick to switch between 6 built-in colour themes instantly
 - `chevron-lists.colourPreset` setting: `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom`
 - Preset is automatically applied on extension activation
 - `custom` preset clears all chevron colour overrides so you can define your own via `semanticTokenColorCustomizations`
@@ -23,77 +28,77 @@ All notable changes to **Chevron Lists** will be documented here.
 ## [1.5.0] - 2026-03-20
 
 ### Added
-- Semantic token provider — chevron elements now have dedicated token types that any theme can target independently:
-  - `chevronHeader` — section header text
-  - `chevronPrefix` — `>`, `>> -`, `>> N.` punctuation
-  - `chevronNumber` — the number in `>> N.` items
-  - `chevronContent` — item text content
-- Built-in colour recommendations via `configurationDefaults` — headers appear bold/amber, prefixes muted grey, numbers blue, out of the box with any theme
+- Semantic token provider â€” chevron elements now have dedicated token types that any theme can target independently:
+  - `chevronHeader` â€” section header text
+  - `chevronPrefix` â€” `>`, `>> -`, `>> N.` punctuation
+  - `chevronNumber` â€” the number in `>> N.` items
+  - `chevronContent` â€” item text content
+- Built-in colour recommendations via `configurationDefaults` â€” headers appear bold/amber, prefixes muted grey, numbers blue, out of the box with any theme
 - `semanticTokenScopes` mapping ensures the tokens also work in themes that don't use semantic highlighting
 - 16 new unit tests covering all semantic token range logic
 
 ## [1.4.0] - 2026-03-20
 
 ### Added
-- `Chevron Lists: Search Items` — live-filtering quick pick showing every item across all sections in the file; moving through results previews the location; Escape restores original position
-- `Chevron Lists: Filter Sections` — live-filtering quick pick showing all section headers; jump instantly to any section by name
+- `Chevron Lists: Search Items` â€” live-filtering quick pick showing every item across all sections in the file; moving through results previews the location; Escape restores original position
+- `Chevron Lists: Filter Sections` â€” live-filtering quick pick showing all section headers; jump instantly to any section by name
 - 11 new unit tests covering item and header collection logic
 
 ## [1.3.2] - 2026-03-20
 
 ### Added
-- `chevron-lists.snippetTrigger` setting — choose how `chl`/`chn` snippets are triggered:
-  - `tab` (default) — press Tab after typing the prefix
-  - `ctrl+enter` — press Ctrl+Enter (no Copilot conflict)
-  - `none` — disable keyboard expansion, use Insert Snippet from the command palette
+- `chevron-lists.snippetTrigger` setting â€” choose how `chl`/`chn` snippets are triggered:
+  - `tab` (default) â€” press Tab after typing the prefix
+  - `ctrl+enter` â€” press Ctrl+Enter (no Copilot conflict)
+  - `none` â€” disable keyboard expansion, use Insert Snippet from the command palette
 
 ## [1.3.1] - 2026-03-20
 
 ### Fixed
-- `chl` and `chn` snippets now expand correctly — our Tab keybinding was intercepting Tab before VS Code's snippet engine could run. Snippets are now expanded directly in the Tab handler when the text before cursor matches a prefix.
+- `chl` and `chn` snippets now expand correctly â€” our Tab keybinding was intercepting Tab before VS Code's snippet engine could run. Snippets are now expanded directly in the Tab handler when the text before cursor matches a prefix.
 
 ## [1.3.0] - 2026-03-20
 
 ### Added
-- `chl` snippet — type `chl` + Tab in a markdown file to insert a chevron bullet list block with Tab stops for the header and each item
-- `chn` snippet — type `chn` + Tab to insert a chevron numbered list block with Tab stops
+- `chl` snippet â€” type `chl` + Tab in a markdown file to insert a chevron bullet list block with Tab stops for the header and each item
+- `chn` snippet â€” type `chn` + Tab to insert a chevron numbered list block with Tab stops
 - 10 unit tests validating snippet structure and content
 
 ## [1.2.0] - 2026-03-20
 
 ### Added
-- `Chevron Lists: Sort Items A → Z` — sorts all bullet items in the current section alphabetically (case-insensitive)
-- `Chevron Lists: Sort Items Z → A` — reverse alphabetical sort
-- `Chevron Lists: Renumber Items` — resets all numbered items in the section back to 1, 2, 3... per chevron depth
+- `Chevron Lists: Sort Items A â†’ Z` â€” sorts all bullet items in the current section alphabetically (case-insensitive)
+- `Chevron Lists: Sort Items Z â†’ A` â€” reverse alphabetical sort
+- `Chevron Lists: Renumber Items` â€” resets all numbered items in the section back to 1, 2, 3... per chevron depth
 - 14 new unit tests covering all sorting and renumber logic
 
 ## [1.1.0] - 2026-03-20
 
 ### Added
-- `Chevron Lists: Copy Section as Markdown` — converts the current section to a standard markdown heading + list and copies to clipboard
-- `Chevron Lists: Copy Section as Plain Text` — strips all prefixes and copies just the header text and item content to clipboard
+- `Chevron Lists: Copy Section as Markdown` â€” converts the current section to a standard markdown heading + list and copies to clipboard
+- `Chevron Lists: Copy Section as Plain Text` â€” strips all prefixes and copies just the header text and item content to clipboard
 - Nested items are indented correctly in both export formats
 - 16 new unit tests covering all export conversion logic
 
 ## [1.0.4] - 2026-03-20
 
 ### Fixed
-- Move Section Up/Down now correctly swaps only the header and its chevron items — blank lines, `---` dividers, and any non-chevron content between sections stay exactly in place during a swap
+- Move Section Up/Down now correctly swaps only the header and its chevron items â€” blank lines, `---` dividers, and any non-chevron content between sections stay exactly in place during a swap
 
 ## [1.0.3] - 2026-03-20
 
 ### Fixed
-- Move Section Up/Down now feels like dragging — cursor follows the moved section to its new position rather than staying put, making it clear which section moved and allowing repeated moves without repositioning the cursor
+- Move Section Up/Down now feels like dragging â€” cursor follows the moved section to its new position rather than staying put, making it clear which section moved and allowing repeated moves without repositioning the cursor
 
 ## [1.0.2] - 2026-03-20
 
 ### Fixed
-- Multi-cursor Tab/Shift+Tab now correctly handles range selections (Shift+click) as well as multi-cursor selections (Alt+click) — previously only the active cursor line was affected
+- Multi-cursor Tab/Shift+Tab now correctly handles range selections (Shift+click) as well as multi-cursor selections (Alt+click) â€” previously only the active cursor line was affected
 
 ## [1.0.1] - 2026-03-20
 
 ### Fixed
-- Extension now loads correctly — stale compiled test/mock files removed from `out/` that were causing silent activation failure
+- Extension now loads correctly â€” stale compiled test/mock files removed from `out/` that were causing silent activation failure
 - Navigation keybindings changed from `Alt+Up/Down` to `Ctrl+Alt+Up/Down` to avoid conflict with VS Code's built-in move-line commands
 - `.vscodeignore` updated to explicitly exclude `out/__mocks__/` and `out/__tests__/` from VSIX
 - Removed stale `paths` mapping from `tsconfig.json`
@@ -101,7 +106,7 @@ All notable changes to **Chevron Lists** will be documented here.
 ## [1.0.0] - 2026-03-20
 
 ### Added
-- Full SOLID refactor — split into 12 focused modules (all under 200 lines)
+- Full SOLID refactor â€” split into 12 focused modules (all under 200 lines)
 - 37 unit tests with 100% coverage of all pure logic (Bun test runner)
 - `Alt+Down` / `Alt+Up` keybindings to jump between chevron headers
 - Jump to Next Header command (`chevron-lists.nextHeader`)
@@ -115,12 +120,12 @@ All notable changes to **Chevron Lists** will be documented here.
 - Multi-cursor support for Tab / Shift+Tab across multiple chevron lines
 
 ### Changed
-- `extension.ts` is now wiring-only — all logic delegated to focused handler modules
+- `extension.ts` is now wiring-only â€” all logic delegated to focused handler modules
 
 ## [0.6.1] - 2026-03-19
 
 ### Fixed
-- Tab no longer intercepts Copilot inline suggestions — pressing Tab now accepts a Copilot suggestion as expected; only falls through to chevron indent behaviour when no suggestion is visible
+- Tab no longer intercepts Copilot inline suggestions â€” pressing Tab now accepts a Copilot suggestion as expected; only falls through to chevron indent behaviour when no suggestion is visible
 
 ### Tested
 - All features verified locally: Enter, Tab/Shift+Tab, numbered lists, syntax highlighting, folding, minimap indicators, Select Section Items, listPrefix setting, blankLineAfterHeader setting
@@ -176,3 +181,6 @@ All notable changes to **Chevron Lists** will be documented here.
 - Pressing Enter after a `>> - Item` line continues the list with another `>> -` prefix
 - Pressing Enter on an empty `>> -` line stops the list and clears the prefix
 - All other Enter presses in markdown files behave normally
+
+
+

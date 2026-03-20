@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -43,7 +43,7 @@
                         "Green headers, dark green prefixes, lime numbers",
                         "Coral headers, muted orange prefixes, gold numbers",
                         "Bold white headers, grey prefixes, silver numbers",
-                        "No preset — manage colours manually via semanticTokenColorCustomizations"
+                        "No preset â€” manage colours manually via semanticTokenColorCustomizations"
                     ],
                     "description": "Built-in colour preset for chevron syntax highlighting."
                 },
@@ -54,7 +54,7 @@
                     "enumDescriptions": [
                         "Press Tab after typing chl or chn to expand (may conflict with Copilot suggestions)",
                         "Press Ctrl+Enter after typing chl or chn to expand (no Copilot conflict)",
-                        "Disable keyboard expansion — use Insert Snippet from the command palette"
+                        "Disable keyboard expansion â€” use Insert Snippet from the command palette"
                     ],
                     "description": "Which key triggers chevron snippet expansion (chl / chn)."
                 },
@@ -68,79 +68,79 @@
         "commands": [
             {
                 "command": "chevron-lists.onEnter",
-                "title": "Chevron Lists: Handle Enter"
+                "title": "CL: Handle Enter"
             },
             {
                 "command": "chevron-lists.onTab",
-                "title": "Chevron Lists: Indent Item"
+                "title": "CL: Indent Item"
             },
             {
                 "command": "chevron-lists.onShiftTab",
-                "title": "Chevron Lists: Dedent Item"
+                "title": "CL: Dedent Item"
             },
             {
                 "command": "chevron-lists.expandSnippet",
-                "title": "Chevron Lists: Expand Snippet"
+                "title": "CL: Expand Snippet"
             },
             {
                 "command": "chevron-lists.nextHeader",
-                "title": "Chevron Lists: Jump to Next Header"
+                "title": "CL: Jump to Next Header"
             },
             {
                 "command": "chevron-lists.prevHeader",
-                "title": "Chevron Lists: Jump to Previous Header"
+                "title": "CL: Jump to Previous Header"
             },
             {
                 "command": "chevron-lists.selectSectionItems",
-                "title": "Chevron Lists: Select Section Items"
+                "title": "CL: Select Section Items"
             },
             {
                 "command": "chevron-lists.deleteSection",
-                "title": "Chevron Lists: Delete Section"
+                "title": "CL: Delete Section"
             },
             {
                 "command": "chevron-lists.duplicateSection",
-                "title": "Chevron Lists: Duplicate Section"
+                "title": "CL: Duplicate Section"
             },
             {
                 "command": "chevron-lists.moveSectionUp",
-                "title": "Chevron Lists: Move Section Up"
+                "title": "CL: Move Section Up"
             },
             {
                 "command": "chevron-lists.moveSectionDown",
-                "title": "Chevron Lists: Move Section Down"
+                "title": "CL: Move Section Down"
             },
             {
                 "command": "chevron-lists.copySectionAsMarkdown",
-                "title": "Chevron Lists: Copy Section as Markdown"
+                "title": "CL: Copy Section as Markdown"
             },
             {
                 "command": "chevron-lists.copySectionAsPlainText",
-                "title": "Chevron Lists: Copy Section as Plain Text"
+                "title": "CL: Copy Section as Plain Text"
             },
             {
                 "command": "chevron-lists.sortItemsAZ",
-                "title": "Chevron Lists: Sort Items A → Z"
+                "title": "CL: Sort Items A â†’ Z"
             },
             {
                 "command": "chevron-lists.sortItemsZA",
-                "title": "Chevron Lists: Sort Items Z → A"
+                "title": "CL: Sort Items Z â†’ A"
             },
             {
                 "command": "chevron-lists.renumberItems",
-                "title": "Chevron Lists: Renumber Items"
+                "title": "CL: Renumber Items"
             },
             {
                 "command": "chevron-lists.searchItems",
-                "title": "Chevron Lists: Search Items"
+                "title": "CL: Search Items"
             },
             {
                 "command": "chevron-lists.filterSections",
-                "title": "Chevron Lists: Filter Sections"
+                "title": "CL: Filter Sections"
             },
             {
                 "command": "chevron-lists.switchColourPreset",
-                "title": "Chevron Lists: Switch Colour Preset"
+                "title": "CL: Switch Colour Preset"
             }
         ],
         "keybindings": [
@@ -219,3 +219,5 @@
         "typescript": "^5.0.0"
     }
 }
+
+
