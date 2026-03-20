@@ -2,6 +2,11 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.0.3] - 2026-03-20
+
+### Fixed
+- Move Section Up/Down now feels like dragging — cursor follows the moved section to its new position rather than staying put, making it clear which section moved and allowing repeated moves without repositioning the cursor
+
 ## [1.0.2] - 2026-03-20
 
 ### Fixed

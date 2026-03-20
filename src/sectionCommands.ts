@@ -74,6 +74,10 @@ export async function onMoveSectionUp(): Promise<void> {
         );
         eb.replace(range, [...curLines, ...prevLines].join('\n'));
     });
+    // Move cursor to follow the section — it now starts at prevStart
+    const newPos = new vscode.Position(prevStart, 0);
+    editor.selection = new vscode.Selection(newPos, newPos);
+    editor.revealRange(new vscode.Range(newPos, newPos), vscode.TextEditorRevealType.InCenterIfOutsideViewport);
 }
 
 /** Swaps the section containing the cursor with the section immediately below it */
@@ -100,4 +104,9 @@ export async function onMoveSectionDown(): Promise<void> {
         );
         eb.replace(range, [...nextLines, ...curLines].join('\n'));
     });
+    // Move cursor to follow the section — it now starts after the next section
+    const newLine = curStart + (nextEnd - nextStart + 1);
+    const newPos  = new vscode.Position(newLine, 0);
+    editor.selection = new vscode.Selection(newPos, newPos);
+    editor.revealRange(new vscode.Range(newPos, newPos), vscode.TextEditorRevealType.InCenterIfOutsideViewport);
 }
