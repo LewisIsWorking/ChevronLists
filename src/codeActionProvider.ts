@@ -13,9 +13,13 @@ function badNumberingActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[
         const numbered = parseNumbered(doc.lineAt(line).text);
         if (!numbered) { continue; }
         const expected = prevNumberAtDepth(doc, line, numbered.chevrons) + 1;
+
+        // The diagnostic is on the item BEFORE the break.
+        // "Fix" means: renumber this item so it flows from the previous one.
         actions.push(makeAction(`Fix: change ${numbered.num} to ${expected}`, QF, diag, {
             preferred: true,
-            edit: makeEdit(doc.uri, doc.lineAt(line).range, `${numbered.chevrons} ${expected}. ${numbered.content}`),
+            edit: makeEdit(doc.uri, doc.lineAt(line).range,
+                `${numbered.chevrons} ${expected}. ${numbered.content}`),
         }));
         actions.push(makeAction('Set custom start number here…', QF, diag, {
             command: { command: 'chevron-lists.setListStartNumber', title: 'Set List Start Number' },

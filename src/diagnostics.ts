@@ -10,16 +10,17 @@ export interface DiagnosticIssue {
 /** Finds all diagnostic issues in a document */
 export function collectIssues(doc: LineReader, prefix: string): DiagnosticIssue[] {
     const issues: DiagnosticIssue[] = [];
-    const seenHeaders  = new Map<string, number>(); // name → first line
-    const depthCounter = new Map<string, number>(); // chevrons → expected next number
-    let   lastHeaderLine   = -1;
-    let   lastHeaderHasItems = false;
+    const seenHeaders = new Map<string, number>(); // name → first line
+    let lastHeaderLine     = -1;
+    let lastHeaderHasItems = false;
+
+    // Per-depth: track {line, num} of the previous numbered item
+    const prevItem = new Map<string, { line: number; num: number }>();
 
     for (let i = 0; i < doc.lineCount; i++) {
         const text = doc.lineAt(i).text;
 
         if (isHeader(text)) {
-            // Check previous section was not empty
             if (lastHeaderLine >= 0 && !lastHeaderHasItems) {
                 issues.push({ line: lastHeaderLine, message: `Empty section — no items under this header`, kind: 'empty-section' });
             }
@@ -29,9 +30,9 @@ export function collectIssues(doc: LineReader, prefix: string): DiagnosticIssue[
             } else {
                 seenHeaders.set(name, i);
             }
-            lastHeaderLine   = i;
+            lastHeaderLine     = i;
             lastHeaderHasItems = false;
-            depthCounter.clear();
+            prevItem.clear();
             continue;
         }
 
@@ -39,25 +40,28 @@ export function collectIssues(doc: LineReader, prefix: string): DiagnosticIssue[
         if (numbered) {
             lastHeaderHasItems = true;
             const key  = numbered.chevrons;
-            // Only flag if we've already seen a previous item at this depth
-            // (first item is allowed to start at any number)
-            if (depthCounter.has(key)) {
-                const expected = depthCounter.get(key)! + 1;
+            const prev = prevItem.get(key);
+
+            if (prev !== undefined) {
+                const expected = prev.num + 1;
                 if (numbered.num !== expected) {
-                    issues.push({ line: i, message: `Expected item ${expected} but found ${numbered.num} at depth ${key}`, kind: 'bad-numbering' });
+                    // Flag the PREVIOUS item — it's the one that created
+                    // the unexpected gap, not the current one.
+                    issues.push({
+                        line:    prev.line,
+                        message: `Sequence break after this item: expected ${expected} next but found ${numbered.num}`,
+                        kind:    'bad-numbering',
+                    });
                 }
             }
-            depthCounter.set(key, numbered.num);
+
+            prevItem.set(key, { line: i, num: numbered.num });
             continue;
         }
 
-        const bullet = parseBullet(text, prefix);
-        if (bullet) {
-            lastHeaderHasItems = true;
-        }
+        if (parseBullet(text, prefix)) { lastHeaderHasItems = true; }
     }
 
-    // Check final section
     if (lastHeaderLine >= 0 && !lastHeaderHasItems) {
         issues.push({ line: lastHeaderLine, message: `Empty section — no items under this header`, kind: 'empty-section' });
     }

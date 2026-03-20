@@ -51,11 +51,20 @@ describe('collectIssues — duplicate headers', () => {
 });
 
 describe('collectIssues — bad numbering', () => {
-    it('flags an out-of-sequence number', () => {
+    it('flags the item BEFORE the break (not the item that breaks)', () => {
+        // 69 is followed by 2 — flag 69, not 2
+        const doc    = makeDoc(['> Header', '>> 69. first', '>> 2. second']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'bad-numbering')).toBe(true);
+        expect(issues.find(i => i.kind === 'bad-numbering')?.line).toBe(1); // 69 is on line 1
+    });
+
+    it('flags an out-of-sequence jump (e.g. 1, 3)', () => {
         const doc    = makeDoc(['> Header', '>> 1. first', '>> 3. third']);
         const issues = collectIssues(doc, '-');
         expect(issues.some(i => i.kind === 'bad-numbering')).toBe(true);
-        expect(issues.find(i => i.kind === 'bad-numbering')?.line).toBe(2);
+        // Flag is on "1." because it's followed by "3." not "2."
+        expect(issues.find(i => i.kind === 'bad-numbering')?.line).toBe(1);
     });
 
     it('does not flag correct sequence', () => {
@@ -64,19 +73,7 @@ describe('collectIssues — bad numbering', () => {
         expect(issues.some(i => i.kind === 'bad-numbering')).toBe(false);
     });
 
-    it('resets counter for each new section', () => {
-        const doc    = makeDoc(['> A', '>> 1. one', '>> 2. two', '> B', '>> 1. one', '>> 2. two']);
-        const issues = collectIssues(doc, '-');
-        expect(issues).toHaveLength(0);
-    });
-
-    it('tracks depth independently', () => {
-        const doc    = makeDoc(['> Header', '>> 1. one', '>>> 1. nested', '>>> 2. nested', '>> 2. two']);
-        const issues = collectIssues(doc, '-');
-        expect(issues).toHaveLength(0);
-    });
-
-    it('does not flag a list that starts at a number other than 1', () => {
+    it('does not flag a list starting at a number other than 1', () => {
         const doc    = makeDoc(['> Header', '>> 50. fifty', '>> 51. fifty-one']);
         const issues = collectIssues(doc, '-');
         expect(issues.some(i => i.kind === 'bad-numbering')).toBe(false);
@@ -86,6 +83,17 @@ describe('collectIssues — bad numbering', () => {
         const doc    = makeDoc(['> Header', '>> 50. fifty', '>> 52. fifty-two']);
         const issues = collectIssues(doc, '-');
         expect(issues.some(i => i.kind === 'bad-numbering')).toBe(true);
-        expect(issues.find(i => i.kind === 'bad-numbering')?.line).toBe(2);
+        // Flag is on "50." because it's followed by "52." not "51."
+        expect(issues.find(i => i.kind === 'bad-numbering')?.line).toBe(1);
+    });
+
+    it('resets counter for each new section', () => {
+        const doc    = makeDoc(['> A', '>> 1. one', '>> 2. two', '> B', '>> 1. one', '>> 2. two']);
+        expect(collectIssues(doc, '-').some(i => i.kind === 'bad-numbering')).toBe(false);
+    });
+
+    it('tracks depth independently', () => {
+        const doc    = makeDoc(['> Header', '>> 1. one', '>>> 1. nested', '>>> 2. nested', '>> 2. two']);
+        expect(collectIssues(doc, '-').some(i => i.kind === 'bad-numbering')).toBe(false);
     });
 });
