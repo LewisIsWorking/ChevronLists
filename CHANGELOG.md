@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [3.4.0] - 2026-03-20
+
+### Added
+- `CL: Filter by Tag (Workspace)` — two-step picker: choose a tag, then jump to matching items across every markdown file in the workspace
+- Status bar now shows `done/total` count when any section has checkboxes
+- Hover tooltip on section headers now shows completion progress (`done/total`)
+- `CL: Quick Capture` — two-step floating input: pick a target section (pinned sections first), type an item, it appends immediately
+- `CL: Save Section as Template` — saves the section at the cursor as a reusable user template with Tab stops
+
 ## [3.0.0] - 2026-03-20
 
 ### Added
@@ -52,6 +61,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [3.4.0] - 2026-03-20
+
+### Added
+- `CL: Filter by Tag (Workspace)` — two-step picker: choose a tag, then jump to matching items across every markdown file in the workspace
+- Status bar now shows `done/total` count when any section has checkboxes
+- Hover tooltip on section headers now shows completion progress (`done/total`)
+- `CL: Quick Capture` — two-step floating input: pick a target section (pinned sections first), type an item, it appends immediately
+- `CL: Save Section as Template` — saves the section at the cursor as a reusable user template with Tab stops
 
 ## [3.0.0] - 2026-03-20
 

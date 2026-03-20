@@ -27,6 +27,9 @@ import { onFilterByPriority }                                from './priorityCom
 import { onShowUpcoming, updateDueDateDiagnostics }          from './dueDateCommands';
 import { onGroupSections, onFilterGroups }                   from './groupCommands';
 import { onSuggestItems, onSummariseSection, onExpandItem }  from './aiCommands';
+import { onFilterByTagWorkspace }                             from './tagWorkspaceCommands';
+import { onQuickCapture }                                    from './quickCapture';
+import { onSaveSectionAsTemplate }                           from './saveTemplate';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -123,6 +126,15 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.suggestItems',     onSuggestItems),
         vscode.commands.registerCommand('chevron-lists.summariseSection', onSummariseSection),
         vscode.commands.registerCommand('chevron-lists.expandItem',       onExpandItem),
+
+        // ── Tag Workspace ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.filterByTagWorkspace', onFilterByTagWorkspace),
+
+        // ── Quick Capture ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.quickCapture', () => onQuickCapture(context)),
+
+        // ── Save as Template ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.saveSectionAsTemplate', onSaveSectionAsTemplate),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

@@ -200,3 +200,18 @@
 - ✅ `CL: Summarise Section (AI)` — generates a one-line summary
 - ✅ `CL: Expand Item (AI)` — expands an item into nested sub-items
 - ✅ `chevron-lists.anthropicApiKey` setting
+
+---
+
+## v3.1.0 — Tag Workspace Search ✅
+- ✅ `CL: Filter by Tag (Workspace)` — find all items with a given `#tag` across every markdown file
+
+## v3.2.0 — Completion Progress ✅
+- ✅ Status bar shows `done/total` when any checkboxes are present
+- ✅ Section hover tooltip shows completion progress
+
+## v3.3.0 — Quick Capture ✅
+- ✅ `CL: Quick Capture` — instantly append an item to any section; pinned sections appear first
+
+## v3.4.0 — Save Section as Template ✅
+- ✅ `CL: Save Section as Template` — saves the section at the cursor as a reusable template with Tab stops

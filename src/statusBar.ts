@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { getConfig } from './config';
 import { isHeader, parseBullet, parseNumbered } from './patterns';
+import { parseCheck } from './checkParser';
 
 let statusBarItem: vscode.StatusBarItem | undefined;
 
@@ -10,7 +11,7 @@ export function createStatusBar(): vscode.StatusBarItem {
     return statusBarItem;
 }
 
-/** Updates the status bar with section and item counts for the active markdown editor */
+/** Updates the status bar with section, item and completion counts */
 export function updateStatusBar(editor?: vscode.TextEditor): void {
     if (!statusBarItem) { return; }
     if (!editor || editor.document.languageId !== 'markdown') {
@@ -18,17 +19,29 @@ export function updateStatusBar(editor?: vscode.TextEditor): void {
         return;
     }
     const { prefix } = getConfig();
-    let sections = 0;
-    let items    = 0;
+    let sections = 0, items = 0, done = 0, total = 0;
+
     for (let i = 0; i < editor.document.lineCount; i++) {
         const text = editor.document.lineAt(i).text;
         if (isHeader(text)) {
             sections++;
-        } else if (parseBullet(text, prefix) || parseNumbered(text)) {
-            items++;
+        } else {
+            const bullet  = parseBullet(text, prefix);
+            const numbered = parseNumbered(text);
+            const content  = bullet?.content ?? numbered?.content ?? null;
+            if (content !== null) {
+                items++;
+                const check = parseCheck(content);
+                if (check) {
+                    total++;
+                    if (check.state === 'done') { done++; }
+                }
+            }
         }
     }
-    statusBarItem.text    = `$(list-unordered) ${sections} sections  $(symbol-enum-member) ${items} items`;
-    statusBarItem.tooltip = 'Chevron Lists: sections and items in this file';
+
+    const checkPart = total > 0 ? `  $(check) ${done}/${total}` : '';
+    statusBarItem.text    = `$(list-unordered) ${sections}  $(symbol-enum-member) ${items}${checkPart}`;
+    statusBarItem.tooltip = `Chevron Lists: ${sections} sections, ${items} items${total > 0 ? `, ${done}/${total} done` : ''}`;
     statusBarItem.show();
 }
