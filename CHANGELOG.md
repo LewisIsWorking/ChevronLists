@@ -2,6 +2,14 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.0.1] - 2026-03-20
+
+### Fixed
+- Extension now loads correctly — stale compiled test/mock files removed from `out/` that were causing silent activation failure
+- Navigation keybindings changed from `Alt+Up/Down` to `Ctrl+Alt+Up/Down` to avoid conflict with VS Code's built-in move-line commands
+- `.vscodeignore` updated to explicitly exclude `out/__mocks__/` and `out/__tests__/` from VSIX
+- Removed stale `paths` mapping from `tsconfig.json`
+
 ## [1.0.0] - 2026-03-20
 
 ### Added

@@ -62,7 +62,7 @@
 ## v1.0.0 — SOLID Refactor + Full Feature Set ✅
 - ✅ Full SOLID refactor — 12 focused modules, all under 200 lines
 - ✅ 37 unit tests, 100% coverage of all pure logic (Bun test runner)
-- ✅ `Alt+Down` / `Alt+Up` — jump to next/previous `> Header`
+- ✅ `Ctrl+Alt+Down` / `Ctrl+Alt+Up` — jump to next/previous `> Header`
 - ✅ `Chevron Lists: Delete Section` command
 - ✅ `Chevron Lists: Duplicate Section` command
 - ✅ `Chevron Lists: Move Section Up` command
