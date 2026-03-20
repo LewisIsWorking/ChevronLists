@@ -95,7 +95,7 @@ Write-Host "        Done." -ForegroundColor Green
 
 Pop-Location
 
-# ── 8. Done — open Marketplace upload page ───────────────────────────────────
+# ── 9. Done — open Marketplace upload page ───────────────────────────────────
 Write-Host ""
 Write-Host "  ✅ Release $Version ready!" -ForegroundColor Green
 Write-Host ""

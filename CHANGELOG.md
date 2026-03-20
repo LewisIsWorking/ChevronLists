@@ -2,6 +2,17 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [8.8.0] - 2026-03-20
+
+### Fixed
+- **Colour presets now work correctly** — semantic token highlighting is explicitly enabled for markdown on install and on every preset switch (previously silently ignored by most themes)
+
+### Added
+- **esbuild bundling** — all 109 source files now bundle into a single `dist/extension.js`; VSIX drops from 234 KB / 230 files to **55 KB / 13 files** (77% smaller); activation is faster
+- 6 new built-in colour presets: `midnight`, `rose`, `autumn`, `arctic`, `neon`, `sepia` (12 presets total)
+- `ARCHITECTURE.md` — documents the pure/vscode module boundary rule to prevent the recurring test-import issue
+- `bun run bundle` / `bun run bundle:prod` scripts; `bun run compile` is now type-check only (no emit)
+
 ## [8.7.0] - 2026-03-20
 
 ### Added
@@ -75,6 +86,17 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [8.8.0] - 2026-03-20
+
+### Fixed
+- **Colour presets now work correctly** — semantic token highlighting is explicitly enabled for markdown on install and on every preset switch (previously silently ignored by most themes)
+
+### Added
+- **esbuild bundling** — all 109 source files now bundle into a single `dist/extension.js`; VSIX drops from 234 KB / 230 files to **55 KB / 13 files** (77% smaller); activation is faster
+- 6 new built-in colour presets: `midnight`, `rose`, `autumn`, `arctic`, `neon`, `sepia` (12 presets total)
+- `ARCHITECTURE.md` — documents the pure/vscode module boundary rule to prevent the recurring test-import issue
+- `bun run bundle` / `bun run bundle:prod` scripts; `bun run compile` is now type-check only (no emit)
 
 ## [8.7.0] - 2026-03-20
 
@@ -296,6 +318,17 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [8.8.0] - 2026-03-20
+
+### Fixed
+- **Colour presets now work correctly** — semantic token highlighting is explicitly enabled for markdown on install and on every preset switch (previously silently ignored by most themes)
+
+### Added
+- **esbuild bundling** — all 109 source files now bundle into a single `dist/extension.js`; VSIX drops from 234 KB / 230 files to **55 KB / 13 files** (77% smaller); activation is faster
+- 6 new built-in colour presets: `midnight`, `rose`, `autumn`, `arctic`, `neon`, `sepia` (12 presets total)
+- `ARCHITECTURE.md` — documents the pure/vscode module boundary rule to prevent the recurring test-import issue
+- `bun run bundle` / `bun run bundle:prod` scripts; `bun run compile` is now type-check only (no emit)
+
 ## [8.7.0] - 2026-03-20
 
 ### Added
@@ -369,6 +402,17 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [8.8.0] - 2026-03-20
+
+### Fixed
+- **Colour presets now work correctly** — semantic token highlighting is explicitly enabled for markdown on install and on every preset switch (previously silently ignored by most themes)
+
+### Added
+- **esbuild bundling** — all 109 source files now bundle into a single `dist/extension.js`; VSIX drops from 234 KB / 230 files to **55 KB / 13 files** (77% smaller); activation is faster
+- 6 new built-in colour presets: `midnight`, `rose`, `autumn`, `arctic`, `neon`, `sepia` (12 presets total)
+- `ARCHITECTURE.md` — documents the pure/vscode module boundary rule to prevent the recurring test-import issue
+- `bun run bundle` / `bun run bundle:prod` scripts; `bun run compile` is now type-check only (no emit)
 
 ## [8.7.0] - 2026-03-20
 

@@ -39,6 +39,8 @@ Items support inline markers that integrate with commands throughout the extensi
 | `[LABEL TEXT]` | `>> - [ACTION] do thing` | Square bracket label (gold) |
 | `{red}` / `{green}` / `{blue}` etc. | `>> - {red} blocked` | Colour label |
 | `~~text~~` | `>> - ~~cancelled task~~` | Strikethrough |
+| `// comment` | `>> - Deploy // ask Lewis first` | Inline comment (muted) |
+| `? ` | `>> - ? unclear requirement` | Question flag |
 
 ### Section Syntax
 
@@ -48,6 +50,7 @@ Items support inline markers that integrate with commands throughout the extensi
 | `>> > Note text` | `>> > This is a note` | Inline note |
 | `>> [bookmark:Name]` | `>> [bookmark:Key Scene]` | Named bookmark |
 | `>> [hidden]` | `>> [hidden]` | Hidden section marker |
+| `>> [locked]` | `>> [locked]` | Locked section (skipped by bulk ops) |
 | `>>depends:Name` | `>>depends:Phase One` | Dependency marker |
 | `==N` | `> My Section ==500` | Word count goal |
 
@@ -94,6 +97,7 @@ Type `CL:` in the command palette (`Ctrl+Shift+P`).
 | `CL: Filter by Tag (Workspace)` | Same across all workspace files |
 | `CL: Filter by Priority` | Filter by `!` / `!!` / `!!!` |
 | `CL: Filter by Mention` | Filter by `@PersonName` |
+| `CL: Filter by Mention (Workspace)` | Same across all workspace files |
 | `CL: Filter Starred Items` | Quick pick of all `* ` starred items |
 | `CL: Show Upcoming` | `@date` items sorted chronologically; overdue flagged |
 | `CL: Show Recurring` | All `@daily/@weekly/@monthly` items |
@@ -120,7 +124,13 @@ Type `CL:` in the command palette (`Ctrl+Shift+P`).
 | `CL: Archive Section` | Moves the entire section to Archive |
 | `CL: Hide Section` | Marks with `>> [hidden]` and folds |
 | `CL: Show Hidden Sections` | Reveals all hidden sections |
+| `CL: Lock Section` | Marks section with `>> [locked]`; skipped by bulk operations |
+| `CL: Unlock Section` | Removes the lock marker |
+| `CL: Snapshot Section` | Saves the section to workspace state as a named snapshot |
+| `CL: Restore Snapshot` | Replaces the section with a saved snapshot |
+| `CL: List Snapshots` | Shows all saved snapshots for the current file |
 | `CL: Compare Section Statistics` | Side-by-side stats of any two sections |
+| `CL: Sort Sections A → Z / Z → A` | Reorders all sections alphabetically by header name |
 
 ### Item Actions
 | Command | Description |
@@ -142,6 +152,8 @@ Type `CL:` in the command palette (`Ctrl+Shift+P`).
 | `CL: Set Item Colour` | Sets `{colour}` label via quick pick |
 | `CL: Strikethrough Item` | Toggles `~~strikethrough~~` on content |
 | `CL: Remove Strikethrough` | Removes `~~` markers |
+| `CL: Toggle Flag` | Toggles `? ` question flag on item content |
+| `CL: Preview Item` | Rich notification showing all markers interpreted |
 
 ### Bulk Actions
 | Command | Description |
@@ -153,6 +165,8 @@ Type `CL:` in the command palette (`Ctrl+Shift+P`).
 | `CL: Mark All Done` | Marks all `[ ]` items as `[x]` |
 | `CL: Mark All Undone` | Resets all `[x]` items to `[ ]` |
 | `CL: Remove All Checkboxes` | Strips all `[x]`/`[ ]` markers |
+| `CL: Filter Flagged Items` | Quick pick of all `? ` flagged items |
+| `CL: Strip Comments` | Removes all `// comment` tails from items in the section |
 
 ### Sorting & Numbering
 | Command | Description |
@@ -221,7 +235,7 @@ Type `CL:` in the command palette (`Ctrl+Shift+P`).
 ### Appearance
 | Command | Description |
 |---|---|
-| `CL: Switch Colour Preset` | Choose `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom` |
+| `CL: Switch Colour Preset` | Choose from 12 built-in presets: `default`, `ocean`, `forest`, `sunset`, `monochrome`, `midnight`, `rose`, `autumn`, `arctic`, `neon`, `sepia`, `custom` |
 | `CL: Enter Reading Mode` | Live-updating HTML webview beside the editor |
 
 ### AI Assist
@@ -286,12 +300,16 @@ Sections · Items · `✓ done/total` · `words/goal` (updates as you type)
 ## Development
 
 ```bash
-bun install        # install dependencies
-bun run compile    # compile TypeScript
-bun test           # run unit tests with coverage
+bun install          # install dependencies
+bun run compile      # type-check TypeScript (no emit)
+bun run bundle       # bundle with esbuild (dev, with source maps)
+bun run bundle:prod  # bundle with esbuild (production, minified)
+bun test             # run unit tests with coverage
 ```
 
-443 unit tests, 100% coverage, 33 test files.
+458 unit tests, 100% coverage, 35 test files.
+
+The extension bundles all source files into a single `dist/extension.js` using esbuild, keeping the VSIX small and activation fast. See `ARCHITECTURE.md` for module boundary rules.
 
 ---
 
