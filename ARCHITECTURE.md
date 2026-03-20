@@ -59,3 +59,7 @@ import { renameTagInText } from './tagParser';
 - Open/Closed: new features = new files, not modifications to existing ones where possible  
 - Commands are event handlers — they read state, transform via pure functions, then write
 - No shared mutable state between commands (except `pinState`, `jumpHistory`, `snapshotCommands` which use `ExtensionContext.workspaceState` deliberately)
+
+## Module Count
+
+As of v15.1.0: ~230 source modules, 50 test files, 587 unit tests, 240 declared commands, bundled to a single `dist/extension.js` (~185KB) via esbuild.
