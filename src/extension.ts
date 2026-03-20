@@ -16,6 +16,13 @@ import { onPasteAsBullets, onPasteAsNumbered }              from './pasteCommand
 import { onDuplicateItem }                                   from './duplicateItem';
 import { onRenameSection }                                   from './renameSectionCommands';
 import { onRenameTag, onRenameTagWorkspace }                from './renameTagCommands';
+import { onMoveItemUp, onMoveItemDown }                     from './moveItemCommands';
+import { onImportTemplatesFromFile,
+         onExportTemplatesToFile }                          from './templateFileCommands';
+import { onMarkAllDone, onMarkAllUndone,
+         onRemoveAllCheckboxes }                            from './completionCommands';
+import { onUppercaseItem, onLowercaseItem,
+         onTitleCaseItem }                                  from './textTransformCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -131,6 +138,24 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.renameSection',        onRenameSection),
         vscode.commands.registerCommand('chevron-lists.renameTag',            onRenameTag),
         vscode.commands.registerCommand('chevron-lists.renameTagWorkspace',   onRenameTagWorkspace),
+
+        // ── Move Item ────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.moveItemUp',   onMoveItemUp),
+        vscode.commands.registerCommand('chevron-lists.moveItemDown', onMoveItemDown),
+
+        // ── Template File ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.importTemplatesFromFile', onImportTemplatesFromFile),
+        vscode.commands.registerCommand('chevron-lists.exportTemplatesToFile',   onExportTemplatesToFile),
+
+        // ── Completion Batch ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.markAllDone',        onMarkAllDone),
+        vscode.commands.registerCommand('chevron-lists.markAllUndone',      onMarkAllUndone),
+        vscode.commands.registerCommand('chevron-lists.removeAllCheckboxes', onRemoveAllCheckboxes),
+
+        // ── Text Transforms ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.uppercaseItem', onUppercaseItem),
+        vscode.commands.registerCommand('chevron-lists.lowercaseItem', onLowercaseItem),
+        vscode.commands.registerCommand('chevron-lists.titleCaseItem', onTitleCaseItem),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

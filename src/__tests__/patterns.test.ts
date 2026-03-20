@@ -6,6 +6,7 @@ import {
     parseNumbered,
     isHeader,
     extractLabels,
+    toTitleCase,
 } from '../patterns';
 
 describe('escapeRegex', () => {
@@ -110,5 +111,17 @@ describe('extractLabels', () => {
     });
     it('handles empty brackets', () => {
         expect(extractLabels('[]')).toHaveLength(1);
+    });
+});
+
+describe('toTitleCase', () => {
+    it('capitalises first letter of each word', () => {
+        expect(toTitleCase('hello world')).toBe('Hello World');
+    });
+    it('handles empty string', () => {
+        expect(toTitleCase('')).toBe('');
+    });
+    it('handles single word', () => {
+        expect(toTitleCase('item')).toBe('Item');
     });
 });

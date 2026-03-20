@@ -367,3 +367,18 @@
 
 ## v7.1.0 — Smart Indentation ✅
 - ✅ Tab/Shift+Tab on a single item also shifts all child items together
+
+---
+
+## v7.2.0 — Item Move ✅
+- ✅ `CL: Move Item Up` / `CL: Move Item Down`
+
+## v7.3.0 — Section Templates from File ✅
+- ✅ `CL: Import Templates from File`
+- ✅ `CL: Export Templates to File`
+
+## v7.4.0 — Completion Commands ✅
+- ✅ `CL: Mark All Done`, `CL: Mark All Undone`, `CL: Remove All Checkboxes`
+
+## v7.5.0 — Item Text Transforms ✅
+- ✅ `CL: Uppercase Item`, `CL: Lowercase Item`, `CL: Title Case Item`

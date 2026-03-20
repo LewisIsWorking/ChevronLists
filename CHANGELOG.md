@@ -2,6 +2,19 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [7.5.0] - 2026-03-20
+
+### Added
+- `CL: Move Item Up` / `CL: Move Item Down` — moves the item at the cursor one position up or down within the section
+- `CL: Import Templates from File` — imports all sections from a `.md` file as named templates
+- `CL: Export Templates to File` — exports user-defined templates back to a `.md` file
+- `CL: Mark All Done` — marks all `[ ]` items in the current section as `[x]`
+- `CL: Mark All Undone` — resets all `[x]` items back to `[ ]`
+- `CL: Remove All Checkboxes` — strips `[x]`/`[ ]` from all items in the section
+- `CL: Uppercase Item` — converts item content to UPPERCASE
+- `CL: Lowercase Item` — converts item content to lowercase
+- `CL: Title Case Item` — converts item content to Title Case
+
 ## [7.1.0] - 2026-03-20
 
 ### Added
@@ -29,6 +42,19 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [7.5.0] - 2026-03-20
+
+### Added
+- `CL: Move Item Up` / `CL: Move Item Down` — moves the item at the cursor one position up or down within the section
+- `CL: Import Templates from File` — imports all sections from a `.md` file as named templates
+- `CL: Export Templates to File` — exports user-defined templates back to a `.md` file
+- `CL: Mark All Done` — marks all `[ ]` items in the current section as `[x]`
+- `CL: Mark All Undone` — resets all `[x]` items back to `[ ]`
+- `CL: Remove All Checkboxes` — strips `[x]`/`[ ]` from all items in the section
+- `CL: Uppercase Item` — converts item content to UPPERCASE
+- `CL: Lowercase Item` — converts item content to lowercase
+- `CL: Title Case Item` — converts item content to Title Case
 
 ## [7.1.0] - 2026-03-20
 
@@ -204,6 +230,19 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [7.5.0] - 2026-03-20
+
+### Added
+- `CL: Move Item Up` / `CL: Move Item Down` — moves the item at the cursor one position up or down within the section
+- `CL: Import Templates from File` — imports all sections from a `.md` file as named templates
+- `CL: Export Templates to File` — exports user-defined templates back to a `.md` file
+- `CL: Mark All Done` — marks all `[ ]` items in the current section as `[x]`
+- `CL: Mark All Undone` — resets all `[x]` items back to `[ ]`
+- `CL: Remove All Checkboxes` — strips `[x]`/`[ ]` from all items in the section
+- `CL: Uppercase Item` — converts item content to UPPERCASE
+- `CL: Lowercase Item` — converts item content to lowercase
+- `CL: Title Case Item` — converts item content to Title Case
+
 ## [7.1.0] - 2026-03-20
 
 ### Added
@@ -231,6 +270,19 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [7.5.0] - 2026-03-20
+
+### Added
+- `CL: Move Item Up` / `CL: Move Item Down` — moves the item at the cursor one position up or down within the section
+- `CL: Import Templates from File` — imports all sections from a `.md` file as named templates
+- `CL: Export Templates to File` — exports user-defined templates back to a `.md` file
+- `CL: Mark All Done` — marks all `[ ]` items in the current section as `[x]`
+- `CL: Mark All Undone` — resets all `[x]` items back to `[ ]`
+- `CL: Remove All Checkboxes` — strips `[x]`/`[ ]` from all items in the section
+- `CL: Uppercase Item` — converts item content to UPPERCASE
+- `CL: Lowercase Item` — converts item content to lowercase
+- `CL: Title Case Item` — converts item content to Title Case
 
 ## [7.1.0] - 2026-03-20
 
