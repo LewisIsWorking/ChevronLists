@@ -182,3 +182,25 @@ export class ChevronEstimateCompletionProvider implements vscode.CompletionItemP
         });
     }
 }
+
+// ── Rating completion (★) ─────────────────────────────────────────────────────
+
+/** Provides ★1–★5 rating completions */
+export class ChevronRatingCompletionProvider implements vscode.CompletionItemProvider {
+    provideCompletionItems(
+        document: vscode.TextDocument,
+        position: vscode.Position
+    ): vscode.CompletionItem[] {
+        const lineText = document.lineAt(position).text;
+        const prefix   = lineText.slice(0, position.character);
+        if (!prefix.endsWith('★')) { return []; }
+
+        return [1, 2, 3, 4, 5].map(n => {
+            const item = new vscode.CompletionItem(`★${n}`, vscode.CompletionItemKind.Enum);
+            item.detail     = '★'.repeat(n) + '☆'.repeat(5 - n);
+            item.sortText   = String(n);
+            item.insertText = String(n); // already typed ★
+            return item;
+        });
+    }
+}

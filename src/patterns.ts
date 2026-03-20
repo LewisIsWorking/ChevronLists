@@ -164,3 +164,24 @@ export function checkLinesHealth(
     }
     return issues;
 }
+
+/** Shifts a YYYY-MM-DD date string by N days. Returns the new date string. */
+export function shiftDate(dateStr: string, days: number): string {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const date = new Date(y, m - 1, d);
+    date.setDate(date.getDate() + days);
+    return formatDate(date);
+}
+
+/**
+ * Computes a composite weight score for a section based on:
+ * items(×3) + prioritySum(!!!→3, !!→2, !→1) + votes + tags
+ */
+export function computeSectionWeight(
+    itemCount: number,
+    prioritySum: number,
+    voteSum: number,
+    tagCount: number
+): number {
+    return (itemCount * 3) + prioritySum + voteSum + tagCount;
+}

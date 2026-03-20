@@ -566,3 +566,17 @@
 
 ## v13.1.0 — Section Timer ✅
 - ✅ `CL: Start Section Timer` + `CL: Stop Section Timer` — live elapsed time
+
+---
+
+## v13.2.0 — Rating Autocomplete ✅
+- ✅ `★` triggers `★1`–`★5` completions with star previews
+
+## v13.3.0 — Section Weight ✅
+- ✅ `CL: Show Section Weights` — composite ranking by items×3 + priority + votes + tags
+
+## v13.4.0 — Batch Due Date Shift ✅
+- ✅ `CL: Shift All Due Dates` — shift every @date in section by ±N days
+
+## v13.5.0 — Section Completion Streak ✅
+- ✅ `CL: Show Completion Streak` — sections where all checkboxes are done

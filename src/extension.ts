@@ -65,7 +65,8 @@ import { ChevronTagCompletionProvider,
          ChevronLinkCompletionProvider,
          ChevronPriorityCompletionProvider,
          ChevronDateCompletionProvider,
-         ChevronEstimateCompletionProvider }              from './completionProviders';
+         ChevronEstimateCompletionProvider,
+         ChevronRatingCompletionProvider }              from './completionProviders';
 import { onInsertItemSnippet }                            from './itemSnippetCommands';
 import { onInsertFileSectionLink }                        from './fileSectionLinkCommands';
 import { onShowTagReportWorkspace }                       from './tagReportCommands';
@@ -73,6 +74,9 @@ import { onFilterByColourLabel }                          from './colourFilterCo
 import { onPinSectionToTop }                             from './pinToTopCommands';
 import { onSetItemRating, onFilterByRating }             from './ratingCommands';
 import { onStartSectionTimer, onStopSectionTimer }       from './sectionTimer';
+import { onShowSectionWeights }                           from './sectionWeightCommands';
+import { onShiftAllDueDates }                             from './shiftDueDatesCommands';
+import { onShowCompletionStreak }                         from './completionStreakCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -347,6 +351,11 @@ export function activate(context: vscode.ExtensionContext): void {
             new ChevronEstimateCompletionProvider(),
             '~'
         ),
+        vscode.languages.registerCompletionItemProvider(
+            { language: 'markdown' },
+            new ChevronRatingCompletionProvider(),
+            '★'
+        ),
 
         // ── Item Snippets ────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.insertItemSnippet', onInsertItemSnippet),
@@ -370,6 +379,15 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Section Timer ────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.startSectionTimer', onStartSectionTimer),
         vscode.commands.registerCommand('chevron-lists.stopSectionTimer',  onStopSectionTimer),
+
+        // ── Section Weights ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showSectionWeights', onShowSectionWeights),
+
+        // ── Shift Due Dates ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.shiftAllDueDates', onShiftAllDueDates),
+
+        // ── Completion Streak ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showCompletionStreak', onShowCompletionStreak),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
