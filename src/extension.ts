@@ -40,6 +40,7 @@ import { onShowTagHeatmap, onShowCompletionHeatmap }        from './heatmapComma
 import { onStampItem, onShowOldItems }                      from './itemAgeCommands';
 import { onInsertTableOfContents }                          from './tocCommands';
 import { onSetListStartNumber }                             from './listStartCommands';
+import { ChevronNumberingCodeActionProvider }               from './numberingCodeActions';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -362,6 +363,11 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.languages.registerDocumentSymbolProvider({ language: 'markdown' }, new ChevronOutlineProvider()),
         vscode.languages.registerDefinitionProvider({ language: 'markdown' }, new ChevronLinkDefinitionProvider()),
         vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
+        vscode.languages.registerCodeActionsProvider(
+            { language: 'markdown' },
+            new ChevronNumberingCodeActionProvider(),
+            { providedCodeActionKinds: ChevronNumberingCodeActionProvider.providedCodeActionKinds }
+        ),
         vscode.languages.registerDocumentSemanticTokensProvider(
             { language: 'markdown' },
             new ChevronSemanticTokensProvider(buildLegend()),
