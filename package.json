@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "11.1.0",
+    "version": "11.5.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -250,7 +250,10 @@
             { "command": "chevron-lists.pasteAsSection",                                "title": "CL: Paste Clipboard as Section" },
             { "command": "chevron-lists.foldAllSections",                               "title": "CL: Fold All Sections" },
             { "command": "chevron-lists.unfoldAllSections",                             "title": "CL: Unfold All Sections" },
-            { "command": "chevron-lists.removeOldItems",                                "title": "CL: Remove Old Items" }
+            { "command": "chevron-lists.removeOldItems",                                "title": "CL: Remove Old Items" },
+            { "command": "chevron-lists.showJumpHistory",                               "title": "CL: Show Jump History" },
+            { "command": "chevron-lists.duplicateItemAndIncrement",                     "title": "CL: Duplicate Item and Increment" },
+            { "command": "chevron-lists.newSection",                                    "title": "CL: New Section" }
         ],
         "keybindings": [
             {

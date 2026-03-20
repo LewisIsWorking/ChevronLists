@@ -95,6 +95,14 @@ export function toMarkdownTable(rows: Array<{ num: number; content: string }>): 
     ].join('\n');
 }
 
+/** Increments the first number found in a content string. Returns null if no number found. */
+export function incrementFirstNumber(content: string): string | null {
+    const match = content.match(/\d+/);
+    if (!match) { return null; }
+    const newNum = Number(match[0]) + 1;
+    return content.slice(0, match.index!) + newNum + content.slice(match.index! + match[0].length);
+}
+
 /** Pure line-by-line diff of two string arrays. Lines prefixed with ' ', '+', or '-' */
 export function diffLines(a: string[], b: string[]): string[] {
     const out: string[] = [];

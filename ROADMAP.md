@@ -496,3 +496,17 @@
 
 ## v11.1.0 — Item Age Cleanup ✅
 - ✅ `CL: Remove Old Items` — delete items older than N days (with confirmation)
+
+---
+
+## v11.2.0 — Section Navigation History ✅
+- ✅ `CL: Show Jump History` — quick pick of all stored positions
+
+## v11.3.0 — Item Duplication with Increment ✅
+- ✅ `CL: Duplicate Item and Increment` — `Draw card 1` → `Draw card 2`
+
+## v11.4.0 — Section Word Goal Progress Bar ✅
+- ✅ Live `▓▓▓░░░ words/goal` bar on headers with `==N` goals (red/amber/green)
+
+## v11.5.0 — Quick Section Create ✅
+- ✅ `CL: New Section` — prompts for name, inserts header + blank item

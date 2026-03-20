@@ -55,6 +55,10 @@ import { onToggleItemCountBadge, updateBadgeDecorations } from './itemCountBadge
 import { onPasteAsSection }                               from './pasteSectionCommands';
 import { onFoldAllSections, onUnfoldAllSections }         from './foldAllCommands';
 import { onRemoveOldItems }                               from './removeOldItemsCommands';
+import { onShowJumpHistory }                              from './jumpHistory';
+import { onDuplicateItemAndIncrement }                    from './duplicateIncrementCommands';
+import { updateGoalDecorations }                          from './goalProgressDecoration';
+import { onNewSection }                                   from './newSectionCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -286,6 +290,15 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Remove Old Items ─────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.removeOldItems', onRemoveOldItems),
 
+        // ── Jump History List ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showJumpHistory', onShowJumpHistory),
+
+        // ── Duplicate with Increment ─────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.duplicateItemAndIncrement', onDuplicateItemAndIncrement),
+
+        // ── New Section ──────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.newSection', onNewSection),
+
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections',           onFilterSections),
@@ -438,6 +451,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
                 updateWordGoalDiagnostics(editor.document, prefix);
                 updateBadgeDecorations(editor);
+                updateGoalDecorations(editor);
             }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
@@ -448,6 +462,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
                 updateWordGoalDiagnostics(editor.document, prefix);
                 updateBadgeDecorations(editor);
+                updateGoalDecorations(editor);
             }
         }),
     );
@@ -459,6 +474,7 @@ export function activate(context: vscode.ExtensionContext): void {
         updateDueDateDiagnostics(vscode.window.activeTextEditor.document, dueDateDiags, prefix);
         updateWordGoalDiagnostics(vscode.window.activeTextEditor.document, prefix);
         updateBadgeDecorations(vscode.window.activeTextEditor);
+        updateGoalDecorations(vscode.window.activeTextEditor);
     }
     applyConfiguredPreset();
 }
