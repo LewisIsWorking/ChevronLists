@@ -17,6 +17,7 @@ import { onSearchItemsWorkspace,
          onFilterSectionsWorkspace }                           from './workspaceSearch';
 import { updateDiagnostics, onFixNumbering,
          getDiagnosticCollection }                             from './diagnosticProvider';
+import { onFilterByTag }                                       from './tagCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -80,6 +81,9 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Diagnostics ──────────────────────────────────────────────────────
         getDiagnosticCollection(),
         vscode.commands.registerCommand('chevron-lists.fixNumbering', onFixNumbering),
+
+        // ── Tags ─────────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.filterByTag', onFilterByTag),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

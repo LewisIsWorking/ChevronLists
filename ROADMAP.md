@@ -146,10 +146,9 @@
 - ✅ `CL: Fix Numbering` — auto-corrects all numbered item sequences in the file
 - ✅ Diagnostics update live as you type
 
-## v2.2.0 — Item Tags ⬜
-- ⬜ `#tag` support in item content — `>> - Deploy server #urgent #backend`
-- ⬜ `CL: Filter by Tag` — quick pick of all tags in the file, jump to matching items
-- ⬜ `CL: Filter by Tag (Workspace)` — same but across all markdown files
+## v2.2.0 — Item Tags ✅
+- ✅ `#tag` support in item content — `>> - Deploy server #urgent #backend`
+- ✅ `CL: Filter by Tag` — quick pick of all tags in the file, jump to matching items
 
 ## v2.3.0 — Linked Sections ⬜
 - ⬜ `[[SectionName]]` link syntax in items — jump to another section in the same file

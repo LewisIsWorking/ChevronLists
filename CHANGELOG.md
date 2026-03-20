@@ -2,6 +2,13 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [2.2.0] - 2026-03-20
+
+### Added
+- `#tag` support in item content — e.g. `>> - Deploy server #urgent #backend`
+- `CL: Filter by Tag` — quick pick all tags in the file, then jump to matching items with live preview
+- 18 new unit tests covering tag extraction, stripping, collection and deduplication
+
 ## [2.1.0] - 2026-03-20
 
 ### Added
