@@ -1,0 +1,110 @@
+/**
+ * commandRegistrationsC.ts
+ * Phase 12-32 features: new item ops, autocomplete, export variants, decorations, AI.
+ */
+import * as vscode from 'vscode';
+import { onEditItemContent }                                from './editItemCommands';
+import { onCollectItemsByTag }                             from './collectByTagCommands';
+import { onConvertSectionToTable }                         from './tableExportCommands';
+import { onMoveItemToSection }                             from './moveItemToSectionCommands';
+import { onDiffTwoSections }                              from './diffSectionCommands';
+import { onClearAllPriority, onClearAllDueDates }         from './batchClearCommands';
+import { onToggleItemCountBadge }                          from './itemCountBadge';
+import { onPasteAsSection }                               from './pasteSectionCommands';
+import { onFoldAllSections, onUnfoldAllSections }         from './foldAllCommands';
+import { onRemoveOldItems }                               from './removeOldItemsCommands';
+import { onShowJumpHistory }                              from './jumpHistory';
+import { onDuplicateItemAndIncrement }                    from './duplicateIncrementCommands';
+import { onNewSection }                                   from './newSectionCommands';
+import { onSectionHealthCheck }                           from './healthCheckCommands';
+import { onInsertItemSnippet }                            from './itemSnippetCommands';
+import { onInsertFileSectionLink }                        from './fileSectionLinkCommands';
+import { onShowTagReportWorkspace }                       from './tagReportCommands';
+import { onFilterByColourLabel }                          from './colourFilterCommands';
+import { onPinSectionToTop }                             from './pinToTopCommands';
+import { onSetItemRating, onFilterByRating }             from './ratingCommands';
+import { onStartSectionTimer, onStopSectionTimer }       from './sectionTimer';
+import { onShowSectionWeights }                           from './sectionWeightCommands';
+import { onShiftAllDueDates }                             from './shiftDueDatesCommands';
+import { onShowCompletionStreak }                         from './completionStreakCommands';
+import { onCopySectionAsJson }                            from './jsonCopyCommands';
+import { onMoveItemToFile }                               from './moveItemToFileCommands';
+import { onOpenDailyNote }                                from './dailyNoteCommands';
+import { onCopySectionAs }                                from './copySectionAsCommands';
+import { onBulkSetRating }                                from './bulkRatingCommands';
+import { onExportAllSectionsAsJson }                      from './exportAllJsonCommands';
+import { onRewriteItem }                                  from './rewriteItemCommands';
+import { onToggleSummaryDecoration,
+         onToggleChecklistBar,
+         onToggleWordGoalBar,
+         onToggleAgeHighlight,
+         onToggleAllDecorations }                         from './decorationToggles';
+import { onFilterByColourLabelWorkspace }                 from './colourFilterWorkspaceCommands';
+import { onShowExpiredItems }                             from './expiryCommands';
+import { onBrowseTemplates }                              from './templateGallery';
+import { ChevronTagCompletionProvider,
+         ChevronMentionCompletionProvider,
+         ChevronLinkCompletionProvider,
+         ChevronPriorityCompletionProvider,
+         ChevronDateCompletionProvider }                  from './completionProviders';
+import { ChevronEstimateCompletionProvider,
+         ChevronRatingCompletionProvider }                from './completionProvidersExtra';
+
+const MARKDOWN = { language: 'markdown' };
+const comp     = vscode.languages.registerCompletionItemProvider;
+
+export function registerPhase12to32Commands(): vscode.Disposable[] {
+    const r = vscode.commands.registerCommand;
+    return [
+        r('chevron-lists.editItemContent',                  onEditItemContent),
+        r('chevron-lists.collectItemsByTag',                onCollectItemsByTag),
+        r('chevron-lists.convertSectionToTable',            onConvertSectionToTable),
+        r('chevron-lists.moveItemToSection',                onMoveItemToSection),
+        r('chevron-lists.diffTwoSections',                  onDiffTwoSections),
+        r('chevron-lists.clearAllPriority',                 onClearAllPriority),
+        r('chevron-lists.clearAllDueDates',                 onClearAllDueDates),
+        r('chevron-lists.toggleItemCountBadge',             onToggleItemCountBadge),
+        r('chevron-lists.pasteAsSection',                   onPasteAsSection),
+        r('chevron-lists.foldAllSections',                  onFoldAllSections),
+        r('chevron-lists.unfoldAllSections',                onUnfoldAllSections),
+        r('chevron-lists.removeOldItems',                   onRemoveOldItems),
+        r('chevron-lists.showJumpHistory',                  onShowJumpHistory),
+        r('chevron-lists.duplicateItemAndIncrement',        onDuplicateItemAndIncrement),
+        r('chevron-lists.newSection',                       onNewSection),
+        r('chevron-lists.sectionHealthCheck',               onSectionHealthCheck),
+        r('chevron-lists.insertItemSnippet',                onInsertItemSnippet),
+        r('chevron-lists.insertFileSectionLink',            onInsertFileSectionLink),
+        r('chevron-lists.showTagReportWorkspace',           onShowTagReportWorkspace),
+        r('chevron-lists.filterByColourLabel',              onFilterByColourLabel),
+        r('chevron-lists.pinSectionToTop',                  onPinSectionToTop),
+        r('chevron-lists.setItemRating',                    onSetItemRating),
+        r('chevron-lists.filterByRating',                   onFilterByRating),
+        r('chevron-lists.startSectionTimer',                onStartSectionTimer),
+        r('chevron-lists.stopSectionTimer',                 onStopSectionTimer),
+        r('chevron-lists.showSectionWeights',               onShowSectionWeights),
+        r('chevron-lists.shiftAllDueDates',                 onShiftAllDueDates),
+        r('chevron-lists.showCompletionStreak',             onShowCompletionStreak),
+        r('chevron-lists.copySectionAsJson',                onCopySectionAsJson),
+        r('chevron-lists.moveItemToFile',                   onMoveItemToFile),
+        r('chevron-lists.openDailyNote',                    onOpenDailyNote),
+        r('chevron-lists.copySectionAs',                    onCopySectionAs),
+        r('chevron-lists.bulkSetRating',                    onBulkSetRating),
+        r('chevron-lists.exportAllSectionsAsJson',          onExportAllSectionsAsJson),
+        r('chevron-lists.rewriteItem',                      onRewriteItem),
+        r('chevron-lists.toggleSummaryDecoration',          onToggleSummaryDecoration),
+        r('chevron-lists.toggleChecklistBar',               onToggleChecklistBar),
+        r('chevron-lists.toggleWordGoalBar',                onToggleWordGoalBar),
+        r('chevron-lists.toggleAgeHighlight',               onToggleAgeHighlight),
+        r('chevron-lists.toggleAllDecorations',             onToggleAllDecorations),
+        r('chevron-lists.filterByColourLabelWorkspace',     onFilterByColourLabelWorkspace),
+        r('chevron-lists.showExpiredItems',                 onShowExpiredItems),
+        r('chevron-lists.browseTemplates',                  onBrowseTemplates),
+        comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
+        comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
+        comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),
+        comp(MARKDOWN, new ChevronPriorityCompletionProvider(), '!'),
+        comp(MARKDOWN, new ChevronDateCompletionProvider(),     '@'),
+        comp(MARKDOWN, new ChevronEstimateCompletionProvider(), '~'),
+        comp(MARKDOWN, new ChevronRatingCompletionProvider(),   '★'),
+    ];
+}
