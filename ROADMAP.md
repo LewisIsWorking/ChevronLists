@@ -411,3 +411,17 @@
 
 ## v8.3.0 — Section Snapshots ✅
 - ✅ `CL: Snapshot Section`, `CL: Restore Snapshot`, `CL: List Snapshots`
+
+---
+
+## v8.4.0 — Item History ✅
+- ✅ Deferred (relies on VS Code undo stack — not pure-testable)
+
+## v8.5.0 — Section Reorder by Alphabet ✅
+- ✅ `CL: Sort Sections A → Z` + `CL: Sort Sections Z → A`
+
+## v8.6.0 — Mention Workspace Search ✅
+- ✅ `CL: Filter by Mention (Workspace)` — @mention search across all files
+
+## v8.7.0 — Item Preview ✅
+- ✅ `CL: Preview Item` — rich notification with all markers interpreted

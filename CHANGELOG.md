@@ -2,6 +2,14 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [8.7.0] - 2026-03-20
+
+### Added
+- `CL: Sort Sections A → Z` — reorders all sections in the file alphabetically by header name
+- `CL: Sort Sections Z → A` — reverse alphabetical section order
+- `CL: Filter by Mention (Workspace)` — filter items by `@PersonName` across all workspace files
+- `CL: Preview Item` — shows a rich notification for the item at the cursor with all markers interpreted (priority, date, estimate, tags, colour, star, flag, vote, comment)
+
 ## [8.3.0] - 2026-03-20
 
 ### Added
@@ -67,6 +75,14 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [8.7.0] - 2026-03-20
+
+### Added
+- `CL: Sort Sections A → Z` — reorders all sections in the file alphabetically by header name
+- `CL: Sort Sections Z → A` — reverse alphabetical section order
+- `CL: Filter by Mention (Workspace)` — filter items by `@PersonName` across all workspace files
+- `CL: Preview Item` — shows a rich notification for the item at the cursor with all markers interpreted (priority, date, estimate, tags, colour, star, flag, vote, comment)
 
 ## [8.3.0] - 2026-03-20
 
@@ -280,6 +296,14 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [8.7.0] - 2026-03-20
+
+### Added
+- `CL: Sort Sections A → Z` — reorders all sections in the file alphabetically by header name
+- `CL: Sort Sections Z → A` — reverse alphabetical section order
+- `CL: Filter by Mention (Workspace)` — filter items by `@PersonName` across all workspace files
+- `CL: Preview Item` — shows a rich notification for the item at the cursor with all markers interpreted (priority, date, estimate, tags, colour, star, flag, vote, comment)
+
 ## [8.3.0] - 2026-03-20
 
 ### Added
@@ -345,6 +369,14 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [8.7.0] - 2026-03-20
+
+### Added
+- `CL: Sort Sections A → Z` — reorders all sections in the file alphabetically by header name
+- `CL: Sort Sections Z → A` — reverse alphabetical section order
+- `CL: Filter by Mention (Workspace)` — filter items by `@PersonName` across all workspace files
+- `CL: Preview Item` — shows a rich notification for the item at the cursor with all markers interpreted (priority, date, estimate, tags, colour, star, flag, vote, comment)
 
 ## [8.3.0] - 2026-03-20
 

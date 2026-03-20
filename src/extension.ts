@@ -32,6 +32,9 @@ import { onLockSection, onUnlockSection }                    from './lockCommand
 import { onToggleFlag, onFilterFlaggedItems }                from './flagCommands';
 import { onSnapshotSection, onRestoreSnapshot,
          onListSnapshots }                                   from './snapshotCommands';
+import { onSortSectionsAZ, onSortSectionsZA }               from './sectionSortCommands';
+import { onFilterByMentionWorkspace }                       from './mentionWorkspaceCommands';
+import { onPreviewItem }                                    from './previewItemCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -192,6 +195,16 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.snapshotSection',  () => onSnapshotSection(context)),
         vscode.commands.registerCommand('chevron-lists.restoreSnapshot',  () => onRestoreSnapshot(context)),
         vscode.commands.registerCommand('chevron-lists.listSnapshots',    () => onListSnapshots(context)),
+
+        // ── Section Sort ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.sortSectionsAZ', onSortSectionsAZ),
+        vscode.commands.registerCommand('chevron-lists.sortSectionsZA', onSortSectionsZA),
+
+        // ── Mention Workspace ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.filterByMentionWorkspace', onFilterByMentionWorkspace),
+
+        // ── Item Preview ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.previewItem', onPreviewItem),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
