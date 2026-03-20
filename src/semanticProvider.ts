@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { isHeader, parseBullet, parseNumbered, extractLabels, LABEL_RE } from './patterns';
+import { isHeader, parseBullet, parseNumbered, LABEL_RE } from './patterns';
 import { getConfig } from './config';
 
 /**
@@ -20,16 +20,27 @@ export function buildLegend(): vscode.SemanticTokensLegend {
     return new vscode.SemanticTokensLegend([...TOKEN_TYPES], []);
 }
 
-/** Emits chevronLabel tokens for every [bracket] span within a content region */
-function pushLabels(
-    builder:      vscode.SemanticTokensBuilder,
+/** Emits chevronContent and chevronLabel tokens for a content region, non-overlapping */
+function pushContentWithLabels(
     line:         number,
     contentStart: number,
     content:      string,
     push:         (line: number, start: number, len: number, type: TokenType) => void
 ): void {
+    let cursor = 0;
     for (const match of content.matchAll(LABEL_RE)) {
-        push(line, contentStart + match.index!, match[0].length, 'chevronLabel');
+        const labelStart = match.index!;
+        // Push content segment before this label
+        if (labelStart > cursor) {
+            push(line, contentStart + cursor, labelStart - cursor, 'chevronContent');
+        }
+        // Push the label itself
+        push(line, contentStart + labelStart, match[0].length, 'chevronLabel');
+        cursor = labelStart + match[0].length;
+    }
+    // Push any remaining content after the last label
+    if (cursor < content.length) {
+        push(line, contentStart + cursor, content.length - cursor, 'chevronContent');
     }
 }
 
@@ -60,8 +71,7 @@ export class ChevronSemanticTokensProvider
                 const prefixLen = bullet.chevrons.length + 1 + prefix.length + 1;
                 this.push(builder, i, 0, prefixLen, 'chevronPrefix');
                 if (bullet.content.length > 0) {
-                    this.push(builder, i, prefixLen, bullet.content.length, 'chevronContent');
-                    pushLabels(builder, i, prefixLen, bullet.content, pushFn);
+                    pushContentWithLabels(i, prefixLen, bullet.content, pushFn);
                 }
                 continue;
             }
@@ -76,8 +86,7 @@ export class ChevronSemanticTokensProvider
                 this.push(builder, i, chevronLen + numStr.length, dotAndSpace, 'chevronPrefix');
                 if (numbered.content.length > 0) {
                     const contentStart = chevronLen + numStr.length + dotAndSpace;
-                    this.push(builder, i, contentStart, numbered.content.length, 'chevronContent');
-                    pushLabels(builder, i, contentStart, numbered.content, pushFn);
+                    pushContentWithLabels(i, contentStart, numbered.content, pushFn);
                 }
             }
         }

@@ -1,13 +1,24 @@
 import { describe, it, expect } from 'bun:test';
-import { isHeader, parseBullet, parseNumbered, extractLabels } from '../patterns';
+import { isHeader, parseBullet, parseNumbered, extractLabels, LABEL_RE } from '../patterns';
 
 // ── Pure token-range logic mirrored from semanticProvider.ts ─────────────────
 
-interface TokenRange {
-    line:      number;
-    startChar: number;
-    length:    number;
-    type:      string;
+interface TokenRange { line: number; startChar: number; length: number; type: string; }
+
+/** Mirrors the segmented pushContentWithLabels logic from semanticProvider.ts */
+function pushContentWithLabels(line: number, contentStart: number, content: string, out: TokenRange[]): void {
+    let cursor = 0;
+    for (const match of content.matchAll(LABEL_RE)) {
+        const labelStart = match.index!;
+        if (labelStart > cursor) {
+            out.push({ line, startChar: contentStart + cursor, length: labelStart - cursor, type: 'chevronContent' });
+        }
+        out.push({ line, startChar: contentStart + labelStart, length: match[0].length, type: 'chevronLabel' });
+        cursor = labelStart + match[0].length;
+    }
+    if (cursor < content.length) {
+        out.push({ line, startChar: contentStart + cursor, length: content.length - cursor, type: 'chevronContent' });
+    }
 }
 
 function tokeniseLine(lineIndex: number, text: string, prefix: string): TokenRange[] {
@@ -25,30 +36,20 @@ function tokeniseLine(lineIndex: number, text: string, prefix: string): TokenRan
     if (bullet) {
         const prefixLen = bullet.chevrons.length + 1 + prefix.length + 1;
         tokens.push({ line: lineIndex, startChar: 0, length: prefixLen, type: 'chevronPrefix' });
-        if (bullet.content.length > 0) {
-            tokens.push({ line: lineIndex, startChar: prefixLen, length: bullet.content.length, type: 'chevronContent' });
-            for (const lbl of extractLabels(bullet.content)) {
-                tokens.push({ line: lineIndex, startChar: prefixLen + lbl.start, length: lbl.text.length, type: 'chevronLabel' });
-            }
-        }
+        if (bullet.content.length > 0) { pushContentWithLabels(lineIndex, prefixLen, bullet.content, tokens); }
         return tokens;
     }
 
     const numbered = parseNumbered(text);
     if (numbered) {
-        const chevronLen  = numbered.chevrons.length + 1;
-        const numStr      = String(numbered.num);
-        const dotAndSpace = 2;
+        const chevronLen   = numbered.chevrons.length + 1;
+        const numStr       = String(numbered.num);
+        const dotAndSpace  = 2;
         const contentStart = chevronLen + numStr.length + dotAndSpace;
         tokens.push({ line: lineIndex, startChar: 0, length: chevronLen, type: 'chevronPrefix' });
         tokens.push({ line: lineIndex, startChar: chevronLen, length: numStr.length, type: 'chevronNumber' });
         tokens.push({ line: lineIndex, startChar: chevronLen + numStr.length, length: dotAndSpace, type: 'chevronPrefix' });
-        if (numbered.content.length > 0) {
-            tokens.push({ line: lineIndex, startChar: contentStart, length: numbered.content.length, type: 'chevronContent' });
-            for (const lbl of extractLabels(numbered.content)) {
-                tokens.push({ line: lineIndex, startChar: contentStart + lbl.start, length: lbl.text.length, type: 'chevronLabel' });
-            }
-        }
+        if (numbered.content.length > 0) { pushContentWithLabels(lineIndex, contentStart, numbered.content, tokens); }
         return tokens;
     }
 
@@ -139,5 +140,24 @@ describe('tokeniseLine — chevronLabel tokens', () => {
     it('does not produce chevronLabel for items with no brackets', () => {
         const tokens = tokeniseLine(0, '>> - plain item', '-');
         expect(tokens.some(t => t.type === 'chevronLabel')).toBe(false);
+    });
+    it('splits content around the label — no overlapping tokens', () => {
+        // ">> - [ACTION] do thing" → prefix | [ACTION] (label) | " do thing" (content)
+        const tokens = tokeniseLine(0, '>> - [ACTION] do thing', '-');
+        const label   = tokens.find(t => t.type === 'chevronLabel')!;
+        const content = tokens.filter(t => t.type === 'chevronContent');
+        // No content token should overlap with the label token
+        for (const c of content) {
+            const cEnd = c.startChar + c.length;
+            const lEnd = label.startChar + label.length;
+            expect(cEnd <= label.startChar || c.startChar >= lEnd).toBe(true);
+        }
+    });
+    it('emits correct character positions for a label', () => {
+        // ">> - [ACT] done" — prefix is 5 chars (">> - "), label starts at 5
+        const tokens = tokeniseLine(0, '>> - [ACT] done', '-');
+        const label  = tokens.find(t => t.type === 'chevronLabel')!;
+        expect(label.startChar).toBe(5);   // right after ">> - "
+        expect(label.length).toBe(5);      // "[ACT]"
     });
 });

@@ -38,10 +38,14 @@ export function collectIssues(doc: LineReader, prefix: string): DiagnosticIssue[
         const numbered = parseNumbered(text);
         if (numbered) {
             lastHeaderHasItems = true;
-            const key      = numbered.chevrons;
-            const expected = (depthCounter.get(key) ?? 0) + 1;
-            if (numbered.num !== expected) {
-                issues.push({ line: i, message: `Expected item ${expected} but found ${numbered.num} at depth ${key}`, kind: 'bad-numbering' });
+            const key  = numbered.chevrons;
+            // Only flag if we've already seen a previous item at this depth
+            // (first item is allowed to start at any number)
+            if (depthCounter.has(key)) {
+                const expected = depthCounter.get(key)! + 1;
+                if (numbered.num !== expected) {
+                    issues.push({ line: i, message: `Expected item ${expected} but found ${numbered.num} at depth ${key}`, kind: 'bad-numbering' });
+                }
             }
             depthCounter.set(key, numbered.num);
             continue;

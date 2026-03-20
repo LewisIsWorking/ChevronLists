@@ -75,4 +75,17 @@ describe('collectIssues — bad numbering', () => {
         const issues = collectIssues(doc, '-');
         expect(issues).toHaveLength(0);
     });
+
+    it('does not flag a list that starts at a number other than 1', () => {
+        const doc    = makeDoc(['> Header', '>> 50. fifty', '>> 51. fifty-one']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'bad-numbering')).toBe(false);
+    });
+
+    it('flags a break in a custom-start sequence', () => {
+        const doc    = makeDoc(['> Header', '>> 50. fifty', '>> 52. fifty-two']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'bad-numbering')).toBe(true);
+        expect(issues.find(i => i.kind === 'bad-numbering')?.line).toBe(2);
+    });
 });
