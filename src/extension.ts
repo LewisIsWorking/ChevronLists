@@ -82,6 +82,9 @@ import { createOverdueStatusBar,
 import { onCopySectionAsJson }                            from './jsonCopyCommands';
 import { onMoveItemToFile }                               from './moveItemToFileCommands';
 import { onOpenDailyNote }                                from './dailyNoteCommands';
+import { onCopySectionAs }                                from './copySectionAsCommands';
+import { updateAgeDecorations }                           from './ageHighlightDecoration';
+import { onBulkSetRating }                                from './bulkRatingCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -404,6 +407,12 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Daily Note ───────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.openDailyNote', onOpenDailyNote),
 
+        // ── Copy Section As (unified) ────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.copySectionAs', onCopySectionAs),
+
+        // ── Bulk Rating ──────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.bulkSetRating', onBulkSetRating),
+
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections',           onFilterSections),
@@ -558,6 +567,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateBadgeDecorations(editor);
                 updateGoalDecorations(editor);
                 updateOverdueStatusBar(editor);
+                updateAgeDecorations(editor);
             }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
@@ -570,6 +580,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateBadgeDecorations(editor);
                 updateGoalDecorations(editor);
                 updateOverdueStatusBar(editor);
+                updateAgeDecorations(editor);
             }
         }),
     );
@@ -583,6 +594,7 @@ export function activate(context: vscode.ExtensionContext): void {
         updateBadgeDecorations(vscode.window.activeTextEditor);
         updateGoalDecorations(vscode.window.activeTextEditor);
         updateOverdueStatusBar(vscode.window.activeTextEditor);
+        updateAgeDecorations(vscode.window.activeTextEditor);
     }
     applyConfiguredPreset();
 }

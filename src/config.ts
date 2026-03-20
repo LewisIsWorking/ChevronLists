@@ -9,6 +9,7 @@ export function getConfig(): ChevronConfig {
         blankLine:       cfg.get<boolean>('blankLineAfterHeader', false),
         snippetTrigger:  cfg.get<string>('snippetTrigger', 'tab'),
         autoArchive:      cfg.get<boolean>('autoArchive', false),
-        dailyNotesFolder: cfg.get<string>('dailyNotesFolder', ''),
+        dailyNotesFolder:    cfg.get<string>('dailyNotesFolder', ''),
+        dailyNoteTemplate:   cfg.get<string>('dailyNoteTemplate', ''),
     };
 }

@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "13.9.0",
+    "version": "14.3.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -82,6 +82,7 @@
                     "default": "",
                     "description": "Anthropic API key for AI Assist commands (CL: Suggest Items, Summarise Section, Expand Item). Get one at https://console.anthropic.com"
                 },
+                "chevron-lists.dailyNoteTemplate": { "type": "string", "default": "", "description": "Template for new daily notes. Supports {{date}}, {{weekday}}, {{day}} placeholders." },
                 "chevron-lists.dailyNotesFolder": {
                     "type": "string",
                     "default": "",
@@ -274,7 +275,9 @@
             { "command": "chevron-lists.showCompletionStreak",                          "title": "CL: Show Completion Streak" },
             { "command": "chevron-lists.copySectionAsJson",                             "title": "CL: Copy Section as JSON" },
             { "command": "chevron-lists.moveItemToFile",                                "title": "CL: Move Item to File" },
-            { "command": "chevron-lists.openDailyNote",                                 "title": "CL: Open Daily Note" }
+            { "command": "chevron-lists.openDailyNote",                                 "title": "CL: Open Daily Note" },
+            { "command": "chevron-lists.copySectionAs",                                 "title": "CL: Copy Section As..." },
+            { "command": "chevron-lists.bulkSetRating",                                 "title": "CL: Bulk Set Rating" }
         ],
         "keybindings": [
             {

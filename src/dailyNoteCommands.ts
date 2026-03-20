@@ -3,13 +3,25 @@ import * as path from 'path';
 import { getConfig } from './config';
 import { formatDate } from './patterns';
 
+/** Fills template placeholders with today's date values */
+export function fillDateTemplate(template: string, today: Date): string {
+    const dateStr   = formatDate(today);
+    const dayNames  = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const weekday   = dayNames[today.getDay()];
+    const day       = today.getDate().toString();
+    return template
+        .replace(/\{\{date\}\}/g,    dateStr)
+        .replace(/\{\{weekday\}\}/g, weekday)
+        .replace(/\{\{day\}\}/g,     day);
+}
+
 /** Command: opens or creates a daily note for today */
 export async function onOpenDailyNote(): Promise<void> {
-    const { dailyNotesFolder, prefix } = getConfig();
-    const today    = formatDate(new Date());
-    const fileName = `${today}.md`;
+    const { dailyNotesFolder, dailyNoteTemplate, prefix } = getConfig();
+    const today    = new Date();
+    const todayStr = formatDate(today);
+    const fileName = `${todayStr}.md`;
 
-    // Resolve folder — use workspace root if not configured
     const roots = vscode.workspace.workspaceFolders;
     const base  = dailyNotesFolder
         ? (path.isAbsolute(dailyNotesFolder)
@@ -25,25 +37,25 @@ export async function onOpenDailyNote(): Promise<void> {
     const filePath = path.join(base, fileName);
     const fileUri  = vscode.Uri.file(filePath);
 
-    // Create file if it doesn't exist
     try {
         await vscode.workspace.fs.stat(fileUri);
     } catch {
-        const template = [
-            `> ${today}`,
-            `>> ${prefix} `,
-            '',
-        ].join('\n');
-        await vscode.workspace.fs.writeFile(fileUri, Buffer.from(template, 'utf-8'));
+        // Build content from template or default
+        const rawTemplate = dailyNoteTemplate.trim()
+            ? dailyNoteTemplate
+            : `> {{date}}\n>> ${prefix} `;
+        const content = fillDateTemplate(rawTemplate, today) + '\n';
+        await vscode.workspace.fs.writeFile(fileUri, Buffer.from(content, 'utf-8'));
     }
 
     const doc    = await vscode.workspace.openTextDocument(fileUri);
     const editor = await vscode.window.showTextDocument(doc);
 
-    // Place cursor on the first blank item
+    // Place cursor on the first blank item line
     for (let i = 0; i < doc.lineCount; i++) {
-        if (doc.lineAt(i).text.endsWith(`${prefix} `)) {
-            const pos = new vscode.Position(i, doc.lineAt(i).text.length);
+        const lineText = doc.lineAt(i).text;
+        if (lineText.match(/^>> [^ ]+ $/) || lineText.endsWith(`${prefix} `)) {
+            const pos = new vscode.Position(i, lineText.length);
             editor.selection = new vscode.Selection(pos, pos);
             break;
         }

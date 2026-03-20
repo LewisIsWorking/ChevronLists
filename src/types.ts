@@ -26,9 +26,10 @@ export type SectionRange = [number, number];
 
 /** Extension configuration values read from VS Code settings */
 export interface ChevronConfig {
-    prefix:           string;
-    blankLine:        boolean;
-    snippetTrigger:   string;
-    autoArchive:      boolean;
-    dailyNotesFolder: string;
+    prefix:              string;
+    blankLine:           boolean;
+    snippetTrigger:      string;
+    autoArchive:         boolean;
+    dailyNotesFolder:    string;
+    dailyNoteTemplate:   string;
 }

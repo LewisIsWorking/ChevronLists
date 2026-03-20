@@ -594,3 +594,18 @@
 
 ## v13.9.0 — Daily Note ✅
 - ✅ `CL: Open Daily Note` — opens/creates `YYYY-MM-DD.md` with `dailyNotesFolder` setting
+
+---
+
+## v14.0.0 — Daily Note Templates ⬜
+- ⬜ `chevron-lists.dailyNoteTemplate` setting — a multi-line string used as the template for new daily notes instead of the default single section
+- ⬜ Supports `{{date}}`, `{{day}}`, `{{weekday}}` placeholders
+
+## v14.1.0 — Section Export to Clipboard (Multiple Formats) ⬜
+- ⬜ `CL: Copy Section As…` — a unified export command offering Markdown, Plain Text, JSON, CSV, and HTML in a single quick pick
+
+## v14.2.0 — Item Age Highlight ⬜
+- ⬜ Items with `@created:` dates older than 30 days get a subtle decoration (muted colour) to visually distinguish old items from new ones without a command
+
+## v14.3.0 — Bulk Rating ⬜
+- ⬜ `CL: Bulk Set Rating` — sets a `★N` rating on every item in the current section at once via quick pick
