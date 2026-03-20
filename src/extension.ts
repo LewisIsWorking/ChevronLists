@@ -9,7 +9,10 @@ import { onCopySectionAsMarkdown,
          onCopySectionAsPlainText }                          from './exportCommands';
 import { onSortItemsAZ, onSortItemsZA,
          onRenumberItems,
-         onConvertBulletsToNumbered }                        from './sortCommands';
+         onConvertBulletsToNumbered,
+         onConvertNumberedToBullets }                        from './sortCommands';
+import { onShowWordCount, onShowNestingSummary }             from './wordCountCommands';
+import { onPasteAsBullets, onPasteAsNumbered }              from './pasteCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -108,6 +111,15 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.renumberItems', onRenumberItems),
         vscode.commands.registerCommand('chevron-lists.fixNumbering',  onFixNumbering),
         vscode.commands.registerCommand('chevron-lists.convertBulletsToNumbered', onConvertBulletsToNumbered),
+        vscode.commands.registerCommand('chevron-lists.convertNumberedToBullets', onConvertNumberedToBullets),
+
+        // ── Word Count & Nesting ─────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showWordCount',      onShowWordCount),
+        vscode.commands.registerCommand('chevron-lists.showNestingSummary', onShowNestingSummary),
+
+        // ── Paste as Chevron ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.pasteAsBullets',  onPasteAsBullets),
+        vscode.commands.registerCommand('chevron-lists.pasteAsNumbered', onPasteAsNumbered),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

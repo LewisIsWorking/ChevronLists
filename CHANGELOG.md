@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [6.7.0] - 2026-03-20
+
+### Added
+- `CL: Convert Numbered to Bullets` — converts all `>> N.` items in the section to `>> -` bullet items; sentence order preserved
+- `CL: Show Word Count` — quick pick showing word counts per section; sections with `==N` goals show `words/goal` progress
+- `CL: Show Nesting Summary` — shows how many items are at each depth level in the current section
+- `CL: Paste as Bullet Items` — takes clipboard text (one line per item) and pastes as `>> -` items at the cursor
+- `CL: Paste as Numbered Items` — same but as `>> N.` items, continuing from any existing numbering in the section
+
 ## [6.3.0] - 2026-03-20
 
 ### Fixed
@@ -11,6 +20,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [6.7.0] - 2026-03-20
+
+### Added
+- `CL: Convert Numbered to Bullets` — converts all `>> N.` items in the section to `>> -` bullet items; sentence order preserved
+- `CL: Show Word Count` — quick pick showing word counts per section; sections with `==N` goals show `words/goal` progress
+- `CL: Show Nesting Summary` — shows how many items are at each depth level in the current section
+- `CL: Paste as Bullet Items` — takes clipboard text (one line per item) and pastes as `>> -` items at the cursor
+- `CL: Paste as Numbered Items` — same but as `>> N.` items, continuing from any existing numbering in the section
 
 ## [6.3.0] - 2026-03-20
 
@@ -168,6 +186,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [6.7.0] - 2026-03-20
+
+### Added
+- `CL: Convert Numbered to Bullets` — converts all `>> N.` items in the section to `>> -` bullet items; sentence order preserved
+- `CL: Show Word Count` — quick pick showing word counts per section; sections with `==N` goals show `words/goal` progress
+- `CL: Show Nesting Summary` — shows how many items are at each depth level in the current section
+- `CL: Paste as Bullet Items` — takes clipboard text (one line per item) and pastes as `>> -` items at the cursor
+- `CL: Paste as Numbered Items` — same but as `>> N.` items, continuing from any existing numbering in the section
+
 ## [6.3.0] - 2026-03-20
 
 ### Fixed
@@ -177,6 +204,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [6.7.0] - 2026-03-20
+
+### Added
+- `CL: Convert Numbered to Bullets` — converts all `>> N.` items in the section to `>> -` bullet items; sentence order preserved
+- `CL: Show Word Count` — quick pick showing word counts per section; sections with `==N` goals show `words/goal` progress
+- `CL: Show Nesting Summary` — shows how many items are at each depth level in the current section
+- `CL: Paste as Bullet Items` — takes clipboard text (one line per item) and pastes as `>> -` items at the cursor
+- `CL: Paste as Numbered Items` — same but as `>> N.` items, continuing from any existing numbering in the section
 
 ## [6.3.0] - 2026-03-20
 

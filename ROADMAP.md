@@ -337,3 +337,18 @@
 ## v6.2.0 — Section Visibility ✅
 - ✅ `CL: Hide Section` — marks with `>> [hidden]` and folds
 - ✅ `CL: Show Hidden Sections` — reveals all hidden sections
+
+---
+
+## v6.4.0 — Convert Numbered to Bullets ✅
+- ✅ `CL: Convert Numbered to Bullets` — converts `>> N.` items to `>> -` bullets
+
+## v6.5.0 — Section Word Count ✅
+- ✅ `CL: Show Word Count` — word counts per section; `==N` goals show progress
+
+## v6.6.0 — Item Indentation Report ✅
+- ✅ `CL: Show Nesting Summary` — depth breakdown for the current section
+
+## v6.7.0 — Paste as Chevron ✅
+- ✅ `CL: Paste as Bullet Items` — clipboard text → `>> -` items
+- ✅ `CL: Paste as Numbered Items` — clipboard text → `>> N.` items continuing from existing
