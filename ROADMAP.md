@@ -482,3 +482,17 @@
 
 ## v10.7.0 — Item Count Badge ✅
 - ✅ `CL: Toggle Item Count Badge` — live `(N)` decoration on headers
+
+---
+
+## v10.8.0 — Smart Enter for Headers ✅
+- ✅ Enter mid-line on `> Header` splits into two headers
+
+## v10.9.0 — Section Templates from Clipboard ✅
+- ✅ `CL: Paste Clipboard as Section` — first line → header, rest → items
+
+## v11.0.0 — Fold All / Unfold All ✅
+- ✅ `CL: Fold All Sections` + `CL: Unfold All Sections`
+
+## v11.1.0 — Item Age Cleanup ✅
+- ✅ `CL: Remove Old Items` — delete items older than N days (with confirmation)

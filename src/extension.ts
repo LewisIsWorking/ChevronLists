@@ -51,7 +51,10 @@ import { onConvertSectionToTable }                         from './tableExportCo
 import { onMoveItemToSection }                             from './moveItemToSectionCommands';
 import { onDiffTwoSections }                              from './diffSectionCommands';
 import { onClearAllPriority, onClearAllDueDates }         from './batchClearCommands';
-import { updateBadgeDecorations, onToggleItemCountBadge } from './itemCountBadge';
+import { onToggleItemCountBadge, updateBadgeDecorations } from './itemCountBadge';
+import { onPasteAsSection }                               from './pasteSectionCommands';
+import { onFoldAllSections, onUnfoldAllSections }         from './foldAllCommands';
+import { onRemoveOldItems }                               from './removeOldItemsCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -272,6 +275,16 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Item Count Badge ─────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.toggleItemCountBadge', onToggleItemCountBadge),
+
+        // ── Paste as Section ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.pasteAsSection', onPasteAsSection),
+
+        // ── Fold / Unfold All ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.foldAllSections',   onFoldAllSections),
+        vscode.commands.registerCommand('chevron-lists.unfoldAllSections', onUnfoldAllSections),
+
+        // ── Remove Old Items ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.removeOldItems', onRemoveOldItems),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

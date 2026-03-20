@@ -99,7 +99,16 @@ export async function onEnter(): Promise<void> {
     }
     if (isHeader(lineText)) {
         if (!isCursorAtLineEnd(editor)) {
-            await vscode.commands.executeCommand('default:type', { text: '\n' });
+            // Mid-line on a header: split into two headers
+            const cursor = editor.selection.active;
+            const before = lineText.slice(0, cursor.character).trimEnd();
+            const after  = lineText.slice(cursor.character).trimStart();
+            const newLine = after ? `\n> ${after}` : '\n> ';
+            await editor.edit((eb: EditBuilder) =>
+                eb.replace(editor.document.lineAt(cursor.line).range, `${before}${newLine}`)
+            );
+            const newPos = new vscode.Position(cursor.line + 1, 2);
+            editor.selection = new vscode.Selection(newPos, newPos);
             return;
         }
         const newItem = blankLine ? `\n\n>> ${prefix} ` : `\n>> ${prefix} `;
