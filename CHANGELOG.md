@@ -2,6 +2,27 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [6.3.0] - 2026-03-20
+
+### Fixed
+- **Enter mid-line on numbered/bullet items now works correctly** — pressing Enter anywhere on a `>> N.` or `>> -` line splits the line at the cursor, keeps text before the cursor on the current line, and starts the next numbered/bullet line with the remaining text
+
+### Added
+- `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
+- `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
+- All colour presets updated with a `chevronLabel` colour
+
+## [6.3.0] - 2026-03-20
+
+### Fixed
+- **Enter mid-line on numbered/bullet items** — pressing Enter anywhere on a `>> N.` or `>> -` line now correctly splits the line at the cursor and starts the next item with the remaining text
+
+### Added
+- `CL: Convert Bullets to Numbered` — converts all `>> -` bullets in the section to numbered items, continuing from the last existing number; sentence order fully preserved
+- `[LABEL TEXT]` square bracket highlighting — text in `[...]` in item content rendered as `chevronLabel` semantic token (gold/amber by default)
+- All six colour presets updated with `chevronLabel` colour
+- README completely rewritten to cover all commands and features through v6.3.0
+
 ## [6.2.0] - 2026-03-20
 
 ### Added
@@ -146,6 +167,27 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [6.3.0] - 2026-03-20
+
+### Fixed
+- **Enter mid-line on numbered/bullet items now works correctly** — pressing Enter anywhere on a `>> N.` or `>> -` line splits the line at the cursor, keeps text before the cursor on the current line, and starts the next numbered/bullet line with the remaining text
+
+### Added
+- `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
+- `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
+- All colour presets updated with a `chevronLabel` colour
+
+## [6.3.0] - 2026-03-20
+
+### Fixed
+- **Enter mid-line on numbered/bullet items** — pressing Enter anywhere on a `>> N.` or `>> -` line now correctly splits the line at the cursor and starts the next item with the remaining text
+
+### Added
+- `CL: Convert Bullets to Numbered` — converts all `>> -` bullets in the section to numbered items, continuing from the last existing number; sentence order fully preserved
+- `[LABEL TEXT]` square bracket highlighting — text in `[...]` in item content rendered as `chevronLabel` semantic token (gold/amber by default)
+- All six colour presets updated with `chevronLabel` colour
+- README completely rewritten to cover all commands and features through v6.3.0
 
 ## [6.2.0] - 2026-03-20
 

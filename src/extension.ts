@@ -8,7 +8,8 @@ import { onSelectSectionItems, onDeleteSection,
 import { onCopySectionAsMarkdown,
          onCopySectionAsPlainText }                          from './exportCommands';
 import { onSortItemsAZ, onSortItemsZA,
-         onRenumberItems }                                   from './sortCommands';
+         onRenumberItems,
+         onConvertBulletsToNumbered }                        from './sortCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -106,6 +107,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.sortItemsZA',   onSortItemsZA),
         vscode.commands.registerCommand('chevron-lists.renumberItems', onRenumberItems),
         vscode.commands.registerCommand('chevron-lists.fixNumbering',  onFixNumbering),
+        vscode.commands.registerCommand('chevron-lists.convertBulletsToNumbered', onConvertBulletsToNumbered),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

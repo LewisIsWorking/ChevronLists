@@ -44,6 +44,12 @@ describe('COLOUR_PRESETS', () => {
         }
     });
 
+    it('every non-custom preset has a foreground on chevronLabel', () => {
+        for (const preset of COLOUR_PRESETS.filter(p => p.id !== 'custom')) {
+            expect(preset.tokens.chevronLabel.foreground).toBeDefined();
+        }
+    });
+
     it('custom preset has empty token objects', () => {
         const custom = findPreset('custom')!;
         expect(Object.keys(custom.tokens.chevronHeader)).toHaveLength(0);

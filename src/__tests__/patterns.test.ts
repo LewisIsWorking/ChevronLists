@@ -5,6 +5,7 @@ import {
     parseBullet,
     parseNumbered,
     isHeader,
+    extractLabels,
 } from '../patterns';
 
 describe('escapeRegex', () => {
@@ -88,5 +89,26 @@ describe('isHeader', () => {
     });
     it('returns false for an empty string', () => {
         expect(isHeader('')).toBe(false);
+    });
+});
+
+describe('extractLabels', () => {
+    it('extracts a single label', () => {
+        expect(extractLabels('[BRIDGE]')).toHaveLength(1);
+        expect(extractLabels('[BRIDGE]')[0].text).toBe('[BRIDGE]');
+    });
+    it('extracts multiple labels', () => {
+        expect(extractLabels('[A] and [B]')).toHaveLength(2);
+    });
+    it('returns correct start/end positions', () => {
+        const r = extractLabels('see [LABEL] here');
+        expect(r[0].start).toBe(4);
+        expect(r[0].end).toBe(11);
+    });
+    it('returns empty array for no labels', () => {
+        expect(extractLabels('plain item')).toHaveLength(0);
+    });
+    it('handles empty brackets', () => {
+        expect(extractLabels('[]')).toHaveLength(1);
     });
 });

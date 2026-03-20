@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test';
-import { isHeader, parseBullet, parseNumbered } from '../patterns';
+import { isHeader, parseBullet, parseNumbered, extractLabels } from '../patterns';
 
 // ── Pure token-range logic mirrored from semanticProvider.ts ─────────────────
 
@@ -27,6 +27,9 @@ function tokeniseLine(lineIndex: number, text: string, prefix: string): TokenRan
         tokens.push({ line: lineIndex, startChar: 0, length: prefixLen, type: 'chevronPrefix' });
         if (bullet.content.length > 0) {
             tokens.push({ line: lineIndex, startChar: prefixLen, length: bullet.content.length, type: 'chevronContent' });
+            for (const lbl of extractLabels(bullet.content)) {
+                tokens.push({ line: lineIndex, startChar: prefixLen + lbl.start, length: lbl.text.length, type: 'chevronLabel' });
+            }
         }
         return tokens;
     }
@@ -36,11 +39,15 @@ function tokeniseLine(lineIndex: number, text: string, prefix: string): TokenRan
         const chevronLen  = numbered.chevrons.length + 1;
         const numStr      = String(numbered.num);
         const dotAndSpace = 2;
+        const contentStart = chevronLen + numStr.length + dotAndSpace;
         tokens.push({ line: lineIndex, startChar: 0, length: chevronLen, type: 'chevronPrefix' });
         tokens.push({ line: lineIndex, startChar: chevronLen, length: numStr.length, type: 'chevronNumber' });
         tokens.push({ line: lineIndex, startChar: chevronLen + numStr.length, length: dotAndSpace, type: 'chevronPrefix' });
         if (numbered.content.length > 0) {
-            tokens.push({ line: lineIndex, startChar: chevronLen + numStr.length + dotAndSpace, length: numbered.content.length, type: 'chevronContent' });
+            tokens.push({ line: lineIndex, startChar: contentStart, length: numbered.content.length, type: 'chevronContent' });
+            for (const lbl of extractLabels(numbered.content)) {
+                tokens.push({ line: lineIndex, startChar: contentStart + lbl.start, length: lbl.text.length, type: 'chevronLabel' });
+            }
         }
         return tokens;
     }
@@ -117,5 +124,20 @@ describe('tokeniseLine — non-chevron lines', () => {
     });
     it('returns no tokens for a markdown heading', () => {
         expect(tokeniseLine(0, '# Heading', '-')).toHaveLength(0);
+    });
+});
+
+describe('tokeniseLine — chevronLabel tokens', () => {
+    it('produces a chevronLabel token for [LABEL] in a bullet item', () => {
+        const tokens = tokeniseLine(0, '>> - [ACTION] do thing', '-');
+        expect(tokens.some(t => t.type === 'chevronLabel')).toBe(true);
+    });
+    it('produces a chevronLabel token for [LABEL] in a numbered item', () => {
+        const tokens = tokeniseLine(0, '>> 1. [NOTE] check this', '-');
+        expect(tokens.some(t => t.type === 'chevronLabel')).toBe(true);
+    });
+    it('does not produce chevronLabel for items with no brackets', () => {
+        const tokens = tokeniseLine(0, '>> - plain item', '-');
+        expect(tokens.some(t => t.type === 'chevronLabel')).toBe(false);
     });
 });

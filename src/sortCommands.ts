@@ -99,3 +99,42 @@ export async function onRenumberItems(): Promise<void> {
         }
     });
 }
+
+/**
+ * Converts all bullet items in the current section to numbered items,
+ * continuing from the highest existing number in the section.
+ * Sentence order is fully preserved — only the prefix changes.
+ */
+export async function onConvertBulletsToNumbered(): Promise<void> {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor || editor.document.languageId !== 'markdown') { return; }
+    const { prefix }  = getConfig();
+    const doc         = editor.document;
+    const headerLine  = findHeaderAbove(doc, editor.selection.active.line);
+    if (headerLine < 0) { vscode.window.showInformationMessage('CL: No section found at cursor'); return; }
+    const [, end]     = getSectionRange(doc, headerLine);
+
+    // Find the highest existing number per depth so we can continue from it
+    const maxNum = new Map<string, number>();
+    for (let i = headerLine + 1; i <= end; i++) {
+        const n = parseNumbered(doc.lineAt(i).text);
+        if (n) { maxNum.set(n.chevrons, Math.max(maxNum.get(n.chevrons) ?? 0, n.num)); }
+    }
+
+    let converted = 0;
+    await editor.edit((eb: EditBuilder) => {
+        for (let i = headerLine + 1; i <= end; i++) {
+            const text   = doc.lineAt(i).text;
+            const bullet = parseBullet(text, prefix);
+            if (!bullet) { continue; }
+            const next   = (maxNum.get(bullet.chevrons) ?? 0) + 1;
+            maxNum.set(bullet.chevrons, next);
+            eb.replace(doc.lineAt(i).range, `${bullet.chevrons} ${next}. ${bullet.content}`);
+            converted++;
+        }
+    });
+
+    if (converted === 0) {
+        vscode.window.showInformationMessage('CL: No bullet items found to convert');
+    }
+}

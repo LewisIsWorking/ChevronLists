@@ -34,3 +34,15 @@ export function parseNumbered(line: string): NumberedMatch | null {
 export function isHeader(line: string): boolean {
     return HEADER_RE.test(line);
 }
+
+/** Regex matching [LABEL] spans in item content */
+export const LABEL_RE = /\[([^\]]*)\]/g;
+
+/** Returns all [label] spans in a content string with their positions */
+export function extractLabels(content: string): Array<{ text: string; start: number; end: number }> {
+    const results: Array<{ text: string; start: number; end: number }> = [];
+    for (const match of content.matchAll(LABEL_RE)) {
+        results.push({ text: match[0], start: match.index!, end: match.index! + match[0].length });
+    }
+    return results;
+}
