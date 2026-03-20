@@ -45,6 +45,9 @@ import { ChevronCodeActionProvider }                        from './codeActionPr
 import { onRebaseListFromHere, onOffsetListNumbers }        from './listRebaseCommands';
 import { onStripAllMetadata }                               from './metadataStripCommands';
 import { onShowWordFrequency }                              from './wordFrequencyCommands';
+import { onEditItemContent }                                from './editItemCommands';
+import { onCollectItemsByTag }                             from './collectByTagCommands';
+import { onConvertSectionToTable }                         from './tableExportCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -243,6 +246,15 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Word Frequency ───────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showWordFrequency', onShowWordFrequency),
+
+        // ── Item Editing ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.editItemContent', onEditItemContent),
+
+        // ── Collect by Tag ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.collectItemsByTag', onCollectItemsByTag),
+
+        // ── Table Export ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.convertSectionToTable', onConvertSectionToTable),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

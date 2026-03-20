@@ -454,3 +454,17 @@
 
 ## v9.9.0 — Section Word Cloud ✅
 - ✅ `CL: Show Word Frequency` — top 20 words as bar chart in side panel
+
+---
+
+## v10.0.0 — Inline Item Editing ✅
+- ✅ `CL: Edit Item Content` — input box with plain text; markers preserved on save
+
+## v10.1.0 — Section Merge by Tag ✅
+- ✅ `CL: Collect Items by Tag` — gathers tagged items into a new Results section
+
+## v10.2.0 — Numbered List to Table ✅
+- ✅ `CL: Convert Section to Markdown Table` — items → `| # | Content |` table
+
+## v10.3.0 — Auto-Archive on Complete ✅
+- ✅ `chevron-lists.autoArchive` setting — auto-moves done items to `> Archive`

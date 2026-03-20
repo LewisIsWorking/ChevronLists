@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "9.9.0",
+    "version": "10.3.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -81,6 +81,11 @@
                     "type": "string",
                     "default": "",
                     "description": "Anthropic API key for AI Assist commands (CL: Suggest Items, Summarise Section, Expand Item). Get one at https://console.anthropic.com"
+                },
+                "chevron-lists.autoArchive": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "When enabled, toggling an item to [x] done automatically moves it to the > Archive section."
                 },
                 "chevron-lists.templates": {
                     "type": "array",
@@ -233,7 +238,10 @@
             { "command": "chevron-lists.rebaseListFromHere",                "title": "CL: Rebase List From Here" },
             { "command": "chevron-lists.offsetListNumbers",                 "title": "CL: Offset List Numbers" },
             { "command": "chevron-lists.stripAllMetadata",                  "title": "CL: Strip All Metadata" },
-            { "command": "chevron-lists.showWordFrequency",                 "title": "CL: Show Word Frequency" }
+            { "command": "chevron-lists.showWordFrequency",                 "title": "CL: Show Word Frequency" },
+            { "command": "chevron-lists.editItemContent",                        "title": "CL: Edit Item Content" },
+            { "command": "chevron-lists.collectItemsByTag",                      "title": "CL: Collect Items by Tag" },
+            { "command": "chevron-lists.convertSectionToTable",                  "title": "CL: Convert Section to Markdown Table" }
         ],
         "keybindings": [
             {

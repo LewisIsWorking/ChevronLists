@@ -8,5 +8,6 @@ export function getConfig(): ChevronConfig {
         prefix:          cfg.get<string>('listPrefix', '-'),
         blankLine:       cfg.get<boolean>('blankLineAfterHeader', false),
         snippetTrigger:  cfg.get<string>('snippetTrigger', 'tab'),
+        autoArchive:     cfg.get<boolean>('autoArchive', false),
     };
 }

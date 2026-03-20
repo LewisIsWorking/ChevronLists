@@ -85,3 +85,12 @@ export function offsetNumberedLine(text: string, offset: number): string | null 
     if (newNum < 1) { return null; }
     return `${m[1]} ${newNum}. ${m[3]}`;
 }
+
+/** Converts a list of content rows to a markdown table string */
+export function toMarkdownTable(rows: Array<{ num: number; content: string }>): string {
+    return [
+        '| # | Content |',
+        '|---|---------|',
+        ...rows.map(r => `| ${r.num} | ${r.content.replace(/\|/g, '\\|')} |`),
+    ].join('\n');
+}

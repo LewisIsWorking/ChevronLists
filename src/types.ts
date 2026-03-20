@@ -29,4 +29,5 @@ export interface ChevronConfig {
     prefix:         string;
     blankLine:      boolean;
     snippetTrigger: string;
+    autoArchive:    boolean;
 }
