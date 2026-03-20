@@ -2,6 +2,25 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.0.0] - 2026-03-20
+
+### Added
+- Full SOLID refactor — split into 12 focused modules (all under 200 lines)
+- 37 unit tests with 100% coverage of all pure logic (Bun test runner)
+- `Alt+Down` / `Alt+Up` keybindings to jump between chevron headers
+- Jump to Next Header command (`chevron-lists.nextHeader`)
+- Jump to Previous Header command (`chevron-lists.prevHeader`)
+- Delete Section command (`chevron-lists.deleteSection`)
+- Duplicate Section command (`chevron-lists.duplicateSection`)
+- Move Section Up command (`chevron-lists.moveSectionUp`)
+- Move Section Down command (`chevron-lists.moveSectionDown`)
+- Hover tooltip on `> Header` lines showing item count and word count
+- Status bar item showing total section and item count for the open file
+- Multi-cursor support for Tab / Shift+Tab across multiple chevron lines
+
+### Changed
+- `extension.ts` is now wiring-only — all logic delegated to focused handler modules
+
 ## [0.6.1] - 2026-03-19
 
 ### Fixed

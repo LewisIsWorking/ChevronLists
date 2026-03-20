@@ -2,13 +2,15 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "0.6.1",
+    "version": "1.0.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
         "url": "https://github.com/LewisIsWorking/ChevronLists"
     },
-    "engines": { "vscode": "^1.85.0" },
+    "engines": {
+        "vscode": "^1.85.0"
+    },
     "categories": ["Keymaps"],
     "activationEvents": ["onLanguage:markdown"],
     "main": "./out/extension.js",
@@ -29,10 +31,46 @@
             }
         },
         "commands": [
-            { "command": "chevron-lists.onEnter",           "title": "Chevron Lists: Handle Enter" },
-            { "command": "chevron-lists.onTab",             "title": "Chevron Lists: Indent Item" },
-            { "command": "chevron-lists.onShiftTab",        "title": "Chevron Lists: Dedent Item" },
-            { "command": "chevron-lists.selectSectionItems","title": "Chevron Lists: Select Section Items" }
+            {
+                "command": "chevron-lists.onEnter",
+                "title": "Chevron Lists: Handle Enter"
+            },
+            {
+                "command": "chevron-lists.onTab",
+                "title": "Chevron Lists: Indent Item"
+            },
+            {
+                "command": "chevron-lists.onShiftTab",
+                "title": "Chevron Lists: Dedent Item"
+            },
+            {
+                "command": "chevron-lists.nextHeader",
+                "title": "Chevron Lists: Jump to Next Header"
+            },
+            {
+                "command": "chevron-lists.prevHeader",
+                "title": "Chevron Lists: Jump to Previous Header"
+            },
+            {
+                "command": "chevron-lists.selectSectionItems",
+                "title": "Chevron Lists: Select Section Items"
+            },
+            {
+                "command": "chevron-lists.deleteSection",
+                "title": "Chevron Lists: Delete Section"
+            },
+            {
+                "command": "chevron-lists.duplicateSection",
+                "title": "Chevron Lists: Duplicate Section"
+            },
+            {
+                "command": "chevron-lists.moveSectionUp",
+                "title": "Chevron Lists: Move Section Up"
+            },
+            {
+                "command": "chevron-lists.moveSectionDown",
+                "title": "Chevron Lists: Move Section Down"
+            }
         ],
         "keybindings": [
             {
@@ -49,6 +87,16 @@
                 "key": "shift+tab",
                 "command": "chevron-lists.onShiftTab",
                 "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
+            },
+            {
+                "key": "alt+down",
+                "command": "chevron-lists.nextHeader",
+                "when": "editorTextFocus && editorLangId == 'markdown'"
+            },
+            {
+                "key": "alt+up",
+                "command": "chevron-lists.prevHeader",
+                "when": "editorTextFocus && editorLangId == 'markdown'"
             }
         ],
         "grammars": [
@@ -61,12 +109,14 @@
     },
     "scripts": {
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "watch": "tsc -watch -p ./",
+        "test": "bun test src/__tests__"
     },
     "license": "CC-BY-NC-ND-4.0",
     "devDependencies": {
-        "@types/vscode": "^1.85.0",
+        "@types/bun": "^1.3.11",
         "@types/node": "^20.0.0",
+        "@types/vscode": "^1.85.0",
         "typescript": "^5.0.0"
     }
 }

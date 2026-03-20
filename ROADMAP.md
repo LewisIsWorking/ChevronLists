@@ -31,14 +31,14 @@
 
 ## v0.3.0 — Configurable Prefix ✅
 - ✅ `chevron-lists.listPrefix` setting (default `-`, e.g. change to `*`)
-- ✅ `chevron-lists.blankLineAfterHeader` setting (blank line between header and first item)
+- ✅ `chevron-lists.blankLineAfterHeader` setting
 
 ---
 
 ## v0.4.0 — Smarter List Commands ✅
-- ✅ `Chevron Lists: Select Section Items` command selects all items under the nearest `> Header`
-- ✅ Fold/collapse chevron sections via standard VS Code fold gutter (FoldingRangeProvider)
-- ⚠️ Known: VS Code's built-in markdown blockquote folding also shows a fold arrow on the first `>> -` line — this is VS Code's own behaviour and cannot be suppressed by an extension
+- ✅ `Chevron Lists: Select Section Items` command
+- ✅ Fold/collapse chevron sections via standard VS Code fold gutter
+- ⚠️ Known: VS Code's built-in blockquote folding also shows a fold arrow on the first `>> -` line
 
 ---
 
@@ -50,7 +50,7 @@
 ---
 
 ## v0.6.0 — Minimap Indicators ✅
-- ✅ `> Header` lines appear as coloured markers in the overview ruler / scrollbar gutter
+- ✅ `> Header` lines appear as coloured markers in the overview ruler
 
 ---
 
@@ -59,46 +59,47 @@
 
 ---
 
-## v0.7.0 — Navigation ⬜
-- ⬜ `Chevron Lists: Jump to Next Header` — move cursor to the next `> Header` line
-- ⬜ `Chevron Lists: Jump to Previous Header` — move cursor to the previous `> Header` line
-- ⬜ Keyboard shortcuts for both (e.g. `Alt+Down` / `Alt+Up`)
+## v1.0.0 — SOLID Refactor + Full Feature Set ✅
+- ✅ Full SOLID refactor — 12 focused modules, all under 200 lines
+- ✅ 37 unit tests, 100% coverage of all pure logic (Bun test runner)
+- ✅ `Alt+Down` / `Alt+Up` — jump to next/previous `> Header`
+- ✅ `Chevron Lists: Delete Section` command
+- ✅ `Chevron Lists: Duplicate Section` command
+- ✅ `Chevron Lists: Move Section Up` command
+- ✅ `Chevron Lists: Move Section Down` command
+- ✅ Hover tooltip on `> Header` showing item count and word count
+- ✅ Status bar item showing total sections and items in the open file
+- ✅ Multi-cursor Tab / Shift+Tab across multiple chevron lines
 
 ---
 
-## v0.8.0 — Section Actions ⬜
-- ⬜ `Chevron Lists: Delete Section` — delete a `> Header` and all its items in one command
-- ⬜ `Chevron Lists: Duplicate Section` — copy a `> Header` and all its items below
-- ⬜ `Chevron Lists: Move Section Up / Down` — swap a section with the one above or below
+## v1.1.0 — Export ⬜
+- ⬜ `Chevron Lists: Copy Section as Markdown` — convert to standard markdown bullet list and copy to clipboard
+- ⬜ `Chevron Lists: Copy Section as Plain Text` — strip all prefixes and copy clean text to clipboard
 
 ---
 
-## v0.9.0 — Sorting ⬜
-- ⬜ `Chevron Lists: Sort Items A→Z` — sort all `>> -` items under the nearest header alphabetically
+## v1.2.0 — Sorting ⬜
+- ⬜ `Chevron Lists: Sort Items A→Z` — sort all items under the nearest header alphabetically
 - ⬜ `Chevron Lists: Sort Items Z→A` — reverse alphabetical sort
 - ⬜ `Chevron Lists: Renumber Items` — fix/reset numbering on a `>> 1.` list after manual edits
 
 ---
 
-## v1.0.0 — Section Statistics ⬜
-- ⬜ Hover over a `> Header` line to see a tooltip showing item count and word count for that section
-- ⬜ Status bar item showing total section count and item count for the open file
-
----
-
-## v1.1.0 — Export ⬜
-- ⬜ `Chevron Lists: Copy Section as Markdown` — convert the current section to standard markdown bullet list and copy to clipboard
-- ⬜ `Chevron Lists: Copy Section as Plain Text` — strip all prefixes and copy clean text to clipboard
-
----
-
-## v1.2.0 — Multi-cursor Support ⬜
-- ⬜ Tab / Shift+Tab indent/dedent working correctly across multiple selected chevron list lines simultaneously
-
----
-
 ## v1.3.0 — Snippets ⬜
-- ⬜ Built-in VS Code snippet: type `chl` + Tab to insert a starter chevron list block
-- ⬜ Built-in VS Code snippet: type `chn` + Tab to insert a numbered chevron list block
+- ⬜ `chl` + Tab → inserts a starter bullet chevron list block with Tab stops
+- ⬜ `chn` + Tab → inserts a starter numbered chevron list block with Tab stops
+
+---
+
+## v1.4.0 — Search & Filter ⬜
+- ⬜ `Chevron Lists: Search Items` — quick pick showing all items across all sections, jumping to selection
+- ⬜ `Chevron Lists: Filter Section` — temporarily hide sections that don't match a keyword
+
+---
+
+## v1.5.0 — Themes ⬜
+- ⬜ Semantic token colours so themes can style chevron headers and items independently
+- ⬜ Built-in colour theme contribution with recommended chevron colour assignments
 
 ---

@@ -1,0 +1,4 @@
+[test]
+
+[test.moduleNameMapper]
+"vscode" = "./src/__mocks__/vscode.ts"
