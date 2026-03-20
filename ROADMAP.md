@@ -286,3 +286,20 @@
 ## v5.0.0 — Section Bookmarks ✅
 - ✅ `>> [bookmark:Name]` syntax
 - ✅ `CL: Add Bookmark`, `CL: Jump to Bookmark`, `CL: Remove Bookmark`
+
+---
+
+## v5.1.0 — Item Counters ✅
+- ✅ `CL: Show Section Summary` — item/done/word/tag counts for the current section
+- ✅ `CL: Count Items by Tag` — breakdown of item counts per tag
+
+## v5.2.0 — Jump History ✅
+- ✅ `CL: Jump Back` — returns to previous cursor position
+- ✅ Populated automatically by `Ctrl+Alt+Down/Up` navigation
+
+## v5.3.0 — Item Promotion & Demotion ✅
+- ✅ `CL: Promote Item to Header` — converts item into a new section header
+- ✅ `CL: Demote Header to Item` — converts header into a bullet in the section above
+
+## v5.4.0 — Export to Markdown Document ✅
+- ✅ `CL: Export File as Markdown Document` — clean standard markdown with `##` headings

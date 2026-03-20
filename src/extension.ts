@@ -47,6 +47,11 @@ import { onFindInSections, onReplaceInSection }              from './findReplace
 import { onFocusSection, onUnfocusSection }                  from './focusMode';
 import { onAddBookmark, onJumpToBookmark,
          onRemoveBookmark }                                  from './bookmarkCommands';
+import { onShowSectionSummary, onCountItemsByTag }          from './counterCommands';
+import { pushJumpHistory, onJumpBack,
+         clearJumpHistory }                                  from './jumpHistory';
+import { onPromoteItemToHeader, onDemoteHeaderToItem }      from './promoteDemote';
+import { onExportAsMarkdownDoc }                            from './markdownExportCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -148,6 +153,23 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.addBookmark',    onAddBookmark),
         vscode.commands.registerCommand('chevron-lists.jumpToBookmark', onJumpToBookmark),
         vscode.commands.registerCommand('chevron-lists.removeBookmark', onRemoveBookmark),
+
+        // ── Counters ─────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showSectionSummary', onShowSectionSummary),
+        vscode.commands.registerCommand('chevron-lists.countItemsByTag',    onCountItemsByTag),
+
+        // ── Jump History ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.jumpBack', onJumpBack),
+
+        // ── Promote & Demote ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.promoteItemToHeader', onPromoteItemToHeader),
+        vscode.commands.registerCommand('chevron-lists.demoteHeaderToItem',  onDemoteHeaderToItem),
+
+        // ── Markdown Export ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.exportAsMarkdownDoc', onExportAsMarkdownDoc),
+
+        // ── Close handler — clear jump history ───────────────────────────────
+        vscode.workspace.onDidCloseTextDocument(doc => clearJumpHistory(doc.uri)),
 
         // ── Dates & Recurrence ───────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showUpcoming',            onShowUpcoming),

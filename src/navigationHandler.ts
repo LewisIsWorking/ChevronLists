@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { findHeaderAbove, findHeaderBelow } from './documentUtils';
+import { pushJumpHistory } from './jumpHistory';
 
 function revealLine(editor: vscode.TextEditor, line: number): void {
     const pos = new vscode.Position(line, 0);
@@ -16,6 +17,7 @@ export function onNextHeader(): void {
     if (!editor) { return; }
     const next = findHeaderBelow(editor.document, editor.selection.active.line);
     if (next >= 0) {
+        pushJumpHistory(editor);
         revealLine(editor, next);
     } else {
         vscode.window.showInformationMessage('Chevron Lists: no next header found');
@@ -27,9 +29,9 @@ export function onPrevHeader(): void {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
     const cursor = editor.selection.active.line;
-    // Start search one above cursor so we don't stay on the current header
     const prev = findHeaderAbove(editor.document, cursor - 1);
     if (prev >= 0) {
+        pushJumpHistory(editor);
         revealLine(editor, prev);
     } else {
         vscode.window.showInformationMessage('Chevron Lists: no previous header found');

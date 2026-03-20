@@ -2,6 +2,17 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [5.4.0] - 2026-03-20
+
+### Added
+- `CL: Show Section Summary` — quick notification with item/done/word/tag counts for the current section
+- `CL: Count Items by Tag` — breakdown of item counts per `#tag` in the file
+- `CL: Jump Back` — returns to the previous cursor position after a navigation command
+- Jump history is populated automatically by `Ctrl+Alt+Down/Up` navigation
+- `CL: Promote Item to Header` — converts the item at the cursor into a new section header
+- `CL: Demote Header to Item` — converts the section header into a bullet in the section above
+- `CL: Export File as Markdown Document` — exports as clean standard markdown (`##` headings, `-` bullets)
+
 ## [5.0.0] - 2026-03-20
 
 ### Added
@@ -110,6 +121,17 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [5.4.0] - 2026-03-20
+
+### Added
+- `CL: Show Section Summary` — quick notification with item/done/word/tag counts for the current section
+- `CL: Count Items by Tag` — breakdown of item counts per `#tag` in the file
+- `CL: Jump Back` — returns to the previous cursor position after a navigation command
+- Jump history is populated automatically by `Ctrl+Alt+Down/Up` navigation
+- `CL: Promote Item to Header` — converts the item at the cursor into a new section header
+- `CL: Demote Header to Item` — converts the section header into a bullet in the section above
+- `CL: Export File as Markdown Document` — exports as clean standard markdown (`##` headings, `-` bullets)
 
 ## [5.0.0] - 2026-03-20
 
