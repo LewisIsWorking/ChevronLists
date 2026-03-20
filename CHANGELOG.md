@@ -2,6 +2,20 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [5.8.0] - 2026-03-20
+
+### Added
+- `* ` star marker syntax in items — `>> - * Key task`
+- `CL: Toggle Star` — toggles the star marker on the item at the cursor
+- `CL: Filter Starred Items` — quick pick of all starred items with live preview
+- `CL: Export Statistics as CSV` — section stats exported to CSV
+- `CL: Export Statistics as JSON` — section stats exported to JSON
+- `[[file:filename.md]]` linked file syntax in items
+- `CL: Go to Linked File` — opens the linked file under the cursor
+- Hover on `[[file:...]]` links shows a preview of the target file's first lines
+- `~Nh`, `~Nm`, `~NhNm` time estimate syntax in items — `>> - Deploy server ~2h`
+- `CL: Show Time Estimates` — all estimated items sorted by duration; shows total time
+
 ## [5.4.0] - 2026-03-20
 
 ### Added
@@ -121,6 +135,20 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [5.8.0] - 2026-03-20
+
+### Added
+- `* ` star marker syntax in items — `>> - * Key task`
+- `CL: Toggle Star` — toggles the star marker on the item at the cursor
+- `CL: Filter Starred Items` — quick pick of all starred items with live preview
+- `CL: Export Statistics as CSV` — section stats exported to CSV
+- `CL: Export Statistics as JSON` — section stats exported to JSON
+- `[[file:filename.md]]` linked file syntax in items
+- `CL: Go to Linked File` — opens the linked file under the cursor
+- Hover on `[[file:...]]` links shows a preview of the target file's first lines
+- `~Nh`, `~Nm`, `~NhNm` time estimate syntax in items — `>> - Deploy server ~2h`
+- `CL: Show Time Estimates` — all estimated items sorted by duration; shows total time
 
 ## [5.4.0] - 2026-03-20
 

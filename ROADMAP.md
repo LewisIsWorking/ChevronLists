@@ -303,3 +303,20 @@
 
 ## v5.4.0 — Export to Markdown Document ✅
 - ✅ `CL: Export File as Markdown Document` — clean standard markdown with `##` headings
+
+---
+
+## v5.5.0 — Item Starring ✅
+- ✅ `* ` star marker syntax in items
+- ✅ `CL: Toggle Star` + `CL: Filter Starred Items`
+
+## v5.6.0 — Section Statistics Export ✅
+- ✅ `CL: Export Statistics as CSV` + `CL: Export Statistics as JSON`
+
+## v5.7.0 — Linked Files ✅
+- ✅ `[[file:filename.md]]` syntax with hover preview
+- ✅ `CL: Go to Linked File`
+
+## v5.8.0 — Item Estimation ✅
+- ✅ `~Nh`/`~Nm`/`~NhNm` time estimate syntax
+- ✅ `CL: Show Time Estimates` — sorted by duration, shows total

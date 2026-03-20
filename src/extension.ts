@@ -52,6 +52,11 @@ import { pushJumpHistory, onJumpBack,
          clearJumpHistory }                                  from './jumpHistory';
 import { onPromoteItemToHeader, onDemoteHeaderToItem }      from './promoteDemote';
 import { onExportAsMarkdownDoc }                            from './markdownExportCommands';
+import { onToggleStar, onFilterStarredItems }               from './starCommands';
+import { onExportStatsAsCsv, onExportStatsAsJson }          from './statsExportCommands';
+import { onGoToLinkedFile,
+         ChevronFileLinkHoverProvider }                     from './fileLinkCommands';
+import { onShowTimeEstimates }                              from './estimateCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -167,6 +172,21 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Markdown Export ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.exportAsMarkdownDoc', onExportAsMarkdownDoc),
+
+        // ── Stars ────────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleStar',         onToggleStar),
+        vscode.commands.registerCommand('chevron-lists.filterStarredItems', onFilterStarredItems),
+
+        // ── Statistics Export ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.exportStatsAsCsv',  onExportStatsAsCsv),
+        vscode.commands.registerCommand('chevron-lists.exportStatsAsJson', onExportStatsAsJson),
+
+        // ── Linked Files ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.goToLinkedFile', onGoToLinkedFile),
+        vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronFileLinkHoverProvider()),
+
+        // ── Time Estimates ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showTimeEstimates', onShowTimeEstimates),
 
         // ── Close handler — clear jump history ───────────────────────────────
         vscode.workspace.onDidCloseTextDocument(doc => clearJumpHistory(doc.uri)),
