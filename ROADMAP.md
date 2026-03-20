@@ -252,3 +252,19 @@
 - ✅ `CL: Bulk Tag Items` — add a tag to all items in a section
 - ✅ `CL: Bulk Set Priority` — set priority on all items
 - ✅ `CL: Bulk Set Due Date` — set due date on all items
+
+---
+
+## v4.3.0 — Item Cloning ✅
+- ✅ `CL: Clone Item` — duplicates item to end of same section
+- ✅ `CL: Clone Item to Section` — duplicates item to a chosen section
+
+## v4.4.0 — Section Merge & Split ✅
+- ✅ `CL: Merge Section Below` — combines current section with the one below
+- ✅ `CL: Split Section Here` — splits section at cursor into two named sections
+
+## v4.5.0 — Reading Mode ✅
+- ✅ `CL: Enter Reading Mode` — live-updating HTML webview beside the editor
+
+## v4.6.0 — Section Compare ✅
+- ✅ `CL: Compare Section to Clipboard` — diff of current section vs clipboard

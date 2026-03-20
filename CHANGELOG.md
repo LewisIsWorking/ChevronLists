@@ -2,6 +2,16 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [4.6.0] - 2026-03-20
+
+### Added
+- `CL: Clone Item` — duplicates the item at the cursor to the end of the same section
+- `CL: Clone Item to Section` — duplicates the item to a chosen section via quick pick
+- `CL: Merge Section Below` — combines the current section with the one below
+- `CL: Split Section Here` — splits the current section at the cursor line into two named sections
+- `CL: Enter Reading Mode` — opens the file as a live-updating HTML webview beside the editor
+- `CL: Compare Section to Clipboard` — shows a diff of the current section vs clipboard content
+
 ## [4.2.0] - 2026-03-20
 
 ### Added
@@ -86,6 +96,16 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [4.6.0] - 2026-03-20
+
+### Added
+- `CL: Clone Item` — duplicates the item at the cursor to the end of the same section
+- `CL: Clone Item to Section` — duplicates the item to a chosen section via quick pick
+- `CL: Merge Section Below` — combines the current section with the one below
+- `CL: Split Section Here` — splits the current section at the cursor line into two named sections
+- `CL: Enter Reading Mode` — opens the file as a live-updating HTML webview beside the editor
+- `CL: Compare Section to Clipboard` — shows a diff of the current section vs clipboard content
 
 ## [4.2.0] - 2026-03-20
 

@@ -38,6 +38,10 @@ import { updateWordGoalDiagnostics, getWordGoalDiagCollection,
 import { onFilterByMention }                                 from './mentionCommands';
 import { onBulkTagItems, onBulkSetPriority,
          onBulkSetDueDate }                                  from './bulkCommands';
+import { onCloneItem, onCloneItemToSection }                 from './cloneCommands';
+import { onMergeSectionBelow, onSplitSectionHere }           from './mergeSplitCommands';
+import { onEnterReadingMode }                                from './readingMode';
+import { onCompareSectionToClipboard }                       from './compareCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -108,6 +112,20 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.bulkTagItems',    onBulkTagItems),
         vscode.commands.registerCommand('chevron-lists.bulkSetPriority', onBulkSetPriority),
         vscode.commands.registerCommand('chevron-lists.bulkSetDueDate',  onBulkSetDueDate),
+
+        // ── Clone ────────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.cloneItem',          onCloneItem),
+        vscode.commands.registerCommand('chevron-lists.cloneItemToSection', onCloneItemToSection),
+
+        // ── Merge & Split ────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.mergeSectionBelow', onMergeSectionBelow),
+        vscode.commands.registerCommand('chevron-lists.splitSectionHere',  onSplitSectionHere),
+
+        // ── Reading Mode ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.enterReadingMode', onEnterReadingMode),
+
+        // ── Compare ──────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.compareSectionToClipboard', onCompareSectionToClipboard),
 
         // ── Dates & Recurrence ───────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showUpcoming',            onShowUpcoming),
