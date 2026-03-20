@@ -104,115 +104,131 @@
                 }
             }
         },
-        "commands": [
-            {
-                "command": "chevron-lists.onEnter",
-                "title": "CL: Handle Enter"
-            },
-            {
-                "command": "chevron-lists.onTab",
-                "title": "CL: Indent Item"
-            },
-            {
-                "command": "chevron-lists.onShiftTab",
-                "title": "CL: Dedent Item"
-            },
-            {
-                "command": "chevron-lists.expandSnippet",
-                "title": "CL: Expand Snippet"
-            },
-            {
-                "command": "chevron-lists.nextHeader",
-                "title": "CL: Jump to Next Header"
-            },
-            {
-                "command": "chevron-lists.prevHeader",
-                "title": "CL: Jump to Previous Header"
-            },
-            {
-                "command": "chevron-lists.selectSectionItems",
-                "title": "CL: Select Section Items"
-            },
-            {
-                "command": "chevron-lists.deleteSection",
-                "title": "CL: Delete Section"
-            },
-            {
-                "command": "chevron-lists.duplicateSection",
-                "title": "CL: Duplicate Section"
-            },
-            {
-                "command": "chevron-lists.moveSectionUp",
-                "title": "CL: Move Section Up"
-            },
-            {
-                "command": "chevron-lists.moveSectionDown",
-                "title": "CL: Move Section Down"
-            },
-            {
-                "command": "chevron-lists.copySectionAsMarkdown",
-                "title": "CL: Copy Section as Markdown"
-            },
-            {
-                "command": "chevron-lists.copySectionAsPlainText",
-                "title": "CL: Copy Section as Plain Text"
-            },
-            {
-                "command": "chevron-lists.sortItemsAZ",
-                "title": "CL: Sort Items A Ã¢â€ â€™ Z"
-            },
-            {
-                "command": "chevron-lists.sortItemsZA",
-                "title": "CL: Sort Items Z Ã¢â€ â€™ A"
-            },
-            {
-                "command": "chevron-lists.renumberItems",
-                "title": "CL: Renumber Items"
-            },
-            {
-                "command": "chevron-lists.searchItems",
-                "title": "CL: Search Items"
-            },
-            {
-                "command": "chevron-lists.filterSections",
-                "title": "CL: Filter Sections"
-            },
-            {
-                "command": "chevron-lists.switchColourPreset",
-                "title": "CL: Switch Colour Preset"
-            },
-            {
-                "command": "chevron-lists.showStatistics",
-                "title": "CL: Show File Statistics"
-            },
-            {
-                "command": "chevron-lists.insertTemplate",
-                "title": "CL: Insert Template"
-            },
-            {
-                "command": "chevron-lists.searchItemsWorkspace",
-                "title": "CL: Search Items (Workspace)"
-            },
-            {
-                "command": "chevron-lists.filterSectionsWorkspace",
-                "title": "CL: Filter Sections (Workspace)"
-            },
-            {
-                "command": "chevron-lists.fixNumbering",
-                "title": "CL: Fix Numbering"
-            },
-            {
-                "command": "chevron-lists.filterByTag",
-                "title": "CL: Filter by Tag"
-            },
-            {
-                "command": "chevron-lists.goToLinkedSection",
-                "title": "CL: Go to Linked Section"
-            },
-            {
-                "command": "chevron-lists.goToLinkedSection",
-                "title": "CL: Go to Linked Section"
-            }
+                "commands": [
+            { "command": "chevron-lists.onEnter",               "title": "CL: Handle Enter" },
+            { "command": "chevron-lists.onTab",                 "title": "CL: Indent Item" },
+            { "command": "chevron-lists.onShiftTab",            "title": "CL: Dedent Item" },
+            { "command": "chevron-lists.expandSnippet",         "title": "CL: Expand Snippet" },
+            { "command": "chevron-lists.nextHeader",            "title": "CL: Jump to Next Header" },
+            { "command": "chevron-lists.prevHeader",            "title": "CL: Jump to Previous Header" },
+            { "command": "chevron-lists.jumpBack",              "title": "CL: Jump Back" },
+            { "command": "chevron-lists.selectSectionItems",    "title": "CL: Select Section Items" },
+            { "command": "chevron-lists.deleteSection",         "title": "CL: Delete Section" },
+            { "command": "chevron-lists.duplicateSection",      "title": "CL: Duplicate Section" },
+            { "command": "chevron-lists.moveSectionUp",         "title": "CL: Move Section Up" },
+            { "command": "chevron-lists.moveSectionDown",       "title": "CL: Move Section Down" },
+            { "command": "chevron-lists.renameSection",         "title": "CL: Rename Section" },
+            { "command": "chevron-lists.mergeSectionBelow",     "title": "CL: Merge Section Below" },
+            { "command": "chevron-lists.splitSectionHere",      "title": "CL: Split Section Here" },
+            { "command": "chevron-lists.archiveDoneItems",      "title": "CL: Archive Done Items" },
+            { "command": "chevron-lists.archiveSection",        "title": "CL: Archive Section" },
+            { "command": "chevron-lists.hideSection",           "title": "CL: Hide Section" },
+            { "command": "chevron-lists.showHiddenSections",    "title": "CL: Show Hidden Sections" },
+            { "command": "chevron-lists.lockSection",           "title": "CL: Lock Section" },
+            { "command": "chevron-lists.unlockSection",         "title": "CL: Unlock Section" },
+            { "command": "chevron-lists.focusSection",          "title": "CL: Focus on Section" },
+            { "command": "chevron-lists.unfocusSection",        "title": "CL: Unfocus Section" },
+            { "command": "chevron-lists.groupSections",         "title": "CL: Group Sections" },
+            { "command": "chevron-lists.compareStatistics",     "title": "CL: Compare Section Statistics" },
+            { "command": "chevron-lists.snapshotSection",       "title": "CL: Snapshot Section" },
+            { "command": "chevron-lists.restoreSnapshot",       "title": "CL: Restore Snapshot" },
+            { "command": "chevron-lists.listSnapshots",         "title": "CL: List Snapshots" },
+            { "command": "chevron-lists.sortSectionsAZ",        "title": "CL: Sort All Sections A to Z" },
+            { "command": "chevron-lists.sortSectionsZA",        "title": "CL: Sort All Sections Z to A" },            { "command": "chevron-lists.insertTableOfContents", "title": "CL: Insert Table of Contents (TOC)" },
+            { "command": "chevron-lists.toggleItemDone",        "title": "CL: Toggle Item Done" },
+            { "command": "chevron-lists.toggleStar",            "title": "CL: Toggle Star" },
+            { "command": "chevron-lists.toggleNote",            "title": "CL: Toggle Note" },
+            { "command": "chevron-lists.togglePin",             "title": "CL: Toggle Pin" },
+            { "command": "chevron-lists.toggleFlag",            "title": "CL: Toggle Flag" },
+            { "command": "chevron-lists.duplicateItem",         "title": "CL: Duplicate Item" },
+            { "command": "chevron-lists.cloneItem",             "title": "CL: Clone Item" },
+            { "command": "chevron-lists.cloneItemToSection",    "title": "CL: Clone Item to Section" },
+            { "command": "chevron-lists.moveItemUp",            "title": "CL: Move Item Up" },
+            { "command": "chevron-lists.moveItemDown",          "title": "CL: Move Item Down" },
+            { "command": "chevron-lists.moveItemToTop",         "title": "CL: Move Item to Top of Section" },
+            { "command": "chevron-lists.moveItemToBottom",      "title": "CL: Move Item to Bottom of Section" },
+            { "command": "chevron-lists.promoteItemToHeader",   "title": "CL: Promote Item to Header" },
+            { "command": "chevron-lists.demoteHeaderToItem",    "title": "CL: Demote Header to Item" },
+            { "command": "chevron-lists.goToLinkedSection",     "title": "CL: Go to Linked Section" },
+            { "command": "chevron-lists.goToLinkedFile",        "title": "CL: Go to Linked File" },
+            { "command": "chevron-lists.quickCapture",          "title": "CL: Quick Capture" },
+            { "command": "chevron-lists.addBookmark",           "title": "CL: Add Bookmark" },
+            { "command": "chevron-lists.jumpToBookmark",        "title": "CL: Jump to Bookmark" },
+            { "command": "chevron-lists.removeBookmark",        "title": "CL: Remove Bookmark" },
+            { "command": "chevron-lists.setItemColour",         "title": "CL: Set Item Colour" },
+            { "command": "chevron-lists.strikethroughItem",     "title": "CL: Strikethrough Item" },
+            { "command": "chevron-lists.removeStrikethrough",   "title": "CL: Remove Strikethrough" },
+            { "command": "chevron-lists.stampItem",             "title": "CL: Stamp Item with Creation Date" },
+            { "command": "chevron-lists.previewItem",           "title": "CL: Preview Item" },
+            { "command": "chevron-lists.addVote",               "title": "CL: Add Vote" },
+            { "command": "chevron-lists.removeVote",            "title": "CL: Remove Vote" },
+            { "command": "chevron-lists.uppercaseItem",         "title": "CL: Uppercase Item" },
+            { "command": "chevron-lists.lowercaseItem",         "title": "CL: Lowercase Item" },
+            { "command": "chevron-lists.titleCaseItem",         "title": "CL: Title Case Item" },            { "command": "chevron-lists.sortItemsAZ",           "title": "CL: Sort Items A to Z" },
+            { "command": "chevron-lists.sortItemsZA",           "title": "CL: Sort Items Z to A" },
+            { "command": "chevron-lists.sortByVotes",           "title": "CL: Sort Items by Votes" },
+            { "command": "chevron-lists.renumberItems",         "title": "CL: Renumber Items" },
+            { "command": "chevron-lists.fixNumbering",          "title": "CL: Fix Numbering" },
+            { "command": "chevron-lists.convertBulletsToNumbered", "title": "CL: Convert Bullets to Numbered List" },
+            { "command": "chevron-lists.convertNumberedToBullets", "title": "CL: Convert Numbered List to Bullets" },
+            { "command": "chevron-lists.pasteAsBullets",        "title": "CL: Paste Clipboard as Bullet Items" },
+            { "command": "chevron-lists.pasteAsNumbered",       "title": "CL: Paste Clipboard as Numbered Items" },
+            { "command": "chevron-lists.markAllDone",           "title": "CL: Mark All Items Done" },
+            { "command": "chevron-lists.markAllUndone",         "title": "CL: Mark All Items Undone" },
+            { "command": "chevron-lists.removeAllCheckboxes",   "title": "CL: Remove All Checkboxes" },
+            { "command": "chevron-lists.bulkTagItems",          "title": "CL: Bulk Tag Items" },
+            { "command": "chevron-lists.bulkSetPriority",       "title": "CL: Bulk Set Priority" },
+            { "command": "chevron-lists.bulkSetDueDate",        "title": "CL: Bulk Set Due Date" },
+            { "command": "chevron-lists.stripComments",         "title": "CL: Strip Comments from Section" },
+            { "command": "chevron-lists.replaceInSection",      "title": "CL: Replace in Section" },
+            { "command": "chevron-lists.findInSections",        "title": "CL: Find in Sections" },
+            { "command": "chevron-lists.renameTag",             "title": "CL: Rename Tag" },
+            { "command": "chevron-lists.renameTagWorkspace",    "title": "CL: Rename Tag (Workspace)" },
+            { "command": "chevron-lists.searchItems",           "title": "CL: Search Items" },
+            { "command": "chevron-lists.filterSections",        "title": "CL: Filter Sections" },
+            { "command": "chevron-lists.searchItemsWorkspace",  "title": "CL: Search Items (Workspace)" },
+            { "command": "chevron-lists.filterSectionsWorkspace","title": "CL: Filter Sections (Workspace)" },
+            { "command": "chevron-lists.filterByTag",           "title": "CL: Filter by Tag" },
+            { "command": "chevron-lists.filterByTagWorkspace",  "title": "CL: Filter by Tag (Workspace)" },
+            { "command": "chevron-lists.filterByPriority",      "title": "CL: Filter by Priority" },
+            { "command": "chevron-lists.filterByMention",       "title": "CL: Filter by Mention" },
+            { "command": "chevron-lists.filterByMentionWorkspace","title": "CL: Filter by Mention (Workspace)" },
+            { "command": "chevron-lists.filterPinnedSections",  "title": "CL: Filter Pinned Sections" },
+            { "command": "chevron-lists.filterGroups",          "title": "CL: Filter Groups" },            { "command": "chevron-lists.filterStarredItems",    "title": "CL: Filter Starred Items" },
+            { "command": "chevron-lists.filterFlaggedItems",    "title": "CL: Filter Flagged Items" },
+            { "command": "chevron-lists.showUpcoming",          "title": "CL: Show Upcoming Due Dates" },
+            { "command": "chevron-lists.showRecurring",         "title": "CL: Show Recurring Items" },
+            { "command": "chevron-lists.showOldItems",          "title": "CL: Show Old Items (30+ days)" },
+            { "command": "chevron-lists.showTimeEstimates",     "title": "CL: Show Time Estimates" },
+            { "command": "chevron-lists.showDependencies",      "title": "CL: Show Dependencies" },
+            { "command": "chevron-lists.showWordCount",         "title": "CL: Show Word Count" },
+            { "command": "chevron-lists.showNestingSummary",    "title": "CL: Show Nesting Summary" },
+            { "command": "chevron-lists.showSectionSummary",    "title": "CL: Show Section Summary" },
+            { "command": "chevron-lists.countItemsByTag",       "title": "CL: Count Items by Tag" },
+            { "command": "chevron-lists.showTagHeatmap",        "title": "CL: Show Tag Heatmap" },
+            { "command": "chevron-lists.showCompletionHeatmap", "title": "CL: Show Completion Heatmap" },
+            { "command": "chevron-lists.showStatistics",        "title": "CL: Show File Statistics" },
+            { "command": "chevron-lists.showWorkspaceStatistics","title": "CL: Show Workspace Statistics (All Files)" },
+            { "command": "chevron-lists.exportStatsAsCsv",      "title": "CL: Export Statistics as CSV" },
+            { "command": "chevron-lists.exportStatsAsJson",     "title": "CL: Export Statistics as JSON" },
+            { "command": "chevron-lists.copySectionAsMarkdown", "title": "CL: Copy Section as Markdown" },
+            { "command": "chevron-lists.copySectionAsPlainText","title": "CL: Copy Section as Plain Text" },
+            { "command": "chevron-lists.exportAsHtml",          "title": "CL: Export File as HTML" },
+            { "command": "chevron-lists.exportAsJson",          "title": "CL: Export File as JSON" },
+            { "command": "chevron-lists.exportAsCsv",           "title": "CL: Export File as CSV" },
+            { "command": "chevron-lists.exportAsMarkdownDoc",   "title": "CL: Export File as Markdown Document" },
+            { "command": "chevron-lists.compareSectionToClipboard","title": "CL: Compare Section to Clipboard" },
+            { "command": "chevron-lists.insertTemplate",        "title": "CL: Insert Template" },
+            { "command": "chevron-lists.saveSectionAsTemplate", "title": "CL: Save Section as Template" },
+            { "command": "chevron-lists.importTemplatesFromFile","title": "CL: Import Templates from File" },
+            { "command": "chevron-lists.exportTemplatesToFile", "title": "CL: Export Templates to File" },
+            { "command": "chevron-lists.setWordCountGoal",      "title": "CL: Set Word Count Goal" },
+            { "command": "chevron-lists.switchColourPreset",    "title": "CL: Switch Colour Preset" },
+            { "command": "chevron-lists.enterReadingMode",      "title": "CL: Enter Reading Mode (HTML Preview)" },
+            { "command": "chevron-lists.generateNextOccurrence","title": "CL: Generate Next Occurrence" },
+            { "command": "chevron-lists.suggestItems",          "title": "CL: Suggest Items (AI)" },
+            { "command": "chevron-lists.summariseSection",      "title": "CL: Summarise Section (AI)" },
+            { "command": "chevron-lists.expandItem",            "title": "CL: Expand Item (AI)" }
         ],
         "keybindings": [
             {
