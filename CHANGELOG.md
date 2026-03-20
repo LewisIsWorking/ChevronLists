@@ -1,6 +1,15 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to **Chevron Lists** will be documented here.
+
+## [2.0.0] - 2026-03-20
+
+### Added
+- `CL: Show File Statistics` — webview panel showing sections, items, words, avg items/section, most/least populated section
+- `CL: Insert Template` — quick pick of 5 built-in templates plus user-defined via `chevron-lists.templates` setting
+- `CL: Search Items (Workspace)` — search all chevron items across every markdown file in the workspace
+- `CL: Filter Sections (Workspace)` — jump to any chevron section in any markdown file in the workspace
+- `chevron-lists.templates` setting — define custom named templates with VS Code snippet syntax
 
 ## [1.7.0] - 2026-03-20
 

@@ -123,22 +123,20 @@
 
 ---
 
-## v1.8.0 — Statistics Panel ⬜
-- ⬜ `Chevron Lists: Show File Statistics` command
-- ⬜ Webview panel showing: total sections, total items, avg items per section, most/least populated section, word count breakdown
+## v1.8.0 — Statistics Panel ✅
+- ✅ `CL: Show File Statistics` — webview panel with section/item/word counts, avg items, most/least populated section
 
 ---
 
-## v1.9.0 — Templates ⬜
-- ⬜ `chevron-lists.templates` setting — user-defined named templates beyond `chl`/`chn`
-- ⬜ `Chevron Lists: Insert Template` command — quick pick showing all defined templates
-- ⬜ Templates support Tab stops and placeholders
+## v1.9.0 — Templates ✅
+- ✅ `CL: Insert Template` — quick pick of 5 built-in templates with Tab stops
+- ✅ `chevron-lists.templates` setting — define unlimited custom templates
 
 ---
 
-## v2.0.0 — Workspace Mode ⬜
-- ⬜ `Chevron Lists: Search Items (Workspace)` — search across ALL markdown files in the workspace, not just the open file
-- ⬜ `Chevron Lists: Filter Sections (Workspace)` — jump to any section in any file
-- ⬜ Results show filename + section context
+## v2.0.0 — Workspace Mode ✅
+- ✅ `CL: Search Items (Workspace)` — search all chevron items across every markdown file
+- ✅ `CL: Filter Sections (Workspace)` — jump to any section in any markdown file
+- ✅ Results show filename and section context
 
 ---

@@ -11,6 +11,10 @@ import { onSortItemsAZ, onSortItemsZA,
          onRenumberItems }                                   from './sortCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }        from './presetCommands';
+import { onShowStatistics }                                    from './statisticsPanel';
+import { onInsertTemplate }                                    from './templateCommands';
+import { onSearchItemsWorkspace,
+         onFilterSectionsWorkspace }                           from './workspaceSearch';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -60,6 +64,16 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Colour presets ───────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.switchColourPreset', onSwitchColourPreset),
+
+        // ── Statistics ───────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showStatistics', onShowStatistics),
+
+        // ── Templates ────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.insertTemplate', onInsertTemplate),
+
+        // ── Workspace Search ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.searchItemsWorkspace',    onSearchItemsWorkspace),
+        vscode.commands.registerCommand('chevron-lists.filterSectionsWorkspace', onFilterSectionsWorkspace),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
