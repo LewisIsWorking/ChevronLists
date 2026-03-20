@@ -5,7 +5,37 @@ import { join } from 'path';
 const snippetsPath = join(import.meta.dir, '../../snippets/chevron-lists.code-snippets');
 const snippets = JSON.parse(readFileSync(snippetsPath, 'utf-8'));
 
-describe('chevron-lists snippets', () => {
+// Mirror of SNIPPETS map in tabHandler.ts — must stay in sync
+const SNIPPETS: Record<string, string> = {
+    'chl': '> ${1:Section Header}\n>> - ${2:First item}\n>> - ${3:Second item}\n>> - $0',
+    'chn': '> ${1:Section Header}\n>> 1. ${2:First item}\n>> 2. ${3:Second item}\n>> 3. $0',
+};
+
+describe('SNIPPETS map (tabHandler)', () => {
+    it('contains chl and chn', () => {
+        expect(Object.keys(SNIPPETS)).toContain('chl');
+        expect(Object.keys(SNIPPETS)).toContain('chn');
+    });
+    it('chl body starts with > header line', () => {
+        expect(SNIPPETS['chl'].split('\n')[0]).toMatch(/^> /);
+    });
+    it('chl body has >> - items', () => {
+        expect(SNIPPETS['chl']).toContain('>> - ');
+    });
+    it('chn body has >> 1. items', () => {
+        expect(SNIPPETS['chn']).toContain('>> 1. ');
+    });
+    it('chl and chn bodies end with $0 final cursor', () => {
+        expect(SNIPPETS['chl'].endsWith('$0')).toBe(true);
+        expect(SNIPPETS['chn'].endsWith('$0')).toBe(true);
+    });
+    it('SNIPPETS map matches snippet file prefixes', () => {
+        expect(snippets['Chevron Bullet List'].prefix).toBe('chl');
+        expect(snippets['Chevron Numbered List'].prefix).toBe('chn');
+    });
+});
+
+describe('chevron-lists snippets file', () => {
     it('contains both snippets', () => {
         expect(snippets).toHaveProperty('Chevron Bullet List');
         expect(snippets).toHaveProperty('Chevron Numbered List');

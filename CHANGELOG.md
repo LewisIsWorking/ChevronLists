@@ -2,6 +2,11 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.3.1] - 2026-03-20
+
+### Fixed
+- `chl` and `chn` snippets now expand correctly — our Tab keybinding was intercepting Tab before VS Code's snippet engine could run. Snippets are now expanded directly in the Tab handler when the text before cursor matches a prefix.
+
 ## [1.3.0] - 2026-03-20
 
 ### Added

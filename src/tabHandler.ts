@@ -5,23 +5,36 @@ import { prevNumberAtDepth } from './documentUtils';
 
 type EditBuilder = vscode.TextEditorEdit;
 
+// Snippet definitions — must stay in sync with snippets/chevron-lists.code-snippets
+const SNIPPETS: Record<string, string> = {
+    'chl': '> ${1:Section Header}\n>> - ${2:First item}\n>> - ${3:Second item}\n>> - $0',
+    'chn': '> ${1:Section Header}\n>> 1. ${2:First item}\n>> 2. ${3:Second item}\n>> 3. $0',
+};
+
+/**
+ * Checks if the text before the cursor on the active line is a snippet prefix.
+ * Returns the prefix string if matched, null otherwise.
+ */
+function getSnippetPrefix(editor: vscode.TextEditor): string | null {
+    const cursor         = editor.selection.active;
+    const textBeforeCursor = editor.document.lineAt(cursor.line).text
+        .substring(0, cursor.character)
+        .trimStart();
+    return SNIPPETS[textBeforeCursor] !== undefined ? textBeforeCursor : null;
+}
+
 /**
  * Expands all selections (including range selections from Shift+click) into a
  * deduplicated flat list of line numbers that contain chevron items.
  */
-function getChevronLines(
-    editor: vscode.TextEditor,
-    prefix: string
-): number[] {
+function getChevronLines(editor: vscode.TextEditor, prefix: string): number[] {
     const lines = new Set<number>();
     for (const sel of editor.selections) {
         const start = Math.min(sel.anchor.line, sel.active.line);
         const end   = Math.max(sel.anchor.line, sel.active.line);
         for (let i = start; i <= end; i++) {
             const text = editor.document.lineAt(i).text;
-            if (parseBullet(text, prefix) || parseNumbered(text)) {
-                lines.add(i);
-            }
+            if (parseBullet(text, prefix) || parseNumbered(text)) { lines.add(i); }
         }
     }
     return Array.from(lines).sort((a, b) => a - b);
@@ -72,12 +85,26 @@ function applyDedent(
     }
 }
 
-/** Handles Tab — promotes chevron items across all cursors and range selections */
+/** Handles Tab — expands snippets, promotes chevron items, or falls through */
 export async function onTab(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
-    const { prefix }      = getConfig();
-    const chevronLines    = getChevronLines(editor, prefix);
+
+    // Snippet expansion — must happen before chevron line check
+    const snippetPrefix = getSnippetPrefix(editor);
+    if (snippetPrefix) {
+        const cursor    = editor.selection.active;
+        const lineText  = editor.document.lineAt(cursor.line).text;
+        const prefixStart = new vscode.Position(cursor.line, lineText.indexOf(snippetPrefix));
+        await editor.edit((eb: EditBuilder) =>
+            eb.delete(new vscode.Range(prefixStart, cursor))
+        );
+        await editor.insertSnippet(new vscode.SnippetString(SNIPPETS[snippetPrefix]));
+        return;
+    }
+
+    const { prefix }   = getConfig();
+    const chevronLines = getChevronLines(editor, prefix);
     if (chevronLines.length === 0) { await vscode.commands.executeCommand('tab'); return; }
     await editor.edit((eb: EditBuilder) => {
         for (const line of chevronLines) { applyIndent(eb, editor.document, line, prefix); }
