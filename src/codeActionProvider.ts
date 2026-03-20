@@ -17,7 +17,7 @@ function badNumberingActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[
             preferred: true,
             edit: makeEdit(doc.uri, doc.lineAt(line).range, `${numbered.chevrons} ${expected}. ${numbered.content}`),
         }));
-        actions.push(makeAction('Set list start number here…', QF, diag, {
+        actions.push(makeAction('Set custom start number here…', QF, diag, {
             command: { command: 'chevron-lists.setListStartNumber', title: 'Set List Start Number' },
         }));
     }
