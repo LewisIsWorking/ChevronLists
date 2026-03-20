@@ -85,3 +85,8 @@ export async function onShowJumpHistory(): Promise<void> {
 export function clearJumpHistory(uri: vscode.Uri): void {
     history.delete(uri.toString());
 }
+
+/** Returns a read-only copy of the jump history for a given file URI */
+export function getJumpHistory(uriKey: string): readonly vscode.Position[] {
+    return history.get(uriKey) ?? [];
+}

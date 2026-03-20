@@ -49,13 +49,17 @@ import { onGroupItemsByTag }                              from './groupByTagComm
 import { onShowProgressReport }                          from './progressReportCommands';
 import { onMergeItemWithNext }                           from './mergeItemCommands';
 import { onSplitItemAtCursor }                           from './splitItemCommands';
+import { onCloneItemAsDone, onCloneItemStripped }         from './cloneTransformCommands';
+import { onShowRecentSections }                           from './recentSectionsCommands';
+import { onShowDuplicateItems }                           from './duplicateItemsCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
          ChevronPriorityCompletionProvider,
          ChevronDateCompletionProvider }                  from './completionProviders';
 import { ChevronEstimateCompletionProvider,
-         ChevronRatingCompletionProvider }                from './completionProvidersExtra';
+         ChevronRatingCompletionProvider,
+         ChevronHeaderCompletionProvider }                from './completionProvidersExtra';
 
 const MARKDOWN = { language: 'markdown' };
 const comp     = vscode.languages.registerCompletionItemProvider;
@@ -113,6 +117,10 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.showProgressReport',               onShowProgressReport),
         r('chevron-lists.mergeItemWithNext',                onMergeItemWithNext),
         r('chevron-lists.splitItemAtCursor',                onSplitItemAtCursor),
+        r('chevron-lists.cloneItemAsDone',                  onCloneItemAsDone),
+        r('chevron-lists.cloneItemStripped',                onCloneItemStripped),
+        r('chevron-lists.showRecentSections',               onShowRecentSections),
+        r('chevron-lists.showDuplicateItems',               onShowDuplicateItems),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),
@@ -120,5 +128,6 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         comp(MARKDOWN, new ChevronDateCompletionProvider(),     '@'),
         comp(MARKDOWN, new ChevronEstimateCompletionProvider(), '~'),
         comp(MARKDOWN, new ChevronRatingCompletionProvider(),   '★'),
+        comp(MARKDOWN, new ChevronHeaderCompletionProvider(),   '>'),
     ];
 }

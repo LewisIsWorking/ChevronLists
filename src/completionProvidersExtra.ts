@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { isHeader } from './patterns';
 
 // ── Estimate completion (~) ───────────────────────────────────────────────────
 
@@ -44,6 +45,34 @@ export class ChevronRatingCompletionProvider implements vscode.CompletionItemPro
             item.detail     = '★'.repeat(n) + '☆'.repeat(5 - n);
             item.sortText   = String(n);
             item.insertText = String(n);
+            return item;
+        });
+    }
+}
+
+// ── Section header autocomplete (> ) ─────────────────────────────────────────
+
+/** Suggests existing section names when typing `> ` on a blank line */
+export class ChevronHeaderCompletionProvider implements vscode.CompletionItemProvider {
+    provideCompletionItems(
+        document: vscode.TextDocument,
+        position: vscode.Position
+    ): vscode.CompletionItem[] {
+        const lineText = document.lineAt(position).text;
+        const charsSoFar = lineText.slice(0, position.character);
+        if (!charsSoFar.match(/^> \w*/)) { return []; }
+
+        const names = new Set<string>();
+        for (let i = 0; i < document.lineCount; i++) {
+            const t = document.lineAt(i).text;
+            if (isHeader(t) && i !== position.line) {
+                names.add(t.replace(/^> /, '').trim());
+            }
+        }
+        return [...names].map(name => {
+            const item = new vscode.CompletionItem(name, vscode.CompletionItemKind.Module);
+            item.detail     = 'Existing section';
+            item.insertText = name;
             return item;
         });
     }
