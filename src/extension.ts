@@ -39,6 +39,7 @@ import { onMoveItemToTop, onMoveItemToBottom }              from './moveItemEdge
 import { onShowTagHeatmap, onShowCompletionHeatmap }        from './heatmapCommands';
 import { onStampItem, onShowOldItems }                      from './itemAgeCommands';
 import { onInsertTableOfContents }                          from './tocCommands';
+import { onSetListStartNumber }                             from './listStartCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -224,6 +225,9 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Table of Contents ────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.insertTableOfContents', onInsertTableOfContents),
+
+        // ── List Start Number ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.setListStartNumber', onSetListStartNumber),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),

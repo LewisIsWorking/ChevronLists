@@ -2,6 +2,14 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [9.3.0] - 2026-03-20
+
+### Added
+- `CL: Set List Start Number` — prompts for a starting number and inserts `>> N. ` at the cursor; subsequent Enter presses continue from that number naturally. Defaults to the current line's number + 1 if already on a numbered item
+- **Fix:** all 133 commands are now declared in `package.json` and visible in the command palette (only ~13 were declared previously)
+- **Fix:** command titles no longer contain corrupted arrow characters
+- Commands renamed for better searchability: `CL: Convert Bullets to Numbered List`, `CL: Convert Numbered List to Bullets`, `CL: Sort All Sections A to Z`, etc.
+
 ## [9.2.0] - 2026-03-20
 
 ### Added
@@ -98,6 +106,14 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [9.3.0] - 2026-03-20
+
+### Added
+- `CL: Set List Start Number` — prompts for a starting number and inserts `>> N. ` at the cursor; subsequent Enter presses continue from that number naturally. Defaults to the current line's number + 1 if already on a numbered item
+- **Fix:** all 133 commands are now declared in `package.json` and visible in the command palette (only ~13 were declared previously)
+- **Fix:** command titles no longer contain corrupted arrow characters
+- Commands renamed for better searchability: `CL: Convert Bullets to Numbered List`, `CL: Convert Numbered List to Bullets`, `CL: Sort All Sections A to Z`, etc.
 
 ## [9.2.0] - 2026-03-20
 
@@ -342,6 +358,14 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [9.3.0] - 2026-03-20
+
+### Added
+- `CL: Set List Start Number` — prompts for a starting number and inserts `>> N. ` at the cursor; subsequent Enter presses continue from that number naturally. Defaults to the current line's number + 1 if already on a numbered item
+- **Fix:** all 133 commands are now declared in `package.json` and visible in the command palette (only ~13 were declared previously)
+- **Fix:** command titles no longer contain corrupted arrow characters
+- Commands renamed for better searchability: `CL: Convert Bullets to Numbered List`, `CL: Convert Numbered List to Bullets`, `CL: Sort All Sections A to Z`, etc.
+
 ## [9.2.0] - 2026-03-20
 
 ### Added
@@ -438,6 +462,14 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [9.3.0] - 2026-03-20
+
+### Added
+- `CL: Set List Start Number` — prompts for a starting number and inserts `>> N. ` at the cursor; subsequent Enter presses continue from that number naturally. Defaults to the current line's number + 1 if already on a numbered item
+- **Fix:** all 133 commands are now declared in `package.json` and visible in the command palette (only ~13 were declared previously)
+- **Fix:** command titles no longer contain corrupted arrow characters
+- Commands renamed for better searchability: `CL: Convert Bullets to Numbered List`, `CL: Convert Numbered List to Bullets`, `CL: Sort All Sections A to Z`, etc.
 
 ## [9.2.0] - 2026-03-20
 
