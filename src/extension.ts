@@ -18,6 +18,8 @@ import { onSearchItemsWorkspace,
 import { updateDiagnostics, onFixNumbering,
          getDiagnosticCollection }                             from './diagnosticProvider';
 import { onFilterByTag }                                       from './tagCommands';
+import { onGoToLinkedSection, ChevronLinkHoverProvider,
+         ChevronDocumentLinkProvider }                         from './linkCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -84,6 +86,11 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Tags ─────────────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.filterByTag', onFilterByTag),
+
+        // ── Linked Sections ──────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.goToLinkedSection', onGoToLinkedSection),
+        vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronLinkHoverProvider()),
+        vscode.languages.registerDocumentLinkProvider({ language: 'markdown' }, new ChevronDocumentLinkProvider()),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

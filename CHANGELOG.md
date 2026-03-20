@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [2.3.0] - 2026-03-20
+
+### Added
+- `[[SectionName]]` link syntax in item content — links to another section in the same file
+- `CL: Go to Linked Section` command — jumps to the section referenced by [[...]] at the cursor
+- Hover over `[[...]]` shows a preview of the linked section's items
+- Unresolved links show a warning in the hover tooltip
+- 17 new unit tests covering link extraction, resolution and collection
+
 ## [2.2.0] - 2026-03-20
 
 ### Added

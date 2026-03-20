@@ -150,9 +150,10 @@
 - ✅ `#tag` support in item content — `>> - Deploy server #urgent #backend`
 - ✅ `CL: Filter by Tag` — quick pick of all tags in the file, jump to matching items
 
-## v2.3.0 — Linked Sections ⬜
-- ⬜ `[[SectionName]]` link syntax in items — jump to another section in the same file
-- ⬜ `CL: Go to Linked Section` command
-- ⬜ Hover over a `[[link]]` shows a preview of the linked section
+## v2.3.0 — Linked Sections ✅
+- ✅ `[[SectionName]]` link syntax in item content
+- ✅ `CL: Go to Linked Section` — jumps to the referenced section
+- ✅ Hover over `[[...]]` previews the linked section's items
+- ✅ Unresolved links show a warning tooltip
 
 ---
