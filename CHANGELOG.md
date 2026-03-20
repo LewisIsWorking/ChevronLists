@@ -2,6 +2,18 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [3.8.0] - 2026-03-20
+
+### Added
+- `CL: Export File as JSON` — full structured export with tags, priority, dates, checkboxes per item
+- `CL: Export File as CSV` — flat CSV with one row per item and all metadata columns
+- `>> > Note text` inline note syntax on items
+- `CL: Toggle Note` — adds/removes a note line on the item at the cursor
+- `@daily`, `@weekly`, `@monthly` recurrence markers in items
+- `CL: Show Recurring` — quick pick of all recurring items
+- `CL: Generate Next Occurrence` — clones a recurring item with the next due date
+- `==N` word count goal syntax in section headers — `> My Section ==500`
+
 ## [3.4.0] - 2026-03-20
 
 ### Added
@@ -61,6 +73,18 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [3.8.0] - 2026-03-20
+
+### Added
+- `CL: Export File as JSON` — full structured export with tags, priority, dates, checkboxes per item
+- `CL: Export File as CSV` — flat CSV with one row per item and all metadata columns
+- `>> > Note text` inline note syntax on items
+- `CL: Toggle Note` — adds/removes a note line on the item at the cursor
+- `@daily`, `@weekly`, `@monthly` recurrence markers in items
+- `CL: Show Recurring` — quick pick of all recurring items
+- `CL: Generate Next Occurrence` — clones a recurring item with the next due date
+- `==N` word count goal syntax in section headers — `> My Section ==500`
 
 ## [3.4.0] - 2026-03-20
 

@@ -215,3 +215,21 @@
 
 ## v3.4.0 — Save Section as Template ✅
 - ✅ `CL: Save Section as Template` — saves the section at the cursor as a reusable template with Tab stops
+
+---
+
+## v3.5.0 — Structured Export ✅
+- ✅ `CL: Export File as JSON` — full metadata export (tags, priority, dates, checkboxes)
+- ✅ `CL: Export File as CSV` — flat CSV with one row per item
+
+## v3.6.0 — Item Notes ✅
+- ✅ `>> > Note text` inline note syntax
+- ✅ `CL: Toggle Note` — adds/removes a note on the item at the cursor
+
+## v3.7.0 — Recurrence ✅
+- ✅ `@daily`, `@weekly`, `@monthly` recurrence markers
+- ✅ `CL: Show Recurring` — quick pick of all recurring items
+- ✅ `CL: Generate Next Occurrence` — clones with the next due date
+
+## v3.8.0 — Word Count Goals ✅
+- ✅ `==N` word count goal syntax in section headers — `> My Section ==500`

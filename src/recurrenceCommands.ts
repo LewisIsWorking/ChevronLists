@@ -1,0 +1,91 @@
+import * as vscode from 'vscode';
+import { getConfig } from './config';
+import { collectRecurringItems, nextOccurrence } from './recurrenceParser';
+import { extractDate } from './dueDateParser';
+import { parseBullet, parseNumbered } from './patterns';
+
+interface RecurPickItem extends vscode.QuickPickItem {
+    lineIndex: number;
+}
+
+function revealLine(editor: vscode.TextEditor, lineIndex: number): void {
+    const pos = new vscode.Position(lineIndex, 0);
+    editor.selection = new vscode.Selection(pos, pos);
+    editor.revealRange(new vscode.Range(pos, pos), vscode.TextEditorRevealType.InCenterIfOutsideViewport);
+}
+
+/** Command: lists all recurring items in the file */
+export async function onShowRecurring(): Promise<void> {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor || editor.document.languageId !== 'markdown') { return; }
+
+    const { prefix } = getConfig();
+    const items      = collectRecurringItems(editor.document, prefix);
+
+    if (items.length === 0) {
+        vscode.window.showInformationMessage('CL: No recurring items found (use @daily, @weekly, or @monthly in item content)');
+        return;
+    }
+
+    const pick = vscode.window.createQuickPick<RecurPickItem>();
+    pick.items = items.map(item => ({
+        label:       `$(sync) @${item.type} — ${item.content}`,
+        description: item.section,
+        lineIndex:   item.line,
+    }));
+    pick.placeholder = 'Recurring items in this file';
+
+    const originalPos = editor.selection.active;
+    pick.onDidChangeActive(active => {
+        if (active[0]) { revealLine(editor, active[0].lineIndex); }
+    });
+    pick.onDidAccept(() => {
+        if (pick.activeItems[0]) { revealLine(editor, pick.activeItems[0].lineIndex); }
+        pick.hide();
+    });
+    pick.onDidHide(() => {
+        if (!pick.activeItems[0]) {
+            const pos = new vscode.Position(originalPos.line, originalPos.character);
+            editor.selection = new vscode.Selection(pos, pos);
+        }
+        pick.dispose();
+    });
+    pick.show();
+}
+
+/** Command: clones the recurring item at the cursor with the next due date */
+export async function onGenerateNextOccurrence(): Promise<void> {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor || editor.document.languageId !== 'markdown') { return; }
+
+    const { prefix }  = getConfig();
+    const doc         = editor.document;
+    const lineIndex   = editor.selection.active.line;
+    const text        = doc.lineAt(lineIndex).text;
+    const bullet      = parseBullet(text, prefix);
+    const numbered    = parseNumbered(text);
+    const content     = bullet?.content ?? numbered?.content;
+
+    if (!content) {
+        vscode.window.showInformationMessage('CL: Place cursor on a recurring item');
+        return;
+    }
+
+    const recMatch = content.match(/@(daily|weekly|monthly)/i);
+    if (!recMatch) {
+        vscode.window.showInformationMessage('CL: Item has no @daily/@weekly/@monthly marker');
+        return;
+    }
+
+    const type      = recMatch[1].toLowerCase() as 'daily' | 'weekly' | 'monthly';
+    const dateMatch = extractDate(content);
+    const baseDate  = dateMatch?.dateStr ?? new Date().toISOString().slice(0, 10);
+    const newDate   = nextOccurrence(baseDate, type);
+    const chevrons  = bullet?.chevrons ?? numbered?.chevrons ?? '>>';
+    const cleanText = content.replace(dateMatch ? `@${dateMatch.dateStr}` : '', '').trim();
+    const newLine   = `${chevrons} ${prefix} ${cleanText} @${newDate}\n`;
+
+    await editor.edit(eb =>
+        eb.insert(new vscode.Position(lineIndex + 1, 0), newLine)
+    );
+}

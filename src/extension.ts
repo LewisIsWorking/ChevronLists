@@ -30,6 +30,9 @@ import { onSuggestItems, onSummariseSection, onExpandItem }  from './aiCommands'
 import { onFilterByTagWorkspace }                             from './tagWorkspaceCommands';
 import { onQuickCapture }                                    from './quickCapture';
 import { onSaveSectionAsTemplate }                           from './saveTemplate';
+import { onExportAsJson, onExportAsCsv }                    from './structuredExportCommands';
+import { onToggleNote }                                      from './noteCommands';
+import { onShowRecurring, onGenerateNextOccurrence }         from './recurrenceCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -135,6 +138,17 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Save as Template ─────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.saveSectionAsTemplate', onSaveSectionAsTemplate),
+
+        // ── Structured Export ────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.exportAsJson', onExportAsJson),
+        vscode.commands.registerCommand('chevron-lists.exportAsCsv',  onExportAsCsv),
+
+        // ── Item Notes ───────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleNote', onToggleNote),
+
+        // ── Recurrence ───────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showRecurring',           onShowRecurring),
+        vscode.commands.registerCommand('chevron-lists.generateNextOccurrence',  onGenerateNextOccurrence),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
