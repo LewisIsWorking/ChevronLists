@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "13.5.0",
+    "version": "13.9.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -81,6 +81,11 @@
                     "type": "string",
                     "default": "",
                     "description": "Anthropic API key for AI Assist commands (CL: Suggest Items, Summarise Section, Expand Item). Get one at https://console.anthropic.com"
+                },
+                "chevron-lists.dailyNotesFolder": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Folder for daily notes created by CL: Open Daily Note. Relative to workspace root, or absolute path. Defaults to workspace root if empty."
                 },
                 "chevron-lists.autoArchive": {
                     "type": "boolean",
@@ -266,7 +271,10 @@
             { "command": "chevron-lists.stopSectionTimer",                              "title": "CL: Stop Section Timer" },
             { "command": "chevron-lists.showSectionWeights",                            "title": "CL: Show Section Weights" },
             { "command": "chevron-lists.shiftAllDueDates",                              "title": "CL: Shift All Due Dates" },
-            { "command": "chevron-lists.showCompletionStreak",                          "title": "CL: Show Completion Streak" }
+            { "command": "chevron-lists.showCompletionStreak",                          "title": "CL: Show Completion Streak" },
+            { "command": "chevron-lists.copySectionAsJson",                             "title": "CL: Copy Section as JSON" },
+            { "command": "chevron-lists.moveItemToFile",                                "title": "CL: Move Item to File" },
+            { "command": "chevron-lists.openDailyNote",                                 "title": "CL: Open Daily Note" }
         ],
         "keybindings": [
             {

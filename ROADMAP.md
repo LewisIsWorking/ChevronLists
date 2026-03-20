@@ -580,3 +580,17 @@
 
 ## v13.5.0 — Section Completion Streak ✅
 - ✅ `CL: Show Completion Streak` — sections where all checkboxes are done
+
+---
+
+## v13.6.0 — Overdue Count Badge ✅
+- ✅ Status bar `⚠ N overdue` badge; click → `CL: Show Upcoming`
+
+## v13.7.0 — Section Copy as JSON ✅
+- ✅ `CL: Copy Section as JSON` — full structured JSON with all marker data
+
+## v13.8.0 — Item Move Between Files ✅
+- ✅ `CL: Move Item to File` — moves item to any section in any workspace file
+
+## v13.9.0 — Daily Note ✅
+- ✅ `CL: Open Daily Note` — opens/creates `YYYY-MM-DD.md` with `dailyNotesFolder` setting

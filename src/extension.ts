@@ -77,6 +77,11 @@ import { onStartSectionTimer, onStopSectionTimer }       from './sectionTimer';
 import { onShowSectionWeights }                           from './sectionWeightCommands';
 import { onShiftAllDueDates }                             from './shiftDueDatesCommands';
 import { onShowCompletionStreak }                         from './completionStreakCommands';
+import { createOverdueStatusBar,
+         updateOverdueStatusBar }                         from './overdueStatusBar';
+import { onCopySectionAsJson }                            from './jsonCopyCommands';
+import { onMoveItemToFile }                               from './moveItemToFileCommands';
+import { onOpenDailyNote }                                from './dailyNoteCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -138,12 +143,13 @@ import { getConfig }                                         from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
     const statusBar        = createStatusBar();
+    const overdueBar       = createOverdueStatusBar();
     const dueDateDiags     = vscode.languages.createDiagnosticCollection('chevron-lists-dates');
     const wordGoalDiags    = getWordGoalDiagCollection();
     updateStatusBar(vscode.window.activeTextEditor);
 
     context.subscriptions.push(
-        statusBar, dueDateDiags, wordGoalDiags,
+        statusBar, overdueBar, dueDateDiags, wordGoalDiags,
 
         // ── Keyboard handlers ────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.onEnter',       onEnter),
@@ -389,6 +395,15 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Completion Streak ────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showCompletionStreak', onShowCompletionStreak),
 
+        // ── Copy Section as JSON ─────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.copySectionAsJson', onCopySectionAsJson),
+
+        // ── Move Item to File ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.moveItemToFile', onMoveItemToFile),
+
+        // ── Daily Note ───────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.openDailyNote', onOpenDailyNote),
+
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections',           onFilterSections),
@@ -542,6 +557,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateWordGoalDiagnostics(editor.document, prefix);
                 updateBadgeDecorations(editor);
                 updateGoalDecorations(editor);
+                updateOverdueStatusBar(editor);
             }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
@@ -553,6 +569,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateWordGoalDiagnostics(editor.document, prefix);
                 updateBadgeDecorations(editor);
                 updateGoalDecorations(editor);
+                updateOverdueStatusBar(editor);
             }
         }),
     );
@@ -565,6 +582,7 @@ export function activate(context: vscode.ExtensionContext): void {
         updateWordGoalDiagnostics(vscode.window.activeTextEditor.document, prefix);
         updateBadgeDecorations(vscode.window.activeTextEditor);
         updateGoalDecorations(vscode.window.activeTextEditor);
+        updateOverdueStatusBar(vscode.window.activeTextEditor);
     }
     applyConfiguredPreset();
 }
