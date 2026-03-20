@@ -6,7 +6,7 @@ import { prevNumberAtDepth } from './documentUtils';
 type EditBuilder = vscode.TextEditorEdit;
 
 // Snippet definitions — must stay in sync with snippets/chevron-lists.code-snippets
-const SNIPPETS: Record<string, string> = {
+export const SNIPPETS: Record<string, string> = {
     'chl': '> ${1:Section Header}\n>> - ${2:First item}\n>> - ${3:Second item}\n>> - $0',
     'chn': '> ${1:Section Header}\n>> 1. ${2:First item}\n>> 2. ${3:Second item}\n>> 3. $0',
 };
@@ -15,12 +15,36 @@ const SNIPPETS: Record<string, string> = {
  * Checks if the text before the cursor on the active line is a snippet prefix.
  * Returns the prefix string if matched, null otherwise.
  */
-function getSnippetPrefix(editor: vscode.TextEditor): string | null {
-    const cursor         = editor.selection.active;
+export function getSnippetPrefix(editor: vscode.TextEditor): string | null {
+    const cursor          = editor.selection.active;
     const textBeforeCursor = editor.document.lineAt(cursor.line).text
         .substring(0, cursor.character)
         .trimStart();
     return SNIPPETS[textBeforeCursor] !== undefined ? textBeforeCursor : null;
+}
+
+/** Expands the snippet prefix before the cursor, if one is present. */
+export async function expandSnippet(editor: vscode.TextEditor): Promise<boolean> {
+    const snippetPrefix = getSnippetPrefix(editor);
+    if (!snippetPrefix) { return false; }
+    const cursor      = editor.selection.active;
+    const lineText    = editor.document.lineAt(cursor.line).text;
+    const prefixStart = new vscode.Position(cursor.line, lineText.indexOf(snippetPrefix));
+    await editor.edit((eb: EditBuilder) =>
+        eb.delete(new vscode.Range(prefixStart, cursor))
+    );
+    await editor.insertSnippet(new vscode.SnippetString(SNIPPETS[snippetPrefix]));
+    return true;
+}
+
+/**
+ * Command: expand snippet via its configured trigger key.
+ * Called directly by the Ctrl+Enter keybinding.
+ */
+export async function onExpandSnippet(): Promise<void> {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) { return; }
+    await expandSnippet(editor);
 }
 
 /**
@@ -85,25 +109,19 @@ function applyDedent(
     }
 }
 
-/** Handles Tab — expands snippets, promotes chevron items, or falls through */
+/** Handles Tab — expands snippet if trigger=tab, promotes chevron items, or falls through */
 export async function onTab(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
 
-    // Snippet expansion — must happen before chevron line check
-    const snippetPrefix = getSnippetPrefix(editor);
-    if (snippetPrefix) {
-        const cursor    = editor.selection.active;
-        const lineText  = editor.document.lineAt(cursor.line).text;
-        const prefixStart = new vscode.Position(cursor.line, lineText.indexOf(snippetPrefix));
-        await editor.edit((eb: EditBuilder) =>
-            eb.delete(new vscode.Range(prefixStart, cursor))
-        );
-        await editor.insertSnippet(new vscode.SnippetString(SNIPPETS[snippetPrefix]));
-        return;
+    const { prefix, snippetTrigger } = getConfig();
+
+    // Only expand snippets on Tab if the trigger setting is 'tab'
+    if (snippetTrigger === 'tab') {
+        const expanded = await expandSnippet(editor);
+        if (expanded) { return; }
     }
 
-    const { prefix }   = getConfig();
     const chevronLines = getChevronLines(editor, prefix);
     if (chevronLines.length === 0) { await vscode.commands.executeCommand('tab'); return; }
     await editor.edit((eb: EditBuilder) => {

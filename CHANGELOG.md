@@ -2,6 +2,14 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.3.2] - 2026-03-20
+
+### Added
+- `chevron-lists.snippetTrigger` setting — choose how `chl`/`chn` snippets are triggered:
+  - `tab` (default) — press Tab after typing the prefix
+  - `ctrl+enter` — press Ctrl+Enter (no Copilot conflict)
+  - `none` — disable keyboard expansion, use Insert Snippet from the command palette
+
 ## [1.3.1] - 2026-03-20
 
 ### Fixed

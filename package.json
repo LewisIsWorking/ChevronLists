@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -23,6 +23,17 @@
                     "default": "-",
                     "description": "Prefix character for chevron list items. Default '-' gives '>> -'. Change to '*' for '>> *', etc."
                 },
+                "chevron-lists.snippetTrigger": {
+                    "type": "string",
+                    "default": "tab",
+                    "enum": ["tab", "ctrl+enter", "none"],
+                    "enumDescriptions": [
+                        "Press Tab after typing chl or chn to expand (may conflict with Copilot suggestions)",
+                        "Press Ctrl+Enter after typing chl or chn to expand (no Copilot conflict)",
+                        "Disable keyboard expansion — use Insert Snippet from the command palette"
+                    ],
+                    "description": "Which key triggers chevron snippet expansion (chl / chn)."
+                },
                 "chevron-lists.blankLineAfterHeader": {
                     "type": "boolean",
                     "default": false,
@@ -42,6 +53,10 @@
             {
                 "command": "chevron-lists.onShiftTab",
                 "title": "Chevron Lists: Dedent Item"
+            },
+            {
+                "command": "chevron-lists.expandSnippet",
+                "title": "Chevron Lists: Expand Snippet"
             },
             {
                 "command": "chevron-lists.nextHeader",
@@ -97,6 +112,11 @@
                 "key": "enter",
                 "command": "chevron-lists.onEnter",
                 "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible && !inSnippetMode && editorLangId == 'markdown'"
+            },
+            {
+                "key": "ctrl+enter",
+                "command": "chevron-lists.expandSnippet",
+                "when": "editorTextFocus && editorLangId == 'markdown'"
             },
             {
                 "key": "tab",

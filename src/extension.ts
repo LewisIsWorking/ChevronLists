@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { onEnter }                                           from './enterHandler';
-import { onTab, onShiftTab }                                 from './tabHandler';
+import { onTab, onShiftTab, onExpandSnippet }                from './tabHandler';
 import { onNextHeader, onPrevHeader }                        from './navigationHandler';
 import { onSelectSectionItems, onDeleteSection,
          onDuplicateSection, onMoveSectionUp,
@@ -23,8 +23,9 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Keyboard handlers ────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.onEnter',    onEnter),
-        vscode.commands.registerCommand('chevron-lists.onTab',      onTab),
-        vscode.commands.registerCommand('chevron-lists.onShiftTab', onShiftTab),
+        vscode.commands.registerCommand('chevron-lists.onTab',          onTab),
+        vscode.commands.registerCommand('chevron-lists.onShiftTab',     onShiftTab),
+        vscode.commands.registerCommand('chevron-lists.expandSnippet',  onExpandSnippet),
 
         // ── Navigation ───────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.nextHeader', onNextHeader),

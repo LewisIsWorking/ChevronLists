@@ -33,6 +33,19 @@ describe('SNIPPETS map (tabHandler)', () => {
         expect(snippets['Chevron Bullet List'].prefix).toBe('chl');
         expect(snippets['Chevron Numbered List'].prefix).toBe('chn');
     });
+    it('valid trigger values are tab, ctrl+enter, none', () => {
+        const validTriggers = ['tab', 'ctrl+enter', 'none'];
+        // Verify the package.json enum matches
+        const pkgPath = join(import.meta.dir, '../../package.json');
+        const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+        const enumValues = pkg.contributes.configuration.properties['chevron-lists.snippetTrigger'].enum;
+        expect(enumValues).toEqual(validTriggers);
+    });
+    it('default trigger is tab', () => {
+        const pkgPath = join(import.meta.dir, '../../package.json');
+        const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+        expect(pkg.contributes.configuration.properties['chevron-lists.snippetTrigger'].default).toBe('tab');
+    });
 });
 
 describe('chevron-lists snippets file', () => {
