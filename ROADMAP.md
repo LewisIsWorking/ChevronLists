@@ -320,3 +320,20 @@
 ## v5.8.0 — Item Estimation ✅
 - ✅ `~Nh`/`~Nm`/`~NhNm` time estimate syntax
 - ✅ `CL: Show Time Estimates` — sorted by duration, shows total
+
+---
+
+## v5.9.0 — Item Dependencies ✅
+- ✅ `>>depends:SectionName` syntax
+- ✅ `CL: Show Dependencies` — quick pick of all dependency relationships
+
+## v6.0.0 — Custom Syntax Highlighting Rules ✅
+- ✅ Roadmap entry (deferred — covered by existing colour preset system)
+
+## v6.1.0 — Item Voting ✅
+- ✅ `+N` vote count syntax in items
+- ✅ `CL: Sort by Votes`, `CL: Add Vote`, `CL: Remove Vote`
+
+## v6.2.0 — Section Visibility ✅
+- ✅ `CL: Hide Section` — marks with `>> [hidden]` and folds
+- ✅ `CL: Show Hidden Sections` — reveals all hidden sections

@@ -57,6 +57,9 @@ import { onExportStatsAsCsv, onExportStatsAsJson }          from './statsExportC
 import { onGoToLinkedFile,
          ChevronFileLinkHoverProvider }                     from './fileLinkCommands';
 import { onShowTimeEstimates }                              from './estimateCommands';
+import { onShowDependencies }                               from './dependencyCommands';
+import { onSortByVotes, onAddVote, onRemoveVote }           from './voteCommands';
+import { onHideSection, onShowHiddenSections }              from './visibilityCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -187,6 +190,18 @@ export function activate(context: vscode.ExtensionContext): void {
 
         // ── Time Estimates ───────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.showTimeEstimates', onShowTimeEstimates),
+
+        // ── Dependencies ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.showDependencies', onShowDependencies),
+
+        // ── Voting ───────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.sortByVotes',  onSortByVotes),
+        vscode.commands.registerCommand('chevron-lists.addVote',      onAddVote),
+        vscode.commands.registerCommand('chevron-lists.removeVote',   onRemoveVote),
+
+        // ── Section Visibility ───────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.hideSection',        onHideSection),
+        vscode.commands.registerCommand('chevron-lists.showHiddenSections', onShowHiddenSections),
 
         // ── Close handler — clear jump history ───────────────────────────────
         vscode.workspace.onDidCloseTextDocument(doc => clearJumpHistory(doc.uri)),

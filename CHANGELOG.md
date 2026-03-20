@@ -2,6 +2,17 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [6.2.0] - 2026-03-20
+
+### Added
+- `>>depends:SectionName` dependency syntax — marks a section as depending on another
+- `CL: Show Dependencies` — quick pick of all dependency relationships in the file
+- `+N` vote count syntax in items — `>> - Great idea +5`
+- `CL: Sort by Votes` — sorts section items by vote count descending
+- `CL: Add Vote` / `CL: Remove Vote` — increments/decrements the vote count at the cursor
+- `CL: Hide Section` — marks a section with `>> [hidden]` and folds it
+- `CL: Show Hidden Sections` — reveals and unfolds all hidden sections
+
 ## [5.8.0] - 2026-03-20
 
 ### Added
@@ -135,6 +146,17 @@ All notable changes to **Chevron Lists** will be documented here.
 - Hover over `[[...]]` shows a preview of the linked section's items
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
+
+## [6.2.0] - 2026-03-20
+
+### Added
+- `>>depends:SectionName` dependency syntax — marks a section as depending on another
+- `CL: Show Dependencies` — quick pick of all dependency relationships in the file
+- `+N` vote count syntax in items — `>> - Great idea +5`
+- `CL: Sort by Votes` — sorts section items by vote count descending
+- `CL: Add Vote` / `CL: Remove Vote` — increments/decrements the vote count at the cursor
+- `CL: Hide Section` — marks a section with `>> [hidden]` and folds it
+- `CL: Show Hidden Sections` — reveals and unfolds all hidden sections
 
 ## [5.8.0] - 2026-03-20
 
