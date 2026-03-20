@@ -1,6 +1,6 @@
 # Chevron Lists
 
-A VS Code extension that adds smart keyboard behaviour for nested blockquote list syntax in markdown.
+A VS Code extension that adds smart keyboard behaviour, rich organisation tools, and AI assistance for nested blockquote list syntax in markdown.
 
 ## Syntax
 
@@ -11,22 +11,15 @@ A VS Code extension that adds smart keyboard behaviour for nested blockquote lis
 >> - Third item
 ```
 
-Numbered lists are also supported:
+Numbered lists, deep nesting, checkboxes, tags, priorities, due dates and linked sections are all supported:
 
 ```markdown
-> This is a section header
->> 1. First item
->> 2. Second item
->> 3. Third item
-```
-
-Deep nesting works at any depth:
-
-```markdown
-> Section
->> - Top level item
->>> - Nested item
->>>> - Deeply nested item
+> Quest Log
+>> - [x] Speak to the innkeeper #urgent
+>> - [ ] !!! Find the missing amulet @2026-04-15
+>> - See [[Dungeon Map]] for directions
+>> 1. Enter the cave
+>> 2. Defeat the guardian
 ```
 
 ---
@@ -34,108 +27,144 @@ Deep nesting works at any depth:
 ## Features
 
 ### Smart Enter
-- **Enter** after a `> Header` → starts a `>> -` list item on the next line
-- **Enter** after a `>> - Item` → continues the list with another `>> -` prefix
-- **Enter** on an empty `>> -` line → stops the list and clears the prefix
-- **Enter** after a `>> 1. Item` → continues with `>> 2.` (auto-incrementing)
-- **Enter** on an empty `>> 1.` line → stops the numbered list
-- All other Enter presses in markdown files behave normally
+- **Enter** after `> Header` → starts a `>> -` item
+- **Enter** after `>> - Item` → continues the list
+- **Enter** on an empty `>> -` → stops the list
+- **Enter** after `>> 1. Item` → auto-increments to `>> 2.`
+- All other Enter presses behave normally
 
 ### Tab / Shift+Tab — Nesting
-- **Tab** on a `>> -` line → promotes it to `>>> -` (deeper nesting)
-- **Shift+Tab** on a `>>> -` line → demotes it back one level
-- Works at arbitrary depth (`>>`, `>>>`, `>>>>`, etc.)
-- Works on numbered items, picking up the correct number at the new depth
-- **Multi-cursor aware** — Tab/Shift+Tab across multiple selected lines simultaneously (Shift+click to select a range)
-- Tab only fires when no Copilot inline suggestion is visible
+- **Tab** on a `>> -` line → promotes to `>>> -`
+- **Shift+Tab** → demotes back one level
+- Works at arbitrary depth, on both bullet and numbered items
+- Multi-cursor aware (Shift+click to select a range)
+- Tab is suppressed when a Copilot suggestion is visible
 
-### Snippets
-Type a prefix and press your configured trigger key to insert a starter block:
+### Item Enrichment
+Items support inline markers that integrate with commands throughout the extension:
 
-| Prefix | Expands to |
-|--------|-----------|
-| `chl` | Chevron bullet list block with Tab stops |
-| `chn` | Chevron numbered list block with Tab stops |
+| Marker | Example | Feature |
+|--------|---------|---------|
+| `[x]` / `[ ]` | `>> - [x] Done task` | Checkboxes — toggle with `CL: Toggle Item Done` |
+| `#tag` | `>> - Deploy server #urgent` | Tags — filter with `CL: Filter by Tag` |
+| `!` / `!!` / `!!!` | `>> - !!! Critical bug` | Priority — filter with `CL: Filter by Priority` |
+| `@YYYY-MM-DD` | `>> - Ship feature @2026-04-01` | Due dates — view with `CL: Show Upcoming` |
+| `[[SectionName]]` | `>> - See [[Act Two]]` | Links — navigate with F12 or hover for preview |
 
-Configure the trigger key via `chevron-lists.snippetTrigger` (see Settings).
+### Section Groups
+Use `>> -- Group Name` as a divider to organise sections into named groups:
 
-### Templates
-Run `CL: Insert Template` (`Ctrl+Shift+P`) to choose from 5 built-in templates:
+```markdown
+>> -- Act One
+> The Arrival
+>> - item
 
-| Template | Description |
-|----------|-------------|
-| Bullet List | Standard chevron bullet list |
-| Numbered List | Chevron numbered list |
-| Nested List | Two-level nested bullet list |
-| Session Notes | RPG / meeting session notes |
-| Character Sheet | Quick character / entity profile |
+>> -- Act Two
+> The Confrontation
+>> - item
+```
 
-Add your own via `chevron-lists.templates` in settings.
+Manage groups with `CL: Group Sections` and `CL: Filter Groups`.
+
+---
+
+## Commands
+
+Type `CL:` in the command palette (`Ctrl+Shift+P`) to see all commands.
 
 ### Navigation
-- **Ctrl+Alt+Down** → jump to the next `> Header` in the file
-- **Ctrl+Alt+Up** → jump to the previous `> Header` in the file
+| Command / Key | Description |
+|---------------|-------------|
+| `Ctrl+Alt+Down` | Jump to next `> Header` |
+| `Ctrl+Alt+Up` | Jump to previous `> Header` |
+| `CL: Filter Sections` | Live quick pick of all headers in the file |
+| `CL: Filter Sections (Workspace)` | Jump to any section across the whole workspace |
+| `CL: Filter Pinned Sections` | Jump to a pinned section |
+| `CL: Filter Groups` | Jump to a named section group |
 
-### Section Commands
-All available via `Ctrl+Shift+P` — type `CL:` to filter:
-
+### Search
 | Command | Description |
 |---------|-------------|
-| `CL: Select Section Items` | Selects all items under the nearest `> Header` |
-| `CL: Delete Section` | Deletes the entire section (header + items) |
-| `CL: Duplicate Section` | Copies the section immediately below itself |
-| `CL: Move Section Up` | Swaps the section with the one above |
-| `CL: Move Section Down` | Swaps the section with the one below |
+| `CL: Search Items` | Live quick pick of all items in the file with preview |
+| `CL: Search Items (Workspace)` | Search items across every markdown file in the workspace |
+| `CL: Filter by Tag` | Two-step picker: choose a `#tag`, then jump to matching items |
+| `CL: Filter by Priority` | Filter items by `!` / `!!` / `!!!` priority level |
+| `CL: Show Upcoming` | All `@date` items sorted chronologically; overdue highlighted |
 
-### Search & Filter
+### Section Actions
 | Command | Description |
 |---------|-------------|
-| `CL: Search Items` | Live quick pick of all items in the current file with preview |
-| `CL: Filter Sections` | Live quick pick of all headers in the current file |
-| `CL: Search Items (Workspace)` | Search all chevron items across every markdown file in the workspace |
-| `CL: Filter Sections (Workspace)` | Jump to any section in any markdown file in the workspace |
+| `CL: Select Section Items` | Selects all items under the nearest header |
+| `CL: Delete Section` | Deletes header + all items |
+| `CL: Duplicate Section` | Copies the section below itself |
+| `CL: Move Section Up / Down` | Swaps the section with its neighbour |
+| `CL: Toggle Pin` | Pins/unpins the section at the cursor (persists per workspace) |
+| `CL: Group Sections` | Inserts a `>> -- Name` group divider above the cursor section |
 
-### Sorting & Renumbering
+### Item Actions
 | Command | Description |
 |---------|-------------|
-| `CL: Sort Items A → Z` | Sorts bullet items alphabetically |
-| `CL: Sort Items Z → A` | Reverse alphabetical sort |
-| `CL: Renumber Items` | Resets numbered item sequence per chevron depth |
+| `CL: Toggle Item Done` | Toggles `[ ]` → `[x]` → `[ ]` on the item at the cursor |
+| `CL: Sort Items A → Z / Z → A` | Alphabetical sort of items in the section |
+| `CL: Renumber Items` | Resets numbered item sequence per depth |
+| `CL: Fix Numbering` | Auto-corrects all out-of-sequence numbered items in the file |
+| `CL: Go to Linked Section` | Jumps to the `[[linked section]]` under the cursor |
 
 ### Export
 | Command | Description |
 |---------|-------------|
-| `CL: Copy Section as Markdown` | Converts section to `##` heading + list, copies to clipboard |
-| `CL: Copy Section as Plain Text` | Strips all prefixes, copies clean text to clipboard |
+| `CL: Copy Section as Markdown` | Converts section to standard `##` + list and copies to clipboard |
+| `CL: Copy Section as Plain Text` | Strips all syntax, copies clean text |
+| `CL: Export File as HTML` | Exports the file as a styled standalone HTML page |
 
-### File Statistics
-Run `CL: Show File Statistics` to open a webview panel showing section count, item count, word count, avg items per section, and a full section breakdown table.
+### Snippets & Templates
+| Command / Prefix | Description |
+|------------------|-------------|
+| `chl` + trigger | Inserts a bullet list block with Tab stops |
+| `chn` + trigger | Inserts a numbered list block with Tab stops |
+| `CL: Insert Template` | Quick pick of 5 built-in templates + your own custom ones |
+
+### Appearance
+| Command | Description |
+|---------|-------------|
+| `CL: Switch Colour Preset` | Choose from `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom` |
+
+### Analytics
+| Command | Description |
+|---------|-------------|
+| `CL: Show File Statistics` | Webview panel: section/item/word counts, avg items, most/least populated |
+
+### AI Assist
+Requires an Anthropic API key — set `chevron-lists.anthropicApiKey` in settings.
+
+| Command | Description |
+|---------|-------------|
+| `CL: Suggest Items (AI)` | Claude suggests 3–5 new items for the current section; pick which to insert |
+| `CL: Summarise Section (AI)` | Generates a one-line summary and inserts it as the first item |
+| `CL: Expand Item (AI)` | Expands the item at the cursor into nested sub-items |
+
+---
+
+## Visual Features
 
 ### Outline View
-Chevron sections appear in VS Code's **Outline panel** and **breadcrumb navigation**. Each section shows its name and item count. Expanding a section shows all its items as children. Clicking any entry jumps directly to that line.
+Chevron sections appear in VS Code's **Outline panel** and **breadcrumb navigation**. Each section shows its name and item count. Expanding a section reveals all its items as children. Clicking any entry jumps to that line.
 
-### Colour Presets
-Run `CL: Switch Colour Preset` to choose from 6 built-in colour themes:
+### Diagnostics (Problems Panel)
+The Problems panel shows live warnings for:
+- Duplicate section names in the same file
+- Empty sections (header with no items)
+- Out-of-sequence numbered items
+- Overdue `@date` items
 
-| Preset | Description |
-|--------|-------------|
-| `default` | Amber headers, muted grey prefixes, blue numbers |
-| `ocean` | Teal headers, slate prefixes, cyan numbers |
-| `forest` | Green headers, dark green prefixes, lime numbers |
-| `sunset` | Coral headers, muted orange prefixes, gold numbers |
-| `monochrome` | Bold white headers, grey prefixes, silver numbers |
-| `custom` | Clears all preset colours for full manual control |
-
-### Hover Tooltip
-Hover over any `> Header` line to see item count and word count for that section.
-
-### Status Bar
-Bottom-right status bar shows total section and item counts for the open file, updating as you type.
+### Hover Tooltips
+- Hover over `> Header` → item count and word count for that section
+- Hover over `[[linked section]]` → preview of the target section's items; broken links show a warning
 
 ### Syntax Highlighting
-- `> Header` lines are coloured as section headings
+- `> Header` lines coloured as section headings
 - `>> -` and `>> 1.` prefixes styled distinctly from content
-- Colours driven by your active theme (or preset) automatically
+- Colours driven by your active theme (or colour preset) automatically
 
 ### Folding
 Each `> Header` block folds via the standard VS Code fold gutter arrow.
@@ -143,6 +172,8 @@ Each `> Header` block folds via the standard VS Code fold gutter arrow.
 ### Minimap Indicators
 `> Header` lines appear as coloured markers in the overview ruler.
 
+### Status Bar
+Bottom-right status bar shows total section and item counts, updating as you type.
 
 ---
 
@@ -150,11 +181,12 @@ Each `> Header` block folds via the standard VS Code fold gutter arrow.
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `chevron-lists.listPrefix` | `-` | Prefix character for list items. Change to `*` for `>> *`, etc. |
-| `chevron-lists.blankLineAfterHeader` | `false` | Insert a blank line between `> Header` and the first item on Enter |
-| `chevron-lists.snippetTrigger` | `tab` | How `chl`/`chn` snippets are triggered: `tab`, `ctrl+enter`, or `none` |
-| `chevron-lists.colourPreset` | `default` | Built-in colour preset: `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom` |
-| `chevron-lists.templates` | `[]` | User-defined templates for `CL: Insert Template` (name, description, body) |
+| `chevron-lists.listPrefix` | `-` | Prefix for list items — change to `*` for `>> *` |
+| `chevron-lists.blankLineAfterHeader` | `false` | Insert a blank line after `> Header` on Enter |
+| `chevron-lists.snippetTrigger` | `tab` | Snippet trigger key: `tab`, `ctrl+enter`, or `none` |
+| `chevron-lists.colourPreset` | `default` | Built-in colour preset |
+| `chevron-lists.templates` | `[]` | Custom templates for `CL: Insert Template` (name, description, body) |
+| `chevron-lists.anthropicApiKey` | `""` | API key for AI Assist commands — get one at [console.anthropic.com](https://console.anthropic.com) |
 
 ---
 
@@ -166,15 +198,15 @@ bun run compile    # compile TypeScript
 bun test           # run unit tests with coverage
 ```
 
-155 unit tests, 100% coverage of all pure logic.
+265 unit tests, 100% coverage of all pure logic, 19 test files.
 
 ### Releasing a new version
 
 ```powershell
-.\release.ps1 -Version 2.1.0
+.\release.ps1 -Version 3.1.0
 ```
 
-This will: run tests, warn if no CHANGELOG entry exists, bump `package.json`, compile, package the `.vsix`, commit and push to GitHub, then open the Marketplace upload page.
+Runs tests → bumps `package.json` → compiles → packages `.vsix` → commits and pushes → opens the Marketplace upload page.
 
 ---
 
