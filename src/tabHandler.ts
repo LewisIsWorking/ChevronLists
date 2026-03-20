@@ -109,6 +109,24 @@ function applyDedent(
     }
 }
 
+/**
+ * Collects all child item lines directly below lineIndex whose chevron
+ * depth is strictly greater than the item at lineIndex.
+ */
+function collectChildLines(doc: vscode.TextDocument, lineIndex: number, itemChevrons: string, prefix: string): number[] {
+    const children: number[] = [];
+    for (let i = lineIndex + 1; i < doc.lineCount; i++) {
+        const text    = doc.lineAt(i).text;
+        const bullet  = parseBullet(text, prefix);
+        const numbered = parseNumbered(text);
+        const chevrons = bullet?.chevrons ?? numbered?.chevrons ?? null;
+        if (!chevrons) { break; } // non-chevron line ends the child block
+        if (chevrons.length <= itemChevrons.length) { break; } // back to same or lower depth
+        children.push(i);
+    }
+    return children;
+}
+
 /** Handles Tab — expands snippet if trigger=tab, promotes chevron items, or falls through */
 export async function onTab(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
@@ -116,7 +134,6 @@ export async function onTab(): Promise<void> {
 
     const { prefix, snippetTrigger } = getConfig();
 
-    // Only expand snippets on Tab if the trigger setting is 'tab'
     if (snippetTrigger === 'tab') {
         const expanded = await expandSnippet(editor);
         if (expanded) { return; }
@@ -124,8 +141,23 @@ export async function onTab(): Promise<void> {
 
     const chevronLines = getChevronLines(editor, prefix);
     if (chevronLines.length === 0) { await vscode.commands.executeCommand('tab'); return; }
+
     await editor.edit((eb: EditBuilder) => {
-        for (const line of chevronLines) { applyIndent(eb, editor.document, line, prefix); }
+        // Process lines in reverse order to avoid index shift issues
+        const allLines = new Set(chevronLines);
+        // Also collect children for single-cursor case
+        if (chevronLines.length === 1) {
+            const text     = editor.document.lineAt(chevronLines[0]).text;
+            const chevrons = parseBullet(text, prefix)?.chevrons ?? parseNumbered(text)?.chevrons;
+            if (chevrons) {
+                for (const child of collectChildLines(editor.document, chevronLines[0], chevrons, prefix)) {
+                    allLines.add(child);
+                }
+            }
+        }
+        for (const line of [...allLines].sort((a, b) => a - b)) {
+            applyIndent(eb, editor.document, line, prefix);
+        }
     });
 }
 
@@ -136,7 +168,20 @@ export async function onShiftTab(): Promise<void> {
     const { prefix }   = getConfig();
     const chevronLines = getChevronLines(editor, prefix);
     if (chevronLines.length === 0) { await vscode.commands.executeCommand('outdent'); return; }
+
     await editor.edit((eb: EditBuilder) => {
-        for (const line of chevronLines) { applyDedent(eb, editor.document, line, prefix); }
+        const allLines = new Set(chevronLines);
+        if (chevronLines.length === 1) {
+            const text     = editor.document.lineAt(chevronLines[0]).text;
+            const chevrons = parseBullet(text, prefix)?.chevrons ?? parseNumbered(text)?.chevrons;
+            if (chevrons) {
+                for (const child of collectChildLines(editor.document, chevronLines[0], chevrons, prefix)) {
+                    allLines.add(child);
+                }
+            }
+        }
+        for (const line of [...allLines].sort((a, b) => a - b)) {
+            applyDedent(eb, editor.document, line, prefix);
+        }
     });
 }

@@ -52,3 +52,9 @@ export function uniqueTags(doc: LineReader, prefix: string): string[] {
     const all = collectTags(doc, prefix).map(o => o.tag);
     return [...new Set(all)].sort();
 }
+
+/** Renames a tag in a single line of text, returns the updated string */
+export function renameTagInText(text: string, oldTag: string, newTag: string): string {
+    const re = new RegExp(`#${oldTag.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[\\s,;.!?]|$)`, 'g');
+    return text.replace(re, `#${newTag}`);
+}

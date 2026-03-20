@@ -2,6 +2,15 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [7.1.0] - 2026-03-20
+
+### Added
+- `CL: Duplicate Item` — duplicates the item at the cursor directly below itself, preserving all markers
+- `CL: Rename Section` — renames the current section header and updates all `[[SectionName]]` links in the file
+- `CL: Rename Tag` — renames a `#tag` across all items in the current file
+- `CL: Rename Tag (Workspace)` — renames a `#tag` across every markdown file in the workspace
+- **Smart Indentation** — Tab/Shift+Tab on a single item now also shifts all child items (deeper-nested items directly below) together, preserving relative nesting structure
+
 ## [6.7.0] - 2026-03-20
 
 ### Added
@@ -20,6 +29,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [7.1.0] - 2026-03-20
+
+### Added
+- `CL: Duplicate Item` — duplicates the item at the cursor directly below itself, preserving all markers
+- `CL: Rename Section` — renames the current section header and updates all `[[SectionName]]` links in the file
+- `CL: Rename Tag` — renames a `#tag` across all items in the current file
+- `CL: Rename Tag (Workspace)` — renames a `#tag` across every markdown file in the workspace
+- **Smart Indentation** — Tab/Shift+Tab on a single item now also shifts all child items (deeper-nested items directly below) together, preserving relative nesting structure
 
 ## [6.7.0] - 2026-03-20
 
@@ -186,6 +204,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [7.1.0] - 2026-03-20
+
+### Added
+- `CL: Duplicate Item` — duplicates the item at the cursor directly below itself, preserving all markers
+- `CL: Rename Section` — renames the current section header and updates all `[[SectionName]]` links in the file
+- `CL: Rename Tag` — renames a `#tag` across all items in the current file
+- `CL: Rename Tag (Workspace)` — renames a `#tag` across every markdown file in the workspace
+- **Smart Indentation** — Tab/Shift+Tab on a single item now also shifts all child items (deeper-nested items directly below) together, preserving relative nesting structure
+
 ## [6.7.0] - 2026-03-20
 
 ### Added
@@ -204,6 +231,15 @@ All notable changes to **Chevron Lists** will be documented here.
 - `CL: Convert Bullets to Numbered` — converts all `>> -` bullet items in the current section to a numbered sequence, continuing from the last existing number (sentence order preserved)
 - `[LABEL TEXT]` square bracket syntax — text inside `[...]` in item content is highlighted as a `chevronLabel` token in a distinct colour (gold/amber by default)
 - All colour presets updated with a `chevronLabel` colour
+
+## [7.1.0] - 2026-03-20
+
+### Added
+- `CL: Duplicate Item` — duplicates the item at the cursor directly below itself, preserving all markers
+- `CL: Rename Section` — renames the current section header and updates all `[[SectionName]]` links in the file
+- `CL: Rename Tag` — renames a `#tag` across all items in the current file
+- `CL: Rename Tag (Workspace)` — renames a `#tag` across every markdown file in the workspace
+- **Smart Indentation** — Tab/Shift+Tab on a single item now also shifts all child items (deeper-nested items directly below) together, preserving relative nesting structure
 
 ## [6.7.0] - 2026-03-20
 

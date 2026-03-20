@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test';
-import { extractTags, stripTags, collectTags, uniqueTags } from '../tagParser';
+import { extractTags, stripTags, collectTags, uniqueTags, renameTagInText } from '../tagParser';
 import type { LineReader } from '../types';
 
 function makeDoc(lines: string[]): LineReader {
@@ -79,5 +79,23 @@ describe('uniqueTags', () => {
     it('returns empty array for a file with no tags', () => {
         const doc = makeDoc(['> H', '>> - no tags']);
         expect(uniqueTags(doc, '-')).toEqual([]);
+    });
+});
+
+describe('renameTagInText', () => {
+    it('renames a tag', () => {
+        expect(renameTagInText('item #wip more', 'wip', 'done')).toBe('item #done more');
+    });
+    it('does not match a longer tag', () => {
+        expect(renameTagInText('item #urgent-fix', 'urgent', 'critical')).toBe('item #urgent-fix');
+    });
+    it('renames at end of string', () => {
+        expect(renameTagInText('item #wip', 'wip', 'done')).toBe('item #done');
+    });
+    it('renames multiple occurrences', () => {
+        expect(renameTagInText('#wip and #wip', 'wip', 'done')).toBe('#done and #done');
+    });
+    it('returns unchanged string when tag not found', () => {
+        expect(renameTagInText('item #other', 'wip', 'done')).toBe('item #other');
     });
 });

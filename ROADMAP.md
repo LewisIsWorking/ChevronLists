@@ -352,3 +352,18 @@
 ## v6.7.0 — Paste as Chevron ✅
 - ✅ `CL: Paste as Bullet Items` — clipboard text → `>> -` items
 - ✅ `CL: Paste as Numbered Items` — clipboard text → `>> N.` items continuing from existing
+
+---
+
+## v6.8.0 — Item Duplication ✅
+- ✅ `CL: Duplicate Item` — duplicates the item directly below itself
+
+## v6.9.0 — Section Header Rename ✅
+- ✅ `CL: Rename Section` — renames header and updates all `[[links]]` in the file
+
+## v7.0.0 — Tag Rename ✅
+- ✅ `CL: Rename Tag` — renames a `#tag` across the current file
+- ✅ `CL: Rename Tag (Workspace)` — same across all workspace files
+
+## v7.1.0 — Smart Indentation ✅
+- ✅ Tab/Shift+Tab on a single item also shifts all child items together

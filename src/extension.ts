@@ -13,6 +13,9 @@ import { onSortItemsAZ, onSortItemsZA,
          onConvertNumberedToBullets }                        from './sortCommands';
 import { onShowWordCount, onShowNestingSummary }             from './wordCountCommands';
 import { onPasteAsBullets, onPasteAsNumbered }              from './pasteCommands';
+import { onDuplicateItem }                                   from './duplicateItem';
+import { onRenameSection }                                   from './renameSectionCommands';
+import { onRenameTag, onRenameTagWorkspace }                from './renameTagCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -120,6 +123,14 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Paste as Chevron ─────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.pasteAsBullets',  onPasteAsBullets),
         vscode.commands.registerCommand('chevron-lists.pasteAsNumbered', onPasteAsNumbered),
+
+        // ── Duplicate Item ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.duplicateItem', onDuplicateItem),
+
+        // ── Rename ───────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.renameSection',        onRenameSection),
+        vscode.commands.registerCommand('chevron-lists.renameTag',            onRenameTag),
+        vscode.commands.registerCommand('chevron-lists.renameTagWorkspace',   onRenameTagWorkspace),
 
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
