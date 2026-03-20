@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -32,6 +32,20 @@
                     "type": "string",
                     "default": "-",
                     "description": "Prefix character for chevron list items. Default '-' gives '>> -'. Change to '*' for '>> *', etc."
+                },
+                "chevron-lists.colourPreset": {
+                    "type": "string",
+                    "default": "default",
+                    "enum": ["default", "ocean", "forest", "sunset", "monochrome", "custom"],
+                    "enumDescriptions": [
+                        "Amber headers, muted grey prefixes, blue numbers",
+                        "Teal headers, slate prefixes, cyan numbers",
+                        "Green headers, dark green prefixes, lime numbers",
+                        "Coral headers, muted orange prefixes, gold numbers",
+                        "Bold white headers, grey prefixes, silver numbers",
+                        "No preset — manage colours manually via semanticTokenColorCustomizations"
+                    ],
+                    "description": "Built-in colour preset for chevron syntax highlighting."
                 },
                 "chevron-lists.snippetTrigger": {
                     "type": "string",
@@ -123,6 +137,10 @@
             {
                 "command": "chevron-lists.filterSections",
                 "title": "Chevron Lists: Filter Sections"
+            },
+            {
+                "command": "chevron-lists.switchColourPreset",
+                "title": "Chevron Lists: Switch Colour Preset"
             }
         ],
         "keybindings": [

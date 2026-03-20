@@ -107,15 +107,11 @@
 
 ---
 
-## v1.6.0 — Colour Presets ⬜
-- ⬜ `chevron-lists.colourPreset` setting with named presets:
-  - `default` — amber header, muted grey prefix, blue numbers (current)
-  - `ocean` — teal header, slate prefix, cyan numbers
-  - `forest` — green header, dark green prefix, lime numbers
-  - `sunset` — coral header, muted orange prefix, gold numbers
-  - `monochrome` — bold white header, grey prefix, silver numbers
-  - `custom` — fully user-defined (uses `semanticTokenColorCustomizations`)
-- ⬜ `Chevron Lists: Switch Colour Preset` command — quick pick to toggle between presets live
+## v1.6.0 — Colour Presets ✅
+- ✅ `Chevron Lists: Switch Colour Preset` command — live quick pick between presets
+- ✅ 5 built-in presets: `default`, `ocean`, `forest`, `sunset`, `monochrome`
+- ✅ `chevron-lists.colourPreset` setting persists the chosen preset across restarts
+- ✅ `custom` option hands full control back to the user
 
 ---
 

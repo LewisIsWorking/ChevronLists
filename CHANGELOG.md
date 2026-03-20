@@ -2,6 +2,24 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.6.0] - 2026-03-20
+
+### Added
+- `Chevron Lists: Switch Colour Preset` command — quick pick to switch between 5 built-in colour presets live
+- `chevron-lists.colourPreset` setting: `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom`
+- Preset colours applied automatically on activation so they survive window restarts
+- `custom` option removes built-in preset rules, leaving full control to the user via `semanticTokenColorCustomizations`
+- 19 unit tests covering all preset data validation
+
+## [1.6.0] - 2026-03-20
+
+### Added
+- `Chevron Lists: Switch Colour Preset` command — live quick pick to switch between 6 built-in colour themes instantly
+- `chevron-lists.colourPreset` setting: `default`, `ocean`, `forest`, `sunset`, `monochrome`, `custom`
+- Preset is automatically applied on extension activation
+- `custom` preset clears all chevron colour overrides so you can define your own via `semanticTokenColorCustomizations`
+- 13 new unit tests covering preset structure and validation
+
 ## [1.5.0] - 2026-03-20
 
 ### Added

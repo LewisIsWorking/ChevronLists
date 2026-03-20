@@ -10,6 +10,7 @@ import { onCopySectionAsMarkdown,
 import { onSortItemsAZ, onSortItemsZA,
          onRenumberItems }                                   from './sortCommands';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
+import { onSwitchColourPreset, applyConfiguredPreset }        from './presetCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -53,6 +54,12 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.searchItems',    onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections', onFilterSections),
 
+        // ── Colour Presets ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.switchColourPreset', onSwitchColourPreset),
+
+        // ── Colour presets ───────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.switchColourPreset', onSwitchColourPreset),
+
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),
         vscode.languages.registerHoverProvider({ language: 'markdown' }, new ChevronHoverProvider()),
@@ -78,6 +85,9 @@ export function activate(context: vscode.ExtensionContext): void {
     if (vscode.window.activeTextEditor) {
         updateDecorations(vscode.window.activeTextEditor);
     }
+
+    // Apply the configured colour preset on activation
+    applyConfiguredPreset();
 }
 
 export function deactivate(): void {}
