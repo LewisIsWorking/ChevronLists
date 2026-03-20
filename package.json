@@ -13,14 +13,22 @@
     },
     "categories": ["Keymaps"],
     "activationEvents": ["onLanguage:markdown"],
-    "main": "./out/extension.js",
+    "main": "./dist/extension.js",
     "contributes": {
         "configurationDefaults": {
             "editor.semanticTokenColorCustomizations": {
                 "rules": {
-                    "chevronHeader":  { "foreground": "#E5C07B", "bold": true },
-                    "chevronPrefix":  { "foreground": "#5C6370", "italic": false },
-                    "chevronNumber":  { "foreground": "#61AFEF" },
+                    "chevronHeader": {
+                        "foreground": "#E5C07B",
+                        "bold": true
+                    },
+                    "chevronPrefix": {
+                        "foreground": "#5C6370",
+                        "italic": false
+                    },
+                    "chevronNumber": {
+                        "foreground": "#61AFEF"
+                    },
                     "chevronContent": {}
                 }
             }
@@ -76,9 +84,15 @@
                         "type": "object",
                         "required": ["name", "description", "body"],
                         "properties": {
-                            "name":        { "type": "string" },
-                            "description": { "type": "string" },
-                            "body":        { "type": "string" }
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "body": {
+                                "type": "string"
+                            }
                         }
                     }
                 }
@@ -234,18 +248,30 @@
             }
         ],
         "semanticTokenTypes": [
-            { "id": "chevronHeader",  "description": "Chevron section header text (after the > prefix)" },
-            { "id": "chevronPrefix",  "description": "Chevron punctuation: >, >>, >> -, >> N." },
-            { "id": "chevronNumber",  "description": "Number in a >> N. numbered item" },
-            { "id": "chevronContent", "description": "Item content text in >> - or >> N. lines" }
+            {
+                "id": "chevronHeader",
+                "description": "Chevron section header text (after the > prefix)"
+            },
+            {
+                "id": "chevronPrefix",
+                "description": "Chevron punctuation: >, >>, >> -, >> N."
+            },
+            {
+                "id": "chevronNumber",
+                "description": "Number in a >> N. numbered item"
+            },
+            {
+                "id": "chevronContent",
+                "description": "Item content text in >> - or >> N. lines"
+            }
         ],
         "semanticTokenScopes": [
             {
                 "language": "markdown",
                 "scopes": {
-                    "chevronHeader":  ["entity.name.section.chevron", "markup.heading"],
-                    "chevronPrefix":  ["punctuation.definition.list.chevron"],
-                    "chevronNumber":  ["constant.numeric.chevron"],
+                    "chevronHeader": ["entity.name.section.chevron", "markup.heading"],
+                    "chevronPrefix": ["punctuation.definition.list.chevron"],
+                    "chevronNumber": ["constant.numeric.chevron"],
                     "chevronContent": ["string.other.chevron"]
                 }
             }
@@ -258,8 +284,10 @@
         ]
     },
     "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
+        "compile": "tsc --noEmit",
+        "bundle": "node esbuild.mjs",
+        "bundle:prod": "node esbuild.mjs --production",
+        "watch": "tsc -watch -p ./ --noEmit",
         "test": "bun test src/__tests__ --coverage"
     },
     "license": "CC-BY-NC-ND-4.0",
@@ -267,8 +295,7 @@
         "@types/bun": "^1.3.11",
         "@types/node": "^20.0.0",
         "@types/vscode": "^1.85.0",
+        "esbuild": "^0.27.4",
         "typescript": "^5.0.0"
     }
 }
-
-

@@ -1,12 +1,13 @@
 .idea/
 src/
+out/
 node_modules/
 .git/
 .gitignore
 bun.lock
 tsconfig.json
 bunfig.toml
+esbuild.mjs
 .DS_Store
 *.vsix
-out/__mocks__/
-out/__tests__/
+dist/*.map

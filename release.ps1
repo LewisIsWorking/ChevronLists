@@ -58,12 +58,18 @@ $pkg.version = $Version
 $pkg | ConvertTo-Json -Depth 10 | Set-Content $PackageJson -Encoding UTF8
 Write-Host "        Done." -ForegroundColor Green
 
-# ── 6. Compile ────────────────────────────────────────────────────────────────
-Write-Host "  [3/5] Compiling TypeScript..." -ForegroundColor Gray
+# ── 6. Bundle ────────────────────────────────────────────────────────────────
+Write-Host "  [3/5] Type-checking and bundling..." -ForegroundColor Gray
 Push-Location $ProjectRoot
 $compileResult = & bun run compile 2>&1
 if ($LASTEXITCODE -ne 0) {
-    Write-Error "Compile failed:`n$compileResult"
+    Write-Error "Type-check failed:`n$compileResult"
+    Pop-Location
+    exit 1
+}
+$bundleResult = & bun run bundle:prod 2>&1
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Bundle failed:`n$bundleResult"
     Pop-Location
     exit 1
 }
