@@ -5,6 +5,8 @@ import { onNextHeader, onPrevHeader }                        from './navigationH
 import { onSelectSectionItems, onDeleteSection,
          onDuplicateSection, onMoveSectionUp,
          onMoveSectionDown }                                 from './sectionCommands';
+import { onCopySectionAsMarkdown,
+         onCopySectionAsPlainText }                          from './exportCommands';
 import { ChevronFoldingProvider }                            from './foldingProvider';
 import { ChevronHoverProvider }                              from './hoverProvider';
 import { updateDecorations }                                 from './decorationProvider';
@@ -32,6 +34,10 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('chevron-lists.duplicateSection',   onDuplicateSection),
         vscode.commands.registerCommand('chevron-lists.moveSectionUp',      onMoveSectionUp),
         vscode.commands.registerCommand('chevron-lists.moveSectionDown',    onMoveSectionDown),
+
+        // ── Export ───────────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.copySectionAsMarkdown',  onCopySectionAsMarkdown),
+        vscode.commands.registerCommand('chevron-lists.copySectionAsPlainText', onCopySectionAsPlainText),
 
         // ── Providers ────────────────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider({ language: 'markdown' }, new ChevronFoldingProvider()),

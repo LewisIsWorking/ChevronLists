@@ -73,9 +73,10 @@
 
 ---
 
-## v1.1.0 — Export ⬜
-- ⬜ `Chevron Lists: Copy Section as Markdown` — convert to standard markdown bullet list and copy to clipboard
-- ⬜ `Chevron Lists: Copy Section as Plain Text` — strip all prefixes and copy clean text to clipboard
+## v1.1.0 — Export ✅
+- ✅ `Chevron Lists: Copy Section as Markdown` — converts to standard markdown heading + list, copies to clipboard
+- ✅ `Chevron Lists: Copy Section as Plain Text` — strips all prefixes, copies clean text to clipboard
+- ✅ Nested items indented correctly in both formats
 
 ---
 

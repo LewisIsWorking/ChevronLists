@@ -2,6 +2,14 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.1.0] - 2026-03-20
+
+### Added
+- `Chevron Lists: Copy Section as Markdown` — converts the current section to a standard markdown heading + list and copies to clipboard
+- `Chevron Lists: Copy Section as Plain Text` — strips all prefixes and copies just the header text and item content to clipboard
+- Nested items are indented correctly in both export formats
+- 16 new unit tests covering all export conversion logic
+
 ## [1.0.4] - 2026-03-20
 
 ### Fixed
