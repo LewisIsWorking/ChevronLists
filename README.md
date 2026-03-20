@@ -135,7 +135,23 @@ bun run compile    # compile TypeScript
 bun test           # run unit tests with coverage
 ```
 
-92 unit tests, 100% coverage of all pure logic.
+103 unit tests, 100% coverage of all pure logic.
+
+### Releasing a new version
+
+A PowerShell release script automates the full release process:
+
+```powershell
+.\release.ps1 -Version 1.5.0
+```
+
+This will:
+1. Warn if no CHANGELOG entry exists for the version
+2. Bump the version in `package.json`
+3. Compile TypeScript
+4. Package the `.vsix`
+5. Commit and push to GitHub
+6. Open the Marketplace upload page
 
 ---
 
