@@ -468,3 +468,17 @@
 
 ## v10.3.0 — Auto-Archive on Complete ✅
 - ✅ `chevron-lists.autoArchive` setting — auto-moves done items to `> Archive`
+
+---
+
+## v10.4.0 — Cross-Section Item Move ✅
+- ✅ `CL: Move Item to Section` — true move (removes original)
+
+## v10.5.0 — Section Diff ✅
+- ✅ `CL: Diff Two Sections` — line-by-line diff in side panel
+
+## v10.6.0 — Batch Priority Clear ✅
+- ✅ `CL: Clear All Priority` + `CL: Clear All Due Dates`
+
+## v10.7.0 — Item Count Badge ✅
+- ✅ `CL: Toggle Item Count Badge` — live `(N)` decoration on headers

@@ -94,3 +94,18 @@ export function toMarkdownTable(rows: Array<{ num: number; content: string }>): 
         ...rows.map(r => `| ${r.num} | ${r.content.replace(/\|/g, '\\|')} |`),
     ].join('\n');
 }
+
+/** Pure line-by-line diff of two string arrays. Lines prefixed with ' ', '+', or '-' */
+export function diffLines(a: string[], b: string[]): string[] {
+    const out: string[] = [];
+    const maxLen = Math.max(a.length, b.length);
+    for (let i = 0; i < maxLen; i++) {
+        const lineA = a[i] ?? null;
+        const lineB = b[i] ?? null;
+        if (lineA === lineB)     { out.push(`  ${lineA ?? ''}`); }
+        else if (lineA === null) { out.push(`+ ${lineB}`); }
+        else if (lineB === null) { out.push(`- ${lineA}`); }
+        else                     { out.push(`- ${lineA}`, `+ ${lineB}`); }
+    }
+    return out;
+}

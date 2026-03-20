@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "10.3.0",
+    "version": "10.7.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -241,7 +241,12 @@
             { "command": "chevron-lists.showWordFrequency",                 "title": "CL: Show Word Frequency" },
             { "command": "chevron-lists.editItemContent",                        "title": "CL: Edit Item Content" },
             { "command": "chevron-lists.collectItemsByTag",                      "title": "CL: Collect Items by Tag" },
-            { "command": "chevron-lists.convertSectionToTable",                  "title": "CL: Convert Section to Markdown Table" }
+            { "command": "chevron-lists.convertSectionToTable",                  "title": "CL: Convert Section to Markdown Table" },
+            { "command": "chevron-lists.moveItemToSection",                          "title": "CL: Move Item to Section" },
+            { "command": "chevron-lists.diffTwoSections",                            "title": "CL: Diff Two Sections" },
+            { "command": "chevron-lists.clearAllPriority",                           "title": "CL: Clear All Priority" },
+            { "command": "chevron-lists.clearAllDueDates",                           "title": "CL: Clear All Due Dates" },
+            { "command": "chevron-lists.toggleItemCountBadge",                       "title": "CL: Toggle Item Count Badge" }
         ],
         "keybindings": [
             {

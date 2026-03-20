@@ -48,6 +48,10 @@ import { onShowWordFrequency }                              from './wordFrequenc
 import { onEditItemContent }                                from './editItemCommands';
 import { onCollectItemsByTag }                             from './collectByTagCommands';
 import { onConvertSectionToTable }                         from './tableExportCommands';
+import { onMoveItemToSection }                             from './moveItemToSectionCommands';
+import { onDiffTwoSections }                              from './diffSectionCommands';
+import { onClearAllPriority, onClearAllDueDates }         from './batchClearCommands';
+import { updateBadgeDecorations, onToggleItemCountBadge } from './itemCountBadge';
 import { onSearchItems, onFilterSections }                   from './searchCommands';
 import { onSwitchColourPreset, applyConfiguredPreset }       from './presetCommands';
 import { onShowStatistics }                                  from './statisticsPanel';
@@ -256,6 +260,19 @@ export function activate(context: vscode.ExtensionContext): void {
         // ── Table Export ─────────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.convertSectionToTable', onConvertSectionToTable),
 
+        // ── Move Item to Section ─────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.moveItemToSection', onMoveItemToSection),
+
+        // ── Section Diff ─────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.diffTwoSections', onDiffTwoSections),
+
+        // ── Batch Clear ──────────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.clearAllPriority',  onClearAllPriority),
+        vscode.commands.registerCommand('chevron-lists.clearAllDueDates',  onClearAllDueDates),
+
+        // ── Item Count Badge ─────────────────────────────────────────────────
+        vscode.commands.registerCommand('chevron-lists.toggleItemCountBadge', onToggleItemCountBadge),
+
         // ── Search & Filter ──────────────────────────────────────────────────
         vscode.commands.registerCommand('chevron-lists.searchItems',              onSearchItems),
         vscode.commands.registerCommand('chevron-lists.filterSections',           onFilterSections),
@@ -407,6 +424,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document);
                 updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
                 updateWordGoalDiagnostics(editor.document, prefix);
+                updateBadgeDecorations(editor);
             }
         }),
         vscode.workspace.onDidChangeTextDocument(event => {
@@ -416,6 +434,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 updateDecorations(editor); updateStatusBar(editor); updateDiagnostics(editor.document);
                 updateDueDateDiagnostics(editor.document, dueDateDiags, prefix);
                 updateWordGoalDiagnostics(editor.document, prefix);
+                updateBadgeDecorations(editor);
             }
         }),
     );
@@ -426,6 +445,7 @@ export function activate(context: vscode.ExtensionContext): void {
         updateDiagnostics(vscode.window.activeTextEditor.document);
         updateDueDateDiagnostics(vscode.window.activeTextEditor.document, dueDateDiags, prefix);
         updateWordGoalDiagnostics(vscode.window.activeTextEditor.document, prefix);
+        updateBadgeDecorations(vscode.window.activeTextEditor);
     }
     applyConfiguredPreset();
 }
