@@ -2,6 +2,7 @@ import { describe, it, expect } from 'bun:test';
 import {
     prevNumberAtDepth,
     getSectionRange,
+    getTightSectionRange,
     findHeaderAbove,
     findHeaderBelow,
 } from '../documentUtils';
@@ -31,6 +32,33 @@ describe('prevNumberAtDepth', () => {
     it('stops searching at a header line', () => {
         const doc = makeDoc(['> Header1', '>> 5. a', '> Header2', '>> 1. b']);
         expect(prevNumberAtDepth(doc, 3, '>>')).toBe(0);
+    });
+});
+
+describe('getTightSectionRange', () => {
+    it('returns just the header when no items follow', () => {
+        const doc = makeDoc(['> Header', '']);
+        expect(getTightSectionRange(doc, 0, '-')).toEqual([0, 0]);
+    });
+    it('includes chevron items but not trailing blank lines', () => {
+        const doc = makeDoc(['> Header', '>> - one', '>> - two', '', '---']);
+        expect(getTightSectionRange(doc, 0, '-')).toEqual([0, 2]);
+    });
+    it('stops at non-blank non-chevron content', () => {
+        const doc = makeDoc(['> Header', '>> - one', '---', '> Next']);
+        expect(getTightSectionRange(doc, 0, '-')).toEqual([0, 1]);
+    });
+    it('includes numbered items', () => {
+        const doc = makeDoc(['> Header', '>> 1. first', '>> 2. second', '']);
+        expect(getTightSectionRange(doc, 0, '-')).toEqual([0, 2]);
+    });
+    it('stops at next header', () => {
+        const doc = makeDoc(['> Header', '>> - one', '> Next', '>> - two']);
+        expect(getTightSectionRange(doc, 0, '-')).toEqual([0, 1]);
+    });
+    it('respects custom prefix', () => {
+        const doc = makeDoc(['> Header', '>> * one', '>> * two', '']);
+        expect(getTightSectionRange(doc, 0, '*')).toEqual([0, 2]);
     });
 });
 

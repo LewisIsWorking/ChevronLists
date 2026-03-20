@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { getConfig } from './config';
 import { parseBullet, parseNumbered } from './patterns';
-import { findHeaderAbove, getSectionRange } from './documentUtils';
+import { findHeaderAbove, findHeaderBelow, getSectionRange, getTightSectionRange } from './documentUtils';
 
 type EditBuilder = vscode.TextEditorEdit;
 
@@ -59,22 +59,31 @@ export async function onMoveSectionUp(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
     const doc        = editor.document;
+    const { prefix } = getConfig();
     const headerLine = findHeaderAbove(doc, editor.selection.active.line);
     if (headerLine <= 0) { return; }
     const prevHeader = findHeaderAbove(doc, headerLine - 1);
     if (prevHeader < 0) { return; }
-    const [curStart, curEnd]   = getSectionRange(doc, headerLine);
-    const [prevStart, prevEnd] = getSectionRange(doc, prevHeader);
+
+    // Tight ranges — only header + chevron items, no separators
+    const [curStart, curEnd]   = getTightSectionRange(doc, headerLine, prefix);
+    const [prevStart, prevEnd] = getTightSectionRange(doc, prevHeader, prefix);
+
+    // Gap = lines between the end of prev section and start of cur section
+    const gapLines = getLines(doc, prevEnd + 1, curStart - 1);
     const curLines  = getLines(doc, curStart, curEnd);
     const prevLines = getLines(doc, prevStart, prevEnd);
+
+    // Replace [prevStart, curEnd] with: curSection + gap + prevSection
     await editor.edit((eb: EditBuilder) => {
         const range = new vscode.Range(
             new vscode.Position(prevStart, 0),
             new vscode.Position(curEnd, doc.lineAt(curEnd).text.length)
         );
-        eb.replace(range, [...curLines, ...prevLines].join('\n'));
+        eb.replace(range, [...curLines, ...gapLines, ...prevLines].join('\n'));
     });
-    // Move cursor to follow the section — it now starts at prevStart
+
+    // Cursor follows the section to its new position
     const newPos = new vscode.Position(prevStart, 0);
     editor.selection = new vscode.Selection(newPos, newPos);
     editor.revealRange(new vscode.Range(newPos, newPos), vscode.TextEditorRevealType.InCenterIfOutsideViewport);
@@ -85,27 +94,32 @@ export async function onMoveSectionDown(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
     const doc        = editor.document;
+    const { prefix } = getConfig();
     const headerLine = findHeaderAbove(doc, editor.selection.active.line);
     if (headerLine < 0) { return; }
-    const [curStart, curEnd] = getSectionRange(doc, headerLine);
-    if (curEnd + 1 >= doc.lineCount) { return; }
-    let nextHeader = -1;
-    for (let i = curEnd + 1; i < doc.lineCount; i++) {
-        if (doc.lineAt(i).text.match(/^> [^>]/)) { nextHeader = i; break; }
-    }
+    const nextHeader = findHeaderBelow(doc, headerLine);
     if (nextHeader < 0) { return; }
-    const [nextStart, nextEnd] = getSectionRange(doc, nextHeader);
+
+    // Tight ranges — only header + chevron items, no separators
+    const [curStart, curEnd]   = getTightSectionRange(doc, headerLine, prefix);
+    const [nextStart, nextEnd] = getTightSectionRange(doc, nextHeader, prefix);
+
+    // Gap = lines between the end of cur section and start of next section
+    const gapLines  = getLines(doc, curEnd + 1, nextStart - 1);
     const curLines  = getLines(doc, curStart, curEnd);
     const nextLines = getLines(doc, nextStart, nextEnd);
+
+    // Replace [curStart, nextEnd] with: nextSection + gap + curSection
     await editor.edit((eb: EditBuilder) => {
         const range = new vscode.Range(
             new vscode.Position(curStart, 0),
             new vscode.Position(nextEnd, doc.lineAt(nextEnd).text.length)
         );
-        eb.replace(range, [...nextLines, ...curLines].join('\n'));
+        eb.replace(range, [...nextLines, ...gapLines, ...curLines].join('\n'));
     });
-    // Move cursor to follow the section — it now starts after the next section
-    const newLine = curStart + (nextEnd - nextStart + 1);
+
+    // Cursor follows the section to its new position
+    const newLine = curStart + nextLines.length + gapLines.length;
     const newPos  = new vscode.Position(newLine, 0);
     editor.selection = new vscode.Selection(newPos, newPos);
     editor.revealRange(new vscode.Range(newPos, newPos), vscode.TextEditorRevealType.InCenterIfOutsideViewport);

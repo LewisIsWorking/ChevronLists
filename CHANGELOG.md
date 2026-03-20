@@ -2,6 +2,11 @@
 
 All notable changes to **Chevron Lists** will be documented here.
 
+## [1.0.4] - 2026-03-20
+
+### Fixed
+- Move Section Up/Down now correctly swaps only the header and its chevron items — blank lines, `---` dividers, and any non-chevron content between sections stay exactly in place during a swap
+
 ## [1.0.3] - 2026-03-20
 
 ### Fixed
