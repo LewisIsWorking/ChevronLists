@@ -11,6 +11,17 @@ All notable changes to **Chevron Lists** will be documented here.
 - Unresolved links show a warning in the hover tooltip
 - 17 new unit tests covering link extraction, resolution and collection
 
+## [2.3.0] - 2026-03-20
+
+### Added
+- `[[SectionName]]` link syntax in item content — links to another section in the same file
+- Hover over a `[[link]]` shows a preview of the target section's items
+- F12 / Go to Definition on a `[[link]]` jumps to the target header
+- Ctrl+click on a `[[link]]` navigates to the target section
+- `CL: Go to Linked Section` command — jumps to the linked section from the cursor
+- Broken links (section not found) show a warning in the hover tooltip
+- 17 new unit tests covering link extraction, collection and header resolution
+
 ## [2.2.0] - 2026-03-20
 
 ### Added
