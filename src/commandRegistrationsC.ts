@@ -56,6 +56,9 @@ import { onShowWordCloud }                                from './wordCloudComma
 import { onSetDueDate }                                   from './setDueDateCommands';
 import { onFindSimilarSections }                          from './similarSectionsCommands';
 import { onShowVoteLeaderboard }                          from './voteLeaderboardCommands';
+import { onShowAgeStats }                                 from './ageStatsCommands';
+import { onSetSectionColour }                             from './sectionColourCommands';
+import { onStampAllItems }                                from './stampAllCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -129,6 +132,9 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.setDueDate',                       onSetDueDate),
         r('chevron-lists.findSimilarSections',              onFindSimilarSections),
         r('chevron-lists.showVoteLeaderboard',              onShowVoteLeaderboard),
+        r('chevron-lists.showAgeStats',                     onShowAgeStats),
+        r('chevron-lists.setSectionColour',                 onSetSectionColour),
+        r('chevron-lists.stampAllItems',                    onStampAllItems),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

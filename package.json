@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "16.7.0",
+    "version": "17.1.0",
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -302,7 +302,10 @@
             { "command": "chevron-lists.showWordCloud",                                 "title": "CL: Show Word Cloud" },
             { "command": "chevron-lists.setDueDate",                                    "title": "CL: Set Due Date" },
             { "command": "chevron-lists.findSimilarSections",                           "title": "CL: Find Similar Sections" },
-            { "command": "chevron-lists.showVoteLeaderboard",                           "title": "CL: Show Vote Leaderboard" }
+            { "command": "chevron-lists.showVoteLeaderboard",                           "title": "CL: Show Vote Leaderboard" },
+            { "command": "chevron-lists.showAgeStats",                                  "title": "CL: Show Age Stats" },
+            { "command": "chevron-lists.setSectionColour",                              "title": "CL: Set Section Colour" },
+            { "command": "chevron-lists.stampAllItems",                                 "title": "CL: Stamp All Items" }
         ],
         "keybindings": [
             {

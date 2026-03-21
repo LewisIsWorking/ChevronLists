@@ -268,3 +268,17 @@ export function parseNaturalDate(input: string, from: Date = new Date()): string
     if (s === 'next month') { const d = new Date(today); d.setMonth(d.getMonth() + 1); return formatDate(d); }
     return null;
 }
+
+/** Regex matching [colour:X] section colour tags */
+export const SECTION_COLOUR_RE = /\[colour:(red|green|blue|yellow|orange|purple)\]/i;
+
+/** Parses the colour tag from a section header line, or returns null */
+export function parseSectionColour(headerText: string): string | null {
+    return headerText.match(SECTION_COLOUR_RE)?.[1]?.toLowerCase() ?? null;
+}
+
+/** Sets or clears the [colour:X] tag on a header line */
+export function setSectionColour(headerText: string, colour: string | null): string {
+    const stripped = headerText.replace(/\s*\[colour:[^\]]+\]/gi, '').trim();
+    return colour ? `${stripped} [colour:${colour}]` : stripped;
+}

@@ -1,5 +1,13 @@
 # Changelog
 
+## [17.1.0] - 2026-03-20
+### Added
+- `CL: Show Age Stats` — oldest, newest, and average age of `@created:` stamped items in the current section
+- `CL: Set Section Colour` — tags the section header with `[colour:X]` and renders it in that colour token
+- `CL: Stamp All Items` — adds `@created:today` to every unstamped item in the section at once
+### Improved
+- Status bar tooltip now shows full stats with completion % and links to statistics panel
+
 ## [16.7.0] - 2026-03-20
 ### Added
 - `CL: Show Word Cloud` — proportionally-sized SVG word cloud for the most frequent words in the current section

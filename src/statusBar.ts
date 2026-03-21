@@ -70,6 +70,17 @@ export function updateStatusBar(editor?: vscode.TextEditor): void {
 
     const checkPart = total > 0 ? `  $(check) ${done}/${total}` : '';
     statusBarItem.text    = `$(list-unordered) ${sections}  $(symbol-enum-member) ${items}${checkPart}${goalPart}`;
-    statusBarItem.tooltip = `Chevron Lists: ${sections} sections, ${items} items${total > 0 ? `, ${done}/${total} done` : ''}${goalPart ? `, word goal active` : ''}`;
+
+    // Rich tooltip with full stats
+    const md = new vscode.MarkdownString(
+        `**Chevron Lists**\n\n` +
+        `Sections: ${sections}  ·  Items: ${items}` +
+        (total > 0 ? `  ·  Done: ${done}/${total} (${Math.round((done/total)*100)}%)` : '') +
+        (goalPart ? `  ·  Word goal active` : '') +
+        `\n\n_Click to open statistics panel_`
+    );
+    md.isTrusted = true;
+    statusBarItem.tooltip = md;
+    statusBarItem.command = 'chevron-lists.showStatistics';
     statusBarItem.show();
 }

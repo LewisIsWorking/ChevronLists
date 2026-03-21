@@ -693,3 +693,17 @@
 
 ## v16.7.0 — Item Vote Leaderboard ✅
 - ✅ `CL: Show Vote Leaderboard` — all `+N` items sorted by vote count
+
+---
+
+## v16.8.0 — Item Age Stats ✅
+- ✅ `CL: Show Age Stats` — oldest, newest, average age for stamped items
+
+## v16.9.0 — Section Colour Theme ✅
+- ✅ `CL: Set Section Colour` — `[colour:X]` tag on header
+
+## v17.0.0 — Batch Date Stamp ✅
+- ✅ `CL: Stamp All Items` — adds `@created:today` to every unstamped item
+
+## v17.1.0 — Quick Stats Bar ✅
+- ✅ Status bar tooltip enriched with full stats + completion % + click to open panel
