@@ -1,5 +1,16 @@
 # Changelog
 
+## [18.0.0] - 2026-03-21
+### Added
+- `CL: Sort by Priority` — sorts items within a section `!!!` → `!!` → `!` → none
+- `CL: Archive Old Done Items` — archives `[x]` items with `@created:` dates older than N days
+- `CL: Find Dead Links` — scans all workspace files for broken `[[section]]` and `[[file:]]` links
+- `CL: Add Quick Note to Item` — prompts and appends `// comment` to the cursor item
+### Fixed
+- Item count badge now defaults to **off** — section summary already shows the item count, eliminating the duplicate `(20)  (20 items)` display
+### Internal
+- `patterns.ts` split into `patterns.ts` + `patternsUtils.ts` to stay under 200 lines
+
 ## [17.9.0] - 2026-03-20
 ### Added
 - `CL: Sort by Priority` — sorts items in the current section by priority level descending (`!!!` → `!!` → `!` → none)

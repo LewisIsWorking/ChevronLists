@@ -62,4 +62,4 @@ import { renameTagInText } from './tagParser';
 
 ## Module Count
 
-As of v15.1.0: ~230 source modules, 50 test files, 587 unit tests, 240 declared commands, bundled to a single `dist/extension.js` (~185KB) via esbuild.
+As of v18.0.0: ~295 source modules, 54 test files, 635 unit tests, 295 declared commands, bundled to a single `dist/extension.js` (~205KB) via esbuild.

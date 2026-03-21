@@ -1,17 +1,17 @@
 /**
  * commandRegistrationsC.ts
- * Phase 12-32 features: new item ops, autocomplete, export variants, decorations, AI.
+ * Phase 12+ features: new item ops, autocomplete, export variants, decorations, AI.
  */
 import * as vscode from 'vscode';
-import { onEditItemContent }                                from './editItemCommands';
-import { onCollectItemsByTag }                             from './collectByTagCommands';
-import { onConvertSectionToTable }                         from './tableExportCommands';
-import { onMoveItemToSection }                             from './moveItemToSectionCommands';
+import { onEditItemContent }                              from './editItemCommands';
+import { onCollectItemsByTag }                            from './collectByTagCommands';
+import { onConvertSectionToTable }                        from './tableExportCommands';
+import { onMoveItemToSection }                            from './moveItemToSectionCommands';
 import { onDiffTwoSections }                              from './diffSectionCommands';
-import { onClearAllPriority, onClearAllDueDates }         from './batchClearCommands';
-import { onToggleItemCountBadge }                          from './itemCountBadge';
+import { onClearAllPriority, onClearAllDueDates }        from './batchClearCommands';
+import { onToggleItemCountBadge }                         from './itemCountBadge';
 import { onPasteAsSection }                               from './pasteSectionCommands';
-import { onFoldAllSections, onUnfoldAllSections }         from './foldAllCommands';
+import { onFoldAllSections, onUnfoldAllSections }        from './foldAllCommands';
 import { onRemoveOldItems }                               from './removeOldItemsCommands';
 import { onShowJumpHistory }                              from './jumpHistory';
 import { onDuplicateItemAndIncrement }                    from './duplicateIncrementCommands';
@@ -21,9 +21,9 @@ import { onInsertItemSnippet }                            from './itemSnippetCom
 import { onInsertFileSectionLink }                        from './fileSectionLinkCommands';
 import { onShowTagReportWorkspace }                       from './tagReportCommands';
 import { onFilterByColourLabel }                          from './colourFilterCommands';
-import { onPinSectionToTop }                             from './pinToTopCommands';
-import { onSetItemRating, onFilterByRating }             from './ratingCommands';
-import { onStartSectionTimer, onStopSectionTimer }       from './sectionTimer';
+import { onPinSectionToTop }                              from './pinToTopCommands';
+import { onSetItemRating, onFilterByRating }              from './ratingCommands';
+import { onStartSectionTimer, onStopSectionTimer }        from './sectionTimer';
 import { onShowSectionWeights }                           from './sectionWeightCommands';
 import { onShiftAllDueDates }                             from './shiftDueDatesCommands';
 import { onShowCompletionStreak }                         from './completionStreakCommands';
@@ -46,9 +46,9 @@ import { onCopyItemAsRichText }                           from './richTextComman
 import { onShowDependencyGraph }                          from './dependencyGraphCommands';
 import { onSetExpiryOnAllItems }                          from './bulkExpiryCommands';
 import { onGroupItemsByTag }                              from './groupByTagCommands';
-import { onShowProgressReport }                          from './progressReportCommands';
-import { onMergeItemWithNext }                           from './mergeItemCommands';
-import { onSplitItemAtCursor }                           from './splitItemCommands';
+import { onShowProgressReport }                           from './progressReportCommands';
+import { onMergeItemWithNext }                            from './mergeItemCommands';
+import { onSplitItemAtCursor }                            from './splitItemCommands';
 import { onCloneItemAsDone, onCloneItemStripped }         from './cloneTransformCommands';
 import { onShowRecentSections }                           from './recentSectionsCommands';
 import { onShowDuplicateItems }                           from './duplicateItemsCommands';
@@ -59,12 +59,12 @@ import { onShowVoteLeaderboard }                          from './voteLeaderboar
 import { onShowAgeStats }                                 from './ageStatsCommands';
 import { onSetSectionColour }                             from './sectionColourCommands';
 import { onStampAllItems }                                from './stampAllCommands';
-import { onCompareTwoSectionsAsTable }                   from './sectionCompareTableCommands';
+import { onCompareTwoSectionsAsTable }                    from './sectionCompareTableCommands';
 import { onInsertRecurringItem }                          from './recurringTemplateCommands';
 import { onRenameSectionWorkspace }                       from './renameSectionWorkspaceCommands';
-import { onSortByPriority }                               from './prioritySortCommands';
+import { onSortByPriority }                               from './sortByPriorityCommands';
 import { onArchiveOldDoneItems }                          from './archiveOldDoneCommands';
-import { onFindDeadLinks }                                from './deadLinkCommands';
+import { onFindDeadLinks }                                from './deadLinksCommands';
 import { onAddQuickNote }                                 from './quickNoteCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
@@ -146,7 +146,7 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.insertRecurringItem',              onInsertRecurringItem),
         r('chevron-lists.renameSectionWorkspace',           onRenameSectionWorkspace),
         r('chevron-lists.sortByPriority',                   onSortByPriority),
-        r('chevron-lists.archiveOldDoneItems',               onArchiveOldDoneItems),
+        r('chevron-lists.archiveOldDoneItems',              onArchiveOldDoneItems),
         r('chevron-lists.findDeadLinks',                    onFindDeadLinks),
         r('chevron-lists.addQuickNote',                     onAddQuickNote),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),

@@ -18,17 +18,18 @@ export async function onAddQuickNote(): Promise<void> {
     }
 
     const note = await vscode.window.showInputBox({
-        prompt:      'Add a quick note (appended as // comment)',
+        prompt:      'Add a quick note (will be appended as // comment)',
         placeHolder: 'e.g. check with Lewis first',
     });
     if (!note?.trim()) { return; }
 
-    const chevrons  = bullet?.chevrons ?? numbered!.chevrons;
-    const content   = bullet?.content  ?? numbered!.content;
-    const num       = numbered?.num ?? null;
-    // Replace existing comment or append new one
-    const newContent = content.replace(/\s*\/\/.*$/, '').trim() + ` // ${note.trim()}`;
-    const newLine    = num !== null
+    const chevrons = bullet?.chevrons ?? numbered!.chevrons;
+    const content  = bullet?.content  ?? numbered!.content;
+    const num      = numbered?.num ?? null;
+    // Remove any existing comment, then append new one
+    const stripped    = content.replace(/\s*\/\/.*$/, '').trim();
+    const newContent  = `${stripped} // ${note.trim()}`;
+    const newLine     = num !== null
         ? `${chevrons} ${num}. ${newContent}`
         : `${chevrons} ${prefix} ${newContent}`;
     await editor.edit(eb => eb.replace(doc.lineAt(lineIndex).range, newLine));
