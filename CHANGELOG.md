@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.9.0] - 2026-03-20
+### Added
+- `CL: Sort by Priority` — sorts items in the current section by priority level descending (`!!!` → `!!` → `!` → none)
+- `CL: Archive Old Done Items` — moves `[x]` items with `@created:` dates older than N days to `> Archive`
+- `CL: Find Dead Links` — scans all `[[SectionName]]` and `[[file:name.md]]` links and reports those pointing to non-existent targets
+- `CL: Add Quick Note to Item` — prompts for a note and appends it as `// comment` to the item at cursor
+
 ## [17.5.0] - 2026-03-20
 ### Added
 - `Ctrl+Alt+N` keybinding for `CL: Toggle Note` — adds/removes `>> > Note` below the cursor item

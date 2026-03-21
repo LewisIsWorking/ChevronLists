@@ -721,3 +721,17 @@
 
 ## v17.5.0 — Smart Section Rename ✅
 - ✅ `CL: Rename Section (Workspace)` — updates `[[links]]` across all workspace files
+
+---
+
+## v17.6.0 — Item Priority Sort ✅
+- ✅ `CL: Sort by Priority` — `!!!` → `!!` → `!` → none
+
+## v17.7.0 — Done Item Archive Age ✅
+- ✅ `CL: Archive Old Done Items` — archives `[x]` items older than N days
+
+## v17.8.0 — Workspace Dead Link Check ✅
+- ✅ `CL: Find Dead Links` — reports broken `[[section]]` and `[[file:]]` links
+
+## v17.9.0 — Item Quick Note ✅
+- ✅ `CL: Add Quick Note to Item` — prompts and appends `// comment`

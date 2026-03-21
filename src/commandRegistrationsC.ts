@@ -62,6 +62,10 @@ import { onStampAllItems }                                from './stampAllComman
 import { onCompareTwoSectionsAsTable }                   from './sectionCompareTableCommands';
 import { onInsertRecurringItem }                          from './recurringTemplateCommands';
 import { onRenameSectionWorkspace }                       from './renameSectionWorkspaceCommands';
+import { onSortByPriority }                               from './prioritySortCommands';
+import { onArchiveOldDoneItems }                          from './archiveOldDoneCommands';
+import { onFindDeadLinks }                                from './deadLinkCommands';
+import { onAddQuickNote }                                 from './quickNoteCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -141,6 +145,10 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.compareTwoSectionsAsTable',        onCompareTwoSectionsAsTable),
         r('chevron-lists.insertRecurringItem',              onInsertRecurringItem),
         r('chevron-lists.renameSectionWorkspace',           onRenameSectionWorkspace),
+        r('chevron-lists.sortByPriority',                   onSortByPriority),
+        r('chevron-lists.archiveOldDoneItems',               onArchiveOldDoneItems),
+        r('chevron-lists.findDeadLinks',                    onFindDeadLinks),
+        r('chevron-lists.addQuickNote',                     onAddQuickNote),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),
