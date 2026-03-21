@@ -667,18 +667,18 @@
 
 ---
 
-## v16.0.0 — Item Clone with Transform ⬜
-- ⬜ `CL: Clone Item as Done` — clones the item below itself with `[x]` prepended (useful for logging a completed version while keeping the original as a template)
-- ⬜ `CL: Clone Item Stripped` — clones the item with all markers removed (plain content only)
+## v16.0.0 — Item Clone with Transform ✅
+- ✅ `CL: Clone Item as Done` — clones below with `[x]` prepended
+- ✅ `CL: Clone Item Stripped` — clones with all markers removed
 
-## v16.1.0 — Section Header Autocomplete ⬜
-- ⬜ VS Code completion provider for `> ` — typing `> ` on a blank line suggests all existing section names as a quick way to start a new section matching an existing one
+## v16.1.0 — Section Header Autocomplete ✅
+- ✅ `> ` triggers existing section name suggestions
 
-## v16.2.0 — Recent Sections ⬜
-- ⬜ `CL: Show Recent Sections` — tracks the last 10 sections visited (via jump history) and presents them as a quick pick for fast navigation
+## v16.2.0 — Recent Sections ✅
+- ✅ `CL: Show Recent Sections` — last 10 visited sections from jump history
 
-## v16.3.0 — Item Frequency Report ⬜
-- ⬜ `CL: Show Duplicate Items (File)` — finds items with identical plain-text content (after stripping markers) across the entire file, not just within sections
+## v16.3.0 — Item Frequency Report ✅
+- ✅ `CL: Show Duplicate Items (File)` — cross-section duplicate detection
 
 ---
 
