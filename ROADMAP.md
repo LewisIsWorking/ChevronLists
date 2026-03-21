@@ -707,3 +707,17 @@
 
 ## v17.1.0 — Quick Stats Bar ✅
 - ✅ Status bar tooltip enriched with full stats + completion % + click to open panel
+
+---
+
+## v17.2.0 — Inline Note Toggle ✅
+- ✅ `Ctrl+Alt+N` keybinding for `CL: Toggle Note`
+
+## v17.3.0 — Section Export Comparison ✅
+- ✅ `CL: Compare Two Sections as Table` — side-by-side Markdown table
+
+## v17.4.0 — Item Recurrence Templates ✅
+- ✅ `CL: Insert Recurring Item` — 6 pre-built recurring patterns
+
+## v17.5.0 — Smart Section Rename ✅
+- ✅ `CL: Rename Section (Workspace)` — updates `[[links]]` across all workspace files

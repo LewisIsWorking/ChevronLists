@@ -59,6 +59,9 @@ import { onShowVoteLeaderboard }                          from './voteLeaderboar
 import { onShowAgeStats }                                 from './ageStatsCommands';
 import { onSetSectionColour }                             from './sectionColourCommands';
 import { onStampAllItems }                                from './stampAllCommands';
+import { onCompareTwoSectionsAsTable }                   from './sectionCompareTableCommands';
+import { onInsertRecurringItem }                          from './recurringTemplateCommands';
+import { onRenameSectionWorkspace }                       from './renameSectionWorkspaceCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -135,6 +138,9 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.showAgeStats',                     onShowAgeStats),
         r('chevron-lists.setSectionColour',                 onSetSectionColour),
         r('chevron-lists.stampAllItems',                    onStampAllItems),
+        r('chevron-lists.compareTwoSectionsAsTable',        onCompareTwoSectionsAsTable),
+        r('chevron-lists.insertRecurringItem',              onInsertRecurringItem),
+        r('chevron-lists.renameSectionWorkspace',           onRenameSectionWorkspace),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

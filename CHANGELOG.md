@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.5.0] - 2026-03-20
+### Added
+- `Ctrl+Alt+N` keybinding for `CL: Toggle Note` — adds/removes `>> > Note` below the cursor item
+- `CL: Compare Two Sections as Table` — picks two sections and opens a side-by-side Markdown table
+- `CL: Insert Recurring Item` — quick pick of 6 pre-built recurring patterns (daily standup, weekly review, etc.) with correct `@daily/weekly/monthly` markers
+- `CL: Rename Section (Workspace)` — renames a section and updates all `[[links]]` across every workspace markdown file
+
 ## [17.1.0] - 2026-03-20
 ### Added
 - `CL: Show Age Stats` — oldest, newest, and average age of `@created:` stamped items in the current section
