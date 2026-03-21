@@ -14,10 +14,10 @@ interface DecorationState {
 }
 
 const state: DecorationState = {
-    summary:     true,
-    checklist:   true,
-    wordGoal:    true,
-    badge:       true,
+    summary:      true,
+    checklist:    true,
+    wordGoal:     true,
+    badge:        false,  // off by default — section summary already shows item count
     ageHighlight: true,
 };
 
