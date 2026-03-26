@@ -1,5 +1,11 @@
 # Changelog
 
+## [18.4.0] - 2026-03-26
+### Changed
+- Default colour theme updated to **violet headers · lime numbers · slate prefixes** — matching the extension icon
+- Previous default (amber/blue) preserved as a new named theme: **Classic**
+- `CL: Switch Colour Preset` renamed to `CL: Colour Theme` in the command palette
+
 ## [18.3.0] - 2026-03-26
 ### Added
 - `chevron-lists.autoFixNumbering` setting (default `false`) — when enabled, automatically re-sequences numbered items at the same depth after an edit, so inserting a duplicate number cascades the rest forward. Defaults to **off** to preserve intentional custom start numbers and non-sequential lists.

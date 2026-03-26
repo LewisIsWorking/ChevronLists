@@ -23,7 +23,18 @@ export interface ColourPreset {
 export const COLOUR_PRESETS: ColourPreset[] = [
     {
         id: 'default', label: '$(symbol-color) Default',
-        description: 'Amber headers · grey prefixes · blue numbers',
+        description: 'Violet headers · slate prefixes · lime numbers — matches the extension icon',
+        tokens: {
+            chevronHeader:  { foreground: '#A855F7', bold: true },
+            chevronPrefix:  { foreground: '#637880' },
+            chevronNumber:  { foreground: '#84CC16' },
+            chevronContent: {},
+            chevronLabel:   { foreground: '#A855F7', bold: true },
+        },
+    },
+    {
+        id: 'classic', label: '$(symbol-color) Classic',
+        description: 'Amber headers · grey prefixes · blue numbers — the original default theme',
         tokens: {
             chevronHeader:  { foreground: '#E5C07B', bold: true },
             chevronPrefix:  { foreground: '#5C6370' },

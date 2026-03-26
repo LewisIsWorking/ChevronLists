@@ -50,7 +50,7 @@ export async function onSwitchColourPreset(): Promise<void> {
     }));
 
     const pick = await vscode.window.showQuickPick(items, {
-        placeHolder: 'Select a Chevron Lists colour preset',
+        placeHolder: 'CL: Colour Theme — select a preset',
         matchOnDescription: true,
     });
 
