@@ -1,5 +1,12 @@
 # Changelog
 
+## [21.2.0] - 2026-03-26
+### Added
+- `CL: Sort by Due Date` — sorts items in the current section by `@YYYY-MM-DD` ascending; undated items go last
+- `CL: Copy Section as CSV Row` — copies section items as a single comma-separated row for pasting into spreadsheets
+- `CL: Wrap Item Text` — splits item content at cursor position into two continuation lines with matching prefix
+- `chevron-lists.escalateOverdue` setting (default `false`) — when on, items overdue by 7+ days automatically gain `!!!` priority on save
+
 ## [20.8.0] - 2026-03-26
 ### Added
 - `CL: Batch Replace Text` — find/replace plain text across all items in the current section with a preview count before applying

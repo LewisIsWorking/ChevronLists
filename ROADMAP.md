@@ -840,3 +840,17 @@
 
 ## v20.8.0 — Item Mentions Report ✅
 - ✅ `CL: Show Mentions Report` — `@Name` webview table with done/total/% bar
+
+---
+
+## v20.9.0 — Section Item Sort by Date ✅
+- ✅ `CL: Sort by Due Date` — sorts by `@YYYY-MM-DD` ascending, undated last
+
+## v21.0.0 — Item Content Word Wrap ✅
+- ✅ `CL: Wrap Item Text` — splits item at cursor into two continuation lines
+
+## v21.1.0 — Section Export to CSV Row ✅
+- ✅ `CL: Copy Section as CSV Row` — items as a single CSV row
+
+## v21.2.0 — Overdue Escalation ✅
+- ✅ `chevron-lists.escalateOverdue` (default `false`) — 7+ days overdue → `!!!`

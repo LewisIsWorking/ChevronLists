@@ -21,6 +21,9 @@ import { onEvaluateExpression }                           from './expressionComm
 import { onShowArchive }                                  from './archiveViewCommands';
 import { onBatchReplaceText }                             from './batchReplaceCommands';
 import { onShowMentionsReport }                           from './mentionsReportCommands';
+import { onSortByDueDate }                                from './sortByDateCommands';
+import { onCopySectionAsCsvRow }                          from './csvRowCommands';
+import { onWrapItemText }                                 from './wrapItemCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -48,5 +51,8 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.showArchive',                      onShowArchive),
         r('chevron-lists.batchReplaceText',                 onBatchReplaceText),
         r('chevron-lists.showMentionsReport',               onShowMentionsReport),
+        r('chevron-lists.sortByDueDate',                    onSortByDueDate),
+        r('chevron-lists.copySectionAsCsvRow',              onCopySectionAsCsvRow),
+        r('chevron-lists.wrapItemText',                     onWrapItemText),
     ];
 }

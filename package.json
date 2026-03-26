@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "20.8.0",
+    "version": "21.2.0",
     "icon": "icon.png",
     "publisher": "lewisisworking",
     "repository": {
@@ -337,6 +337,9 @@
             { "command": "chevron-lists.showArchive",                                    "title": "CL: Show Archive" },
             { "command": "chevron-lists.batchReplaceText",                               "title": "CL: Batch Replace Text" },
             { "command": "chevron-lists.showMentionsReport",                             "title": "CL: Show Mentions Report" },
+            { "command": "chevron-lists.sortByDueDate",                                  "title": "CL: Sort by Due Date" },
+            { "command": "chevron-lists.copySectionAsCsvRow",                            "title": "CL: Copy Section as CSV Row" },
+            { "command": "chevron-lists.wrapItemText",                                   "title": "CL: Wrap Item Text" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
@@ -363,7 +366,10 @@
             { "command": "chevron-lists.evaluateExpression",                             "title": "CL: Evaluate Expression in Item" },
             { "command": "chevron-lists.showArchive",                                    "title": "CL: Show Archive" },
             { "command": "chevron-lists.batchReplaceText",                               "title": "CL: Batch Replace Text" },
-            { "command": "chevron-lists.showMentionsReport",                             "title": "CL: Show Mentions Report" }
+            { "command": "chevron-lists.showMentionsReport",                             "title": "CL: Show Mentions Report" },
+            { "command": "chevron-lists.sortByDueDate",                                  "title": "CL: Sort by Due Date" },
+            { "command": "chevron-lists.copySectionAsCsvRow",                            "title": "CL: Copy Section as CSV Row" },
+            { "command": "chevron-lists.wrapItemText",                                   "title": "CL: Wrap Item Text" }
         ],
         "keybindings": [
         {
