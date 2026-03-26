@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "21.6.0",
+    "version": "22.0.0",
     "icon": "icon.png",
     "publisher": "lewisisworking",
     "repository": {
@@ -342,6 +342,10 @@
             { "command": "chevron-lists.wrapItemText",                                   "title": "CL: Wrap Item Text" },
             { "command": "chevron-lists.quickStats",                                     "title": "CL: Quick Stats" },
             { "command": "chevron-lists.insertDateStamp",                                "title": "CL: Insert Date Stamp" },
+            { "command": "chevron-lists.showNestingBreakdown",                           "title": "CL: Show Nesting Breakdown" },
+            { "command": "chevron-lists.renameTagSection",                               "title": "CL: Rename Tag (Section)" },
+            { "command": "chevron-lists.showSectionTimeEstimate",                        "title": "CL: Show Section Time Estimate" },
+            { "command": "chevron-lists.sendToDailyNote",                                "title": "CL: Send to Daily Note" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
@@ -373,7 +377,11 @@
             { "command": "chevron-lists.copySectionAsCsvRow",                            "title": "CL: Copy Section as CSV Row" },
             { "command": "chevron-lists.wrapItemText",                                   "title": "CL: Wrap Item Text" },
             { "command": "chevron-lists.quickStats",                                     "title": "CL: Quick Stats" },
-            { "command": "chevron-lists.insertDateStamp",                                "title": "CL: Insert Date Stamp" }
+            { "command": "chevron-lists.insertDateStamp",                                "title": "CL: Insert Date Stamp" },
+            { "command": "chevron-lists.showNestingBreakdown",                           "title": "CL: Show Nesting Breakdown" },
+            { "command": "chevron-lists.renameTagSection",                               "title": "CL: Rename Tag (Section)" },
+            { "command": "chevron-lists.showSectionTimeEstimate",                        "title": "CL: Show Section Time Estimate" },
+            { "command": "chevron-lists.sendToDailyNote",                                "title": "CL: Send to Daily Note" }
         ],
         "keybindings": [
         {

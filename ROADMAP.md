@@ -864,3 +864,17 @@
 ## v21.5.0 — Quick Section Stats ✅`n- ✅ `CL: Quick Stats` — single-line items/done%/words/tags/overdue message
 
 ## v21.6.0 — Insert Date Stamp ✅`n- ✅ `CL: Insert Date Stamp` — inserts `@YYYY-MM-DD` at cursor position
+
+---
+
+## v21.7.0 — Section Item Counter by Depth ⬜
+- ⬜ `CL: Show Nesting Breakdown` — info message showing how many items are at each chevron depth (>> vs >>> vs >>>>) in the current section
+
+## v21.8.0 — Rename Tag in Section ⬜
+- ⬜ `CL: Rename Tag (Section)` — renames a #tag within the current section only, without affecting the rest of the file
+
+## v21.9.0 — Section Duration Estimate ⬜
+- ⬜ `CL: Show Section Time Estimate` — sums all `~Nh`/`~Nm` estimate markers in the current section and shows a total in an info message
+
+## v22.0.0 — Item Clone to Daily Note ⬜
+- ⬜ `CL: Send to Daily Note` — copies the item at cursor to today's daily note file (using `dailyNotesFolder` setting), appending it to a `> Inbox` section

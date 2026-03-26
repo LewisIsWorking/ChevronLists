@@ -26,6 +26,10 @@ import { onCopySectionAsCsvRow }                          from './csvRowCommands
 import { onWrapItemText }                                 from './wrapItemCommands';
 import { onQuickStats }                                   from './quickStatsCommands';
 import { onInsertDateStamp }                              from './insertDateStampCommands';
+import { onShowNestingBreakdown }                         from './nestingBreakdownCommands';
+import { onRenameTagSection }                             from './renameTagSectionCommands';
+import { onShowSectionTimeEstimate }                      from './sectionEstimateCommands';
+import { onSendToDailyNote }                              from './sendToDailyNoteCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -58,5 +62,9 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.wrapItemText',                     onWrapItemText),
         r('chevron-lists.quickStats',                       onQuickStats),
         r('chevron-lists.insertDateStamp',                  onInsertDateStamp),
+        r('chevron-lists.showNestingBreakdown',             onShowNestingBreakdown),
+        r('chevron-lists.renameTagSection',                 onRenameTagSection),
+        r('chevron-lists.showSectionTimeEstimate',          onShowSectionTimeEstimate),
+        r('chevron-lists.sendToDailyNote',                  onSendToDailyNote),
     ];
 }

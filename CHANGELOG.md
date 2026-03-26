@@ -1,5 +1,12 @@
 # Changelog
 
+## [22.0.0] - 2026-03-26
+### Added
+- `CL: Show Nesting Breakdown` — info message showing item count at each chevron depth in the current section
+- `CL: Rename Tag (Section)` — renames a `#tag` within the current section only, without touching the rest of the file
+- `CL: Show Section Time Estimate` — sums all `~Nh`/`~Nm` estimate markers in the section and shows the total
+- `CL: Send to Daily Note` — copies the cursor item to today's daily note under `> Inbox`
+
 ## [21.6.0] - 2026-03-26
 ### Added
 - Section summary ghost text now shows a mini sparkline `▁▃▅▇░` representing completion ratio

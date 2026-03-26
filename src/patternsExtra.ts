@@ -27,6 +27,22 @@ export function isEscalatable(content: string, today: Date = new Date()): boolea
     return Math.floor((todayMid.getTime() - due.getTime()) / 86400000) > 7;
 }
 
+/** Pure: parses a ~Nh/~Nm/~NhNm estimate string to total minutes */
+export function parseEstimateToMinutes(content: string): number {
+    const match = content.match(/~(\d+h)?(\d+m)?/);
+    if (!match || (!match[1] && !match[2])) { return 0; }
+    return (match[1] ? parseInt(match[1]) : 0) * 60 + (match[2] ? parseInt(match[2]) : 0);
+}
+
+/** Pure: formats total minutes as a readable string */
+export function formatTotalMinutes(total: number): string {
+    if (total === 0)  { return '0m'; }
+    if (total < 60)   { return `${total}m`; }
+    const h = Math.floor(total / 60);
+    const m = total % 60;
+    return m > 0 ? `${h}h ${m}m` : `${h}h`;
+}
+
 /** Pure: scores item content by marker density */
 export function scoreItemComplexity(content: string): {
     priority: number; tags: number; estimate: number;
