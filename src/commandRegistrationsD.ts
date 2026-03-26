@@ -33,6 +33,9 @@ import { onSendToDailyNote }                              from './sendToDailyNot
 import { onConvertItemToSectionLink }                     from './convertToLinkCommands';
 import { onChangeItemPrefix }                             from './changePrefixCommands';
 import { onShowSectionGrowth }                            from './sectionGrowthCommands';
+import { onFilterByMultipleTags }                         from './multiTagFilterCommands';
+import { onExtractUrlsFromSection }                       from './urlExtractorCommands';
+import { onCloneSection }                                 from './cloneSectionCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -72,5 +75,8 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.convertItemToSectionLink',         onConvertItemToSectionLink),
         r('chevron-lists.changeItemPrefix',                 onChangeItemPrefix),
         r('chevron-lists.showSectionGrowth',                onShowSectionGrowth),
+        r('chevron-lists.filterByMultipleTags',             onFilterByMultipleTags),
+        r('chevron-lists.extractUrlsFromSection',           onExtractUrlsFromSection),
+        r('chevron-lists.cloneSection',                     onCloneSection),
     ];
 }

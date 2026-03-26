@@ -892,3 +892,17 @@
 
 ## v22.4.0 — Section Growth Chart ⬜
 - ⬜ `CL: Show Section Growth` — a webview showing a simple bar chart of item count per section, sorted descending — a visual overview of where the content lives
+
+---
+
+## v22.5.0 — Item Multi-Tag Filter ⬜
+- ⬜ `CL: Filter by Multiple Tags` — extends tag filtering to accept multiple tags with AND/OR logic, showing items that match all or any of the selected tags
+
+## v22.6.0 — Section Rename History ⬜
+- ⬜ `CL: Show Rename History` — tracks section renames made via CL: Rename Section in the session and shows them as a quick pick so you can undo or review name changes
+
+## v22.7.0 — Item URL Extractor ⬜
+- ⬜ `CL: Extract URLs from Section` — collects all URLs from item content in the current section and presents them as a clickable quick pick list
+
+## v22.8.0 — Section Clone ⬜
+- ⬜ `CL: Clone Section` — duplicates the entire current section (header + all items) immediately below itself with a `(copy)` suffix on the header name

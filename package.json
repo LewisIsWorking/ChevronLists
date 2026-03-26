@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "22.4.0",
+    "version": "22.8.0",
     "icon": "icon.png",
     "publisher": "lewisisworking",
     "repository": {
@@ -349,6 +349,9 @@
             { "command": "chevron-lists.convertItemToSectionLink",                       "title": "CL: Convert Item to Section Link" },
             { "command": "chevron-lists.changeItemPrefix",                               "title": "CL: Change Item Prefix" },
             { "command": "chevron-lists.showSectionGrowth",                              "title": "CL: Show Section Growth" },
+            { "command": "chevron-lists.filterByMultipleTags",                           "title": "CL: Filter by Multiple Tags" },
+            { "command": "chevron-lists.extractUrlsFromSection",                         "title": "CL: Extract URLs from Section" },
+            { "command": "chevron-lists.cloneSection",                                   "title": "CL: Clone Section" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
@@ -387,7 +390,10 @@
             { "command": "chevron-lists.sendToDailyNote",                                "title": "CL: Send to Daily Note" },
             { "command": "chevron-lists.convertItemToSectionLink",                       "title": "CL: Convert Item to Section Link" },
             { "command": "chevron-lists.changeItemPrefix",                               "title": "CL: Change Item Prefix" },
-            { "command": "chevron-lists.showSectionGrowth",                              "title": "CL: Show Section Growth" }
+            { "command": "chevron-lists.showSectionGrowth",                              "title": "CL: Show Section Growth" },
+            { "command": "chevron-lists.filterByMultipleTags",                           "title": "CL: Filter by Multiple Tags" },
+            { "command": "chevron-lists.extractUrlsFromSection",                         "title": "CL: Extract URLs from Section" },
+            { "command": "chevron-lists.cloneSection",                                   "title": "CL: Clone Section" }
         ],
         "keybindings": [
         {

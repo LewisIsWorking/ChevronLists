@@ -1,5 +1,11 @@
 # Changelog
 
+## [22.8.0] - 2026-03-26
+### Added
+- `CL: Filter by Multiple Tags` — multi-select tag picker with AND/OR logic; shows matching items as a jump-to quick pick
+- `CL: Extract URLs from Section` — collects all URLs from the current section and presents them as a clickable list
+- `CL: Clone Section` — duplicates the entire section below itself with a `(copy)` suffix on the header
+
 ## [22.4.0] - 2026-03-26
 ### Added
 - `CL: Convert Item to Section Link` — replaces the cursor item with a `[[SectionName]]` link if a matching section exists in the file
