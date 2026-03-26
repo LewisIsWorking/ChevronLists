@@ -138,3 +138,33 @@ export function collectTagStats(
         .map(([tag, s]) => ({ tag, ...s }))
         .sort((a, b) => b.total - a.total);
 }
+
+/** Pure: scores item content by marker density (priority, tags, estimate, dates, vote, label) */
+export function scoreItemComplexity(content: string): {
+    priority: number; tags: number; estimate: number;
+    dueDate: number; expiry: number; vote: number; label: number; total: number;
+} {
+    const priority = content.match(/^!!!/) ? 3 : content.match(/^!!/) ? 2 : content.match(/^!/) ? 1 : 0;
+    const tags     = (content.match(/#\w+/g) ?? []).length;
+    const estimate = /~\w+/.test(content) ? 1 : 0;
+    const dueDate  = /@\d{4}-\d{2}-\d{2}/.test(content) ? 1 : 0;
+    const expiry   = /@expires:\d{4}-\d{2}-\d{2}/.test(content) ? 1 : 0;
+    const vote     = /\+\d+/.test(content) ? 1 : 0;
+    const label    = /\[[A-Z][^\]]*\]/.test(content) ? 1 : 0;
+    const total    = priority + tags + estimate + dueDate + expiry + vote + label;
+    return { priority, tags, estimate, dueDate, expiry, vote, label, total };
+}
+
+/** Pure: finds and evaluates the first =expr in content */
+export function evaluateExpression(content: string): { original: string; result: number } | null {
+    const match = content.match(/=([0-9+\-*/.() ]+)/);
+    if (!match) { return null; }
+    try {
+        const expr = match[1].trim();
+        if (!/^[0-9+\-*/.() ]+$/.test(expr)) { return null; }
+        // eslint-disable-next-line no-new-func
+        const result = new Function(`return (${expr})`)() as number;
+        if (typeof result !== 'number' || !isFinite(result)) { return null; }
+        return { original: match[0], result: Math.round(result * 10000) / 10000 };
+    } catch { return null; }
+}

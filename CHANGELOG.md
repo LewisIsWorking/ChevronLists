@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.4.0] - 2026-03-26
+### Added
+- `CL: Show Item Complexity` — scores the item at cursor by marker density (priority, tags, estimate, due date, expiry, vote, label) with a visual bar
+- `CL: Freeze Section` / `CL: Unfreeze Section` — marks a section with `>> [frozen]`; warns before edits
+- `CL: Evaluate Expression in Item` — finds the first `=expr` pattern in the item, evaluates it as a math expression, and replaces it with the result
+- `CL: Show Archive` — quick pick of all items in the `> Archive` section with jump-to-line
+
 ## [20.0.0] - 2026-03-26
 ### Added
 - Section headers with `[colour:X]` tags now render in that colour in the editor (red, green, blue, yellow, orange, purple)

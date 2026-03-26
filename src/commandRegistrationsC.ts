@@ -77,6 +77,10 @@ import { onSmartPaste }                                   from './smartPasteComm
 import { onShowReadingTime }                              from './readingTimeCommands';
 import { onShowTagStats }                                 from './tagStatsCommands';
 import { onToggleDoneAllCursors, onSetPriorityAllCursors } from './multiCursorCommands';
+import { onShowItemComplexity }                            from './itemComplexityCommands';
+import { onFreezeSection, onUnfreezeSection }             from './sectionFreezeCommands';
+import { onEvaluateExpression }                           from './expressionCommands';
+import { onShowArchive }                                  from './archiveViewCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -176,6 +180,11 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.showTagStats',                     onShowTagStats),
         r('chevron-lists.toggleDoneAllCursors',             onToggleDoneAllCursors),
         r('chevron-lists.setPriorityAllCursors',            onSetPriorityAllCursors),
+        r('chevron-lists.showItemComplexity',               onShowItemComplexity),
+        r('chevron-lists.freezeSection',                    onFreezeSection),
+        r('chevron-lists.unfreezeSection',                  onUnfreezeSection),
+        r('chevron-lists.evaluateExpression',               onEvaluateExpression),
+        r('chevron-lists.showArchive',                      onShowArchive),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

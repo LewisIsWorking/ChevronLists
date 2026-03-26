@@ -812,3 +812,17 @@
 
 ## v20.0.0 — Multi-Cursor Item Actions ✅
 - ✅ `CL: Toggle Done (All Cursors)` + `CL: Set Priority (All Cursors)`
+
+---
+
+## v20.1.0 — Item Complexity Score ✅
+- ✅ `CL: Show Item Complexity` — marker density score with visual bar
+
+## v20.2.0 — Section Freeze ✅
+- ✅ `CL: Freeze Section` / `CL: Unfreeze Section` — `>> [frozen]` marker
+
+## v20.3.0 — Inline Calculation ✅
+- ✅ `CL: Evaluate Expression in Item` — evaluates `=expr` in item content
+
+## v20.4.0 — Section Archive History ✅
+- ✅ `CL: Show Archive` — jump-to-line quick pick of all archived items
