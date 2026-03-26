@@ -1,5 +1,12 @@
 # Changelog
 
+## [21.6.0] - 2026-03-26
+### Added
+- Section summary ghost text now shows a mini sparkline `▁▃▅▇░` representing completion ratio
+- Section summary ghost text now shows `N old` count for items with `@created:` dates 30+ days old
+- `CL: Quick Stats` — single-line info message with items, done %, words, tags, overdue count for the cursor section
+- `CL: Insert Date Stamp` — inserts `@YYYY-MM-DD` (today) at the cursor position within an item
+
 ## [21.2.0] - 2026-03-26
 ### Added
 - `CL: Sort by Due Date` — sorts items in the current section by `@YYYY-MM-DD` ascending; undated items go last

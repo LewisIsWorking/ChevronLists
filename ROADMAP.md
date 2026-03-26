@@ -854,3 +854,13 @@
 
 ## v21.2.0 — Overdue Escalation ✅
 - ✅ `chevron-lists.escalateOverdue` (default `false`) — 7+ days overdue → `!!!`
+
+---
+
+## v21.3.0 — Section Statistics Sparkline ✅`n- ✅ Section summary ghost text shows mini sparkline `▁▃▅░` for completion ratio
+
+## v21.4.0 — Item Age Badge ✅`n- ✅ Section summary ghost text shows `N old` for items 30+ days old
+
+## v21.5.0 — Quick Section Stats ✅`n- ✅ `CL: Quick Stats` — single-line items/done%/words/tags/overdue message
+
+## v21.6.0 — Insert Date Stamp ✅`n- ✅ `CL: Insert Date Stamp` — inserts `@YYYY-MM-DD` at cursor position

@@ -24,6 +24,8 @@ import { onShowMentionsReport }                           from './mentionsReport
 import { onSortByDueDate }                                from './sortByDateCommands';
 import { onCopySectionAsCsvRow }                          from './csvRowCommands';
 import { onWrapItemText }                                 from './wrapItemCommands';
+import { onQuickStats }                                   from './quickStatsCommands';
+import { onInsertDateStamp }                              from './insertDateStampCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -54,5 +56,7 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.sortByDueDate',                    onSortByDueDate),
         r('chevron-lists.copySectionAsCsvRow',              onCopySectionAsCsvRow),
         r('chevron-lists.wrapItemText',                     onWrapItemText),
+        r('chevron-lists.quickStats',                       onQuickStats),
+        r('chevron-lists.insertDateStamp',                  onInsertDateStamp),
     ];
 }
