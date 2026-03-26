@@ -13,6 +13,7 @@ import { registerCoreCommands }                              from './commandRegi
 import { registerSearchItemProviderCommands }                from './commandRegistrationsB';
 import { registerPhase12to32Commands }                       from './commandRegistrationsC';
 import { registerAutoFixNumbering }                          from './autoFixNumbering';
+import { registerLockEnforcement }                           from './lockEnforcement';
 import { getConfig }                                         from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -60,6 +61,7 @@ export function activate(context: vscode.ExtensionContext): void {
     );
 
     registerAutoFixNumbering(context);
+    registerLockEnforcement(context);
 
     if (vscode.window.activeTextEditor) {
         refreshEditor(vscode.window.activeTextEditor, { dueDateDiags });

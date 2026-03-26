@@ -1,5 +1,14 @@
 # Changelog
 
+## [23.2.0] - 2026-03-26
+### Added
+- `!!!` / `!!` / `!` priority items now get faint red / amber / yellow background decorations in the editor
+- `>> [locked]` marker in a section warns before save and offers to unlock — opt-in section protection
+- After pressing Enter on a section header, VS Code's suggestion widget opens automatically so you can immediately type a tag or pick a completion
+### Changed
+- README test count updated to 725 / 63 test files
+- ARCHITECTURE.md updated with current module layout and counts
+
 ## [22.8.0] - 2026-03-26
 ### Added
 - `CL: Filter by Multiple Tags` — multi-select tag picker with AND/OR logic; shows matching items as a jump-to quick pick

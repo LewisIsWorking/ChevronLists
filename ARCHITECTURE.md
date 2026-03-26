@@ -18,10 +18,18 @@ Every `*Commands.ts` file imports `vscode` to call VS Code APIs. Bun's test runn
 
 | File type | What belongs there |
 |---|---|
-| `patterns.ts` | Shared pure string/regex utilities (`parseBullet`, `isHeader`, `extractLabels`, `toTitleCase`, `toggleStrikethrough`, etc.) |
+| `patterns.ts` | Shared pure string/regex utilities — re-exports from `patternsUtils.ts`, `patternsExport.ts`, and `patternsExtra.ts` |
+| `patternsUtils.ts` | Core utility pure functions (formatDate, shiftDate, levenshtein, computeSectionWeight, etc.) |
+| `patternsExport.ts` | Export/conversion pure functions (formatElapsed, convertToObsidian, buildLineDiff, collectTagStats, etc.) |
+| `patternsExtra.ts` | Additional pure functions added in later phases (extractSortDate, csvEscape, scoreItemComplexity, collectSectionCounts, etc.) |
 | `*Parser.ts` | Pure domain parsing logic (e.g. `tagParser.ts`, `dueDateParser.ts`, `flagParser.ts`) |
 | `*Commands.ts` | VS Code command handlers that call `vscode.*` APIs — **no pure helpers** |
+| `commandRegistrationsA.ts` | Core commands: keyboard, navigation, section, sorting |
+| `commandRegistrationsB.ts` | Search, filter, item actions, bulk, providers |
+| `commandRegistrationsC.ts` | Phase 12–39 commands (delegates Phase 40+ to D) |
+| `commandRegistrationsD.ts` | Phase 40+ commands |
 | `extension.ts` | Activation wiring only — imports and registers, nothing else |
+| `editorRefresh.ts` | Single `refreshEditor()` entry point for all decorations and diagnostics |
 
 ### Example
 
@@ -62,4 +70,4 @@ import { renameTagInText } from './tagParser';
 
 ## Module Count
 
-As of v18.0.0: ~295 source modules, 54 test files, 635 unit tests, 295 declared commands, bundled to a single `dist/extension.js` (~205KB) via esbuild.
+As of v23.2.0: ~370 source modules, 63 test files, 725 unit tests, 300+ declared commands, bundled to a single `dist/extension.js` (~256KB) via esbuild.

@@ -906,3 +906,17 @@
 
 ## v22.8.0 — Section Clone ⬜
 - ⬜ `CL: Clone Section` — duplicates the entire current section (header + all items) immediately below itself with a `(copy)` suffix on the header name
+
+---
+
+## v22.9.0 — Item Colour from Priority ⬜
+- ⬜ Items with !!! priority get a faint red background decoration; !! items get amber; ! items get yellow — distinct from {colour} labels
+
+## v23.0.0 — Section Lock Enforcement ⬜
+- ⬜ When >> [locked] is present in a section, any edit to an item in that section shows an inline warning notification and offers to unlock
+
+## v23.1.0 — Smart Autocomplete Trigger on New Line ⬜
+- ⬜ When Enter is pressed after a header, VS Code's suggestion widget opens automatically so the user can immediately pick a section template or start typing a tag
+
+## v23.2.0 — Full Housekeeping ⬜
+- ⬜ Update README test count, ARCHITECTURE.md module count, audit all source files under 200 lines, clean stale VSIXs, verify ROADMAP all ✅, prepare Marketplace upload

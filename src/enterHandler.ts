@@ -113,6 +113,8 @@ export async function onEnter(): Promise<void> {
         }
         const newItem = blankLine ? `\n\n>> ${prefix} ` : `\n>> ${prefix} `;
         await vscode.commands.executeCommand('default:type', { text: newItem });
+        // Auto-trigger suggestions so user can immediately pick a tag or template
+        await vscode.commands.executeCommand('editor.action.triggerSuggest');
         return;
     }
     await vscode.commands.executeCommand('default:type', { text: '\n' });
