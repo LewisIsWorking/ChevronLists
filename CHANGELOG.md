@@ -1,6 +1,11 @@
 # Changelog
 
-## [18.0.0] - 2026-03-21
+## [18.1.0] - 2026-03-26
+### Fixed
+- `[]` (no space) now correctly counts as a to-do item, same as `[ ]` — affects status bar completion count, checklist progress bar, diagnostics, and all commands that use checkbox state
+- `[]` normalises to `[ ]` on first toggle, then cycles `[ ]` ↔ `[x]` as normal
+
+## [18.0.0] - 2026-03-26
 ### Added
 - `CL: Sort by Priority` — sorts items within a section `!!!` → `!!` → `!` → none
 - `CL: Archive Old Done Items` — archives `[x]` items with `@created:` dates older than N days

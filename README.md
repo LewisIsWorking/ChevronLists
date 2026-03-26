@@ -24,7 +24,7 @@ Deep nesting works at any level:
 
 | Marker | Example | Feature |
 |--------|---------|---------|
-| `[x]` / `[ ]` | `>> - [x] Done task` | Checkboxes |
+| `[x]` / `[ ]` / `[]` | `>> - [x] Done task` | Checkboxes (`[]` treated same as `[ ]`) |
 | `#tag` | `>> - Deploy #urgent` | Tags |
 | `!` / `!!` / `!!!` | `>> - !!! Critical` | Priority |
 | `@YYYY-MM-DD` | `>> - Ship @2026-04-01` | Due date |
@@ -430,7 +430,7 @@ bun test src/__tests__ --coverage   # run all unit tests with coverage
 bunx @vscode/vsce package           # package VSIX
 ```
 
-635 unit tests, 100% line coverage, 54 test files.
+637 unit tests, 100% line coverage, 54 test files.
 
 The extension bundles all source into a single `dist/extension.js` via esbuild, keeping the VSIX small (~78KB) and activation fast. See `ARCHITECTURE.md` for module boundary rules — pure functions always live in `patterns.ts` or `*Parser.ts`, never in `*Commands.ts`.
 
