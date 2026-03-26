@@ -798,3 +798,17 @@
 
 ## v19.6.0 — Reading Time Estimate ✅
 - ✅ `CL: Show Reading Time` — 200wpm estimate for section or whole file
+
+---
+
+## v19.7.0 — Section Colour Rendering ✅
+- ✅ `[colour:X]` headers render in that colour in the editor via decorations
+
+## v19.8.0 — Item Link Preview ✅
+- ✅ `[[SectionLink]]` hover shows top 5 items with checkbox states
+
+## v19.9.0 — Inline Tag Stats ✅
+- ✅ `CL: Show Tag Stats` — webview table with item count, done count, % bar per tag
+
+## v20.0.0 — Multi-Cursor Item Actions ✅
+- ✅ `CL: Toggle Done (All Cursors)` + `CL: Set Priority (All Cursors)`

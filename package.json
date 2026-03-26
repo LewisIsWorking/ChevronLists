@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "19.6.0",
+    "version": "20.0.0",
     "icon": "icon.png",
     "publisher": "lewisisworking",
     "repository": {
@@ -327,6 +327,9 @@
             { "command": "chevron-lists.diffItemWithSnapshot",                           "title": "CL: Diff Item with Snapshot" },
             { "command": "chevron-lists.smartPaste",                                     "title": "CL: Smart Paste" },
             { "command": "chevron-lists.showReadingTime",                                "title": "CL: Show Reading Time" },
+            { "command": "chevron-lists.showTagStats",                                   "title": "CL: Show Tag Stats" },
+            { "command": "chevron-lists.toggleDoneAllCursors",                           "title": "CL: Toggle Done (All Cursors)" },
+            { "command": "chevron-lists.setPriorityAllCursors",                          "title": "CL: Set Priority (All Cursors)" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
@@ -343,7 +346,10 @@
             { "command": "chevron-lists.snapshotItem",                                   "title": "CL: Snapshot Item" },
             { "command": "chevron-lists.diffItemWithSnapshot",                           "title": "CL: Diff Item with Snapshot" },
             { "command": "chevron-lists.smartPaste",                                     "title": "CL: Smart Paste" },
-            { "command": "chevron-lists.showReadingTime",                                "title": "CL: Show Reading Time" }
+            { "command": "chevron-lists.showReadingTime",                                "title": "CL: Show Reading Time" },
+            { "command": "chevron-lists.showTagStats",                                   "title": "CL: Show Tag Stats" },
+            { "command": "chevron-lists.toggleDoneAllCursors",                           "title": "CL: Toggle Done (All Cursors)" },
+            { "command": "chevron-lists.setPriorityAllCursors",                          "title": "CL: Set Priority (All Cursors)" }
         ],
         "keybindings": [
         {

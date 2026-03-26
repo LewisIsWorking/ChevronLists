@@ -1,5 +1,13 @@
 # Changelog
 
+## [20.0.0] - 2026-03-26
+### Added
+- Section headers with `[colour:X]` tags now render in that colour in the editor (red, green, blue, yellow, orange, purple)
+- `[[SectionLink]]` hover now shows a rich preview of the linked section's top 5 items with checkbox states
+- `CL: Show Tag Stats` — webview table of every `#tag` with item count, done count, and completion % bar
+- `CL: Toggle Done (All Cursors)` — toggles checkbox state on every cursor's item simultaneously
+- `CL: Set Priority (All Cursors)` — sets the same priority on every cursor's item at once
+
 ## [19.6.0] - 2026-03-26
 ### Added
 - `CL: Start Focus Timer` / `CL: Stop Focus Timer` — configurable countdown (default 25 min) shown in the status bar; pings when complete. Set duration via `chevron-lists.focusTimerMinutes`

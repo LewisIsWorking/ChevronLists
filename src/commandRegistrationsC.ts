@@ -75,6 +75,8 @@ import { onMarkAllDoneSection, onMarkAllUndoneSection }   from './bulkCheckboxCo
 import { onSnapshotItem, onDiffItemWithSnapshot }         from './itemSnapshotCommands';
 import { onSmartPaste }                                   from './smartPasteCommands';
 import { onShowReadingTime }                              from './readingTimeCommands';
+import { onShowTagStats }                                 from './tagStatsCommands';
+import { onToggleDoneAllCursors, onSetPriorityAllCursors } from './multiCursorCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -171,6 +173,9 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.diffItemWithSnapshot',             onDiffItemWithSnapshot),
         r('chevron-lists.smartPaste',                       onSmartPaste),
         r('chevron-lists.showReadingTime',                  onShowReadingTime),
+        r('chevron-lists.showTagStats',                     onShowTagStats),
+        r('chevron-lists.toggleDoneAllCursors',             onToggleDoneAllCursors),
+        r('chevron-lists.setPriorityAllCursors',            onSetPriorityAllCursors),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

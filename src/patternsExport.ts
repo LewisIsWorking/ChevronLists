@@ -103,3 +103,38 @@ export function formatReadingTime(words: number): string {
     const mins = Math.round(seconds / 60);
     return `${mins} minute${mins === 1 ? '' : 's'}`;
 }
+
+export interface TagStat { tag: string; total: number; done: number; }
+
+/** Pure: collects per-tag item/done counts from document lines */
+export function collectTagStats(
+    lines: Array<{ text: string }>,
+    prefix: string
+): TagStat[] {
+    // Inline imports to avoid circular deps — use raw regex matching
+    const TAG_RE     = /#(\w+)/g;
+    const CHECK_DONE = /^\[x\] /i;
+    const CHECK_ANY  = /^\[(x| ?)\] /i;
+    const BULLET_RE  = new RegExp(`^(>{2,}) ${prefix === '-' ? '-' : prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} (.*)$`);
+    const NUM_RE     = /^(>{2,}) \d+\. (.*)$/;
+
+    const stats = new Map<string, { total: number; done: number }>();
+    for (const { text } of lines) {
+        const bm = text.match(BULLET_RE);
+        const nm = text.match(NUM_RE);
+        const content = bm?.[2] ?? nm?.[2] ?? null;
+        if (!content) { continue; }
+        const tags = [...content.matchAll(TAG_RE)].map(m => m[1]);
+        if (tags.length === 0) { continue; }
+        const done = CHECK_ANY.test(content) && CHECK_DONE.test(content);
+        for (const tag of tags) {
+            if (!stats.has(tag)) { stats.set(tag, { total: 0, done: 0 }); }
+            const s = stats.get(tag)!;
+            s.total++;
+            if (done) { s.done++; }
+        }
+    }
+    return [...stats.entries()]
+        .map(([tag, s]) => ({ tag, ...s }))
+        .sort((a, b) => b.total - a.total);
+}
