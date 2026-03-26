@@ -1,5 +1,9 @@
 # Changelog
 
+## [18.2.0] - 2026-03-26
+### Added
+- Extension icon — dark slate background with nested chevron rows in amber/teal/muted colours, representing the `>`, `>>`, `>>>` nesting hierarchy
+
 ## [18.1.0] - 2026-03-26
 ### Fixed
 - `[]` (no space) now correctly counts as a to-do item, same as `[ ]` — affects status bar completion count, checklist progress bar, diagnostics, and all commands that use checkbox state

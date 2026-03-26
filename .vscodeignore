@@ -11,3 +11,5 @@ esbuild.mjs
 .DS_Store
 *.vsix
 dist/*.map
+icon_preview.png
+make_icon.py
