@@ -735,3 +735,48 @@
 
 ## v17.9.0 — Item Quick Note ✅
 - ✅ `CL: Add Quick Note to Item` — prompts and appends `// comment`
+
+---
+
+## v18.0.0 — Housekeeping ✅
+- ✅ `patterns.ts` split into `patterns.ts` + `patternsUtils.ts` (both under 200 lines)
+- ✅ Built v17.6–17.9 commands that were marked ✅ but unbuilt
+- ✅ Item count badge defaults to off — section summary already shows count
+- ✅ README and ARCHITECTURE.md updated
+
+## v18.1.0 — Checkbox Fix ✅
+- ✅ `[]` (no space) treated as todo same as `[ ]` — affects all checkbox-aware features
+
+## v18.2.0 — Extension Icon ✅
+- ✅ 128×128 PNG icon added — dark slate background, nested chevron rows
+
+## v18.3.0 — Auto-Fix Numbering + Quick Fix Labels ✅
+- ✅ `chevron-lists.autoFixNumbering` setting (default `false`) — cascades duplicate numbers forward on edit
+- ✅ `CL:` prefix on all quick-fix actions in the Problems panel lightbulb menu
+
+## v18.4.0 — New Default Theme ✅
+- ✅ Default colour theme updated to violet/lime/slate — matches the extension icon
+- ✅ Previous default (amber/blue) preserved as **Classic** theme
+- ✅ `CL: Switch Colour Preset` renamed to `CL: Colour Theme`
+
+---
+
+## v18.5.0 — Expiry Diagnostics ⬜
+- ⬜ `@expires:` items appear in the Problems panel with a squiggle, same as overdue items
+- ⬜ Quick fixes: `CL: Remove expiry`, `CL: Extend expiry by 7 days`, `CL: Extend expiry by 30 days`
+
+## v18.6.0 — Priority in Section Summary ⬜
+- ⬜ The `(N items · N done · N tags)` ghost text gains `· N urgent` when `!!!` items are present in the section
+
+## v18.7.0 — Today View ⬜
+- ⬜ `CL: Today View` — single quick pick showing every item due today or overdue across the whole workspace, grouped by file and section
+
+## v18.8.0 — Kanban Webview ⬜
+- ⬜ `CL: Show Kanban` — webview with three columns: ☐ Todo / ⭐ In Progress (starred `*` items) / ✓ Done, pulling from all sections in the current file
+
+## v18.9.0 — Export to Obsidian ⬜
+- ⬜ `CL: Export to Obsidian` — converts the file to standard Obsidian-compatible markdown: `##` headings, `#tags`, `[[wikilinks]]`, and YAML frontmatter with date and tags
+
+## v19.0.0 — Item Timer ⬜
+- ⬜ `CL: Start Item Timer` — starts a stopwatch on the item at the cursor, shown in the status bar
+- ⬜ `CL: Stop Item Timer` — stops the timer and stamps the item with `~elapsed` (e.g. `~23m`)
