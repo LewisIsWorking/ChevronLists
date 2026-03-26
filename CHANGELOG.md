@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.8.0] - 2026-03-26
+### Added
+- `CL: Batch Replace Text` — find/replace plain text across all items in the current section with a preview count before applying
+- Word goal nudge — `📝 N words to go` status bar item appears when the cursor is in a section below its `==N` goal
+- Sticky header — when scrolled deep into a section, the section name appears as a subtle prefix on the first visible item so you always know where you are
+- `CL: Show Mentions Report` — webview table of every `@Name` mention in the file with item count, done count, and completion % bar
+
 ## [20.4.0] - 2026-03-26
 ### Added
 - `CL: Show Item Complexity` — scores the item at cursor by marker density (priority, tags, estimate, due date, expiry, vote, label) with a visual bar

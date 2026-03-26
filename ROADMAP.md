@@ -826,3 +826,17 @@
 
 ## v20.4.0 — Section Archive History ✅
 - ✅ `CL: Show Archive` — jump-to-line quick pick of all archived items
+
+---
+
+## v20.5.0 — Item Batch Replace ✅
+- ✅ `CL: Batch Replace Text` — find/replace in section items with preview count
+
+## v20.6.0 — Section Word Goal Nudge ✅
+- ✅ `📝 N words to go` status bar nudge when below goal
+
+## v20.7.0 — Sticky Header ✅
+- ✅ Section name shown at top of viewport when scrolled away
+
+## v20.8.0 — Item Mentions Report ✅
+- ✅ `CL: Show Mentions Report` — `@Name` webview table with done/total/% bar
