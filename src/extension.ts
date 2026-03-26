@@ -12,6 +12,7 @@ import { ChevronCodeActionProvider }                         from './codeActionP
 import { registerCoreCommands }                              from './commandRegistrationsA';
 import { registerSearchItemProviderCommands }                from './commandRegistrationsB';
 import { registerPhase12to32Commands }                       from './commandRegistrationsC';
+import { registerAutoFixNumbering }                          from './autoFixNumbering';
 import { getConfig }                                         from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -57,6 +58,8 @@ export function activate(context: vscode.ExtensionContext): void {
             }
         }),
     );
+
+    registerAutoFixNumbering(context);
 
     if (vscode.window.activeTextEditor) {
         refreshEditor(vscode.window.activeTextEditor, { dueDateDiags });

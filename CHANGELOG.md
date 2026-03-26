@@ -1,5 +1,12 @@
 # Changelog
 
+## [18.3.0] - 2026-03-26
+### Added
+- `chevron-lists.autoFixNumbering` setting (default `false`) — when enabled, automatically re-sequences numbered items at the same depth after an edit, so inserting a duplicate number cascades the rest forward. Defaults to **off** to preserve intentional custom start numbers and non-sequential lists.
+- `CL:` prefix on all quick-fix actions in the Problems panel lightbulb menu — makes it clear at a glance which fixes come from Chevron Lists
+### Changed
+- Extension icon updated — violet/lime/slate palette replacing the previous amber/teal scheme
+
 ## [18.2.0] - 2026-03-26
 ### Added
 - Extension icon — dark slate background with nested chevron rows in amber/teal/muted colours, representing the `>`, `>>`, `>>>` nesting hierarchy

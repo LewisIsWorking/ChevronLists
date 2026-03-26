@@ -13,22 +13,19 @@ function badNumberingActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[
         const numbered = parseNumbered(doc.lineAt(line).text);
         if (!numbered) { continue; }
         const expected = prevNumberAtDepth(doc, line, numbered.chevrons) + 1;
-
-        // The diagnostic is on the item BEFORE the break.
-        // "Fix" means: renumber this item so it flows from the previous one.
-        actions.push(makeAction(`Fix: change ${numbered.num} to ${expected}`, QF, diag, {
+        actions.push(makeAction(`CL: Fix: change ${numbered.num} to ${expected}`, QF, diag, {
             preferred: true,
             edit: makeEdit(doc.uri, doc.lineAt(line).range,
                 `${numbered.chevrons} ${expected}. ${numbered.content}`),
         }));
-        actions.push(makeAction('Set custom start number here…', QF, diag, {
-            command: { command: 'chevron-lists.setListStartNumber', title: 'Set List Start Number' },
+        actions.push(makeAction('CL: Set custom start number here…', QF, diag, {
+            command: { command: 'chevron-lists.setListStartNumber', title: 'CL: Set List Start Number' },
         }));
     }
     if (diags.length > 0) {
-        const a = new vscode.CodeAction('Fix all numbering in file', QF);
+        const a = new vscode.CodeAction('CL: Fix all numbering in file', QF);
         a.diagnostics = diags;
-        a.command = { command: 'chevron-lists.fixNumbering', title: 'Fix Numbering' };
+        a.command = { command: 'chevron-lists.fixNumbering', title: 'CL: Fix Numbering' };
         actions.push(a);
     }
     return actions;
@@ -43,10 +40,10 @@ function duplicateHeaderActions(doc: vscode.TextDocument, diags: vscode.Diagnost
         for (let i = 0; i < doc.lineCount; i++) {
             if (doc.lineAt(i).text === `> ${name} ${suffix}`) { suffix++; }
         }
-        actions.push(makeAction(`Rename section "${name}"…`, QF, diag, {
-            preferred: true, command: { command: 'chevron-lists.renameSection', title: 'Rename Section' },
+        actions.push(makeAction(`CL: Rename section "${name}"…`, QF, diag, {
+            preferred: true, command: { command: 'chevron-lists.renameSection', title: 'CL: Rename Section' },
         }));
-        actions.push(makeAction(`Make unique: rename to "${name} ${suffix}"`, QF, diag, {
+        actions.push(makeAction(`CL: Make unique: rename to "${name} ${suffix}"`, QF, diag, {
             edit: makeEdit(doc.uri, doc.lineAt(line).range, `> ${name} ${suffix}`),
         }));
     }
@@ -63,10 +60,10 @@ function emptySectionActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[
         addItem.insert(doc.uri, insertPos, `>> ${prefix} Item\n`);
         const delEdit = new vscode.WorkspaceEdit();
         delEdit.delete(doc.uri, doc.lineAt(line).rangeIncludingLineBreak);
-        actions.push(makeAction('Add placeholder item', QF, diag, { preferred: true, edit: addItem }));
-        actions.push(makeAction('Delete this empty section', QF, diag, { edit: delEdit }));
-        actions.push(makeAction('Quick capture to this section…', QF, diag, {
-            command: { command: 'chevron-lists.quickCapture', title: 'Quick Capture' },
+        actions.push(makeAction('CL: Add placeholder item', QF, diag, { preferred: true, edit: addItem }));
+        actions.push(makeAction('CL: Delete this empty section', QF, diag, { edit: delEdit }));
+        actions.push(makeAction('CL: Quick capture to this section…', QF, diag, {
+            command: { command: 'chevron-lists.quickCapture', title: 'CL: Quick Capture' },
         }));
     }
     return actions;
@@ -77,22 +74,22 @@ function overdueActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[]): v
     const { prefix } = getConfig();
     const today      = new Date().toISOString().slice(0, 10);
     for (const diag of diags) {
-        const line    = diag.range.start.line;
-        const text    = doc.lineAt(line).text;
-        const bullet  = parseBullet(text, prefix);
+        const line     = diag.range.start.line;
+        const text     = doc.lineAt(line).text;
+        const bullet   = parseBullet(text, prefix);
         const numbered = parseNumbered(text);
         if (!bullet && !numbered) { continue; }
         const chevrons = bullet?.chevrons ?? numbered!.chevrons;
         const content  = bullet?.content  ?? numbered!.content;
         const num      = numbered?.num ?? null;
         const rebuild  = (c: string) => num !== null ? `${chevrons} ${num}. ${c}` : `${chevrons} ${prefix} ${c}`;
-        actions.push(makeAction(`Reschedule to today (${today})`, QF, diag, {
+        actions.push(makeAction(`CL: Reschedule to today (${today})`, QF, diag, {
             preferred: true, edit: makeEdit(doc.uri, doc.lineAt(line).range, rebuild(replaceDate(content, today))),
         }));
-        actions.push(makeAction('Remove due date', QF, diag, {
+        actions.push(makeAction('CL: Remove due date', QF, diag, {
             edit: makeEdit(doc.uri, doc.lineAt(line).range, rebuild(stripDate(content))),
         }));
-        actions.push(makeAction('Mark item done', QF, diag, {
+        actions.push(makeAction('CL: Mark item done', QF, diag, {
             edit: makeEdit(doc.uri, doc.lineAt(line).range, rebuild(markDone(content))),
         }));
     }
@@ -104,14 +101,14 @@ function wordGoalActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[]): 
     for (const diag of diags) {
         const line     = diag.range.start.line;
         const stripped = doc.lineAt(line).text.replace(/\s*==\d+/, '').trimEnd();
-        actions.push(makeAction('Update word count goal…', QF, diag, {
-            preferred: true, command: { command: 'chevron-lists.setWordCountGoal', title: 'Set Word Count Goal' },
+        actions.push(makeAction('CL: Update word count goal…', QF, diag, {
+            preferred: true, command: { command: 'chevron-lists.setWordCountGoal', title: 'CL: Set Word Count Goal' },
         }));
-        actions.push(makeAction('Remove word count goal', QF, diag, {
+        actions.push(makeAction('CL: Remove word count goal', QF, diag, {
             edit: makeEdit(doc.uri, doc.lineAt(line).range, stripped),
         }));
-        actions.push(makeAction('Show word count breakdown', QF, diag, {
-            command: { command: 'chevron-lists.showWordCount', title: 'Show Word Count' },
+        actions.push(makeAction('CL: Show word count breakdown', QF, diag, {
+            command: { command: 'chevron-lists.showWordCount', title: 'CL: Show Word Count' },
         }));
     }
     return actions;

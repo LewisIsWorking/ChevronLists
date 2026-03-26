@@ -11,5 +11,6 @@ export function getConfig(): ChevronConfig {
         autoArchive:      cfg.get<boolean>('autoArchive', false),
         dailyNotesFolder:    cfg.get<string>('dailyNotesFolder', ''),
         dailyNoteTemplate:   cfg.get<string>('dailyNoteTemplate', ''),
+        autoFixNumbering:    cfg.get<boolean>('autoFixNumbering', false),
     };
 }

@@ -160,3 +160,34 @@ export function setSectionColour(headerText: string, colour: string | null): str
     const stripped = headerText.replace(/\s*\[colour:[^\]]+\]/gi, '').trim();
     return colour ? `${stripped} [colour:${colour}]` : stripped;
 }
+
+/** Pure: finds renumbering edits needed to fix duplicate/broken sequences at each depth */
+export function computeAutoFixEdits(
+    lines: Array<{ text: string; lineIndex: number }>
+): Array<{ lineIndex: number; newText: string }> {
+    const byDepth = new Map<string, Array<{ lineIndex: number; num: number; text: string }>>();
+    for (const { text, lineIndex } of lines) {
+        const m = parseNumbered(text);
+        if (!m) { continue; }
+        if (!byDepth.has(m.chevrons)) { byDepth.set(m.chevrons, []); }
+        byDepth.get(m.chevrons)!.push({ lineIndex, num: m.num, text });
+    }
+    const edits: Array<{ lineIndex: number; newText: string }> = [];
+    for (const items of byDepth.values()) {
+        let lastNum: number | null = null;
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (lastNum !== null && item.num !== lastNum + 1) {
+                let counter = lastNum + 1;
+                for (const toFix of items.slice(i)) {
+                    const m = parseNumbered(toFix.text)!;
+                    edits.push({ lineIndex: toFix.lineIndex, newText: `${m.chevrons} ${counter}. ${m.content}` });
+                    counter++;
+                }
+                break;
+            }
+            lastNum = item.num;
+        }
+    }
+    return edits;
+}

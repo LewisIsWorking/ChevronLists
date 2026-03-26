@@ -32,4 +32,5 @@ export interface ChevronConfig {
     autoArchive:         boolean;
     dailyNotesFolder:    string;
     dailyNoteTemplate:   string;
+    autoFixNumbering:    boolean;
 }
