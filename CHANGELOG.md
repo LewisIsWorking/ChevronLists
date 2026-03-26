@@ -1,5 +1,14 @@
 # Changelog
 
+## [19.6.0] - 2026-03-26
+### Added
+- `CL: Start Focus Timer` / `CL: Stop Focus Timer` — configurable countdown (default 25 min) shown in the status bar; pings when complete. Set duration via `chevron-lists.focusTimerMinutes`
+- Section heat map — overview ruler markers coloured by section weight; heavier sections glow brighter in the minimap
+- `CL: Mark All Done (Section)` / `CL: Mark All Undone (Section)` — bulk checkbox toggle scoped to the current section only
+- `CL: Snapshot Item` — stores the item content at cursor; `CL: Diff Item with Snapshot` — shows a word-level before/after diff in a side panel
+- `CL: Smart Paste` — detects numbered lists, bullet lists, or plain lines in the clipboard and converts to the correct chevron format automatically
+- `CL: Show Reading Time` — estimates reading time for the current section or file at 200 wpm
+
 ## [19.0.0] - 2026-03-26
 ### Added
 - `@expires:` items now appear in the Problems panel with a warning squiggle — quick fixes: `CL: Extend expiry by 7 days`, `CL: Extend expiry by 30 days`, `CL: Remove expiry date`

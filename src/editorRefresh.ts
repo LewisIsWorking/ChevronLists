@@ -17,6 +17,7 @@ import { updateDiagnostics } from './diagnosticProvider';
 import { updateDueDateDiagnostics } from './dueDateCommands';
 import { updateWordGoalDiagnostics } from './wordGoalCommands';
 import { updateExpiryDiagnostics, getExpiryDiagCollection } from './expiryDiagnostics';
+import { updateHeatMapDecorations } from './heatMapDecoration';
 
 export interface DiagCollections {
     dueDateDiags:   vscode.DiagnosticCollection;
@@ -35,6 +36,7 @@ export function refreshEditor(
     updateDueDateDiagnostics(editor.document, diags.dueDateDiags, prefix);
     updateWordGoalDiagnostics(editor.document, prefix);
     updateExpiryDiagnostics(editor.document, getExpiryDiagCollection(), prefix);
+    updateHeatMapDecorations(editor);
     updateBadgeDecorations(editor);
     updateGoalDecorations(editor);
     updateOverdueStatusBar(editor);

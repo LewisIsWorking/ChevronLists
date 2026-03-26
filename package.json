@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "19.0.0",
+    "version": "19.6.0",
     "icon": "icon.png",
     "publisher": "lewisisworking",
     "repository": {
@@ -319,6 +319,14 @@
             { "command": "chevron-lists.exportToObsidian",                              "title": "CL: Export to Obsidian" },
             { "command": "chevron-lists.startItemTimer",                                "title": "CL: Start Item Timer" },
             { "command": "chevron-lists.stopItemTimer",                                 "title": "CL: Stop Item Timer" },
+            { "command": "chevron-lists.startFocusTimer",                                "title": "CL: Start Focus Timer" },
+            { "command": "chevron-lists.stopFocusTimer",                                 "title": "CL: Stop Focus Timer" },
+            { "command": "chevron-lists.markAllDoneSection",                             "title": "CL: Mark All Done (Section)" },
+            { "command": "chevron-lists.markAllUndoneSection",                           "title": "CL: Mark All Undone (Section)" },
+            { "command": "chevron-lists.snapshotItem",                                   "title": "CL: Snapshot Item" },
+            { "command": "chevron-lists.diffItemWithSnapshot",                           "title": "CL: Diff Item with Snapshot" },
+            { "command": "chevron-lists.smartPaste",                                     "title": "CL: Smart Paste" },
+            { "command": "chevron-lists.showReadingTime",                                "title": "CL: Show Reading Time" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
@@ -327,7 +335,15 @@
             { "command": "chevron-lists.showKanban",                                    "title": "CL: Show Kanban" },
             { "command": "chevron-lists.exportToObsidian",                              "title": "CL: Export to Obsidian" },
             { "command": "chevron-lists.startItemTimer",                                "title": "CL: Start Item Timer" },
-            { "command": "chevron-lists.stopItemTimer",                                 "title": "CL: Stop Item Timer" }
+            { "command": "chevron-lists.stopItemTimer",                                 "title": "CL: Stop Item Timer" },
+            { "command": "chevron-lists.startFocusTimer",                                "title": "CL: Start Focus Timer" },
+            { "command": "chevron-lists.stopFocusTimer",                                 "title": "CL: Stop Focus Timer" },
+            { "command": "chevron-lists.markAllDoneSection",                             "title": "CL: Mark All Done (Section)" },
+            { "command": "chevron-lists.markAllUndoneSection",                           "title": "CL: Mark All Undone (Section)" },
+            { "command": "chevron-lists.snapshotItem",                                   "title": "CL: Snapshot Item" },
+            { "command": "chevron-lists.diffItemWithSnapshot",                           "title": "CL: Diff Item with Snapshot" },
+            { "command": "chevron-lists.smartPaste",                                     "title": "CL: Smart Paste" },
+            { "command": "chevron-lists.showReadingTime",                                "title": "CL: Show Reading Time" }
         ],
         "keybindings": [
         {

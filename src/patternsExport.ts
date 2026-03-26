@@ -62,3 +62,44 @@ export function convertToObsidian(lines: string[], prefix: string): string {
     }
     return out.join('\n');
 }
+
+/** Pure: word-level diff summary between two strings */
+export function buildLineDiff(before: string, after: string): string {
+    const bWords = new Set(before.split(/\s+/).filter(Boolean));
+    const aWords = new Set(after.split(/\s+/).filter(Boolean));
+    const added   = [...aWords].filter(w => !bWords.has(w)).map(w => `+ ${w}`);
+    const removed = [...bWords].filter(w => !aWords.has(w)).map(w => `- ${w}`);
+    if (added.length === 0 && removed.length === 0) { return '_No changes detected_'; }
+    return [...removed, ...added].join('\n');
+}
+
+/** Pure: converts clipboard text to chevron item lines, detecting list format */
+export function smartPasteLines(
+    clipText: string,
+    prefix: string,
+    chevrons: string,
+    startNum: number
+): string[] {
+    const rawLines   = clipText.split(/\r?\n/).filter(l => l.trim());
+    const isNumbered = rawLines.every(l => /^\d+[.)]\s/.test(l.trim()));
+    return rawLines.map((line, i) => {
+        const content = line.replace(/^\d+[.)]\s*/, '').replace(/^[-*•]\s*/, '').trim();
+        if (isNumbered) { return `${chevrons} ${startNum + i}. ${content}`; }
+        return `${chevrons} ${prefix} ${content}`;
+    });
+}
+
+const WPM = 200;
+
+/** Pure: counts words in an array of content strings */
+export function countWords(contents: string[]): number {
+    return contents.reduce((sum, c) => sum + c.trim().split(/\s+/).filter(Boolean).length, 0);
+}
+
+/** Pure: formats a word count as an estimated reading time string */
+export function formatReadingTime(words: number): string {
+    const seconds = Math.round((words / WPM) * 60);
+    if (seconds < 60)  { return `${seconds} second${seconds === 1 ? '' : 's'}`; }
+    const mins = Math.round(seconds / 60);
+    return `${mins} minute${mins === 1 ? '' : 's'}`;
+}

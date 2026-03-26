@@ -70,6 +70,11 @@ import { onTodayView }                                    from './todayViewComma
 import { onShowKanban }                                   from './kanbanCommands';
 import { onExportToObsidian }                             from './obsidianExportCommands';
 import { onStartItemTimer, onStopItemTimer }              from './itemTimerCommands';
+import { onStartFocusTimer, onStopFocusTimer }            from './focusTimerCommands';
+import { onMarkAllDoneSection, onMarkAllUndoneSection }   from './bulkCheckboxCommands';
+import { onSnapshotItem, onDiffItemWithSnapshot }         from './itemSnapshotCommands';
+import { onSmartPaste }                                   from './smartPasteCommands';
+import { onShowReadingTime }                              from './readingTimeCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -158,6 +163,14 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.exportToObsidian',                 onExportToObsidian),
         r('chevron-lists.startItemTimer',                   onStartItemTimer),
         r('chevron-lists.stopItemTimer',                    onStopItemTimer),
+        r('chevron-lists.startFocusTimer',                  onStartFocusTimer),
+        r('chevron-lists.stopFocusTimer',                   onStopFocusTimer),
+        r('chevron-lists.markAllDoneSection',               onMarkAllDoneSection),
+        r('chevron-lists.markAllUndoneSection',             onMarkAllUndoneSection),
+        r('chevron-lists.snapshotItem',                     onSnapshotItem),
+        r('chevron-lists.diffItemWithSnapshot',             onDiffItemWithSnapshot),
+        r('chevron-lists.smartPaste',                       onSmartPaste),
+        r('chevron-lists.showReadingTime',                  onShowReadingTime),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

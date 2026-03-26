@@ -778,3 +778,23 @@
 
 ## v19.0.0 — Item Timer ✅
 - ✅ `CL: Start Item Timer` / `CL: Stop Item Timer` — stamps `~elapsed` on stop
+
+---
+
+## v19.1.0 — Focus Timer (Pomodoro) ✅
+- ✅ `CL: Start/Stop Focus Timer` — configurable countdown (default 25 min), `chevron-lists.focusTimerMinutes`
+
+## v19.2.0 — Section Heat Map Decoration ✅
+- ✅ Overview ruler markers coloured by section weight — heavier sections glow brighter
+
+## v19.3.0 — Bulk Checkbox Toggle ✅
+- ✅ `CL: Mark All Done (Section)` / `CL: Mark All Undone (Section)` — section-scoped
+
+## v19.4.0 — Item Snapshot Diff ✅
+- ✅ `CL: Snapshot Item` + `CL: Diff Item with Snapshot` — word-level before/after diff
+
+## v19.5.0 — Smart Paste ✅
+- ✅ `CL: Smart Paste` — detects numbered/bullet/plain clipboard format automatically
+
+## v19.6.0 — Reading Time Estimate ✅
+- ✅ `CL: Show Reading Time` — 200wpm estimate for section or whole file
