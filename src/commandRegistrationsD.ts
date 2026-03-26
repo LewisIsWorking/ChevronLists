@@ -30,6 +30,9 @@ import { onShowNestingBreakdown }                         from './nestingBreakdo
 import { onRenameTagSection }                             from './renameTagSectionCommands';
 import { onShowSectionTimeEstimate }                      from './sectionEstimateCommands';
 import { onSendToDailyNote }                              from './sendToDailyNoteCommands';
+import { onConvertItemToSectionLink }                     from './convertToLinkCommands';
+import { onChangeItemPrefix }                             from './changePrefixCommands';
+import { onShowSectionGrowth }                            from './sectionGrowthCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -66,5 +69,8 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.renameTagSection',                 onRenameTagSection),
         r('chevron-lists.showSectionTimeEstimate',          onShowSectionTimeEstimate),
         r('chevron-lists.sendToDailyNote',                  onSendToDailyNote),
+        r('chevron-lists.convertItemToSectionLink',         onConvertItemToSectionLink),
+        r('chevron-lists.changeItemPrefix',                 onChangeItemPrefix),
+        r('chevron-lists.showSectionGrowth',                onShowSectionGrowth),
     ];
 }

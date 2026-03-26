@@ -43,6 +43,28 @@ export function formatTotalMinutes(total: number): string {
     return m > 0 ? `${h}h ${m}m` : `${h}h`;
 }
 
+/** Pure: collects item count per section from document lines */
+export interface SectionCount { name: string; count: number; }
+
+export function collectSectionCounts(lines: Array<{ text: string }>, prefix: string): SectionCount[] {
+    const HEADER_RE = /^> [^>]/;
+    const BULLET_RE = new RegExp(`^(>{2,}) ${prefix === '-' ? '-' : prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} (.*)$`);
+    const NUM_RE    = /^(>{2,}) \d+\. (.*)$/;
+    const results: SectionCount[] = [];
+    let name  = '', count = 0;
+    for (const { text } of lines) {
+        if (HEADER_RE.test(text)) {
+            if (name) { results.push({ name, count }); }
+            name  = text.replace(/^> /, '').replace(/\s*==\d+/, '').replace(/\s*\[colour:[^\]]+\]/gi, '').trim();
+            count = 0;
+        } else if (BULLET_RE.test(text) || NUM_RE.test(text)) {
+            count++;
+        }
+    }
+    if (name) { results.push({ name, count }); }
+    return results.sort((a, b) => b.count - a.count);
+}
+
 /** Pure: scores item content by marker density */
 export function scoreItemComplexity(content: string): {
     priority: number; tags: number; estimate: number;

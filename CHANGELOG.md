@@ -1,5 +1,12 @@
 # Changelog
 
+## [22.4.0] - 2026-03-26
+### Added
+- `CL: Convert Item to Section Link` — replaces the cursor item with a `[[SectionName]]` link if a matching section exists in the file
+- Sections with 2+ `!!!` items automatically get a red tint in the left overview ruler — a live urgency signal
+- `CL: Change Item Prefix` — changes the bullet prefix (`-`, `*`, `•`) on all items in the current section at once
+- `CL: Show Section Growth` — webview bar chart of item count per section, sorted descending
+
 ## [22.0.0] - 2026-03-26
 ### Added
 - `CL: Show Nesting Breakdown` — info message showing item count at each chevron depth in the current section

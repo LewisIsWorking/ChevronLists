@@ -878,3 +878,17 @@
 
 ## v22.0.0 — Item Clone to Daily Note ⬜
 - ⬜ `CL: Send to Daily Note` — copies the item at cursor to today's daily note file (using `dailyNotesFolder` setting), appending it to a `> Inbox` section
+
+---
+
+## v22.1.0 — Item Link to Section ⬜
+- ⬜ `CL: Convert Item to Section Link` — replaces the item at cursor with a `[[SectionName]]` link if a section with the same name exists in the file
+
+## v22.2.0 — Section Colour from Priority ⬜
+- ⬜ When a section has more than 2 `!!!` items, its header automatically gets a subtle red tint in the overview ruler — a live urgency signal without needing `[colour:red]`
+
+## v22.3.0 — Item Prefix Customisation ⬜
+- ⬜ `CL: Change Item Prefix` — changes the bullet prefix (`-`, `*`, `•`) on all items in the current section at once, distinct from the global setting
+
+## v22.4.0 — Section Growth Chart ⬜
+- ⬜ `CL: Show Section Growth` — a webview showing a simple bar chart of item count per section, sorted descending — a visual overview of where the content lives

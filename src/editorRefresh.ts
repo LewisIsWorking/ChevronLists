@@ -22,6 +22,7 @@ import { updateSectionColourDecorations } from './sectionColourDecoration';
 import { updateWordGoalNudge } from './wordGoalNudge';
 import { updateStickyHeader } from './stickyHeaderDecoration';
 import { applyOverdueEscalation } from './overdueEscalation';
+import { updateUrgencyDecorations } from './urgencyDecoration';
 
 export interface DiagCollections {
     dueDateDiags:   vscode.DiagnosticCollection;
@@ -45,6 +46,7 @@ export function refreshEditor(
     updateWordGoalNudge(editor);
     updateStickyHeader(editor);
     applyOverdueEscalation(editor);
+    updateUrgencyDecorations(editor);
     updateBadgeDecorations(editor);
     updateGoalDecorations(editor);
     updateOverdueStatusBar(editor);
