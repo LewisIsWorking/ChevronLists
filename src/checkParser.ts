@@ -10,8 +10,8 @@ export interface CheckMatch {
     contentWithout: string; // content with the checkbox stripped
 }
 
-/** Regex matching [ ] or [x] at start of item content */
-export const CHECK_RE = /^\[(x| )\] /i;
+/** Regex matching [], [ ] or [x] at start of item content */
+export const CHECK_RE = /^\[(x| ?)\] ?/i;
 
 /** Parses the checkbox state from item content. Returns null if no checkbox present. */
 export function parseCheck(content: string): CheckMatch | null {
@@ -39,6 +39,7 @@ export function toggleCheckLine(line: string, prefix: string): string | null {
         // No checkbox — add [ ]
         return `${chevronPart}[ ] ${content}`;
     }
+    // Normalise [] → [ ] on first toggle; then cycle [ ] ↔ [x]
     const toggled = check.state === 'done' ? '[ ]' : '[x]';
     return `${chevronPart}${toggled} ${check.contentWithout}`;
 }

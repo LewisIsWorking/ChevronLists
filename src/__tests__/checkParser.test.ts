@@ -12,8 +12,13 @@ describe('parseCheck', () => {
         expect(r?.state).toBe('done');
         expect(r?.contentWithout).toBe('Deploy server');
     });
-    it('parses a todo item', () => {
+    it('parses a todo item with space [ ]', () => {
         const r = parseCheck('[ ] Deploy server');
+        expect(r?.state).toBe('todo');
+        expect(r?.contentWithout).toBe('Deploy server');
+    });
+    it('parses a todo item with no space []', () => {
+        const r = parseCheck('[] Deploy server');
         expect(r?.state).toBe('todo');
         expect(r?.contentWithout).toBe('Deploy server');
     });
@@ -40,6 +45,9 @@ describe('toggleCheckLine', () => {
     });
     it('works on numbered items', () => {
         expect(toggleCheckLine('>> 1. [ ] Task one', '-')).toBe('>> 1. [x] Task one');
+    });
+    it('toggles [] (no space) to [x] and normalises', () => {
+        expect(toggleCheckLine('>> - [] Deploy server', '-')).toBe('>> - [x] Deploy server');
     });
     it('returns null for a non-item line', () => {
         expect(toggleCheckLine('plain text', '-')).toBeNull();
