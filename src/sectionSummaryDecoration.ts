@@ -3,6 +3,7 @@ import { getConfig } from './config';
 import { isHeader, parseBullet, parseNumbered } from './patterns';
 import { extractTags } from './tagParser';
 import { parseCheck } from './checkParser';
+import { parsePriority } from './priorityParser';
 import { getSectionRange } from './documentUtils';
 
 const SUMMARY_DECORATION = vscode.window.createTextEditorDecorationType({
@@ -23,7 +24,7 @@ export function updateSummaryDecorations(editor: vscode.TextEditor | undefined):
     for (let i = 0; i < doc.lineCount; i++) {
         if (!isHeader(doc.lineAt(i).text)) { continue; }
         const [, end] = getSectionRange(doc, i);
-        let items = 0, done = 0, tags = 0;
+        let items = 0, done = 0, tags = 0, urgent = 0;
         for (let j = i + 1; j <= end; j++) {
             const t = doc.lineAt(j).text;
             const content = parseBullet(t, prefix)?.content ?? parseNumbered(t)?.content ?? null;
@@ -31,11 +32,13 @@ export function updateSummaryDecorations(editor: vscode.TextEditor | undefined):
             items++;
             tags += extractTags(content).length;
             if (parseCheck(content)?.state === 'done') { done++; }
+            if (parsePriority(content)?.level === 3) { urgent++; }
         }
         if (items === 0) { continue; }
         const parts = [`${items} item${items === 1 ? '' : 's'}`];
         if (done > 0) { parts.push(`${done} done`); }
         if (tags > 0) { parts.push(`${tags} tag${tags === 1 ? '' : 's'}`); }
+        if (urgent > 0) { parts.push(`${urgent} urgent`); }
         options.push({
             range: doc.lineAt(i).range,
             renderOptions: { after: { contentText: `  (${parts.join(' · ')})` } },

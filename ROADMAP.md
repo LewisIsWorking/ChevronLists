@@ -761,22 +761,20 @@
 
 ---
 
-## v18.5.0 — Expiry Diagnostics ⬜
-- ⬜ `@expires:` items appear in the Problems panel with a squiggle, same as overdue items
-- ⬜ Quick fixes: `CL: Remove expiry`, `CL: Extend expiry by 7 days`, `CL: Extend expiry by 30 days`
+## v18.5.0 — Expiry Diagnostics ✅
+- ✅ `@expires:` items appear in Problems panel with squiggle + extend/remove quick fixes
 
-## v18.6.0 — Priority in Section Summary ⬜
-- ⬜ The `(N items · N done · N tags)` ghost text gains `· N urgent` when `!!!` items are present in the section
+## v18.6.0 — Priority in Section Summary ✅
+- ✅ `(N items · N done · N tags · N urgent)` ghost text
 
-## v18.7.0 — Today View ⬜
-- ⬜ `CL: Today View` — single quick pick showing every item due today or overdue across the whole workspace, grouped by file and section
+## v18.7.0 — Today View ✅
+- ✅ `CL: Today View` — all due/overdue items across workspace in one quick pick
 
-## v18.8.0 — Kanban Webview ⬜
-- ⬜ `CL: Show Kanban` — webview with three columns: ☐ Todo / ⭐ In Progress (starred `*` items) / ✓ Done, pulling from all sections in the current file
+## v18.8.0 — Kanban Webview ✅
+- ✅ `CL: Show Kanban` — Todo / In Progress / Done columns from current file
 
-## v18.9.0 — Export to Obsidian ⬜
-- ⬜ `CL: Export to Obsidian` — converts the file to standard Obsidian-compatible markdown: `##` headings, `#tags`, `[[wikilinks]]`, and YAML frontmatter with date and tags
+## v18.9.0 — Export to Obsidian ✅
+- ✅ `CL: Export to Obsidian` — `##` headings, YAML frontmatter, emoji markers
 
-## v19.0.0 — Item Timer ⬜
-- ⬜ `CL: Start Item Timer` — starts a stopwatch on the item at the cursor, shown in the status bar
-- ⬜ `CL: Stop Item Timer` — stops the timer and stamps the item with `~elapsed` (e.g. `~23m`)
+## v19.0.0 — Item Timer ✅
+- ✅ `CL: Start Item Timer` / `CL: Stop Item Timer` — stamps `~elapsed` on stop

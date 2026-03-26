@@ -66,6 +66,10 @@ import { onSortByPriority }                               from './sortByPriority
 import { onArchiveOldDoneItems }                          from './archiveOldDoneCommands';
 import { onFindDeadLinks }                                from './deadLinksCommands';
 import { onAddQuickNote }                                 from './quickNoteCommands';
+import { onTodayView }                                    from './todayViewCommands';
+import { onShowKanban }                                   from './kanbanCommands';
+import { onExportToObsidian }                             from './obsidianExportCommands';
+import { onStartItemTimer, onStopItemTimer }              from './itemTimerCommands';
 import { ChevronTagCompletionProvider,
          ChevronMentionCompletionProvider,
          ChevronLinkCompletionProvider,
@@ -149,6 +153,11 @@ export function registerPhase12to32Commands(): vscode.Disposable[] {
         r('chevron-lists.archiveOldDoneItems',              onArchiveOldDoneItems),
         r('chevron-lists.findDeadLinks',                    onFindDeadLinks),
         r('chevron-lists.addQuickNote',                     onAddQuickNote),
+        r('chevron-lists.todayView',                        onTodayView),
+        r('chevron-lists.showKanban',                       onShowKanban),
+        r('chevron-lists.exportToObsidian',                 onExportToObsidian),
+        r('chevron-lists.startItemTimer',                   onStartItemTimer),
+        r('chevron-lists.stopItemTimer',                    onStopItemTimer),
         comp(MARKDOWN, new ChevronTagCompletionProvider(),      '#'),
         comp(MARKDOWN, new ChevronMentionCompletionProvider(),  '@'),
         comp(MARKDOWN, new ChevronLinkCompletionProvider(),     '['),

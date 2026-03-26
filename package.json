@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "Auto-continues >> - nested blockquote list items on Enter in markdown files",
-    "version": "18.4.0",
+    "version": "19.0.0",
     "icon": "icon.png",
     "publisher": "lewisisworking",
     "repository": {
@@ -314,10 +314,20 @@
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
             { "command": "chevron-lists.addQuickNote",                                  "title": "CL: Add Quick Note to Item" },
+            { "command": "chevron-lists.todayView",                                     "title": "CL: Today View" },
+            { "command": "chevron-lists.showKanban",                                    "title": "CL: Show Kanban" },
+            { "command": "chevron-lists.exportToObsidian",                              "title": "CL: Export to Obsidian" },
+            { "command": "chevron-lists.startItemTimer",                                "title": "CL: Start Item Timer" },
+            { "command": "chevron-lists.stopItemTimer",                                 "title": "CL: Stop Item Timer" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
-            { "command": "chevron-lists.addQuickNote",                                  "title": "CL: Add Quick Note to Item" }
+            { "command": "chevron-lists.addQuickNote",                                  "title": "CL: Add Quick Note to Item" },
+            { "command": "chevron-lists.todayView",                                     "title": "CL: Today View" },
+            { "command": "chevron-lists.showKanban",                                    "title": "CL: Show Kanban" },
+            { "command": "chevron-lists.exportToObsidian",                              "title": "CL: Export to Obsidian" },
+            { "command": "chevron-lists.startItemTimer",                                "title": "CL: Start Item Timer" },
+            { "command": "chevron-lists.stopItemTimer",                                 "title": "CL: Stop Item Timer" }
         ],
         "keybindings": [
         {

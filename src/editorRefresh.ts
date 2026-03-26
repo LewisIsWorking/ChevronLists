@@ -16,6 +16,7 @@ import { updateChecklistProgressDecorations } from './checklistProgressDecoratio
 import { updateDiagnostics } from './diagnosticProvider';
 import { updateDueDateDiagnostics } from './dueDateCommands';
 import { updateWordGoalDiagnostics } from './wordGoalCommands';
+import { updateExpiryDiagnostics, getExpiryDiagCollection } from './expiryDiagnostics';
 
 export interface DiagCollections {
     dueDateDiags:   vscode.DiagnosticCollection;
@@ -33,6 +34,7 @@ export function refreshEditor(
     updateDiagnostics(editor.document);
     updateDueDateDiagnostics(editor.document, diags.dueDateDiags, prefix);
     updateWordGoalDiagnostics(editor.document, prefix);
+    updateExpiryDiagnostics(editor.document, getExpiryDiagCollection(), prefix);
     updateBadgeDecorations(editor);
     updateGoalDecorations(editor);
     updateOverdueStatusBar(editor);

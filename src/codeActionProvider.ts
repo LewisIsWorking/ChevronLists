@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
-import { parseNumbered, parseBullet, replaceDate, stripDate, markDone } from './patterns';
+import { parseNumbered, parseBullet, replaceDate, stripDate, markDone, shiftDate, formatDate } from './patterns';
 import { prevNumberAtDepth } from './documentUtils';
 import { getConfig } from './config';
 import { makeEdit, makeAction } from './codeActionHelpers';
+import { parseExpiry } from './expiryParser';
 
 const QF = vscode.CodeActionKind.QuickFix;
 
@@ -114,6 +115,38 @@ function wordGoalActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[]): 
     return actions;
 }
 
+function expiryActions(doc: vscode.TextDocument, diags: vscode.Diagnostic[]): vscode.CodeAction[] {
+    const actions: vscode.CodeAction[] = [];
+    const { prefix } = getConfig();
+    for (const diag of diags) {
+        const line     = diag.range.start.line;
+        const text     = doc.lineAt(line).text;
+        const bullet   = parseBullet(text, prefix);
+        const numbered = parseNumbered(text);
+        if (!bullet && !numbered) { continue; }
+        const chevrons = bullet?.chevrons ?? numbered!.chevrons;
+        const content  = bullet?.content  ?? numbered!.content;
+        const num      = numbered?.num ?? null;
+        const rebuild  = (c: string) => num !== null ? `${chevrons} ${num}. ${c}` : `${chevrons} ${prefix} ${c}`;
+        const dateStr  = parseExpiry(content);
+        if (!dateStr) { continue; }
+        const extend7  = shiftDate(dateStr, 7);
+        const extend30 = shiftDate(dateStr, 30);
+        const newContent = (d: string) => content.replace(/@expires:\d{4}-\d{2}-\d{2}/, `@expires:${d}`);
+        const stripped   = content.replace(/\s*@expires:\d{4}-\d{2}-\d{2}/, '').trim();
+        actions.push(makeAction(`CL: Extend expiry by 7 days (→ ${extend7})`, QF, diag, {
+            preferred: true, edit: makeEdit(doc.uri, doc.lineAt(line).range, rebuild(newContent(extend7))),
+        }));
+        actions.push(makeAction(`CL: Extend expiry by 30 days (→ ${extend30})`, QF, diag, {
+            edit: makeEdit(doc.uri, doc.lineAt(line).range, rebuild(newContent(extend30))),
+        }));
+        actions.push(makeAction('CL: Remove expiry date', QF, diag, {
+            edit: makeEdit(doc.uri, doc.lineAt(line).range, rebuild(stripped)),
+        }));
+    }
+    return actions;
+}
+
 /** Provides quick-fix code actions for all Chevron Lists diagnostics */
 export class ChevronCodeActionProvider implements vscode.CodeActionProvider {
     static readonly providedCodeActionKinds = [QF];
@@ -126,6 +159,7 @@ export class ChevronCodeActionProvider implements vscode.CodeActionProvider {
             ...emptySectionActions(doc,    by('empty-section')),
             ...overdueActions(doc,         by('overdue')),
             ...wordGoalActions(doc,        by('word-goal')),
+            ...expiryActions(doc,          by('expired')),
         ];
     }
 }

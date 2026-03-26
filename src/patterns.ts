@@ -118,5 +118,6 @@ export function diffLines(a: string[], b: string[]): string[] {
     return out;
 }
 
-// Re-export everything from patternsUtils so callers only need one import
+// Re-export everything from patternsUtils and patternsExport so callers only need one import
 export * from './patternsUtils';
+export * from './patternsExport';

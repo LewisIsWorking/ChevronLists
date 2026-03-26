@@ -161,6 +161,8 @@ export function setSectionColour(headerText: string, colour: string | null): str
     return colour ? `${stripped} [colour:${colour}]` : stripped;
 }
 
+// formatElapsed and convertToObsidian live in patternsExport.ts (re-exported via patterns.ts)
+
 /** Pure: finds renumbering edits needed to fix duplicate/broken sequences at each depth */
 export function computeAutoFixEdits(
     lines: Array<{ text: string; lineIndex: number }>

@@ -1,5 +1,14 @@
 # Changelog
 
+## [19.0.0] - 2026-03-26
+### Added
+- `@expires:` items now appear in the Problems panel with a warning squiggle — quick fixes: `CL: Extend expiry by 7 days`, `CL: Extend expiry by 30 days`, `CL: Remove expiry date`
+- Section summary ghost text now shows `· N urgent` when `!!!` priority items are present
+- `CL: Today View` — workspace-wide quick pick of every item due today or overdue, sorted by days overdue, jump-to-line on accept
+- `CL: Show Kanban` — webview with three columns: ☐ Todo / ⭐ In Progress (starred `*` items) / ✓ Done
+- `CL: Export to Obsidian` — converts the current file to Obsidian-compatible markdown: `##` headings, YAML frontmatter with tags, `[[wikilinks]]`, emoji markers for priority/dates
+- `CL: Start Item Timer` / `CL: Stop Item Timer` — stopwatch on the cursor item shown in the status bar; stamps `~elapsed` on stop
+
 ## [18.4.0] - 2026-03-26
 ### Changed
 - Default colour theme updated to **violet headers · lime numbers · slate prefixes** — matching the extension icon
