@@ -970,17 +970,31 @@
 
 ---
 
-## v24.2.0 — Rich Text Simulation ⬜
-- ⬜ `CL: Bold Text` / `CL: Italic Text` / `CL: Underline Text` / `CL: Mono Text` — wraps selected text (or word at cursor) in `**`, `_`, Unicode combining underline, or backticks. Works inside any chevron item.
+## v24.2.0 — Rich Text Simulation ✅
+- ✅ `CL: Bold Text` / `CL: Italic Text` / `CL: Underline Text` / `CL: Mono Text` — wraps selected text (or word at cursor) in `**`, `_`, Unicode combining underline, or backticks. Works inside any chevron item.
 
-## v24.3.0 — Rich Text Toggle ⬜
-- ⬜ All four rich text commands are smart toggles — if the selected text is already wrapped, the command unwraps it instead
+## v24.3.0 — Rich Text Toggle ✅
+- ✅ All four rich text commands are smart toggles — if the selected text is already wrapped, the command unwraps it instead
 
-## v24.4.0 — Text Transform Palette ⬜
-- ⬜ `CL: Text Transform` — unified quick pick for all text transforms: Bold, Italic, Underline, Mono, UPPER, lower, Title Case, Strikethrough — one command to rule them all
+## v24.4.0 — Text Transform Palette ✅
+- ✅ `CL: Text Transform` — unified quick pick for all text transforms: Bold, Italic, Underline, Mono, UPPER, lower, Title Case, Strikethrough — one command to rule them all
 
-## v24.5.0 — Section Template from File ⬜
-- ⬜ `CL: Import Section as Template` — any `> Section` in any open `.md` file can be saved as a named reusable template without manually copying
+## v24.5.0 — Section Template from File ✅
+- ✅ `CL: Save Section as Template` / `CL: Import Templates from File` — any `> Section` in any open `.md` file can be saved as a named reusable template without manually copying
 
-## v24.6.0 — Item Recurrence Generator ⬜
-- ⬜ `CL: Generate Recurring Items` — given an item with `@weekly` or `@monthly`, generates a concrete dated list of instances for the next N occurrences and inserts them into the section
+## v24.6.0 — Item Recurrence Generator ✅
+- ✅ `CL: Generate Next Occurrence` — generates next dated instance of a recurring item — given an item with `@weekly` or `@monthly`, generates a concrete dated list of instances for the next N occurrences and inserts them into the section
+
+---
+
+## v24.7.0 — Keybinding Hints in Tips ⬜
+- ⬜ Tips shown by `CL: Show Tip of the Day` now include the relevant keybinding where one exists (e.g. `Ctrl+Alt+Down` for next header)
+
+## v24.8.0 — Section Word Count Goal Progress Command ⬜
+- ⬜ `CL: Show Word Count Goals` — lists every section with a `==N` goal alongside current word count and % progress, sorted by furthest from target
+
+## v24.9.0 — Item Prefix Decoration ⬜
+- ⬜ The `{colour}` label on an item also tints the bullet prefix `-` or number in that same colour, making colour-coded items more visually distinct
+
+## v25.0.0 — Full Housekeeping ⬜
+- ⬜ Audit all ✅/⬜ in ROADMAP, update README test count, ARCHITECTURE.md, package.json command count, prepare next Marketplace upload
