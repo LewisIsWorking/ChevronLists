@@ -1,5 +1,13 @@
 # Changelog
 
+## [24.4.0] - 2026-03-27
+### Added
+- `CL: Bold Text` / `CL: Italic Text` / `CL: Mono Text` / `CL: Strikethrough Text` — smart toggles that wrap the selection (or word at cursor) in `**`, `_`, backtick, or `~~`; applying again unwraps
+- `CL: Underline Text` — applies Unicode combining low line (U+0332) to simulate underline in plain text — toggles off if already applied
+- `CL: Text Transform` — unified quick pick for all text transforms: Bold, Italic, Underline, Mono, Strikethrough, UPPERCASE, lowercase, Title Case
+- `docs/marketing/` folder — ready-to-post drafts for Reddit, Hacker News, awesome-vscode PR, and a full dev.to article
+- ROADMAP: marketing tasks M1–M5 added; all stale ⬜ entries corrected to ✅
+
 ## [24.1.0] - 2026-03-27
 ### Added
 - `CL: Show Tip of the Day` — rotating tips on activation with Try It / Next Tip / Dismiss; re-enable at any time

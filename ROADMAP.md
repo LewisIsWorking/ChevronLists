@@ -909,42 +909,78 @@
 
 ---
 
-## v22.9.0 — Item Colour from Priority ⬜
-- ⬜ Items with !!! priority get a faint red background decoration; !! items get amber; ! items get yellow — distinct from {colour} labels
+## v22.9.0 — Item Colour from Priority ✅
+- ✅ Items with !!! priority get a faint red background decoration; !! items get amber; ! items get yellow — distinct from {colour} labels
 
-## v23.0.0 — Section Lock Enforcement ⬜
-- ⬜ When >> [locked] is present in a section, any edit to an item in that section shows an inline warning notification and offers to unlock
+## v23.0.0 — Section Lock Enforcement ✅
+- ✅ When >> [locked] is present in a section, any edit to an item in that section shows an inline warning notification and offers to unlock
 
-## v23.1.0 — Smart Autocomplete Trigger on New Line ⬜
-- ⬜ When Enter is pressed after a header, VS Code's suggestion widget opens automatically so the user can immediately pick a section template or start typing a tag
+## v23.1.0 — Smart Autocomplete Trigger on New Line ✅
+- ✅ When Enter is pressed after a header, VS Code's suggestion widget opens automatically so the user can immediately pick a section template or start typing a tag
 
-## v23.2.0 — Full Housekeeping ⬜
-- ⬜ Update README test count, ARCHITECTURE.md module count, audit all source files under 200 lines, clean stale VSIXs, verify ROADMAP all ✅, prepare Marketplace upload
-
----
-
-## v23.3.0 — Item Word Frequency ⬜
-- ⬜ `CL: Count Word Frequency` — shows the top 10 most-used words across all items in the current section, excluding stop words like "the", "a", "and"
-
-## v23.4.0 — Section Item Leaderboard ⬜
-- ⬜ `CL: Show Vote Leaderboard (Section)` — scoped version of the workspace leaderboard: shows items in the current section ranked by `+N` vote count
-
-## v23.5.0 — Overdue Status Bar ⬜
-- ⬜ A persistent status bar item showing `⚠ N overdue` when any `@YYYY-MM-DD` items in the active file are past today — zero-click visibility of overdue work
-
-## v23.6.0 — Item Mention Autocomplete ⬜
-- ⬜ When typing `@` in an item, the completion provider suggests all `@Name` mentions already used elsewhere in the file — no more typos on collaborator names
+## v23.2.0 — Full Housekeeping ✅
+- ✅ Update README test count, ARCHITECTURE.md module count, audit all source files under 200 lines, clean stale VSIXs, verify ROADMAP all ✅, prepare Marketplace upload
 
 ---
 
-## v23.7.0 — Item Colour Word Frequency from Workspace ⬜
-- ⬜ `CL: Group Items by Mention` — groups all items mentioning `@Name` in the current section into a new sub-section per person, useful for task delegation views
+## v23.3.0 — Item Word Frequency ✅
+- ✅ `CL: Count Word Frequency` — shows the top 10 most-used words across all items in the current section, excluding stop words like "the", "a", "and"
 
-## v23.8.0 — Section Navigation Breadcrumb ⬜
-- ⬜ `CL: Show Section Path` — shows the current section name + word count + item count in a dismissible notification, useful as a quick orientation while scrolled deep
+## v23.4.0 — Section Item Leaderboard ✅
+- ✅ `CL: Show Vote Leaderboard (Section)` — scoped version of the workspace leaderboard: shows items in the current section ranked by `+N` vote count
 
-## v23.9.0 — Item Due Soon Status ⬜
-- ⬜ Items due within 3 days get a `(due soon)` ghost text decoration — distinct from the general overdue bar, always visible inline
+## v23.5.0 — Overdue Status Bar ✅
+- ✅ A persistent status bar item showing `⚠ N overdue` when any `@YYYY-MM-DD` items in the active file are past today — zero-click visibility of overdue work
 
-## v24.0.0 — Housekeeping ⬜
-- ⬜ Update README test count, ARCHITECTURE.md counts, bump all ✅ in ROADMAP, verify Marketplace upload ready
+## v23.6.0 — Item Mention Autocomplete ✅
+- ✅ When typing `@` in an item, the completion provider suggests all `@Name` mentions already used elsewhere in the file — no more typos on collaborator names
+
+---
+
+## v23.7.0 — Group Items by Mention ✅
+- ✅ `CL: Group Items by Mention` — groups all items mentioning `@Name` in the current section into a new sub-section per person, useful for task delegation views
+
+## v23.8.0 — Section Navigation Breadcrumb ✅
+- ✅ `CL: Show Section Path` — shows the current section name + word count + item count in a dismissible notification, useful as a quick orientation while scrolled deep
+
+## v23.9.0 — Item Due Soon Status ✅
+- ✅ Items due within 3 days get a `(due soon)` ghost text decoration — distinct from the general overdue bar, always visible inline
+
+## v24.0.0 — Housekeeping ✅
+- ✅ Update README test count, ARCHITECTURE.md counts, bump all ✅ in ROADMAP, verify Marketplace upload ready
+
+---
+
+## Marketing & Growth
+
+### M1 — Reddit Post ⬜
+- ⬜ Post to r/vscode, r/productivity, r/ObsidianMD — short "I built this" post with a GIF demo. Drafts in `docs/marketing/reddit-post.md`
+
+### M2 — GIF Demo ⬜
+- ⬜ Record a 15-second GIF using ScreenToGif (free, Windows) showing: Enter → list, Tab → nest, `!!!` → red background, Today View. Add to README and Marketplace gallery
+
+### M3 — awesome-vscode PR ⬜
+- ⬜ Open a PR to github.com/viatsko/awesome-vscode to add Chevron Lists under the Productivity section. Draft PR in `docs/marketing/awesome-vscode-pr.md`
+
+### M4 — Hacker News Show HN ⬜
+- ⬜ Post "Show HN: I turned VS Code into a full task manager with markdown" — draft in `docs/marketing/hn-post.md`
+
+### M5 — dev.to / hashnode Article ⬜
+- ⬜ Write "How I built a 300-command VS Code extension for markdown productivity" — full draft in `docs/marketing/devto-article.md`, ready to paste and publish
+
+---
+
+## v24.2.0 — Rich Text Simulation ⬜
+- ⬜ `CL: Bold Text` / `CL: Italic Text` / `CL: Underline Text` / `CL: Mono Text` — wraps selected text (or word at cursor) in `**`, `_`, Unicode combining underline, or backticks. Works inside any chevron item.
+
+## v24.3.0 — Rich Text Toggle ⬜
+- ⬜ All four rich text commands are smart toggles — if the selected text is already wrapped, the command unwraps it instead
+
+## v24.4.0 — Text Transform Palette ⬜
+- ⬜ `CL: Text Transform` — unified quick pick for all text transforms: Bold, Italic, Underline, Mono, UPPER, lower, Title Case, Strikethrough — one command to rule them all
+
+## v24.5.0 — Section Template from File ⬜
+- ⬜ `CL: Import Section as Template` — any `> Section` in any open `.md` file can be saved as a named reusable template without manually copying
+
+## v24.6.0 — Item Recurrence Generator ⬜
+- ⬜ `CL: Generate Recurring Items` — given an item with `@weekly` or `@monthly`, generates a concrete dated list of instances for the next N occurrences and inserts them into the section

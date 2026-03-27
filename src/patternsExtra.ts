@@ -115,6 +115,33 @@ export function rankWordFrequency(words: string[]): Array<[string, number]> {
     return [...freq.entries()].sort((a, b) => b[1] - a[1]);
 }
 
+/** Pure: wraps text with a marker pair if not already wrapped, else unwraps */
+export function toggleWrap(text: string, style: 'bold' | 'italic' | 'mono' | 'strike'): string {
+    const PAIRS: Record<string, [string, string]> = {
+        bold: ['**', '**'], italic: ['_', '_'], mono: ['`', '`'], strike: ['~~', '~~'],
+    };
+    const [open, close] = PAIRS[style];
+    if (text.startsWith(open) && text.endsWith(close) && text.length > open.length + close.length) {
+        return text.slice(open.length, text.length - close.length);
+    }
+    return `${open}${text}${close}`;
+}
+
+/** Pure: applies Unicode combining low line underline to each character */
+export function applyUnicodeUnderline(text: string): string {
+    return text.split('').map(c => c + '\u0332').join('');
+}
+
+/** Pure: removes Unicode combining low line underline characters */
+export function removeUnicodeUnderline(text: string): string {
+    return text.replace(/\u0332/g, '');
+}
+
+/** Pure: returns true if text contains Unicode combining underline */
+export function isUnicodeUnderlined(text: string): boolean {
+    return text.includes('\u0332');
+}
+
 /** Pure: finds and evaluates the first =expr in content */
 export function evaluateExpression(content: string): { original: string; result: number } | null {
     const match = content.match(/=([0-9+\-*/.() ]+)/);
