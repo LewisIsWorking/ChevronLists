@@ -987,14 +987,14 @@
 
 ---
 
-## v24.7.0 — Keybinding Hints in Tips ⬜
-- ⬜ Tips shown by `CL: Show Tip of the Day` now include the relevant keybinding where one exists (e.g. `Ctrl+Alt+Down` for next header)
+## v24.7.0 — Keybinding Hints in Tips ✅
+- ✅ Tips now include the relevant keybinding where one exists; 4 new tips added where one exists (e.g. `Ctrl+Alt+Down` for next header)
 
-## v24.8.0 — Section Word Count Goal Progress Command ⬜
-- ⬜ `CL: Show Word Count Goals` — lists every section with a `==N` goal alongside current word count and % progress, sorted by furthest from target
+## v24.8.0 — Section Word Count Goal Progress Command ✅
+- ✅ `CL: Show Word Count Goals` — lists every section with a `==N` goal alongside current word count and % progress, sorted by furthest from target
 
-## v24.9.0 — Item Prefix Decoration ⬜
-- ⬜ The `{colour}` label on an item also tints the bullet prefix `-` or number in that same colour, making colour-coded items more visually distinct
+## v24.9.0 — Item Prefix Decoration ✅
+- ✅ The `{colour}` label on an item also tints the bullet prefix `-` or number in that same colour, making colour-coded items more visually distinct
 
 ## v25.0.0 — Full Housekeeping ⬜
 - ⬜ Audit all ✅/⬜ in ROADMAP, update README test count, ARCHITECTURE.md, package.json command count, prepare next Marketplace upload
