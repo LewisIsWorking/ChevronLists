@@ -1,5 +1,15 @@
 # Changelog
 
+## [24.0.0] - 2026-03-26
+### Added
+- `CL: Group Items by Mention` — groups section items into `>> -- Name` sub-groups by `@mention`, great for delegation views
+- `CL: Show Section Path` — shows section name, line position, item count and word count as a quick orientation message
+- `⏰ due soon` / `⚠ overdue` inline ghost text on items due within 3 days or already past their date
+### Changed
+- Marketplace: added 28 search keywords, 3 extra categories (`Notebooks`, `Other`, `Formatters`)
+- README completely rewritten with value-first framing, use-case table, and "Who Uses This?" section
+- package.json description updated to sell the extension's full value
+
 ## [23.6.0] - 2026-03-26
 ### Added
 - `CL: Count Word Frequency` — shows top 10 most-used words across section items, filtering stop words

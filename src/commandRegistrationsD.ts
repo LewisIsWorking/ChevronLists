@@ -38,6 +38,8 @@ import { onExtractUrlsFromSection }                       from './urlExtractorCo
 import { onCloneSection }                                 from './cloneSectionCommands';
 import { onCountWordFrequency }                           from './wordFrequencyCommands';
 import { onShowSectionVoteLeaderboard }                   from './sectionVoteLeaderboardCommands';
+import { onGroupItemsByMention }                          from './groupByMentionCommands';
+import { onShowSectionPath }                              from './sectionPathCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -82,5 +84,7 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.cloneSection',                     onCloneSection),
         r('chevron-lists.countWordFrequency',               onCountWordFrequency),
         r('chevron-lists.showSectionVoteLeaderboard',       onShowSectionVoteLeaderboard),
+        r('chevron-lists.groupItemsByMention',              onGroupItemsByMention),
+        r('chevron-lists.showSectionPath',                  onShowSectionPath),
     ];
 }

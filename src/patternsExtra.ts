@@ -65,6 +65,28 @@ export function collectSectionCounts(lines: Array<{ text: string }>, prefix: str
     return results.sort((a, b) => b.count - a.count);
 }
 
+/** Pure: groups item lines by first @Name mention */
+export function groupLinesByMention(
+    items: Array<{ text: string; index: number }>,
+    prefix: string
+): Map<string, Array<{ text: string; index: number }>> {
+    const DATE_RE    = /@\d{4}-\d{2}-\d{2}/g;
+    const MENTION_RE = /@([A-Z][A-Za-z]+)/;
+    const groups     = new Map<string, Array<{ text: string; index: number }>>();
+    const untagged:  Array<{ text: string; index: number }> = [];
+    for (const item of items) {
+        const m = item.text.replace(DATE_RE, '').match(MENTION_RE);
+        if (m) {
+            if (!groups.has(m[1])) { groups.set(m[1], []); }
+            groups.get(m[1])!.push(item);
+        } else {
+            untagged.push(item);
+        }
+    }
+    if (untagged.length > 0) { groups.set('Unassigned', untagged); }
+    return groups;
+}
+
 /** Pure: scores item content by marker density */
 export function scoreItemComplexity(content: string): {
     priority: number; tags: number; estimate: number;

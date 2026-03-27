@@ -934,3 +934,17 @@
 
 ## v23.6.0 — Item Mention Autocomplete ⬜
 - ⬜ When typing `@` in an item, the completion provider suggests all `@Name` mentions already used elsewhere in the file — no more typos on collaborator names
+
+---
+
+## v23.7.0 — Item Colour Word Frequency from Workspace ⬜
+- ⬜ `CL: Group Items by Mention` — groups all items mentioning `@Name` in the current section into a new sub-section per person, useful for task delegation views
+
+## v23.8.0 — Section Navigation Breadcrumb ⬜
+- ⬜ `CL: Show Section Path` — shows the current section name + word count + item count in a dismissible notification, useful as a quick orientation while scrolled deep
+
+## v23.9.0 — Item Due Soon Status ⬜
+- ⬜ Items due within 3 days get a `(due soon)` ghost text decoration — distinct from the general overdue bar, always visible inline
+
+## v24.0.0 — Housekeeping ⬜
+- ⬜ Update README test count, ARCHITECTURE.md counts, bump all ✅ in ROADMAP, verify Marketplace upload ready
