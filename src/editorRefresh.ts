@@ -24,6 +24,7 @@ import { updateStickyHeader } from './stickyHeaderDecoration';
 import { applyOverdueEscalation } from './overdueEscalation';
 import { updateUrgencyDecorations } from './urgencyDecoration';
 import { updatePriorityDecorations } from './priorityDecoration';
+import { updateColourPrefixDecorations } from './colourPrefixDecoration';
 import { updateDueSoonDecorations } from './dueSoonDecoration';
 
 export interface DiagCollections {
@@ -51,6 +52,7 @@ export function refreshEditor(
     applyOverdueEscalation(editor);
     updateUrgencyDecorations(editor);
     updatePriorityDecorations(editor);
+    updateColourPrefixDecorations(editor);
     updateDueSoonDecorations(editor);
     updateBadgeDecorations(editor);
     updateGoalDecorations(editor);
