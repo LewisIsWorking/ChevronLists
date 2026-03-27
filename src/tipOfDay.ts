@@ -12,22 +12,23 @@ export function showTipOfDay(context: vscode.ExtensionContext): void {
     const tip   = TIPS[index];
     void context.globalState.update(STATE_KEY, index + 1);
 
+    // Build message — append keybinding hint if present
+    const keybindingHint = tip.keybinding ? `  [${tip.keybinding}]` : '';
+    const message = `💡 Chevron Lists tip: **${tip.title}** — ${tip.body}${keybindingHint}`;
+
     const actions: string[] = ['Next Tip', 'Stop Showing Tips'];
     if (tip.command) { actions.unshift('Try It'); }
 
-    vscode.window.showInformationMessage(
-        `💡 Chevron Lists tip: **${tip.title}** — ${tip.body}`,
-        ...actions
-    ).then(choice => {
+    vscode.window.showInformationMessage(message, ...actions).then(choice => {
         if (choice === 'Try It' && tip.command) {
             vscode.commands.executeCommand(tip.command);
         } else if (choice === 'Next Tip') {
-            // Show next tip immediately
             const next    = (index + 1) % TIPS.length;
             const nextTip = TIPS[next];
             void context.globalState.update(STATE_KEY, next + 1);
+            const nextKeybinding = nextTip.keybinding ? `  [${nextTip.keybinding}]` : '';
             vscode.window.showInformationMessage(
-                `💡 **${nextTip.title}** — ${nextTip.body}`
+                `💡 **${nextTip.title}** — ${nextTip.body}${nextKeybinding}`
             );
         } else if (choice === 'Stop Showing Tips') {
             void context.globalState.update(DISMISS_KEY, true);
