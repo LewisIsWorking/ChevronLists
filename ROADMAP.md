@@ -996,5 +996,5 @@
 ## v24.9.0 — Item Prefix Decoration ✅
 - ✅ The `{colour}` label on an item also tints the bullet prefix `-` or number in that same colour, making colour-coded items more visually distinct
 
-## v25.0.0 — Full Housekeeping ⬜
-- ⬜ Audit all ✅/⬜ in ROADMAP, update README test count, ARCHITECTURE.md, package.json command count, prepare next Marketplace upload
+## v25.0.0 — Full Housekeeping ✅
+- ✅ README: 749 tests / 66 files / 250 commands; ARCHITECTURE.md updated; 53 duplicate commands removed; ready for Marketplace upload
