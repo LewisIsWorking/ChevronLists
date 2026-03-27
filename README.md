@@ -2,9 +2,9 @@
 
 **The markdown list manager you didn't know VS Code was missing.**
 
-Chevron Lists turns VS Code into a fully-featured task, notes, and project management system — without leaving markdown. It uses a clean, readable `>> -` blockquote syntax and layers on 300+ commands, live decorations, autocomplete, and AI assistance — all zero-config out of the box.
+Chevron Lists turns VS Code into a fully-featured task, notes, and project management system — without leaving markdown. It uses a clean, readable `>> -` blockquote syntax and layers on 250+ commands, live decorations, autocomplete, and AI assistance — all zero-config out of the box.
 
-> **725 unit tests · 100% line coverage · 300+ commands · 63 test files**
+> **749 unit tests · 100% line coverage · 250 commands · 66 test files**
 
 ---
 
@@ -46,7 +46,7 @@ Everything is plain markdown — readable anywhere, Git-diff friendly, no lock-i
 3. Type `> ` and a section name, press **Enter**
 4. Start typing items — **Enter** continues the list, **Tab** nests deeper
 
-Type `CL:` in the Command Palette (`Ctrl+Shift+P`) to explore 300+ commands.
+Type `CL:` in the Command Palette (`Ctrl+Shift+P`) to explore 250+ commands.
 
 ---
 
@@ -233,11 +233,11 @@ Chevron Lists works great for:
 ```bash
 bun install
 bun run compile                        # type-check
-bun test src/__tests__ --coverage      # 731 tests, 100% line coverage
+bun test src/__tests__ --coverage      # 749 tests, 100% line coverage
 bunx @vscode/vsce package              # package VSIX
 ```
 
-**731 unit tests · 100% line coverage · 64 test files · all source modules under 200 lines**
+**749 unit tests · 100% line coverage · 66 test files · all source modules under 200 lines**
 
 Architecture: SOLID principles throughout. Pure functions live in `patterns.ts` / `*Parser.ts` — never in `*Commands.ts`. Event-driven, single-responsibility modules. See `ARCHITECTURE.md`.
 
