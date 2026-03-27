@@ -14,6 +14,7 @@ import { registerSearchItemProviderCommands }                from './commandRegi
 import { registerPhase12to32Commands }                       from './commandRegistrationsC';
 import { registerAutoFixNumbering }                          from './autoFixNumbering';
 import { registerLockEnforcement }                           from './lockEnforcement';
+import { registerCollapseMemory }                            from './sectionCollapseMemory';
 import { showTipOfDay, onShowTipOfDay }                              from './tipOfDay';
 import { getConfig }                                         from './config';
 
@@ -64,6 +65,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
     registerAutoFixNumbering(context);
     registerLockEnforcement(context);
+    registerCollapseMemory(context);
     showTipOfDay(context);
 
     if (vscode.window.activeTextEditor) {
