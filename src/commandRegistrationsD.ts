@@ -40,6 +40,7 @@ import { onCountWordFrequency }                           from './wordFrequencyC
 import { onShowSectionVoteLeaderboard }                   from './sectionVoteLeaderboardCommands';
 import { onGroupItemsByMention }                          from './groupByMentionCommands';
 import { onShowSectionPath }                              from './sectionPathCommands';
+import { onShowWordCountGoals }                           from './wordCountGoalsCommands';
 import { onBoldText, onItalicText, onUnderlineText, onMonoText, onStrikeText } from './richTextSimCommands';
 import { onTextTransformPalette }                         from './textTransformPaletteCommands';
 
@@ -88,6 +89,7 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.showSectionVoteLeaderboard',       onShowSectionVoteLeaderboard),
         r('chevron-lists.groupItemsByMention',              onGroupItemsByMention),
         r('chevron-lists.showSectionPath',                  onShowSectionPath),
+        r('chevron-lists.showWordCountGoals',               onShowWordCountGoals),
         r('chevron-lists.boldText',                         onBoldText),
         r('chevron-lists.italicText',                       onItalicText),
         r('chevron-lists.underlineText',                    onUnderlineText),
