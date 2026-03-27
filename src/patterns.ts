@@ -122,3 +122,4 @@ export function diffLines(a: string[], b: string[]): string[] {
 export * from './patternsUtils';
 export * from './patternsExport';
 export * from './patternsExtra';
+export * from './patternsExtraB';
