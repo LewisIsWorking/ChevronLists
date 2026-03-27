@@ -1,5 +1,11 @@
 # Changelog
 
+## [24.5.0] - 2026-03-27
+### Fixed
+- Section summary no longer shows `▁▁▁▁ 0 done` on sections with no checkbox items — the sparkline and done count only appear when at least one `[ ]` or `[x]` item exists
+- Bullet prefix `-` now renders in the same lime/green colour as numbered `1.` — previously it was grey (slate) like the `>>` chevrons
+
+
 ## [24.4.0] - 2026-03-27
 ### Added
 - `CL: Bold Text` / `CL: Italic Text` / `CL: Mono Text` / `CL: Strikethrough Text` — smart toggles that wrap the selection (or word at cursor) in `**`, `_`, backtick, or `~~`; applying again unwraps
