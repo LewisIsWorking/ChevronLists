@@ -1,5 +1,12 @@
 # Changelog
 
+## [25.0.0] - 2026-03-27
+### Changed
+- README: updated to 749 tests · 66 test files · 250 commands (was stale 725/731/300+)
+- ARCHITECTURE.md: updated to v24.9.0 counts — 251 source modules, 66 test files, 749 unit tests, 250 commands, ~268KB bundle
+- docs/commands.md: updated command count heading
+- package.json: bumped to 25.0.0; all counts now accurate after 53-duplicate removal
+
 ## [24.9.0] - 2026-03-27
 ### Added
 - Tips now display the relevant keybinding inline (e.g. `[Ctrl+Alt+Down / Ctrl+Alt+Up]`) where one exists; 4 new tips added (jump sections, toggle note, word count goals, rich text)
