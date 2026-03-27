@@ -1,5 +1,11 @@
 # Changelog
 
+## [24.9.0] - 2026-03-27
+### Added
+- Tips now display the relevant keybinding inline (e.g. `[Ctrl+Alt+Down / Ctrl+Alt+Up]`) where one exists; 4 new tips added (jump sections, toggle note, word count goals, rich text)
+- `CL: Show Word Count Goals` — quick pick of all `==N` goal sections with progress bar, %, and words remaining; sorted by furthest from target; press Enter to jump
+- `{colour}` label on an item now also tints the bullet `-` or number `N.` prefix in that same colour, making colour-coded items more visually distinct
+
 ## [24.5.1] - 2026-03-27
 ### Fixed
 - Removed 53 duplicate command registrations in `package.json` that had accumulated across phases — no user-facing behaviour change, but reduces extension manifest size
