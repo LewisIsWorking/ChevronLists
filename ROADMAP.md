@@ -998,3 +998,17 @@
 
 ## v25.0.0 — Full Housekeeping ✅
 - ✅ README: 749 tests / 66 files / 250 commands; ARCHITECTURE.md updated; 53 duplicate commands removed; ready for Marketplace upload
+
+---
+
+## v25.1.0 — Duplicate Section to File ✅
+- ✅ `CL: Duplicate Section to File` — copies section into any other workspace markdown file
+
+## v25.2.0 — Item Age Report ✅
+- ✅ `CL: Show Item Age Report` — webview of all @created: items sorted oldest first
+
+## v25.3.0 — Section Collapse Memory ✅
+- ✅ Fold state remembered between sessions and restored on file open
+
+## v25.4.0 — Copy Item as Markdown ✅
+- ✅ `CL: Copy Item as Markdown` — converts to standard markdown with emoji priorities, bold tags
