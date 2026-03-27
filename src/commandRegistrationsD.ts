@@ -42,6 +42,9 @@ import { onGroupItemsByMention }                          from './groupByMention
 import { onShowSectionPath }                              from './sectionPathCommands';
 import { onShowWordCountGoals }                           from './wordCountGoalsCommands';
 import { onBoldText, onItalicText, onUnderlineText, onMonoText, onStrikeText } from './richTextSimCommands';
+import { onDuplicateSectionToFile }                      from './duplicateSectionToFileCommands';
+import { onShowItemAgeReport }                           from './itemAgeReportCommands';
+import { onCopyItemAsMarkdown }                          from './copyItemAsMarkdownCommands';
 import { onTextTransformPalette }                         from './textTransformPaletteCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
@@ -96,5 +99,8 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.monoText',                         onMonoText),
         r('chevron-lists.strikeText',                       onStrikeText),
         r('chevron-lists.textTransformPalette',             onTextTransformPalette),
+        r('chevron-lists.duplicateSectionToFile',           onDuplicateSectionToFile),
+        r('chevron-lists.showItemAgeReport',                onShowItemAgeReport),
+        r('chevron-lists.copyItemAsMarkdown',               onCopyItemAsMarkdown),
     ];
 }
