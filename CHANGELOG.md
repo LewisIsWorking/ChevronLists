@@ -1,5 +1,10 @@
 # Changelog
 
+## [24.5.1] - 2026-03-27
+### Fixed
+- Removed 53 duplicate command registrations in `package.json` that had accumulated across phases — no user-facing behaviour change, but reduces extension manifest size
+- ROADMAP: marked v24.2–24.6 as ✅ (all were already built and shipped)
+
 ## [24.5.0] - 2026-03-27
 ### Fixed
 - Section summary no longer shows `▁▁▁▁ 0 done` on sections with no checkbox items — the sparkline and done count only appear when at least one `[ ]` or `[x]` item exists
