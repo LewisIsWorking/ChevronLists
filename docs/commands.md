@@ -1,6 +1,6 @@
 # Chevron Lists — Full Command Reference
 
-All 300+ commands, grouped by area. Access any command via `CL:` in the Command Palette (`Ctrl+Shift+P`).
+All 250+ commands, grouped by area. Access any command via `CL:` in the Command Palette (`Ctrl+Shift+P`).
 
 ## Navigation
 
