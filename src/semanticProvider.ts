@@ -68,10 +68,14 @@ export class ChevronSemanticTokensProvider
 
             const bullet = parseBullet(text, prefix);
             if (bullet) {
-                const prefixLen = bullet.chevrons.length + 1 + prefix.length + 1;
-                this.push(builder, i, 0, prefixLen, 'chevronPrefix');
+                // Colour ">> " (chevrons + space) as prefix (slate)
+                const chevronsAndSpace = bullet.chevrons.length + 1;
+                // Colour "- " (prefix char + space) as number (lime) — same role as "1."
+                const prefixAndSpace   = prefix.length + 1;
+                this.push(builder, i, 0, chevronsAndSpace, 'chevronPrefix');
+                this.push(builder, i, chevronsAndSpace, prefixAndSpace, 'chevronNumber');
                 if (bullet.content.length > 0) {
-                    pushContentWithLabels(i, prefixLen, bullet.content, pushFn);
+                    pushContentWithLabels(i, chevronsAndSpace + prefixAndSpace, bullet.content, pushFn);
                 }
                 continue;
             }
