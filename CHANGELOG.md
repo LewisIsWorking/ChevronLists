@@ -1,5 +1,12 @@
 # Changelog
 
+## [25.4.0] - 2026-03-27
+### Added
+- `CL: Duplicate Section to File` — copies the current section (header + all items) into any other markdown file in the workspace
+- `CL: Show Item Age Report` — webview showing all items with `@created:` dates, sorted oldest first with red/amber/green age colouring
+- Section collapse memory — fold state for sections is remembered between sessions and restored when the file reopens (uses `>> -- Name` group markers)
+- `CL: Copy Item as Markdown` — copies the item at cursor as standard markdown: checkboxes, priority emoji, bold tags, proper indent for nested items
+
 ## [25.0.0] - 2026-03-27
 ### Changed
 - README: updated to 749 tests · 66 test files · 250 commands (was stale 725/731/300+)
