@@ -1,0 +1,23 @@
+/** All tips shown in the tip-of-the-day system */
+export const TIPS: ReadonlyArray<{ title: string; body: string; command?: string }> = [
+    { title: 'Smart Enter',        body: 'Press Enter after a section header to auto-start a `>> -` item. Press Enter on an empty item to stop the list.', command: undefined },
+    { title: 'Tab to nest',        body: 'Press Tab on any item to promote it one depth level deeper. Shift+Tab demotes it. Child items move with the parent.', command: undefined },
+    { title: 'Priority colours',   body: 'Add `!`, `!!`, or `!!!` at the start of any item for yellow, amber, or red background highlighting.', command: undefined },
+    { title: 'Due dates',          body: 'Add `@YYYY-MM-DD` to an item to set a due date. The `⚠ N overdue` status bar shows how many are past due — click it to see them all.', command: 'chevron-lists.todayView' },
+    { title: 'Tag autocomplete',   body: 'Type `#` in any item to get tag suggestions from the current file, sorted by how often you use them.', command: undefined },
+    { title: 'Section links',      body: 'Type `[[` to autocomplete a link to any section in the file. Hover over a `[[link]]` to preview the section\'s items.', command: undefined },
+    { title: 'Focus Timer',        body: 'Use `CL: Start Focus Timer` for a configurable Pomodoro-style countdown (default 25 min) in the status bar.', command: 'chevron-lists.startFocusTimer' },
+    { title: 'Quick Stats',        body: 'Run `CL: Quick Stats` for an instant one-line summary of the current section: items, done %, words, tags, overdue.', command: 'chevron-lists.quickStats' },
+    { title: 'Kanban view',        body: 'Run `CL: Show Kanban` to see all items grouped by checkbox state — Todo, In Progress (starred), and Done.', command: 'chevron-lists.showKanban' },
+    { title: 'Smart Paste',        body: '`CL: Smart Paste` detects whether your clipboard contains a numbered list, bullet list, or plain text, and converts it to the right chevron format automatically.', command: 'chevron-lists.smartPaste' },
+    { title: 'Send to Daily Note', body: 'Press `CL: Send to Daily Note` to copy the item at cursor to today\'s daily note file under `> Inbox`. Configure the folder in settings.', command: 'chevron-lists.sendToDailyNote' },
+    { title: 'Sort by Due Date',   body: '`CL: Sort by Due Date` reorders items in the current section ascending by `@date`. Undated items go last.', command: 'chevron-lists.sortByDueDate' },
+    { title: 'Batch Replace',      body: '`CL: Batch Replace Text` lets you find and replace any text across all items in a section, with a preview count before it applies.', command: 'chevron-lists.batchReplaceText' },
+    { title: 'Tag Stats',          body: '`CL: Show Tag Stats` opens a webview with every `#tag` in the file, its item count, done count, and a completion % bar chart.', command: 'chevron-lists.showTagStats' },
+    { title: 'Section Growth',     body: '`CL: Show Section Growth` gives you a bar chart of item count per section — great for seeing where work is concentrated.', command: 'chevron-lists.showSectionGrowth' },
+    { title: 'Colour presets',     body: 'Run `CL: Colour Theme` to pick from 13 colour presets: default (violet+lime), ocean, forest, midnight, neon, and more.', command: 'chevron-lists.colourTheme' },
+    { title: 'Multi-cursor',       body: '`CL: Toggle Done (All Cursors)` and `CL: Set Priority (All Cursors)` act on every active cursor simultaneously — great for bulk edits.', command: 'chevron-lists.toggleDoneAllCursors' },
+    { title: 'Inline calculation', body: 'Add `=2+2` anywhere in an item content, then run `CL: Evaluate Expression in Item` to replace it with the result (`=4`).', command: 'chevron-lists.evaluateExpression' },
+    { title: 'Time estimates',     body: 'Add `~2h` or `~30m` to items, then `CL: Show Section Time Estimate` sums them all — great for sprint planning.', command: 'chevron-lists.showSectionTimeEstimate' },
+    { title: 'Clone Section',      body: '`CL: Clone Section` duplicates the entire section immediately below with a `(copy)` suffix — perfect for templates.', command: 'chevron-lists.cloneSection' },
+];

@@ -1,5 +1,15 @@
 # Changelog
 
+## [24.1.0] - 2026-03-27
+### Added
+- `CL: Show Tip of the Day` — rotating tips on activation with Try It / Next Tip / Dismiss; re-enable at any time
+- VS Code Walkthrough ("Get Started with Chevron Lists") — 5-step onboarding that appears in the Welcome tab
+- `docs/` folder — `syntax.md`, `settings.md`, `contributing.md`, `commands.md` technical reference
+- `walkthroughs/` folder — step-by-step markdown content for the walkthrough
+### Changed
+- `package.json`: gallery banner (deep indigo), repository + bugs links, `CL: Show Tip of the Day` command
+- README updated to reference `docs/` for technical detail
+
 ## [24.0.0] - 2026-03-26
 ### Added
 - `CL: Group Items by Mention` — groups section items into `>> -- Name` sub-groups by `@mention`, great for delegation views

@@ -247,6 +247,10 @@ Architecture: SOLID principles throughout. Pure functions live in `patterns.ts` 
 
 - [Marketplace](https://marketplace.visualstudio.com/items?itemName=lewisisworking.chevron-lists)
 - [GitHub](https://github.com/LewisIsWorking/ChevronLists)
+- [Full Command Reference](docs/commands.md)
+- [Syntax Reference](docs/syntax.md)
+- [Settings Reference](docs/settings.md)
+- [Contributing](docs/contributing.md)
 - [Changelog](CHANGELOG.md)
 - [Roadmap](ROADMAP.md)
 

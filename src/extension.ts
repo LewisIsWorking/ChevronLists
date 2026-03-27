@@ -14,6 +14,7 @@ import { registerSearchItemProviderCommands }                from './commandRegi
 import { registerPhase12to32Commands }                       from './commandRegistrationsC';
 import { registerAutoFixNumbering }                          from './autoFixNumbering';
 import { registerLockEnforcement }                           from './lockEnforcement';
+import { showTipOfDay, onShowTipOfDay }                              from './tipOfDay';
 import { getConfig }                                         from './config';
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -29,6 +30,7 @@ export function activate(context: vscode.ExtensionContext): void {
         ...registerCoreCommands(context),
         ...registerSearchItemProviderCommands(context),
         ...registerPhase12to32Commands(),
+        vscode.commands.registerCommand('chevron-lists.showTipOfDay', () => onShowTipOfDay(context)),
 
         // ── Language providers ───────────────────────────────────────────────
         vscode.languages.registerFoldingRangeProvider(
@@ -62,6 +64,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
     registerAutoFixNumbering(context);
     registerLockEnforcement(context);
+    showTipOfDay(context);
 
     if (vscode.window.activeTextEditor) {
         refreshEditor(vscode.window.activeTextEditor, { dueDateDiags });

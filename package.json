@@ -2,8 +2,10 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "A powerful markdown list manager with 300+ commands: smart keyboard shortcuts, live decorations, tag filtering, kanban, daily notes, AI assist, and more.",
-    "version": "24.0.0",
+    "version": "24.1.0",
     "icon": "icon.png",
+    "galleryBanner": { "color": "#12122A", "theme": "dark" },
+    "bugs": { "url": "https://github.com/LewisIsWorking/ChevronLists/issues" },
     "publisher": "lewisisworking",
     "repository": {
         "type": "git",
@@ -363,6 +365,7 @@
             { "command": "chevron-lists.showSectionVoteLeaderboard",                     "title": "CL: Show Vote Leaderboard (Section)" },
             { "command": "chevron-lists.groupItemsByMention",                            "title": "CL: Group Items by Mention" },
             { "command": "chevron-lists.showSectionPath",                                "title": "CL: Show Section Path" },
+            { "command": "chevron-lists.showTipOfDay",                                   "title": "CL: Show Tip of the Day" },
             { "command": "chevron-lists.sortByPriority",                                "title": "CL: Sort by Priority" },
             { "command": "chevron-lists.archiveOldDoneItems",                           "title": "CL: Archive Old Done Items" },
             { "command": "chevron-lists.findDeadLinks",                                 "title": "CL: Find Dead Links" },
@@ -408,7 +411,8 @@
             { "command": "chevron-lists.countWordFrequency",                             "title": "CL: Count Word Frequency" },
             { "command": "chevron-lists.showSectionVoteLeaderboard",                     "title": "CL: Show Vote Leaderboard (Section)" },
             { "command": "chevron-lists.groupItemsByMention",                            "title": "CL: Group Items by Mention" },
-            { "command": "chevron-lists.showSectionPath",                                "title": "CL: Show Section Path" }
+            { "command": "chevron-lists.showSectionPath",                                "title": "CL: Show Section Path" },
+            { "command": "chevron-lists.showTipOfDay",                                   "title": "CL: Show Tip of the Day" }
         ],
         "keybindings": [
         {
@@ -477,7 +481,47 @@
                 "description": "Square bracket labels [LIKE THIS] inside item content"
             }
         ],
-        "semanticTokenScopes": [
+        "walkthroughs": [
+      {
+        "id": "chevron-lists.gettingStarted",
+        "title": "Get Started with Chevron Lists",
+        "description": "Learn the core concepts in 5 steps — lists, markers, navigation, decorations, and views.",
+        "steps": [
+          {
+            "id": "step1",
+            "title": "Your First List",
+            "description": "Open any .md file, type `> My Section` and press **Enter** to start a `>> -` item automatically.\n\n[Open a Markdown File](command:workbench.action.files.newUntitledFile)",
+            "media": { "markdown": "walkthroughs/step1-first-list.md" },
+            "completionEvents": ["onCommand:type"]
+          },
+          {
+            "id": "step2",
+            "title": "Add Markers",
+            "description": "Add priorities `!!!`, tags `#backend`, due dates `@2026-04-15`, and more inside any item.\n\n[Show Tip of the Day](command:chevron-lists.showTipOfDay)",
+            "media": { "markdown": "walkthroughs/step2-markers.md" }
+          },
+          {
+            "id": "step3",
+            "title": "Navigate and Filter",
+            "description": "Jump between sections, filter by tag, or find items across the whole workspace.\n\n[Filter Sections](command:chevron-lists.filterSections)",
+            "media": { "markdown": "walkthroughs/step3-navigate.md" }
+          },
+          {
+            "id": "step4",
+            "title": "Live Decorations",
+            "description": "Progress bars, sparklines, due-soon warnings, and priority highlights update as you type — no commands needed.\n\n[Toggle Section Summary](command:chevron-lists.toggleSummaryDecoration)",
+            "media": { "markdown": "walkthroughs/step4-decorations.md" }
+          },
+          {
+            "id": "step5",
+            "title": "Kanban, Stats and Export",
+            "description": "View work as a Kanban board, generate analytics, and export to Obsidian, CSV, HTML or JSON.\n\n[Show Kanban](command:chevron-lists.showKanban)",
+            "media": { "markdown": "walkthroughs/step5-views.md" }
+          }
+        ]
+      }
+    ],
+    "semanticTokenScopes": [
             {
                 "language": "markdown",
                 "scopes": {
