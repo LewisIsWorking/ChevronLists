@@ -38,6 +38,7 @@ export function refreshEditor(
     const { prefix } = getConfig();
     updateDecorations(editor);
     updateStatusBar(editor);
+    updateOverdueStatusBar(editor);
     updateDiagnostics(editor.document);
     updateDueDateDiagnostics(editor.document, diags.dueDateDiags, prefix);
     updateWordGoalDiagnostics(editor.document, prefix);
@@ -51,7 +52,6 @@ export function refreshEditor(
     updatePriorityDecorations(editor);
     updateBadgeDecorations(editor);
     updateGoalDecorations(editor);
-    updateOverdueStatusBar(editor);
     updateAgeDecorations(editor);
     updateSummaryDecorations(editor);
     updateChecklistProgressDecorations(editor);

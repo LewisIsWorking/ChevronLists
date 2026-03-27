@@ -36,6 +36,8 @@ import { onShowSectionGrowth }                            from './sectionGrowthC
 import { onFilterByMultipleTags }                         from './multiTagFilterCommands';
 import { onExtractUrlsFromSection }                       from './urlExtractorCommands';
 import { onCloneSection }                                 from './cloneSectionCommands';
+import { onCountWordFrequency }                           from './wordFrequencyCommands';
+import { onShowSectionVoteLeaderboard }                   from './sectionVoteLeaderboardCommands';
 
 export function registerPhase40Commands(): vscode.Disposable[] {
     const r = vscode.commands.registerCommand;
@@ -78,5 +80,7 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.filterByMultipleTags',             onFilterByMultipleTags),
         r('chevron-lists.extractUrlsFromSection',           onExtractUrlsFromSection),
         r('chevron-lists.cloneSection',                     onCloneSection),
+        r('chevron-lists.countWordFrequency',               onCountWordFrequency),
+        r('chevron-lists.showSectionVoteLeaderboard',       onShowSectionVoteLeaderboard),
     ];
 }

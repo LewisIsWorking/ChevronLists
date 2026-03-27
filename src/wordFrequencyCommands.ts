@@ -1,49 +1,34 @@
 import * as vscode from 'vscode';
 import { getConfig } from './config';
-import { parseBullet, parseNumbered } from './patterns';
+import { parseBullet, parseNumbered, rankWordFrequency } from './patterns';
 import { getSectionRange, findHeaderAbove } from './documentUtils';
-import { topWords } from './wordFrequency';
+import { stripAllMetadata } from './metadataStripper';
 
-/** Command: shows the top 20 most frequent words in the current section */
-export async function onShowWordFrequency(): Promise<void> {
+/** Command: shows top 10 words in the current section */
+export async function onCountWordFrequency(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor || editor.document.languageId !== 'markdown') { return; }
     const { prefix }  = getConfig();
     const doc         = editor.document;
     const headerLine  = findHeaderAbove(doc, editor.selection.active.line);
     if (headerLine < 0) { vscode.window.showInformationMessage('CL: No section found at cursor'); return; }
+    const name        = doc.lineAt(headerLine).text.replace(/^> /, '').trim();
     const [, end]     = getSectionRange(doc, headerLine);
-    const sectionName = doc.lineAt(headerLine).text.replace(/^> /, '');
+    const words: string[] = [];
 
-    const contents: string[] = [];
     for (let i = headerLine + 1; i <= end; i++) {
-        const text    = doc.lineAt(i).text;
-        const bullet  = parseBullet(text, prefix);
-        const numbered = parseNumbered(text);
-        const content  = bullet?.content ?? numbered?.content ?? null;
-        if (content) { contents.push(content); }
+        const t = doc.lineAt(i).text;
+        const content = parseBullet(t, prefix)?.content ?? parseNumbered(t)?.content ?? null;
+        if (!content) { continue; }
+        const plain = stripAllMetadata(content).toLowerCase();
+        for (const w of plain.split(/\W+/).filter(Boolean)) { words.push(w); }
     }
 
-    if (contents.length === 0) {
-        vscode.window.showInformationMessage('CL: No items found in this section');
+    const freq = rankWordFrequency(words);
+    if (freq.length === 0) {
+        vscode.window.showInformationMessage(`CL: "${name}" — no words found`);
         return;
     }
-
-    const words = topWords(contents);
-    if (words.length === 0) {
-        vscode.window.showInformationMessage('CL: No significant words found');
-        return;
-    }
-
-    const maxCount  = words[0].count;
-    const bar = (n: number) => '█'.repeat(Math.max(1, Math.round((n / maxCount) * 10)));
-    const lines = words.map(({ word, count }) =>
-        `${bar(count).padEnd(10)} ${count.toString().padStart(3)}×  ${word}`
-    );
-
-    const mdDoc = await vscode.workspace.openTextDocument({
-        content: `# Word Frequency — "${sectionName}"\n\n\`\`\`\n${lines.join('\n')}\n\`\`\``,
-        language: 'markdown',
-    });
-    await vscode.window.showTextDocument(mdDoc, vscode.ViewColumn.Beside);
+    const top  = freq.slice(0, 10).map(([w, n]) => `"${w}" ×${n}`).join('  ·  ');
+    vscode.window.showInformationMessage(`CL: "${name}" top words: ${top}`, { modal: true }, 'OK');
 }

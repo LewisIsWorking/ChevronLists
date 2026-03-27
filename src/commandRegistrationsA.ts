@@ -46,7 +46,7 @@ import { onInsertTableOfContents }                          from './tocCommands'
 import { onSetListStartNumber }                             from './listStartCommands';
 import { onRebaseListFromHere, onOffsetListNumbers }        from './listRebaseCommands';
 import { onStripAllMetadata }                               from './metadataStripCommands';
-import { onShowWordFrequency }                              from './wordFrequencyCommands';
+import { onCountWordFrequency }                              from './wordFrequencyCommands';
 import { onFixNumbering, getDiagnosticCollection }          from './diagnosticProvider';
 
 export function registerCoreCommands(
@@ -119,7 +119,7 @@ export function registerCoreCommands(
         r('chevron-lists.rebaseListFromHere',          onRebaseListFromHere),
         r('chevron-lists.offsetListNumbers',           onOffsetListNumbers),
         r('chevron-lists.stripAllMetadata',            onStripAllMetadata),
-        r('chevron-lists.showWordFrequency',           onShowWordFrequency),
+        r('chevron-lists.showWordFrequency',           onCountWordFrequency),
         getDiagnosticCollection(),
     ];
 }

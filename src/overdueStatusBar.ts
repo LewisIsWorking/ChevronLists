@@ -1,32 +1,39 @@
 import * as vscode from 'vscode';
-import { getConfig } from './config';
 import { parseBullet, parseNumbered } from './patterns';
-import { collectDueDates } from './dueDateParser';
+import { getConfig } from './config';
 
-let overdueBarItem: vscode.StatusBarItem | undefined;
+let overdueBar: vscode.StatusBarItem | undefined;
 
-/** Creates and returns the overdue status bar item (call once in activate) */
+/** Creates and returns the overdue status bar item (called from extension.ts activation) */
 export function createOverdueStatusBar(): vscode.StatusBarItem {
-    overdueBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 99);
-    overdueBarItem.command = 'chevron-lists.showUpcoming';
-    overdueBarItem.tooltip = 'Click to show upcoming due dates';
-    return overdueBarItem;
+    overdueBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, -98);
+    overdueBar.tooltip = 'CL: Overdue items — click to open Today View';
+    overdueBar.command = 'chevron-lists.todayView';
+    return overdueBar;
 }
 
-/** Updates the overdue badge — shows/hides based on overdue count */
-export function updateOverdueStatusBar(editor?: vscode.TextEditor): void {
-    if (!overdueBarItem) { return; }
+/** Updates the overdue status bar item for the active document */
+export function updateOverdueStatusBar(editor: vscode.TextEditor | undefined): void {
+    if (!overdueBar) { return; }
     if (!editor || editor.document.languageId !== 'markdown') {
-        overdueBarItem.hide();
+        overdueBar.hide();
         return;
     }
+
     const { prefix } = getConfig();
-    const overdue    = collectDueDates(editor.document, prefix).filter(i => i.overdue).length;
-    if (overdue === 0) {
-        overdueBarItem.hide();
-    } else {
-        overdueBarItem.text           = `$(warning) ${overdue} overdue`;
-        overdueBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
-        overdueBarItem.show();
+    const doc        = editor.document;
+    const today      = new Date().toISOString().slice(0, 10);
+    let   overdue    = 0;
+
+    for (let i = 0; i < doc.lineCount; i++) {
+        const text    = doc.lineAt(i).text;
+        const content = parseBullet(text, prefix)?.content ?? parseNumbered(text)?.content ?? null;
+        if (!content) { continue; }
+        const m = content.match(/@(\d{4}-\d{2}-\d{2})/);
+        if (m && m[1] < today) { overdue++; }
     }
+
+    if (overdue === 0) { overdueBar.hide(); return; }
+    overdueBar.text = `⚠ ${overdue} overdue`;
+    overdueBar.show();
 }

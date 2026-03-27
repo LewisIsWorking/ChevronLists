@@ -81,6 +81,18 @@ export function scoreItemComplexity(content: string): {
     return { priority, tags, estimate, dueDate, expiry, vote, label, total };
 }
 
+const STOP_WORDS = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','is','it','this','that','was','be','as','by','are','from','have','has','had','not','they','we','you','i','he','she']);
+
+/** Pure: ranks word frequency from a word array, filtering stop words and short words, sorted descending */
+export function rankWordFrequency(words: string[]): Array<[string, number]> {
+    const freq = new Map<string, number>();
+    for (const w of words) {
+        if (w.length < 3 || STOP_WORDS.has(w)) { continue; }
+        freq.set(w, (freq.get(w) ?? 0) + 1);
+    }
+    return [...freq.entries()].sort((a, b) => b[1] - a[1]);
+}
+
 /** Pure: finds and evaluates the first =expr in content */
 export function evaluateExpression(content: string): { original: string; result: number } | null {
     const match = content.match(/=([0-9+\-*/.() ]+)/);

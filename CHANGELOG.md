@@ -1,5 +1,12 @@
 # Changelog
 
+## [23.6.0] - 2026-03-26
+### Added
+- `CL: Count Word Frequency` — shows top 10 most-used words across section items, filtering stop words
+- `CL: Show Vote Leaderboard (Section)` — section-scoped `+N` vote ranking as a jump-to quick pick
+- `⚠ N overdue` persistent status bar item — shows overdue item count in the active file at a glance, clicking opens Today View
+- `@mention` autocomplete now suggests names already used in the current file (was already implemented via `ChevronMentionCompletionProvider`)
+
 ## [23.2.0] - 2026-03-26
 ### Added
 - `!!!` / `!!` / `!` priority items now get faint red / amber / yellow background decorations in the editor

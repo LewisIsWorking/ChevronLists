@@ -920,3 +920,17 @@
 
 ## v23.2.0 — Full Housekeeping ⬜
 - ⬜ Update README test count, ARCHITECTURE.md module count, audit all source files under 200 lines, clean stale VSIXs, verify ROADMAP all ✅, prepare Marketplace upload
+
+---
+
+## v23.3.0 — Item Word Frequency ⬜
+- ⬜ `CL: Count Word Frequency` — shows the top 10 most-used words across all items in the current section, excluding stop words like "the", "a", "and"
+
+## v23.4.0 — Section Item Leaderboard ⬜
+- ⬜ `CL: Show Vote Leaderboard (Section)` — scoped version of the workspace leaderboard: shows items in the current section ranked by `+N` vote count
+
+## v23.5.0 — Overdue Status Bar ⬜
+- ⬜ A persistent status bar item showing `⚠ N overdue` when any `@YYYY-MM-DD` items in the active file are past today — zero-click visibility of overdue work
+
+## v23.6.0 — Item Mention Autocomplete ⬜
+- ⬜ When typing `@` in an item, the completion provider suggests all `@Name` mentions already used elsewhere in the file — no more typos on collaborator names
