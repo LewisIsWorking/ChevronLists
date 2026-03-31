@@ -43,6 +43,10 @@ import { onShowSectionPath }                              from './sectionPathCom
 import { onShowWordCountGoals }                           from './wordCountGoalsCommands';
 import { onBoldText, onItalicText, onUnderlineText, onMonoText, onStrikeText } from './richTextSimCommands';
 import { onDuplicateSectionToFile }                      from './duplicateSectionToFileCommands';
+import { onToggleFocusMode }                              from './dimDecoration';
+import { onInsertGroupDivider }                           from './insertGroupDividerCommands';
+import { onCopySectionAsHtml }                            from './sectionHtmlExportCommands';
+import { onShowPrioritySummary }                          from './prioritySummaryCommands';
 import { onShowItemAgeReport }                           from './itemAgeReportCommands';
 import { onCopyItemAsMarkdown }                          from './copyItemAsMarkdownCommands';
 import { onTextTransformPalette }                         from './textTransformPaletteCommands';
@@ -100,6 +104,10 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.strikeText',                       onStrikeText),
         r('chevron-lists.textTransformPalette',             onTextTransformPalette),
         r('chevron-lists.duplicateSectionToFile',           onDuplicateSectionToFile),
+        r('chevron-lists.toggleFocusMode',                  onToggleFocusMode),
+        r('chevron-lists.insertGroupDivider',               onInsertGroupDivider),
+        r('chevron-lists.copySectionAsHtml',                onCopySectionAsHtml),
+        r('chevron-lists.showPrioritySummary',              onShowPrioritySummary),
         r('chevron-lists.showItemAgeReport',                onShowItemAgeReport),
         r('chevron-lists.copyItemAsMarkdown',               onCopyItemAsMarkdown),
     ];
