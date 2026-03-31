@@ -1,5 +1,12 @@
 # Changelog
 
+## [25.8.0] - 2026-03-27
+### Added
+- `CL: Toggle Focus Mode` — dims all sections except the one the cursor is in; toggle again to restore. Updates live as you move the cursor.
+- `CL: Insert Group Divider` — prompts for a name and inserts a `>> -- Name` group divider below the cursor line
+- `CL: Copy Section as HTML` — copies the section as a rich HTML snippet (checkboxes, priority emoji, nested indentation) ready to paste into docs or email
+- `CL: Show Priority Summary` — jump-to quick pick of all `!`/`!!`/`!!!` items across the file, grouped by urgency level with separator headers
+
 ## [25.4.0] - 2026-03-27
 ### Added
 - `CL: Duplicate Section to File` — copies the current section (header + all items) into any other markdown file in the workspace
