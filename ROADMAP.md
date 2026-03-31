@@ -1012,3 +1012,17 @@
 
 ## v25.4.0 — Copy Item as Markdown ✅
 - ✅ `CL: Copy Item as Markdown` — converts to standard markdown with emoji priorities, bold tags
+
+---
+
+## v25.5.0 — Focus Mode Dim ✅
+- ✅ `CL: Toggle Focus Mode` — dims all other sections, updates live with cursor movement
+
+## v25.6.0 — Insert Group Divider ✅
+- ✅ `CL: Insert Group Divider` — prompts for name, inserts `>> -- Name` at cursor
+
+## v25.7.0 — Copy Section as HTML ✅
+- ✅ `CL: Copy Section as HTML` — rich HTML with checkboxes, priority emoji, nesting
+
+## v25.8.0 — Priority Summary ✅
+- ✅ `CL: Show Priority Summary` — all priority items grouped by !!/!/!!! level with jump-to
