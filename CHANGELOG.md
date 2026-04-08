@@ -1,5 +1,9 @@
 # Changelog
 
+## [25.9.0] - 2026-03-27
+### Added
+- Numbered items (`>> 1.`, `>> 2.` etc.) that have checkbox sub-items now show their own 6-block mini progress bar inline — distinct from the 10-block section bar. Works automatically when numbered items are used as group headers within a section.
+
 ## [25.8.0] - 2026-03-27
 ### Added
 - `CL: Toggle Focus Mode` — dims all sections except the one the cursor is in; toggle again to restore. Updates live as you move the cursor.
