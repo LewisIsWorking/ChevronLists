@@ -1026,3 +1026,8 @@
 
 ## v25.8.0 — Priority Summary ✅
 - ✅ `CL: Show Priority Summary` — all priority items grouped by !!/!/!!! level with jump-to
+
+---
+
+## v25.9.0 — Numbered Item Sub-Group Progress Bars ✅
+- ✅ `>> N.` numbered items with checkbox children now show a 6-block mini progress bar inline, grouped until the next numbered item
