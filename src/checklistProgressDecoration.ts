@@ -30,7 +30,17 @@ function pushDecoration(
     else                 { red.push(opt); }
 }
 
-/** Updates the checklist progress bar decorations on section headers AND numbered sub-items */
+/** Returns the chevron string one depth deeper — ">>" → ">>>" */
+function oneDeeper(chevrons: string): string {
+    return chevrons + '>';
+}
+
+/** Updates checklist progress bars on section headers AND numbered sub-group headers.
+ *
+ * Sub-group rule: a >> N. item gets a 6-block mini bar only when the items
+ * immediately following it are at exactly one depth level deeper (>>> -).
+ * This is opt-in — you choose the sub-group structure by indenting with Tab.
+ */
 export function updateChecklistProgressDecorations(editor: vscode.TextEditor | undefined): void {
     if (!editor || editor.document.languageId !== 'markdown') { return; }
     const { prefix } = getConfig();
@@ -43,7 +53,7 @@ export function updateChecklistProgressDecorations(editor: vscode.TextEditor | u
         if (!isHeader(doc.lineAt(i).text)) { continue; }
         const [, sectionEnd] = getSectionRange(doc, i);
 
-        // ── Section-level progress bar (10 blocks) ───────────────────────
+        // ── Section-level progress bar (10 blocks, all checkboxes) ───────
         let done = 0, total = 0;
         for (let j = i + 1; j <= sectionEnd; j++) {
             const content = parseBullet(doc.lineAt(j).text, prefix)?.content
@@ -62,32 +72,41 @@ export function updateChecklistProgressDecorations(editor: vscode.TextEditor | u
             }, pct, red, amber, green);
         }
 
-        // ── Numbered item sub-group progress bars (6 blocks) ─────────────
-        // Find each >> N. line within the section and scan until the next >> N. or section end
+        // ── Numbered item sub-group bars (6 blocks, deeper children only) ─
+        // Rule: >> N. gets a bar only if the lines after it are at >>> depth.
         for (let j = i + 1; j <= sectionEnd; j++) {
             const numbered = parseNumbered(doc.lineAt(j).text);
             if (!numbered) { continue; }
-            // Skip numbered items that themselves have a checkbox (they're list items, not headers)
+            // Skip numbered items that are themselves checkboxes
             if (parseCheck(numbered.content)) { continue; }
 
-            // Find the end of this numbered group: next numbered item at same depth, or section end
-            let groupEnd = sectionEnd;
-            for (let k = j + 1; k <= sectionEnd; k++) {
-                const next = parseNumbered(doc.lineAt(k).text);
-                if (next && next.chevrons === numbered.chevrons && !parseCheck(next.content)) {
-                    groupEnd = k - 1;
-                    break;
-                }
-                // Also stop at a header
-                if (isHeader(doc.lineAt(k).text)) { groupEnd = k - 1; break; }
-            }
+            const childChevrons = oneDeeper(numbered.chevrons);
 
-            // Count checkboxes in this group
+            // Peek at the next non-blank line — if it isn't at childChevrons depth, skip
+            let firstChild = -1;
+            for (let k = j + 1; k <= sectionEnd; k++) {
+                const t = doc.lineAt(k).text.trim();
+                if (!t) { continue; }
+                const b = parseBullet(doc.lineAt(k).text, prefix);
+                const n = parseNumbered(doc.lineAt(k).text);
+                if ((b && b.chevrons === childChevrons) || (n && n.chevrons === childChevrons)) {
+                    firstChild = k;
+                }
+                break; // only peek one line
+            }
+            if (firstChild < 0) { continue; } // no deeper children — no bar
+
+            // Count checkboxes that are exactly at childChevrons depth
             let gDone = 0, gTotal = 0;
-            for (let k = j + 1; k <= groupEnd; k++) {
-                const content = parseBullet(doc.lineAt(k).text, prefix)?.content
-                             ?? parseNumbered(doc.lineAt(k).text)?.content ?? null;
-                if (!content) { continue; }
+            for (let k = j + 1; k <= sectionEnd; k++) {
+                const lineText = doc.lineAt(k).text;
+                const b = parseBullet(lineText, prefix);
+                const n = parseNumbered(lineText);
+                const chevs  = b?.chevrons ?? n?.chevrons ?? null;
+                const content = b?.content  ?? n?.content  ?? null;
+                // Stop when we return to the same or shallower depth
+                if (chevs && chevs.length <= numbered.chevrons.length) { break; }
+                if (!content || chevs !== childChevrons) { continue; }
                 const check = parseCheck(content);
                 if (!check) { continue; }
                 gTotal++;
