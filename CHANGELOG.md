@@ -1,5 +1,19 @@
 # Changelog
 
+## [26.0.0] - 2026-03-27
+### Changed
+- Sub-group progress bars on numbered items now require children to be at one deeper chevron level (`>>> -`) rather than just any same-depth checkbox. This makes sub-groups opt-in via Tab indent — no false positives on regular numbered lists that happen to mix with bullet items.
+
+**To use:**
+```markdown
+>> 1. Character tokens.    ▓▓▓░░░ 3/6
+>>> - [X] Ger.
+>>> - [X] Atticus.
+>>> - [X] Nariya.
+>>> - [] Mr Serious.
+```
+Use Tab on the `>> -` lines to promote them to `>>> -`.
+
 ## [25.9.0] - 2026-03-27
 ### Added
 - Numbered items (`>> 1.`, `>> 2.` etc.) that have checkbox sub-items now show their own 6-block mini progress bar inline — distinct from the 10-block section bar. Works automatically when numbered items are used as group headers within a section.
