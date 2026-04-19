@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "A powerful markdown list manager with 300+ commands: smart keyboard shortcuts, live decorations, tag filtering, kanban, daily notes, AI assist, and more.",
-    "version": "26.0.0",
+    "version": "26.1.0",
     "icon": "icon.png",
     "galleryBanner": {
         "color": "#12122A",
@@ -84,6 +84,16 @@
                     "type": "string",
                     "default": "-",
                     "description": "Prefix character for chevron list items. Default '-' gives '>> -'. Change to '*' for '>> *', etc."
+                },
+                "chevron-lists.defaultNewListType": {
+                    "type": "string",
+                    "default": "unordered",
+                    "enum": ["unordered", "ordered"],
+                    "enumDescriptions": [
+                        "Press Enter on a header to begin a bullet list (>> -)",
+                        "Press Enter on a header to begin a numbered list (>> 1.)"
+                    ],
+                    "description": "Default list type inserted when pressing Enter on a section header."
                 },
                 "chevron-lists.colourPreset": {
                     "type": "string",

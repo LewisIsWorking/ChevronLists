@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { getConfig } from './config';
-import { parseBullet, parseNumbered, isHeader } from './patterns';
+import { parseBullet, parseNumbered, isHeader, getFirstItemPrefix } from './patterns';
 
 type EditBuilder = vscode.TextEditorEdit;
 
@@ -85,7 +85,7 @@ export async function onEnter(): Promise<void> {
 
     const cursor   = editor.selection.active;
     const lineText = editor.document.lineAt(cursor.line).text;
-    const { prefix, blankLine } = getConfig();
+    const { prefix, blankLine, defaultNewListType } = getConfig();
 
     const numbered = parseNumbered(lineText);
     if (numbered) {
@@ -111,7 +111,8 @@ export async function onEnter(): Promise<void> {
             editor.selection = new vscode.Selection(newPos, newPos);
             return;
         }
-        const newItem = blankLine ? `\n\n>> ${prefix} ` : `\n>> ${prefix} `;
+        const firstPrefix = getFirstItemPrefix(prefix, defaultNewListType);
+        const newItem = blankLine ? `\n\n>> ${firstPrefix} ` : `\n>> ${firstPrefix} `;
         await vscode.commands.executeCommand('default:type', { text: newItem });
         // Auto-trigger suggestions so user can immediately pick a tag or template
         await vscode.commands.executeCommand('editor.action.triggerSuggest');

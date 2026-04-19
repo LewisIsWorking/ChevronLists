@@ -33,4 +33,5 @@ export interface ChevronConfig {
     dailyNotesFolder:    string;
     dailyNoteTemplate:   string;
     autoFixNumbering:    boolean;
+    defaultNewListType:  string;
 }

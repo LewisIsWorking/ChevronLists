@@ -1,5 +1,9 @@
 # Changelog
 
+## [26.1.0] - 2026-04-19
+### Added
+- New setting `chevron-lists.defaultNewListType` (`unordered` / `ordered`). When set to `ordered`, pressing Enter on a `> Header` line now inserts `>> 1.` as the first item instead of `>> -`. Subsequent Enter presses continue the sequence as normal (`>> 2.`, `>> 3.` etc.). The existing `listPrefix` setting is unaffected — it still controls bullet continuation for unordered lists.
+
 ## [26.0.0] - 2026-03-27
 ### Changed
 - Sub-group progress bars on numbered items now require children to be at one deeper chevron level (`>>> -`) rather than just any same-depth checkbox. This makes sub-groups opt-in via Tab indent — no false positives on regular numbered lists that happen to mix with bullet items.

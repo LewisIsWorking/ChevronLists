@@ -12,5 +12,6 @@ export function getConfig(): ChevronConfig {
         dailyNotesFolder:    cfg.get<string>('dailyNotesFolder', ''),
         dailyNoteTemplate:   cfg.get<string>('dailyNoteTemplate', ''),
         autoFixNumbering:    cfg.get<boolean>('autoFixNumbering', false),
+        defaultNewListType:  cfg.get<string>('defaultNewListType', 'unordered'),
     };
 }

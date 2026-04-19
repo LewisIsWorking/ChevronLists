@@ -161,6 +161,11 @@ export function setSectionColour(headerText: string, colour: string | null): str
     return colour ? `${stripped} [colour:${colour}]` : stripped;
 }
 
+/** Returns the bullet prefix for the first item in a new list, based on the defaultNewListType setting */
+export function getFirstItemPrefix(listPrefix: string, defaultNewListType: string): string {
+    return defaultNewListType === 'ordered' ? '1.' : listPrefix;
+}
+
 // formatElapsed and convertToObsidian live in patternsExport.ts (re-exported via patterns.ts)
 
 /** Pure: finds renumbering edits needed to fix duplicate/broken sequences at each depth */
