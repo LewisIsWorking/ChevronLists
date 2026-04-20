@@ -1,5 +1,9 @@
 # Changelog
 
+## [26.3.0] - 2026-04-20
+### Added
+- `CL: Open Settings` — a webview panel with two tabs: **Settings** (all configuration options as proper UI controls with real-time writes) and **Commands** (all 300+ CL commands grouped by category, clickable to run without touching the command palette). Opens automatically on first install with a welcome message. `colourPreset` and `anthropicApiKey` are now part of `ChevronConfig` so all settings flow through a single config read.
+
 ## [26.2.0] - 2026-04-20
 ### Changed
 - `chevron-lists.autoFixNumbering` now defaults to `true`. Duplicate or out-of-sequence numbered items (e.g. two `>> 2.` lines) are fixed automatically as you type. The setting is now also properly declared in `package.json` so it appears in VS Code's settings UI.

@@ -13,5 +13,7 @@ export function getConfig(): ChevronConfig {
         dailyNoteTemplate:   cfg.get<string>('dailyNoteTemplate', ''),
         autoFixNumbering:    cfg.get<boolean>('autoFixNumbering', true),
         defaultNewListType:  cfg.get<string>('defaultNewListType', 'unordered'),
+        colourPreset:        cfg.get<string>('colourPreset', 'default'),
+        anthropicApiKey:     cfg.get<string>('anthropicApiKey', ''),
     };
 }

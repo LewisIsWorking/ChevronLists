@@ -34,4 +34,6 @@ export interface ChevronConfig {
     dailyNoteTemplate:   string;
     autoFixNumbering:    boolean;
     defaultNewListType:  string;
+    colourPreset:        string;
+    anthropicApiKey:     string;
 }

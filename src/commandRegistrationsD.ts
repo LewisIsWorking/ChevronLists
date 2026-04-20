@@ -4,6 +4,7 @@
  * Exported and spread into registerPhase12to32Commands() in commandRegistrationsC.ts.
  */
 import * as vscode from 'vscode';
+import { onOpenSettingsPanel }                            from './settingsPanel';
 import { onTodayView }                                    from './todayViewCommands';
 import { onShowKanban }                                   from './kanbanCommands';
 import { onExportToObsidian }                             from './obsidianExportCommands';
@@ -110,5 +111,6 @@ export function registerPhase40Commands(): vscode.Disposable[] {
         r('chevron-lists.showPrioritySummary',              onShowPrioritySummary),
         r('chevron-lists.showItemAgeReport',                onShowItemAgeReport),
         r('chevron-lists.copyItemAsMarkdown',               onCopyItemAsMarkdown),
+        r('chevron-lists.openSettings',                     onOpenSettingsPanel),
     ];
 }

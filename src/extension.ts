@@ -17,6 +17,7 @@ import { registerLockEnforcement }                           from './lockEnforce
 import { registerCollapseMemory }                            from './sectionCollapseMemory';
 import { showTipOfDay, onShowTipOfDay }                              from './tipOfDay';
 import { getConfig }                                         from './config';
+import { openOnFirstInstall }                                from './settingsPanel';
 
 export function activate(context: vscode.ExtensionContext): void {
     const statusBar    = createStatusBar();
@@ -67,6 +68,7 @@ export function activate(context: vscode.ExtensionContext): void {
     registerLockEnforcement(context);
     registerCollapseMemory(context);
     showTipOfDay(context);
+    openOnFirstInstall(context);
 
     if (vscode.window.activeTextEditor) {
         refreshEditor(vscode.window.activeTextEditor, { dueDateDiags });
