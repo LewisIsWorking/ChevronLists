@@ -1,5 +1,9 @@
 # Changelog
 
+## [26.2.0] - 2026-04-20
+### Changed
+- `chevron-lists.autoFixNumbering` now defaults to `true`. Duplicate or out-of-sequence numbered items (e.g. two `>> 2.` lines) are fixed automatically as you type. The setting is now also properly declared in `package.json` so it appears in VS Code's settings UI.
+
 ## [26.1.0] - 2026-04-19
 ### Added
 - New setting `chevron-lists.defaultNewListType` (`unordered` / `ordered`). When set to `ordered`, pressing Enter on a `> Header` line now inserts `>> 1.` as the first item instead of `>> -`. Subsequent Enter presses continue the sequence as normal (`>> 2.`, `>> 3.` etc.). The existing `listPrefix` setting is unaffected — it still controls bullet continuation for unordered lists.
