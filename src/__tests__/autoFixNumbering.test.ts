@@ -34,4 +34,50 @@ describe('computeAutoFixEdits', () => {
     it('ignores non-numbered lines', () => {
         expect(computeAutoFixEdits(makeLines(['> Header', '>> - bullet', '>> 1. item', '>> 2. item']))).toHaveLength(0);
     });
+
+    it('does not carry numbering across section headers', () => {
+        // List2 starting at 1 should not be renumbered to 4, 5
+        const lines = makeLines([
+            '> List1',
+            '>> 1. First',
+            '>> 2. Second',
+            '>> 3. Third',
+            '> List2',
+            '>> 1. Alpha',
+            '>> 2. Beta',
+        ]);
+        expect(computeAutoFixEdits(lines)).toHaveLength(0);
+    });
+
+    it('still fixes duplicates within a section when another section is present', () => {
+        const lines = makeLines([
+            '> List1',
+            '>> 1. First',
+            '>> 2. Second',
+            '>> 2. Duplicate',
+            '> List2',
+            '>> 1. Alpha',
+            '>> 2. Beta',
+        ]);
+        const edits = computeAutoFixEdits(lines);
+        expect(edits).toHaveLength(1);
+        expect(edits[0].newText).toBe('>> 3. Duplicate');
+    });
+
+    it('fixes duplicates independently in two different sections', () => {
+        const lines = makeLines([
+            '> List1',
+            '>> 1. A',
+            '>> 2. B',
+            '>> 2. Dup1',
+            '> List2',
+            '>> 1. X',
+            '>> 2. Y',
+            '>> 2. Dup2',
+        ]);
+        const edits = computeAutoFixEdits(lines);
+        expect(edits).toHaveLength(2);
+        expect(edits.some(e => e.newText === '>> 3. Dup1')).toBe(true);
+        expect(edits.some(e => e.newText === '>> 3. Dup2')).toBe(true);
+    });
 });

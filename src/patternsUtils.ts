@@ -172,12 +172,17 @@ export function getFirstItemPrefix(listPrefix: string, defaultNewListType: strin
 export function computeAutoFixEdits(
     lines: Array<{ text: string; lineIndex: number }>
 ): Array<{ lineIndex: number; newText: string }> {
+    // Group by section (last header seen) + chevron depth so lists in different
+    // sections are never compared against each other.
     const byDepth = new Map<string, Array<{ lineIndex: number; num: number; text: string }>>();
+    let currentSection = -1;
     for (const { text, lineIndex } of lines) {
+        if (/^> /.test(text)) { currentSection = lineIndex; continue; }
         const m = parseNumbered(text);
         if (!m) { continue; }
-        if (!byDepth.has(m.chevrons)) { byDepth.set(m.chevrons, []); }
-        byDepth.get(m.chevrons)!.push({ lineIndex, num: m.num, text });
+        const key = `${currentSection}::${m.chevrons}`;
+        if (!byDepth.has(key)) { byDepth.set(key, []); }
+        byDepth.get(key)!.push({ lineIndex, num: m.num, text });
     }
     const edits: Array<{ lineIndex: number; newText: string }> = [];
     for (const items of byDepth.values()) {
