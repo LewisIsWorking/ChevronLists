@@ -1,5 +1,9 @@
 # Changelog
 
+## [26.3.1] - 2026-04-22
+### Fixed
+- `autoFixNumbering` was incorrectly treating numbered lists across different section headers as one continuous sequence. Lists in separate sections now renumber independently.
+
 ## [26.3.0] - 2026-04-20
 ### Added
 - `CL: Open Settings` — a webview panel with two tabs: **Settings** (all configuration options as proper UI controls with real-time writes) and **Commands** (all 300+ CL commands grouped by category, clickable to run without touching the command palette). Opens automatically on first install with a welcome message. `colourPreset` and `anthropicApiKey` are now part of `ChevronConfig` so all settings flow through a single config read.
