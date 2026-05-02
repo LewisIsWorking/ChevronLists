@@ -4,13 +4,14 @@ import { isHeader, parseBullet, parseNumbered } from './patterns';
 export interface DiagnosticIssue {
     line:    number;
     message: string;
-    kind:    'duplicate-header' | 'empty-section' | 'bad-numbering';
+    kind:    'duplicate-header' | 'duplicate-subheading' | 'empty-section' | 'bad-numbering';
 }
 
 /** Finds all diagnostic issues in a document */
 export function collectIssues(doc: LineReader, prefix: string): DiagnosticIssue[] {
     const issues: DiagnosticIssue[] = [];
-    const seenHeaders = new Map<string, number>(); // name → first line
+    const seenHeaders     = new Map<string, number>(); // name → first line
+    const seenSubheadings = new Map<string, number>(); // name → first line
     let lastHeaderLine     = -1;
     let lastHeaderHasItems = false;
 
@@ -19,6 +20,18 @@ export function collectIssues(doc: LineReader, prefix: string): DiagnosticIssue[
 
     for (let i = 0; i < doc.lineCount; i++) {
         const text = doc.lineAt(i).text;
+
+        // Detect duplicate ## markdown subheadings
+        const subMatch = text.match(/^(#{1,6})\s+(.+)$/);
+        if (subMatch && !isHeader(text)) {
+            const subName = subMatch[2].trim().toLowerCase();
+            if (seenSubheadings.has(subName)) {
+                issues.push({ line: i, message: `Duplicate subheading "${subMatch[2].trim()}" (first at line ${(seenSubheadings.get(subName)! + 1)})`, kind: 'duplicate-subheading' });
+            } else {
+                seenSubheadings.set(subName, i);
+            }
+            continue;
+        }
 
         if (isHeader(text)) {
             if (lastHeaderLine >= 0 && !lastHeaderHasItems) {

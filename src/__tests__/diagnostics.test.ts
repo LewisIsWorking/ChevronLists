@@ -97,3 +97,37 @@ describe('collectIssues — bad numbering', () => {
         expect(collectIssues(doc, '-').some(i => i.kind === 'bad-numbering')).toBe(false);
     });
 });
+
+describe('collectIssues — duplicate subheadings', () => {
+    it('flags a duplicate ## subheading', () => {
+        const doc    = makeDoc(['## Session 277.', '> Header', '>> - item', '## Session 277.']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'duplicate-subheading')).toBe(true);
+        expect(issues.find(i => i.kind === 'duplicate-subheading')?.line).toBe(3);
+    });
+
+    it('duplicate subheading check is case-insensitive', () => {
+        const doc    = makeDoc(['## Session 277.', '## session 277.']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'duplicate-subheading')).toBe(true);
+    });
+
+    it('does not flag unique subheadings', () => {
+        const doc    = makeDoc(['## Session 277.', '## Session 278.']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'duplicate-subheading')).toBe(false);
+    });
+
+    it('works for deeper heading levels (###)', () => {
+        const doc    = makeDoc(['### Notes', '> Header', '>> - item', '### Notes']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'duplicate-subheading')).toBe(true);
+    });
+
+    it('does not flag chevron > headers as subheadings', () => {
+        const doc    = makeDoc(['> Alpha', '>> - item', '> Alpha', '>> - item']);
+        const issues = collectIssues(doc, '-');
+        expect(issues.some(i => i.kind === 'duplicate-subheading')).toBe(false);
+        expect(issues.some(i => i.kind === 'duplicate-header')).toBe(true);
+    });
+});

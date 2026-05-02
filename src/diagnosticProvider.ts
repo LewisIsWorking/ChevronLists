@@ -15,7 +15,7 @@ export function updateDiagnostics(document: vscode.TextDocument): void {
 
     const diagnostics = issues.map(issue => {
         const range    = document.lineAt(issue.line).range;
-        const severity = issue.kind === 'bad-numbering'
+        const severity = (issue.kind === 'bad-numbering' || issue.kind === 'duplicate-header' || issue.kind === 'duplicate-subheading')
             ? vscode.DiagnosticSeverity.Warning
             : vscode.DiagnosticSeverity.Information;
         const d        = new vscode.Diagnostic(range, issue.message, severity);

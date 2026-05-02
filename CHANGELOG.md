@@ -1,5 +1,9 @@
 # Changelog
 
+## [26.3.2] - 2026-04-22
+### Added
+- Duplicate `##` markdown subheadings (and `###`, `####` etc.) now get the same warning underline as duplicate `> ` chevron headers. The hover message shows the subheading text and the line number of the first occurrence.
+
 ## [26.3.1] - 2026-04-22
 ### Fixed
 - `autoFixNumbering` was incorrectly treating numbered lists across different section headers as one continuous sequence. Lists in separate sections now renumber independently.
