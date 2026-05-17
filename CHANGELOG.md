@@ -1,5 +1,9 @@
 # Changelog
 
+## [26.4.0] - 2026-05-17
+### Changed
+- The `chevron-lists.defaultNewListType` setting now displays **Bullet list (>> -)** and **Numbered list (>> 1.)** in the dropdown instead of the raw values `unordered` / `ordered`. Stored values are unchanged so existing settings keep working. This change propagates back from the JetBrains plugin where the same UX improvement was identified.
+
 ## [26.3.2] - 2026-04-22
 ### Added
 - Duplicate `##` markdown subheadings (and `###`, `####` etc.) now get the same warning underline as duplicate `> ` chevron headers. The hover message shows the subheading text and the line number of the first occurrence.

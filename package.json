@@ -2,7 +2,7 @@
     "name": "chevron-lists",
     "displayName": "Chevron Lists",
     "description": "A powerful markdown list manager with 300+ commands: smart keyboard shortcuts, live decorations, tag filtering, kanban, daily notes, AI assist, and more.",
-    "version": "26.3.2",
+    "version": "26.4.0",
     "icon": "icon.png",
     "galleryBanner": {
         "color": "#12122A",
@@ -89,6 +89,7 @@
                     "type": "string",
                     "default": "unordered",
                     "enum": ["unordered", "ordered"],
+                    "enumItemLabels": ["Bullet list (>> -)", "Numbered list (>> 1.)"],
                     "enumDescriptions": [
                         "Press Enter on a header to begin a bullet list (>> -)",
                         "Press Enter on a header to begin a numbered list (>> 1.)"
