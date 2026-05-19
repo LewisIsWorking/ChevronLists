@@ -63,7 +63,7 @@ export async function onStopSectionTimer(): Promise<void> {
     const elapsed     = Date.now() - activeTimer.startMs;
     const sectionName = activeTimer.sectionName;
     if (intervalHandle)  { clearInterval(intervalHandle); intervalHandle = null; }
-    if (statusBarItem)   { statusBarItem.hide(); }
+    if (statusBarItem)   { statusBarItem.dispose(); statusBarItem = null; }
     activeTimer = null;
     const editor = vscode.window.activeTextEditor;
     if (editor) { editor.setDecorations(TIMER_DECORATION, []); }

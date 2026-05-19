@@ -16,6 +16,7 @@ import { registerAutoFixNumbering }                          from './autoFixNumb
 import { registerLockEnforcement }                           from './lockEnforcement';
 import { registerCollapseMemory }                            from './sectionCollapseMemory';
 import { showTipOfDay, onShowTipOfDay }                              from './tipOfDay';
+import { clearJumpHistory }                                  from './jumpHistory';
 import { getConfig }                                         from './config';
 import { openOnFirstInstall }                                from './settingsPanel';
 
@@ -62,6 +63,8 @@ export function activate(context: vscode.ExtensionContext): void {
                 refreshEditor(editor, { dueDateDiags });
             }
         }),
+        // Release per-file jump-history entries when their document is closed
+        vscode.workspace.onDidCloseTextDocument(doc => clearJumpHistory(doc.uri)),
     );
 
     registerAutoFixNumbering(context);

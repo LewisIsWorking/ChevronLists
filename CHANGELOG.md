@@ -1,5 +1,14 @@
 # Changelog
 
+## [26.4.2] - 2026-05-17
+### Fixed
+- **Jump-history map cleanup**. The per-file jump history map (`jumpHistory.ts`) accumulated one entry per markdown file opened during the session and never released them. Now wired to `onDidCloseTextDocument` so closed files free their entry immediately.
+- **Section timer status bar item leak**. `onStopSectionTimer` called `statusBarItem.hide()` instead of `.dispose()`, keeping a `StatusBarItem` allocated for the rest of the extension lifetime. Now properly disposed and recreated on next start.
+
+### Audit notes
+- Audited every `*Decoration*.ts` file for `createTextEditorDecorationType` inside update functions — only `heatMapDecoration.ts` had the per-keystroke leak (fixed in 26.4.1).
+- Verified all event listeners go through `context.subscriptions`, all webview panels use the singleton + `onDidDispose` pattern, all `setInterval` calls have matching `clearInterval`, and module-level `Map`/`Set` caches are bounded.
+
 ## [26.4.1] - 2026-05-17
 ### Fixed
 - **Memory leak in heat-map decorations**. `updateHeatMapDecorations` was creating 11 new `TextEditorDecorationType` objects on every keystroke (10 intensity buckets + 1 "throwaway" type that didn't actually clear anything). Typing 1000 characters leaked ~11,000 native rendering handles. The decoration types are now created once at module load and reused across all editors and refreshes — zero per-keystroke allocation.
