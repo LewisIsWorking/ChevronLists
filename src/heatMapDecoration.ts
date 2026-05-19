@@ -6,6 +6,22 @@ import { extractTags } from './tagParser';
 import { parsePriority } from './priorityParser';
 import { parseVote } from './voteParser';
 
+const BUCKETS = 10;
+
+/**
+ * One decoration type per intensity bucket, created ONCE at module load.
+ * Reused across every editor and every refresh — no per-keystroke allocation.
+ * Previously these were created inside the update function, leaking 11
+ * `TextEditorDecorationType` objects per keystroke (10 buckets + 1 throwaway).
+ */
+const BUCKET_DECS: vscode.TextEditorDecorationType[] = Array.from({ length: BUCKETS }, (_, b) => {
+    const intensity = Math.round(((b + 1) / BUCKETS) * 255);
+    return vscode.window.createTextEditorDecorationType({
+        overviewRulerLane:  vscode.OverviewRulerLane.Right,
+        overviewRulerColor: `rgba(${intensity}, ${Math.round(intensity * 0.5)}, 255, 0.8)`,
+    });
+});
+
 /** Updates the overview ruler heat map markers based on section weight */
 export function updateHeatMapDecorations(editor: vscode.TextEditor | undefined): void {
     if (!editor || editor.document.languageId !== 'markdown') { return; }
@@ -30,25 +46,17 @@ export function updateHeatMapDecorations(editor: vscode.TextEditor | undefined):
 
     const maxWeight = Math.max(...weights.map(w => w.weight), 1);
 
-    // Build one decoration type per distinct colour bucket (0-9)
-    const buckets = 10;
-    const decorationTypes = Array.from({ length: buckets }, (_, b) => {
-        const intensity = Math.round(((b + 1) / buckets) * 255);
-        return vscode.window.createTextEditorDecorationType({
-            overviewRulerLane:  vscode.OverviewRulerLane.Right,
-            overviewRulerColor: `rgba(${intensity}, ${Math.round(intensity * 0.5)}, 255, 0.8)`,
-        });
-    });
-
-    // Clear all old heat map decorations by setting empty ranges on a throwaway type
-    editor.setDecorations(
-        vscode.window.createTextEditorDecorationType({ overviewRulerLane: vscode.OverviewRulerLane.Right }),
-        []
-    );
-
+    // Group lines by bucket so we can apply each decoration type in a single batch
+    const rangesByBucket: vscode.Range[][] = Array.from({ length: BUCKETS }, () => []);
     for (const { line, weight } of weights) {
-        const bucketIndex = Math.min(buckets - 1, Math.floor((weight / maxWeight) * buckets));
-        decorationTypes[bucketIndex].dispose(); // not disposing — just applying
-        editor.setDecorations(decorationTypes[bucketIndex], [{ range: editor.document.lineAt(line).range }]);
+        const bucketIndex = Math.min(BUCKETS - 1, Math.floor((weight / maxWeight) * BUCKETS));
+        rangesByBucket[bucketIndex].push(doc.lineAt(line).range);
+    }
+
+    // Apply each bucket's ranges. setDecorations replaces any previous ranges for the
+    // same type on this editor, so old markers are cleared automatically without any
+    // throwaway allocations.
+    for (let b = 0; b < BUCKETS; b++) {
+        editor.setDecorations(BUCKET_DECS[b], rangesByBucket[b]);
     }
 }

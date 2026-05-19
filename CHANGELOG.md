@@ -1,5 +1,10 @@
 # Changelog
 
+## [26.4.1] - 2026-05-17
+### Fixed
+- **Memory leak in heat-map decorations**. `updateHeatMapDecorations` was creating 11 new `TextEditorDecorationType` objects on every keystroke (10 intensity buckets + 1 "throwaway" type that didn't actually clear anything). Typing 1000 characters leaked ~11,000 native rendering handles. The decoration types are now created once at module load and reused across all editors and refreshes — zero per-keystroke allocation.
+- Removed a smaller related leak in `decorationToggles.ts` where toggling a decoration off created a fresh useless decoration type. The bogus code never actually cleared anything either; the disabled-decorations-not-clearing UX issue is now documented in a comment for a proper future fix.
+
 ## [26.4.0] - 2026-05-17
 ### Changed
 - The `chevron-lists.defaultNewListType` setting now displays **Bullet list (>> -)** and **Numbered list (>> 1.)** in the dropdown instead of the raw values `unordered` / `ordered`. Stored values are unchanged so existing settings keep working. This change propagates back from the JetBrains plugin where the same UX improvement was identified.

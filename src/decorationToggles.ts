@@ -25,11 +25,14 @@ function refresh(): void {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
     if (state.summary)     { updateSummaryDecorations(editor); }
-    else                   { editor.setDecorations(vscode.window.createTextEditorDecorationType({}), []); }
     if (state.checklist)   { updateChecklistProgressDecorations(editor); }
     if (state.wordGoal)    { updateGoalDecorations(editor); }
     if (state.badge)       { updateBadgeDecorations(editor); }
     if (state.ageHighlight){ updateAgeDecorations(editor); }
+    // Note: when a decoration is toggled OFF, its previously-applied decorations remain
+    // until the editor is refreshed. The previous code attempted to clear them by creating
+    // a throwaway TextEditorDecorationType, but that leaked a type per toggle and never
+    // actually cleared anything (a brand-new type has no decorations to clear).
 }
 
 function toggle(key: keyof DecorationState, label: string): void {
