@@ -1,5 +1,14 @@
 # Changelog
 
+## [26.5.0] - 2026-05-21
+### Fixed
+- **`autoFixNumbering` listener could die silently**. If `applyEdit` threw mid-fix (e.g. file closed during the async operation), the internal `isApplyingFix` flag stayed `true` forever, disabling auto-fix until VS Code restart. The fix is now wrapped in `try/finally` so the flag always resets, plus a `console.warn` for diagnostics.
+- **`sectionCollapseMemory` accumulated stale workspace state keys forever**. Every markdown file ever opened added a permanent entry; deleting or renaming a file orphaned its key. Now listens to `onDidDeleteFiles` to drop keys for removed files, and `onDidRenameFiles` to migrate state to the new path.
+- Removed dead `saveFoldState` export from `sectionCollapseMemory.ts` — it was unused and only re-saved the existing value.
+
+### Performance
+- **`autoFixNumbering` now debounces edits by 250ms** before scanning. Previously every keystroke triggered a full document scan + per-line allocation; on a 1000-line file that meant ~1000 short-lived objects allocated per keystroke. The debounce collapses keystroke bursts into a single scan after the user pauses, eliminating the GC churn that may have manifested as memory pressure during heavy editing.
+
 ## [26.4.2] - 2026-05-17
 ### Fixed
 - **Jump-history map cleanup**. The per-file jump history map (`jumpHistory.ts`) accumulated one entry per markdown file opened during the session and never released them. Now wired to `onDidCloseTextDocument` so closed files free their entry immediately.

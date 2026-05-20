@@ -8,19 +8,6 @@ function docKey(uri: vscode.Uri): string {
     return `${STATE_KEY}:${uri.fsPath}`;
 }
 
-/** Saves which sections are currently folded for the active document */
-export async function saveFoldState(
-    context: vscode.ExtensionContext,
-    editor: vscode.TextEditor
-): Promise<void> {
-    if (editor.document.languageId !== 'markdown') { return; }
-    // VS Code doesn't expose fold state directly — we store which headers the
-    // user has explicitly folded via our own fold commands as a string set.
-    // This is called by onFoldSection / onUnfoldSection to persist state.
-    const existing = context.workspaceState.get<string[]>(docKey(editor.document.uri), []);
-    await context.workspaceState.update(docKey(editor.document.uri), existing);
-}
-
 /** Registers listeners that restore fold state when a document is opened */
 export function registerCollapseMemory(context: vscode.ExtensionContext): void {
     // Track fold/unfold via our commands by storing header names
@@ -56,6 +43,24 @@ export function registerCollapseMemory(context: vscode.ExtensionContext): void {
             }
             for (const line of linesToFold) {
                 await vscode.commands.executeCommand('editor.fold', { selectionLines: [line] });
+            }
+        }),
+        // When a file is deleted, drop its fold-state entry so workspaceState
+        // doesn't grow indefinitely with stale keys for files that no longer exist.
+        vscode.workspace.onDidDeleteFiles(async event => {
+            for (const uri of event.files) {
+                await context.workspaceState.update(docKey(uri), undefined);
+            }
+        }),
+        // When a file is renamed/moved, migrate the fold state to the new path
+        // and drop the old entry. Without this, renames would orphan the state.
+        vscode.workspace.onDidRenameFiles(async event => {
+            for (const f of event.files) {
+                const existing = context.workspaceState.get<string[] | undefined>(docKey(f.oldUri), undefined);
+                await context.workspaceState.update(docKey(f.oldUri), undefined);
+                if (existing !== undefined && existing.length > 0) {
+                    await context.workspaceState.update(docKey(f.newUri), existing);
+                }
             }
         })
     );
